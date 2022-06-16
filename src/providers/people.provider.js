@@ -6,6 +6,7 @@ export const peopleSlice = createSlice({
     name: "people",
     initialState: {
         email: "",
+        access_token: "",
     },
     reducers: {
         peopleLoginReducer: (state, action) => {

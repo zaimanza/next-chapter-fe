@@ -9,6 +9,7 @@ import {
   Route,
 } from "react-router-dom";
 import WelcomePage from './pages/welcome.page';
+import PeopleAuthLayout from './layouts/people.auth.layout';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -17,6 +18,7 @@ root.render(
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<WelcomePage />} />
+          <Route path="/auth" element={<PeopleAuthLayout />} />
         </Routes>
       </BrowserRouter>
     </Provider>
