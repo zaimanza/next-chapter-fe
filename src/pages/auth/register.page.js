@@ -40,81 +40,81 @@ export default function RegisterPage({ setAuthMode }) {
                                 <hr className="mt-6 border-b-1 border-gray-300" />
                             </div> */}
                             <div className="rounded-t mb-0 px-6 py-6">
-                                <div className="text-center mb-3 font-bold">
-                                    <small>Sign up with credentials</small>
+                                <div className="text-center">
+                                    <div className="text-center mb-3 font-bold">
+                                        <small>Begin your nextChapter</small>
+                                    </div>
                                 </div>
-                                <form>
-                                    <div className="relative w-full mb-3">
-                                        <label
-                                            className="block uppercase text-xs font-bold mb-2"
-                                            htmlFor="grid-password"
-                                        >
-                                            Name
-                                        </label>
+                                <div className="text-center">
+                                    <div className="text-center mb-3 font-normal">
+                                        <small>Create your account</small>
+                                    </div>
+                                </div>
+
+                                <div className="relative w-full mb-3">
+                                    <label
+                                        className="block uppercase text-xs font-bold mb-2"
+                                        htmlFor="grid-password"
+                                    >
+                                        Email
+                                    </label>
+                                    <input
+                                        type="email"
+                                        className="border-0 px-3 py-3 placeholder-gray-300 text-gray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                                        placeholder="Email"
+                                    />
+                                </div>
+
+                                <div className="relative w-full mb-3">
+                                    <label
+                                        className="block uppercase text-xs font-bold mb-2"
+                                        htmlFor="grid-password"
+                                    >
+                                        Password
+                                    </label>
+                                    <input
+                                        type="password"
+                                        className="border-0 px-3 py-3 placeholder-gray-300 text-gray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                                        placeholder="Password"
+                                    />
+                                </div>
+
+                                <div className="mb-11">
+                                    <label className="inline-flex items-center cursor-pointer">
                                         <input
-                                            type="email"
-                                            className="border-0 px-3 py-3 placeholder-gray-300 text-gray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-                                            placeholder="Name"
+                                            id="customCheckLogin"
+                                            type="checkbox"
+                                            className="form-checkbox border-0 rounded text-gray-700 ml-1 w-5 h-5 ease-linear transition-all duration-150"
                                         />
-                                    </div>
+                                        <span className="ml-2 text-sm font-semibold text-gray-600">
+                                            I agree with the{" "}
+                                            <a
+                                                href="#pablo"
+                                                className="text-lightBlue-500"
+                                                onClick={(e) => e.preventDefault()}
+                                            >
+                                                privacy policy
+                                            </a>
+                                            {" "} and {" "}
+                                            <a
+                                                href="#pablo"
+                                                className="text-lightBlue-500"
+                                                onClick={(e) => e.preventDefault()}
+                                            >
+                                                terms of service.
+                                            </a>
+                                        </span>
+                                    </label>
+                                </div>
 
-                                    <div className="relative w-full mb-3">
-                                        <label
-                                            className="block uppercase text-xs font-bold mb-2"
-                                            htmlFor="grid-password"
-                                        >
-                                            Email
-                                        </label>
-                                        <input
-                                            type="email"
-                                            className="border-0 px-3 py-3 placeholder-gray-300 text-gray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-                                            placeholder="Email"
-                                        />
-                                    </div>
-
-                                    <div className="relative w-full mb-3">
-                                        <label
-                                            className="block uppercase text-xs font-bold mb-2"
-                                            htmlFor="grid-password"
-                                        >
-                                            Password
-                                        </label>
-                                        <input
-                                            type="password"
-                                            className="border-0 px-3 py-3 placeholder-gray-300 text-gray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-                                            placeholder="Password"
-                                        />
-                                    </div>
-
-                                    <div>
-                                        <label className="inline-flex items-center cursor-pointer">
-                                            <input
-                                                id="customCheckLogin"
-                                                type="checkbox"
-                                                className="form-checkbox border-0 rounded text-gray-700 ml-1 w-5 h-5 ease-linear transition-all duration-150"
-                                            />
-                                            <span className="ml-2 text-sm font-semibold text-gray-600">
-                                                I agree with the{" "}
-                                                <a
-                                                    href="#pablo"
-                                                    className="text-lightBlue-500"
-                                                    onClick={(e) => e.preventDefault()}
-                                                >
-                                                    Privacy Policy
-                                                </a>
-                                            </span>
-                                        </label>
-                                    </div>
-
-                                    <div className="text-center mt-6">
-                                        <button
-                                            className="bg-gray-800 text-white active:bg-gray-600 text-sm font-bold uppercase px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 w-full ease-linear transition-all duration-150"
-                                            type="button"
-                                        >
-                                            Create Account
-                                        </button>
-                                    </div>
-                                </form>
+                                <div className="text-center mt-6">
+                                    <button
+                                        className="bg-gray-800 text-white active:bg-gray-600 text-sm font-bold uppercase px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 w-full ease-linear transition-all duration-150"
+                                        type="button"
+                                    >
+                                        Create Account
+                                    </button>
+                                </div>
                             </div>
                         </div>
 

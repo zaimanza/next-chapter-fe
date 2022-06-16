@@ -19,6 +19,7 @@ root.render(
         <Routes>
           <Route path="/" element={<WelcomePage />} />
           <Route path="/auth" element={<PeopleAuthLayout />} />
+          <Route path="/auth/:ticket" element={<PeopleAuthLayout />} />
         </Routes>
       </BrowserRouter>
     </Provider>
