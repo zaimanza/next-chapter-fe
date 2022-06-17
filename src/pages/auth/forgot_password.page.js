@@ -71,7 +71,10 @@ export default function ForgotPasswordPage({ setAuthMode }) {
                                         //regex email
                                         const emailRes = regexEmail(getEmailValue)
                                         if (emailRes) setEmailError(emailRes)
-                                        // setAuthMode("login")
+
+                                        if (!emailRes) {
+                                            setAuthMode("login")
+                                        }
                                     }}
                                 >
                                     Send Reset Link

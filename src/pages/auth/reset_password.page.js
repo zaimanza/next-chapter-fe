@@ -86,8 +86,15 @@ export default function ResetPasswordPage({ setAuthMode, getDecodedTicket }) {
                                         //regex confirm new password
                                         const confirmPasswordRes = regexPassword(getConfirmNewPasswordValue)
                                         if (confirmPasswordRes?.message) setConfirmNewPasswordError(confirmPasswordRes.message)
-                                        // setAuthMode("login")
-                                        // navigate("/auth")
+
+                                        if (!newPasswordRes?.message && !confirmPasswordRes?.message) {
+                                            if (getNewPasswordValue === getConfirmNewPasswordValue) {
+                                                setAuthMode("login")
+                                                navigate("/auth")
+                                            } else {
+                                                setConfirmNewPasswordError("Password does not match.")
+                                            }
+                                        }
                                     }}
                                 >
                                     Reset Password

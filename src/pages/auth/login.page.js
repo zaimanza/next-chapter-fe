@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
-// import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import useRegex from '../../utils/useRegex';
 import { authSetEmailReducer, authSetPasswordReducer } from "../../providers/auth.provider";
 
 export default function LoginPage({ setAuthMode }) {
-    // const navigate = useNavigate()
+    const navigate = useNavigate()
     const dispatch = useDispatch()
     const { regexEmail, regexPassword } = useRegex()
     const authProvider = useSelector((state) => state.auth.value)
@@ -116,6 +116,10 @@ export default function LoginPage({ setAuthMode }) {
                                         const passwordRes = regexPassword(getPasswordValue)
                                         if (passwordRes?.message) setPasswordError(passwordRes.message)
                                         // navigate("/events")
+
+                                        if (!emailRes && !passwordRes?.message) {
+                                            navigate("/events")
+                                        }
                                     }}
                                 >
                                     Sign In
