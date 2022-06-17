@@ -44,7 +44,7 @@ export default function RegisterPage({ setAuthMode }) {
                             <div className="rounded-t mb-0 px-6 py-6">
                                 <div className="text-center">
                                     <div className="text-center mb-3 font-bold">
-                                        <small>Begin your nextChapter</small>
+                                        Begin your  <label className="text-xl">nextChapter</label>
                                     </div>
                                 </div>
                                 <div className="text-center">

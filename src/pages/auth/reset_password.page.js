@@ -43,7 +43,7 @@ export default function ResetPasswordPage({ setAuthMode, getDecodedTicket }) {
                         <div className="rounded-t mb-0 px-6 py-6">
                             <div className="text-center">
                                 <div className="text-center mb-3 font-bold">
-                                    <small>Reset password</small>
+                                    Reset password
                                 </div>
                             </div>
                             <div className="text-center">

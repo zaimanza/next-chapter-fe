@@ -42,8 +42,8 @@ export default function LoginPage({ setAuthMode }) {
                         </div> */}
                         <div className="rounded-t mb-0 px-6 py-6">
                             <div className="text-center">
-                                <div className="text-center mb-3 font-bold">
-                                    <small>Log into your nextChapter</small>
+                                <div className="text-center mb-3 font-bold ">
+                                    Log into your <label className="text-xl">nextChapter</label>
                                 </div>
                             </div>
                             <div className="text-center">
