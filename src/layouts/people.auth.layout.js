@@ -33,7 +33,7 @@ const PeopleAuthLayout = () => {
             }
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, []);
+    }, [])
 
     return (
         <div className='bg-pink-400'>
