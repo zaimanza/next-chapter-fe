@@ -1,15 +1,20 @@
 import React, { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
-import { useNavigate } from "react-router-dom"
+// import { useNavigate } from "react-router-dom"
+import useRegex from '../../utils/useRegex';
 import { authSetEmailReducer, authSetPasswordReducer } from "../../providers/auth.provider";
 
 export default function RegisterPage({ setAuthMode }) {
-    const navigate = useNavigate()
+    // const navigate = useNavigate()
     const dispatch = useDispatch()
+    const { regexEmail, regexPassword } = useRegex()
     const authProvider = useSelector((state) => state.auth.value)
 
     const [getEmailValue, setEmailValue] = useState("")
     const [getPasswordValue, setPasswordValue] = useState("")
+
+    const [getEmailError, setEmailError] = useState()
+    const [getPasswordError, setPasswordError] = useState()
 
     useEffect(() => {
         setEmailValue(authProvider.email)
@@ -48,6 +53,7 @@ export default function RegisterPage({ setAuthMode }) {
                                     placeholder="Email"
                                     value={getEmailValue}
                                     onChange={(event) => {
+                                        setEmailError("")
                                         const onChangeValue = event.target.value
                                         setEmailValue(onChangeValue)
                                         dispatch(
@@ -57,6 +63,7 @@ export default function RegisterPage({ setAuthMode }) {
                                         );
                                     }}
                                 />
+                                {getEmailError ? (<p className="text-sm text-red-400 mt-1">{getEmailError}</p>) : null}
                             </div>
 
                             <div className="relative w-full mb-3">
@@ -72,6 +79,7 @@ export default function RegisterPage({ setAuthMode }) {
                                     placeholder="Password"
                                     value={getPasswordValue}
                                     onChange={(event) => {
+                                        setPasswordError("")
                                         const onChangeValue = event.target.value
                                         setPasswordValue(onChangeValue)
                                         dispatch(
@@ -81,6 +89,7 @@ export default function RegisterPage({ setAuthMode }) {
                                         );
                                     }}
                                 />
+                                {getPasswordError ? (<p className="text-sm text-red-400 mt-1">{getPasswordError}</p>) : null}
                             </div>
 
                             <div className="mb-11">
@@ -116,7 +125,13 @@ export default function RegisterPage({ setAuthMode }) {
                                     className="bg-gray-800 text-white active:bg-gray-600 text-sm font-bold uppercase px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 w-full ease-linear transition-all duration-150"
                                     type="button"
                                     onClick={() => {
-                                        navigate("/events")
+                                        //regex email
+                                        const emailRes = regexEmail(getEmailValue)
+                                        if (emailRes) setEmailError(emailRes)
+                                        //regex password
+                                        const passwordRes = regexPassword(getPasswordValue)
+                                        if (passwordRes?.message) setPasswordError(passwordRes.message)
+                                        // navigate("/events")
                                     }}
                                 >
                                     Create Account
