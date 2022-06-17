@@ -1,15 +1,20 @@
 import React, { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
+import useRegex from '../../utils/useRegex';
 import { authSetEmailReducer, authSetPasswordReducer } from "../../providers/auth.provider";
 
 export default function LoginPage({ setAuthMode }) {
-    const navigate = useNavigate()
+    // const navigate = useNavigate()
     const dispatch = useDispatch()
+    const { regexEmail, regexPassword } = useRegex()
     const authProvider = useSelector((state) => state.auth.value)
 
     const [getEmailValue, setEmailValue] = useState("")
     const [getPasswordValue, setPasswordValue] = useState("")
+
+    const [getEmailError, setEmailError] = useState()
+    const [getPasswordError, setPasswordError] = useState()
 
     useEffect(() => {
         setEmailValue(authProvider.email)
@@ -43,10 +48,11 @@ export default function LoginPage({ setAuthMode }) {
                                 </label>
                                 <input
                                     type="email"
-                                    className="border-0 px-3 py-3 placeholder-gray-300 text-gray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                                    className={`${getEmailError ? "ring ring-red-500 placeholder-red-300 text-red-600" : "focus:ring placeholder-gray-300 text-gray-600"} focus:outline-none border-0 px-3 py-3 bg-white rounded text-sm shadow w-full ease-linear transition-all duration-150`}
                                     placeholder="Email"
                                     value={getEmailValue}
                                     onChange={(event) => {
+                                        setEmailError("")
                                         const onChangeValue = event.target.value
                                         setEmailValue(onChangeValue)
                                         dispatch(
@@ -56,6 +62,7 @@ export default function LoginPage({ setAuthMode }) {
                                         );
                                     }}
                                 />
+                                {getEmailError ? (<p className="text-sm text-red-400 mt-1">{getEmailError}</p>) : null}
                             </div>
 
                             <div className="relative w-full mb-3">
@@ -67,10 +74,11 @@ export default function LoginPage({ setAuthMode }) {
                                 </label>
                                 <input
                                     type="password"
-                                    className="border-0 px-3 py-3 placeholder-gray-300 text-gray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                                    className={`${getPasswordError ? "ring ring-red-500 placeholder-red-300 text-red-600" : "focus:ring placeholder-gray-300 text-gray-600"} focus:outline-none border-0 px-3 py-3 bg-white rounded text-sm shadow w-full ease-linear transition-all duration-150`}
                                     placeholder="Password"
                                     value={getPasswordValue}
                                     onChange={(event) => {
+                                        setPasswordError("")
                                         const onChangeValue = event.target.value
                                         setPasswordValue(onChangeValue)
                                         dispatch(
@@ -80,7 +88,9 @@ export default function LoginPage({ setAuthMode }) {
                                         );
                                     }}
                                 />
+                                {getPasswordError ? (<p className="text-sm text-red-400 mt-1">{getPasswordError}</p>) : null}
                             </div>
+
                             <div className="mb-11">
                                 <label className="inline-flex items-center cursor-pointer">
                                     <input
@@ -99,7 +109,13 @@ export default function LoginPage({ setAuthMode }) {
                                     className="bg-gray-800 text-white active:bg-gray-600 text-sm font-bold uppercase px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 w-full ease-linear transition-all duration-150"
                                     type="button"
                                     onClick={() => {
-                                        navigate("/events")
+                                        //regex email
+                                        const emailRes = regexEmail(getEmailValue)
+                                        if (emailRes) setEmailError(emailRes)
+                                        //regex password
+                                        const passwordRes = regexPassword(getPasswordValue)
+                                        if (passwordRes?.message) setPasswordError(passwordRes.message)
+                                        // navigate("/events")
                                     }}
                                 >
                                     Sign In

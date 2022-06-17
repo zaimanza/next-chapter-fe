@@ -1,10 +1,17 @@
 import React, { useState } from "react"
 import { useNavigate } from "react-router-dom";
+import useRegex from '../../utils/useRegex';
 
 export default function ResetPasswordPage({ setAuthMode, getDecodedTicket }) {
-    const navigate = useNavigate();
+    const navigate = useNavigate()
+    const { regexPassword } = useRegex()
+
     const [getNewPasswordValue, setNewPasswordValue] = useState("")
     const [getConfirmNewPasswordValue, setConfirmNewPasswordValue] = useState("")
+
+    const [getNewPasswordError, setNewPasswordError] = useState()
+    const [getConfirmNewPasswordError, setConfirmNewPasswordError] = useState()
+
     return (
         <div className="container mx-auto px-4 h-full">
             <div className="flex content-center items-center justify-center h-full">
@@ -31,14 +38,16 @@ export default function ResetPasswordPage({ setAuthMode, getDecodedTicket }) {
                                 </label>
                                 <input
                                     type="password"
-                                    className="border-0 px-3 py-3 placeholder-gray-300 text-gray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                                    className={`${getNewPasswordError ? "ring ring-red-500 placeholder-red-300 text-red-600" : "focus:ring placeholder-gray-300 text-gray-600"} focus:outline-none border-0 px-3 py-3 bg-white rounded text-sm shadow w-full ease-linear transition-all duration-150`}
                                     placeholder="Your new password"
                                     value={getNewPasswordValue}
                                     onChange={(event) => {
+                                        setNewPasswordError("")
                                         const onChangeValue = event.target.value
                                         setNewPasswordValue(onChangeValue)
                                     }}
                                 />
+                                {getNewPasswordError ? (<p className="text-sm text-red-400 mt-1">{getNewPasswordError}</p>) : null}
                             </div>
 
                             <div className="relative w-full mb-3">
@@ -50,14 +59,16 @@ export default function ResetPasswordPage({ setAuthMode, getDecodedTicket }) {
                                 </label>
                                 <input
                                     type="password"
-                                    className="border-0 px-3 py-3 placeholder-gray-300 text-gray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                                    className={`${getConfirmNewPasswordError ? "ring ring-red-500 placeholder-red-300 text-red-600" : "focus:ring placeholder-gray-300 text-gray-600"} focus:outline-none border-0 px-3 py-3 bg-white rounded text-sm shadow w-full ease-linear transition-all duration-150`}
                                     placeholder="Confirm your new password"
                                     value={getConfirmNewPasswordValue}
                                     onChange={(event) => {
+                                        setConfirmNewPasswordError("")
                                         const onChangeValue = event.target.value
                                         setConfirmNewPasswordValue(onChangeValue)
                                     }}
                                 />
+                                {getConfirmNewPasswordError ? (<p className="text-sm text-red-400 mt-1">{getConfirmNewPasswordError}</p>) : null}
                             </div>
                             <div className="mb-11">
 
@@ -68,8 +79,15 @@ export default function ResetPasswordPage({ setAuthMode, getDecodedTicket }) {
                                     className="bg-gray-800 text-white active:bg-gray-600 text-sm font-bold uppercase px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 w-full ease-linear transition-all duration-150"
                                     type="button"
                                     onClick={() => {
-                                        setAuthMode("login")
-                                        navigate("/auth")
+
+                                        //regex new password
+                                        const newPasswordRes = regexPassword(getNewPasswordValue)
+                                        if (newPasswordRes?.message) setNewPasswordError(newPasswordRes.message)
+                                        //regex confirm new password
+                                        const confirmPasswordRes = regexPassword(getConfirmNewPasswordValue)
+                                        if (confirmPasswordRes?.message) setConfirmNewPasswordError(confirmPasswordRes.message)
+                                        // setAuthMode("login")
+                                        // navigate("/auth")
                                     }}
                                 >
                                     Reset Password
