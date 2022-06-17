@@ -1,6 +1,8 @@
 import React from "react"
+import { useNavigate } from "react-router-dom";
 
 export default function ResetPasswordPage({ setAuthMode, getDecodedTicket }) {
+    const navigate = useNavigate();
     return (
         <div className="container mx-auto px-4 h-full">
             <div className="flex content-center items-center justify-center h-full">
@@ -85,6 +87,10 @@ export default function ResetPasswordPage({ setAuthMode, getDecodedTicket }) {
                                 <button
                                     className="bg-gray-800 text-white active:bg-gray-600 text-sm font-bold uppercase px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 w-full ease-linear transition-all duration-150"
                                     type="button"
+                                    onClick={() => {
+                                        setAuthMode("login")
+                                        navigate("/auth")
+                                    }}
                                 >
                                     Reset Password
                                 </button>

@@ -10,6 +10,7 @@ import {
 } from "react-router-dom";
 import WelcomePage from './pages/welcome.page';
 import PeopleAuthLayout from './layouts/people.auth.layout';
+import EventsPage from './pages/dashboard/events.page';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -20,6 +21,7 @@ root.render(
           <Route path="/" element={<WelcomePage />} />
           <Route path="/auth" element={<PeopleAuthLayout />} />
           <Route path="/auth/:ticket" element={<PeopleAuthLayout />} />
+          <Route path="/events" element={<EventsPage />} />
         </Routes>
       </BrowserRouter>
     </Provider>
