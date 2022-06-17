@@ -3,11 +3,13 @@ import { useDispatch, useSelector } from "react-redux"
 import { useNavigate } from "react-router-dom"
 import useRegex from '../../utils/useRegex';
 import { authSetEmailReducer, authSetPasswordReducer } from "../../providers/auth.provider";
+import useAuthModule from "../../modules/useAuth.module";
 
 export default function RegisterPage({ setAuthMode }) {
     const navigate = useNavigate()
     const dispatch = useDispatch()
     const { regexEmail, regexPassword } = useRegex()
+    const _useAuthModule = useAuthModule()
     const authProvider = useSelector((state) => state.auth.value)
 
     const [getEmailValue, setEmailValue] = useState("")
@@ -124,7 +126,7 @@ export default function RegisterPage({ setAuthMode }) {
                                 <button
                                     className="bg-gray-800 text-white active:bg-gray-600 text-sm font-bold uppercase px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 w-full ease-linear transition-all duration-150"
                                     type="button"
-                                    onClick={() => {
+                                    onClick={async () => {
                                         //regex email
                                         const emailRes = regexEmail(getEmailValue)
                                         if (emailRes) setEmailError(emailRes)
@@ -133,7 +135,13 @@ export default function RegisterPage({ setAuthMode }) {
                                         if (passwordRes?.message) setPasswordError(passwordRes.message)
 
                                         if (!emailRes && !passwordRes?.message) {
-                                            navigate("/events")
+                                            const result = await _useAuthModule.peopleRegister({
+                                                email: getEmailValue,
+                                                password: getPasswordValue
+                                            })
+                                            if (result) {
+                                                navigate("/events")
+                                            }
                                         }
                                     }}
                                 >
