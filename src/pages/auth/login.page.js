@@ -14,6 +14,7 @@ export default function LoginPage({ setAuthMode }) {
 
     const [getEmailValue, setEmailValue] = useState("")
     const [getPasswordValue, setPasswordValue] = useState("")
+    const [getRememberMeCheck, setRememberMeCheck] = useState(false)
 
     const [getEmailError, setEmailError] = useState()
     const [getPasswordError, setPasswordError] = useState()
@@ -98,6 +99,10 @@ export default function LoginPage({ setAuthMode }) {
                                     <input
                                         id="customCheckLogin"
                                         type="checkbox"
+                                        checked={getRememberMeCheck || false}
+                                        onChange={(event) => {
+                                            setRememberMeCheck(event.target.checked)
+                                        }}
                                         className="form-checkbox border-0 rounded text-gray-700 ml-1 w-5 h-5 ease-linear transition-all duration-150"
                                     />
                                     <span className="ml-2 text-sm font-semibold text-gray-600">
@@ -122,7 +127,8 @@ export default function LoginPage({ setAuthMode }) {
                                         if (!emailRes && !passwordRes?.message) {
                                             const result = await _useAuthModule.peopleLogin({
                                                 email: getEmailValue,
-                                                password: getPasswordValue
+                                                password: getPasswordValue,
+                                                remember_me: getRememberMeCheck
                                             })
                                             if (result) {
                                                 navigate("/events")
@@ -139,14 +145,14 @@ export default function LoginPage({ setAuthMode }) {
                         <div className="w-1/2">
                             <div onClick={() => {
                                 setAuthMode("forgot-password")
-                            }} className="">
+                            }} className="mr-auto w-fit hover:underline hover:text-blue-600">
                                 <small>Forgot password?</small>
                             </div>
                         </div>
                         <div className="w-1/2 text-right">
                             <div onClick={() => {
                                 setAuthMode("register")
-                            }} className="">
+                            }} className="ml-auto w-fit hover:underline hover:text-blue-600">
                                 <small>Create new account</small>
                             </div>
                         </div>

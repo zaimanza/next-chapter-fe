@@ -1,10 +1,12 @@
 import React, { useState } from "react"
 import { useNavigate } from "react-router-dom";
+import useAuthModule from "../../modules/useAuth.module";
 import useRegex from '../../utils/useRegex';
 
 export default function ResetPasswordPage({ setAuthMode, getDecodedTicket }) {
     const navigate = useNavigate()
     const { regexPassword } = useRegex()
+    const _useAuthModule = useAuthModule()
 
     const [getNewPasswordValue, setNewPasswordValue] = useState("")
     const [getConfirmNewPasswordValue, setConfirmNewPasswordValue] = useState("")
@@ -78,7 +80,7 @@ export default function ResetPasswordPage({ setAuthMode, getDecodedTicket }) {
                                 <button
                                     className="bg-gray-800 text-white active:bg-gray-600 text-sm font-bold uppercase px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 w-full ease-linear transition-all duration-150"
                                     type="button"
-                                    onClick={() => {
+                                    onClick={async () => {
 
                                         //regex new password
                                         const newPasswordRes = regexPassword(getNewPasswordValue)
@@ -89,8 +91,13 @@ export default function ResetPasswordPage({ setAuthMode, getDecodedTicket }) {
 
                                         if (!newPasswordRes?.message && !confirmPasswordRes?.message) {
                                             if (getNewPasswordValue === getConfirmNewPasswordValue) {
-                                                setAuthMode("login")
-                                                navigate("/auth")
+                                                const result = await _useAuthModule.peopleResetPassword({
+                                                    password: getNewPasswordValue,
+                                                })
+                                                if (result) {
+                                                    setAuthMode("login")
+                                                    navigate("/auth")
+                                                }
                                             } else {
                                                 setConfirmNewPasswordError("Password does not match.")
                                             }

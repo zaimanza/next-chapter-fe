@@ -14,9 +14,11 @@ export default function RegisterPage({ setAuthMode }) {
 
     const [getEmailValue, setEmailValue] = useState("")
     const [getPasswordValue, setPasswordValue] = useState("")
+    const [getTermsPolicyCheck, setTermsPolicyCheck] = useState(false)
 
     const [getEmailError, setEmailError] = useState()
     const [getPasswordError, setPasswordError] = useState()
+    const [getTermsPolicyError, setTermsPolicyError] = useState()
 
     useEffect(() => {
         setEmailValue(authProvider.email)
@@ -99,22 +101,27 @@ export default function RegisterPage({ setAuthMode }) {
                                     <input
                                         id="customCheckLogin"
                                         type="checkbox"
-                                        className="form-checkbox border-0 rounded text-gray-700 ml-1 w-5 h-5 ease-linear transition-all duration-150"
+                                        checked={getTermsPolicyCheck || false}
+                                        onChange={(event) => {
+                                            setTermsPolicyError(false)
+                                            setTermsPolicyCheck(event.target.checked)
+                                        }}
+                                        className={`${getTermsPolicyError ? "text-red-600 " : "text-gray-700"} selection:form-checkbox border-0 rounded ml-1 w-5 h-5 ease-linear transition-all duration-150`}
                                     />
-                                    <span className="ml-2 text-sm font-semibold text-gray-600">
+                                    <span className={`${getTermsPolicyError ? "text-red-600" : "text-gray-600"} ml-2 text-sm font-semibold`}>
                                         I agree with the{" "}
                                         <a
-                                            href="#pablo"
-                                            className="text-lightBlue-500"
-                                            onClick={(e) => e.preventDefault()}
+                                            href="https://www.google.com/"
+                                            className="underline text-blue-600"
+                                        // onClick={(e) => e.preventDefault()}
                                         >
                                             privacy policy
                                         </a>
                                         {" "} and {" "}
                                         <a
-                                            href="#pablo"
-                                            className="text-lightBlue-500"
-                                            onClick={(e) => e.preventDefault()}
+                                            href="https://www.google.com/"
+                                            className="underline text-blue-600"
+                                        // onClick={(e) => e.preventDefault()}
                                         >
                                             terms of service.
                                         </a>
@@ -133,14 +140,17 @@ export default function RegisterPage({ setAuthMode }) {
                                         //regex password
                                         const passwordRes = regexPassword(getPasswordValue)
                                         if (passwordRes?.message) setPasswordError(passwordRes.message)
-
-                                        if (!emailRes && !passwordRes?.message) {
+                                        console.log(getTermsPolicyCheck)
+                                        if (!getTermsPolicyCheck) setTermsPolicyError(true)
+                                        if (!emailRes && !passwordRes?.message && getTermsPolicyCheck) {
                                             const result = await _useAuthModule.peopleRegister({
                                                 email: getEmailValue,
                                                 password: getPasswordValue
                                             })
                                             if (result) {
-                                                navigate("/events")
+                                                setAuthMode("send-verify-email")
+                                                navigate(`/auth/${result}`)
+
                                             }
                                         }
                                     }}
@@ -158,10 +168,10 @@ export default function RegisterPage({ setAuthMode }) {
                         <div className="w-1/2">
 
                         </div>
-                        <div className="w-1/2 text-right">
+                        <div className="w-full">
                             <div onClick={() => {
                                 setAuthMode("login")
-                            }} className="">
+                            }} className="mx-auto w-fit hover:underline hover:text-blue-600">
                                 <small>Already have an account</small>
                             </div>
                         </div>
@@ -169,6 +179,6 @@ export default function RegisterPage({ setAuthMode }) {
 
                 </div>
             </div>
-        </div>
+        </div >
     );
 }

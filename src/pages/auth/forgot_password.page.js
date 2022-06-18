@@ -2,10 +2,14 @@ import React, { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import useRegex from '../../utils/useRegex';
 import { authSetEmailReducer } from "../../providers/auth.provider"
+import useAuthModule from "../../modules/useAuth.module";
+import { useNavigate } from "react-router-dom";
 
 export default function ForgotPasswordPage({ setAuthMode }) {
+    const navigate = useNavigate()
     const dispatch = useDispatch()
     const { regexEmail } = useRegex()
+    const _useAuthModule = useAuthModule()
     const authProvider = useSelector((state) => state.auth.value)
 
     const [getEmailValue, setEmailValue] = useState("")
@@ -67,13 +71,20 @@ export default function ForgotPasswordPage({ setAuthMode }) {
                                 <button
                                     className="bg-gray-800 text-white active:bg-gray-600 text-sm font-bold uppercase px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 w-full ease-linear transition-all duration-150"
                                     type="button"
-                                    onClick={() => {
+                                    onClick={async () => {
                                         //regex email
                                         const emailRes = regexEmail(getEmailValue)
                                         if (emailRes) setEmailError(emailRes)
 
                                         if (!emailRes) {
-                                            setAuthMode("login")
+                                            const result = await _useAuthModule.peopleForgotPassword({
+                                                email: getEmailValue
+                                            })
+                                            if (result) {
+                                                setAuthMode("send-verify-password")
+                                                navigate(`/auth/${result}`)
+
+                                            }
                                         }
                                     }}
                                 >
@@ -86,14 +97,14 @@ export default function ForgotPasswordPage({ setAuthMode }) {
                         <div className="w-1/2">
                             <div onClick={() => {
                                 setAuthMode("login")
-                            }} className="">
+                            }} className="mx-auto w-fit hover:underline hover:text-blue-600">
                                 <small>Already have an account</small>
                             </div>
                         </div>
                         <div className="w-1/2 text-right">
                             <div onClick={() => {
                                 setAuthMode("register")
-                            }} className="">
+                            }} className="mx-auto w-fit hover:underline hover:text-blue-600">
                                 <small>Create new account</small>
                             </div>
                         </div>
