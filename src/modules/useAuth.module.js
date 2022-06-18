@@ -1,4 +1,4 @@
-
+const axios = require('axios').default;
 
 const useAuthModule = () => {
 
@@ -10,17 +10,24 @@ const useAuthModule = () => {
     }
 
     const peopleRegister = async ({ email, password }) => {
-        console.log(email)
-        console.log(password)
+        const registerResult = await axios.post(
+            `http://localhost:3001/auth/people_register`,
+            {
+                email: email,
+                password: password
+            })
+            .catch(function (error) {
+                console.log(error);
+                return
+            })
+        console.log("registerData")
+        console.log(registerResult.data)
         // const ecodedTicket = {
         //     mode: "send-verify-email",
         //     node_ticket: "email"
         // }
         // var encodedStringBtoA = btoa(JSON.stringify(ecodedTicket))
-        return {
-            email: email,
-            password: password
-        }
+        return registerResult.data
     }
 
     const peopleForgotPassword = async ({ email }) => {

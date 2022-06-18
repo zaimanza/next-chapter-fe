@@ -1,6 +1,7 @@
 import React, { useEffect } from "react"
 import { useNavigate } from "react-router-dom"
 import useAuthModule from "../../modules/useAuth.module"
+import GetIntegerRandom from "../../utils/GetIntegerRandom"
 import useTimer from '../../utils/useTimer'
 
 export default function SendVerifyPasswordPage({ setAuthMode, getDecodedTicket }) {
@@ -43,7 +44,7 @@ export default function SendVerifyPasswordPage({ setAuthMode, getDecodedTicket }
                                     type="button"
                                     disabled={timerCountdown === 0 ? false : true}
                                     onClick={async () => {
-                                        startTimer(60, 1000)
+                                        startTimer(GetIntegerRandom({ min: 40, max: 60 }), 1000)
 
                                         const result = await _useAuthModule.peopleSendVerifyPassword({
                                             node_ticket: getDecodedTicket.node_ticket,
