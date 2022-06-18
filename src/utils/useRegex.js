@@ -1,5 +1,5 @@
 // const { //throwError } = require('../../middleware/throw-error')
-import validator from 'validator';
+// import validator from 'validator';
 import { isValidPhoneNumber } from 'libphonenumber-js';
 import lookup from 'country-code-lookup';
 
@@ -20,9 +20,9 @@ function useRegex() {
         if (email.length === 0) {
             return "Invalid email. Email needs to contain '@' and '.' with no spaces"
         }
-        if (!validator.isEmail(email)) {
-            return "Invalid email. Email needs to contain '@' and '.' with no spaces"
-        }
+        // if (!validator.isEmail(email)) {
+        //     return "Invalid email. Email needs to contain '@' and '.' with no spaces"
+        // }
     }
 
     const regexPassword = (password) => {
