@@ -3,9 +3,7 @@ const axios = require('axios').default;
 const useAuthModule = () => {
 
     const peopleLogin = async ({ email, password, remember_me }) => {
-        console.log(email)
-        console.log(password)
-        console.log(remember_me)
+
         return true
     }
 
@@ -17,11 +15,24 @@ const useAuthModule = () => {
                 password: password
             })
             .catch(function (error) {
-                console.log(error);
-                return
+                if (error.response.data) {
+                    return {
+                        error: error.response.data
+                    }
+                } else {
+                    return
+                }
             })
-        console.log("registerData")
-        console.log(registerResult.data)
+
+        if (!registerResult?.data) {
+            if (registerResult?.error) {
+                return {
+                    error: registerResult?.error
+                }
+            } else {
+                return
+            }
+        }
         // const ecodedTicket = {
         //     mode: "send-verify-email",
         //     node_ticket: "email"

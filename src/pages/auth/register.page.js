@@ -3,11 +3,14 @@ import { useDispatch, useSelector } from "react-redux"
 import useRegex from '../../utils/useRegex';
 import { authSetEmailReducer, authSetPasswordReducer } from "../../providers/auth.provider";
 import useAuthModule from "../../modules/useAuth.module";
+import StaticToast from "../../components/toasts/StaticToast.component";
+import useTimer from "../../utils/useTimer";
 
 export default function RegisterPage({ setAuthMode }) {
     const dispatch = useDispatch()
     const { regexEmail, regexPassword } = useRegex()
     const _useAuthModule = useAuthModule()
+    const { timerCountdown, startTimer } = useTimer()
     const authProvider = useSelector((state) => state.auth.value)
 
     const [getEmailValue, setEmailValue] = useState("")
@@ -17,6 +20,7 @@ export default function RegisterPage({ setAuthMode }) {
     const [getEmailError, setEmailError] = useState()
     const [getPasswordError, setPasswordError] = useState()
     const [getTermsPolicyError, setTermsPolicyError] = useState()
+    const [getToastConfig, setToastConfig] = useState()
 
     useEffect(() => {
         setEmailValue(authProvider.email)
@@ -41,7 +45,9 @@ export default function RegisterPage({ setAuthMode }) {
                                     <small>Create your account</small>
                                 </div>
                             </div>
-
+                            {timerCountdown === 0 ? null : <StaticToast
+                                config={getToastConfig}
+                            />}
                             <div className="relative w-full mb-3">
                                 <label
                                     className="block uppercase text-xs font-bold mb-2"
@@ -145,7 +151,14 @@ export default function RegisterPage({ setAuthMode }) {
                                                 email: getEmailValue,
                                                 password: getPasswordValue
                                             })
-                                            if (result) {
+
+                                            if (result?.error || !result) {
+                                                startTimer(10, 1000)
+                                                setToastConfig({
+                                                    message: result?.error ?? "Website is unavailable. Please try again later.",
+                                                    mode: "error"
+                                                })
+                                            } else {
                                                 dispatch(
                                                     authSetEmailReducer({
                                                         email: result.email,
