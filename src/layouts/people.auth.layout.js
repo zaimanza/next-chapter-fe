@@ -56,7 +56,6 @@ const PeopleAuthLayout = () => {
                     /> : null}
                     {(getAuthMode === "send-verify-email") ? <SendVerifyEmailPage
                         setAuthMode={setAuthMode}
-                        getDecodedTicket={getDecodedTicket}
                     /> : null}
                     {(getAuthMode === "send-verify-password") ? <SendVerifyPasswordPage
                         setAuthMode={setAuthMode}

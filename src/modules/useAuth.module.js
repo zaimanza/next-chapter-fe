@@ -12,12 +12,15 @@ const useAuthModule = () => {
     const peopleRegister = async ({ email, password }) => {
         console.log(email)
         console.log(password)
-        const ecodedTicket = {
-            mode: "send-verify-email",
-            node_ticket: "email"
+        // const ecodedTicket = {
+        //     mode: "send-verify-email",
+        //     node_ticket: "email"
+        // }
+        // var encodedStringBtoA = btoa(JSON.stringify(ecodedTicket))
+        return {
+            email: email,
+            password: password
         }
-        var encodedStringBtoA = btoa(JSON.stringify(ecodedTicket))
-        return encodedStringBtoA
     }
 
     const peopleForgotPassword = async ({ email }) => {
@@ -35,8 +38,8 @@ const useAuthModule = () => {
         return true
     }
 
-    const peopleSendVerifyEmail = async ({ node_ticket }) => {
-        console.log(node_ticket)
+    const peopleSendVerifyEmail = async ({ email }) => {
+        console.log(email)
         return true
     }
 

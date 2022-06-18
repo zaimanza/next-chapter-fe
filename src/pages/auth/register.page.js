@@ -1,12 +1,10 @@
 import React, { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
-import { useNavigate } from "react-router-dom"
 import useRegex from '../../utils/useRegex';
 import { authSetEmailReducer, authSetPasswordReducer } from "../../providers/auth.provider";
 import useAuthModule from "../../modules/useAuth.module";
 
 export default function RegisterPage({ setAuthMode }) {
-    const navigate = useNavigate()
     const dispatch = useDispatch()
     const { regexEmail, regexPassword } = useRegex()
     const _useAuthModule = useAuthModule()
@@ -140,7 +138,7 @@ export default function RegisterPage({ setAuthMode }) {
                                         //regex password
                                         const passwordRes = regexPassword(getPasswordValue)
                                         if (passwordRes?.message) setPasswordError(passwordRes.message)
-                                        console.log(getTermsPolicyCheck)
+
                                         if (!getTermsPolicyCheck) setTermsPolicyError(true)
                                         if (!emailRes && !passwordRes?.message && getTermsPolicyCheck) {
                                             const result = await _useAuthModule.peopleRegister({
@@ -148,9 +146,12 @@ export default function RegisterPage({ setAuthMode }) {
                                                 password: getPasswordValue
                                             })
                                             if (result) {
+                                                dispatch(
+                                                    authSetEmailReducer({
+                                                        email: result.email,
+                                                    })
+                                                );
                                                 setAuthMode("send-verify-email")
-                                                navigate(`/auth/${result}`)
-
                                             }
                                         }
                                     }}

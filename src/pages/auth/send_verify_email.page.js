@@ -1,13 +1,16 @@
 import React, { useEffect } from "react"
+import { useSelector } from "react-redux"
 import { useNavigate } from "react-router-dom"
 import useAuthModule from "../../modules/useAuth.module"
 import useTimer from '../../utils/useTimer'
 
-export default function SendVerifyEmailPage({ setAuthMode, getDecodedTicket }) {
+export default function SendVerifyEmailPage({ setAuthMode }) {
 
     const navigate = useNavigate()
     const { timerCountdown, startTimer } = useTimer()
     const _useAuthModule = useAuthModule()
+
+    const authProvider = useSelector((state) => state.auth.value);
 
     useEffect(() => {
 
@@ -45,7 +48,7 @@ export default function SendVerifyEmailPage({ setAuthMode, getDecodedTicket }) {
                                     onClick={async () => {
                                         startTimer(60, 1000)
                                         const result = await _useAuthModule.peopleSendVerifyEmail({
-                                            node_ticket: getDecodedTicket.node_ticket,
+                                            email: authProvider.email,
                                         })
                                         if (result) {
 

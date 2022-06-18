@@ -44,7 +44,7 @@ export default function SendVerifyPasswordPage({ setAuthMode, getDecodedTicket }
                                     disabled={timerCountdown === 0 ? false : true}
                                     onClick={async () => {
                                         startTimer(60, 1000)
-                                        console.log(getDecodedTicket)
+
                                         const result = await _useAuthModule.peopleSendVerifyPassword({
                                             node_ticket: getDecodedTicket.node_ticket,
                                         })
