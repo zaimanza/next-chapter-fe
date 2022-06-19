@@ -31,7 +31,7 @@ function useRegex() {
         }
         var haveSpaceRegex = new RegExp("^(?=.*[ ])")
         if (haveSpaceRegex.test(password)) {
-            return { message: "Password mustcannot contain spaces" }
+            return { message: "Password cannot contain spaces" }
         }
         // regex reference: https://www.thepolyglotdeveloper.com/2015/05/use-regex-to-test-password-strength-in-javascript/
         var strongRegex = new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])(?=.{8,})")
