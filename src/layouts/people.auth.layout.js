@@ -8,7 +8,7 @@ import SendVerifyEmailPage from '../pages/auth/send_verify_email.page'
 import SendVerifyPasswordPage from '../pages/auth/send_verify_password.page'
 
 const PeopleAuthLayout = () => {
-    const navigate = useNavigate();
+    const navigate = useNavigate()
     const { ticket } = useParams()
 
     const [getAuthMode, setAuthMode] = useState("login")

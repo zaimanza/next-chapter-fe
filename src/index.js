@@ -11,6 +11,7 @@ import {
 import WelcomePage from './pages/welcome.page';
 import PeopleAuthLayout from './layouts/people.auth.layout';
 import EventsPage from './pages/dashboard/events.page';
+import ConfirmVerifyPage from './pages/confirm_verify.page';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -22,6 +23,7 @@ root.render(
           <Route path="/auth" element={<PeopleAuthLayout />} />
           <Route path="/auth/:ticket" element={<PeopleAuthLayout />} />
           <Route path="/events" element={<EventsPage />} />
+          <Route path="/cv/:ticket" element={<ConfirmVerifyPage />} />
         </Routes>
       </BrowserRouter>
     </Provider>
