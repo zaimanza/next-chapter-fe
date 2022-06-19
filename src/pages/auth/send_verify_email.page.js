@@ -59,7 +59,6 @@ export default function SendVerifyEmailPage({ setAuthMode }) {
                                     type="button"
                                     disabled={clickEmailTimer?.timerCountdown === 0 ? false : true}
                                     onClick={async () => {
-                                        clickEmailTimer?.startTimer(GetIntegerRandom({ min: 40, max: 60 }), 1000)
 
                                         const result = await _useAuthModule.peopleSendVerifyEmail({
                                             email: authProvider?.email,
@@ -77,6 +76,9 @@ export default function SendVerifyEmailPage({ setAuthMode }) {
                                                 })
                                             }
                                             showToastTimer?.startTimer(10, 1000)
+                                        } else {
+                                            clickEmailTimer?.startTimer(GetIntegerRandom({ min: 40, max: 60 }), 1000)
+
                                         }
                                     }}
                                 >
