@@ -9,23 +9,29 @@ const ConfirmVerifyPage = () => {
 
     useEffect(() => {
         const initFunction = async () => {
-            if (ticket) {
+            try {
+                if (ticket) {
+                    const decodedTicket = JSON.parse(atob(ticket))
 
-                const decodedTicket = JSON.parse(atob(ticket))
+                    if (decodedTicket) {
+                        if (decodedTicket?.mode === "confirm-verify-email") {
+                            const result = await _useAuthModule.peopleVerifyEmail({
+                                node_ticket: decodedTicket?.node_ticket,
+                            })
 
-                console.log(decodedTicket)
-                if (decodedTicket) {
-                    if (decodedTicket?.mode === "confirm-verify-email") {
-                        const result = await _useAuthModule.peopleVerifyEmail({
-                            node_ticket: decodedTicket?.node_ticket,
-                        })
-                        if (result) {
-                            navigate("/events")
-                        } else {
-                            navigate("/auth");
+                            if (!result?.error) {
+                                if (result?.error?.error) { navigate("/auth"); } else {
+                                    navigate("/events")
+                                }
+
+                            } else {
+                                navigate("/auth");
+                            }
                         }
                     }
                 }
+            } catch (error) {
+                navigate("/auth");
             }
         }
         initFunction()

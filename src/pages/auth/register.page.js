@@ -46,7 +46,10 @@ export default function RegisterPage({ setAuthMode }) {
                                 </div>
                             </div>
                             {timerCountdown === 0 ? null : <StaticToast
-                                config={getToastConfig}
+                                config={getToastConfig ?? {
+                                    message: "Website is unavailable. Please try again later.",
+                                    mode: "error"
+                                }}
                             />}
                             <div className="relative w-full mb-3">
                                 <label
@@ -154,14 +157,21 @@ export default function RegisterPage({ setAuthMode }) {
 
                                             if (result?.error || !result) {
                                                 startTimer(10, 1000)
-                                                setToastConfig({
-                                                    message: result?.error ?? "Website is unavailable. Please try again later.",
-                                                    mode: "error"
-                                                })
+                                                if (result?.error?.error) {
+                                                    setToastConfig({
+                                                        message: "Website is unavailable. Please try again later.",
+                                                        mode: "error"
+                                                    })
+                                                } else if (result?.error) {
+                                                    setToastConfig({
+                                                        message: result?.error ?? "Website is unavailable. Please try again later.",
+                                                        mode: "error"
+                                                    })
+                                                }
                                             } else {
                                                 dispatch(
-                                                    authSetEmailReducer({
-                                                        email: result.email,
+                                                    await authSetEmailReducer({
+                                                        email: result?.email,
                                                     })
                                                 );
                                                 setAuthMode("send-verify-email")

@@ -8,6 +8,7 @@ const useAuthModule = () => {
     }
 
     const peopleRegister = async ({ email, password }) => {
+
         const registerResult = await axios?.post(
             `http://localhost:3001/auth/people_register`,
             {
@@ -52,8 +53,32 @@ const useAuthModule = () => {
     }
 
     const peopleSendVerifyEmail = async ({ email }) => {
-        console.log(email)
-        return true
+
+        const sendVerifyEmailResult = await axios?.post(
+            `http://localhost:3001/auth/people_send_verify_email`,
+            {
+                email: email,
+            })
+            .catch(function (error) {
+                if (error?.response?.data) {
+                    return {
+                        error: error?.response?.data ?? "Website is currently offline."
+                    }
+                } else {
+                    return
+                }
+            })
+
+        if (!sendVerifyEmailResult?.data) {
+            if (sendVerifyEmailResult?.error) {
+                return {
+                    error: sendVerifyEmailResult?.error ?? "Website is currently offline."
+                }
+            } else {
+                return
+            }
+        }
+        return sendVerifyEmailResult?.data
     }
 
     const peopleSendVerifyPassword = async ({ node_ticket }) => {

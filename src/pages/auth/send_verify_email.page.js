@@ -1,6 +1,7 @@
-import React, { useEffect } from "react"
+import React, { useEffect, useState } from "react"
 import { useSelector } from "react-redux"
 import { useNavigate } from "react-router-dom"
+import StaticToast from "../../components/toasts/StaticToast.component"
 import useAuthModule from "../../modules/useAuth.module"
 import GetIntegerRandom from "../../utils/GetIntegerRandom"
 import useTimer from '../../utils/useTimer'
@@ -8,8 +9,11 @@ import useTimer from '../../utils/useTimer'
 export default function SendVerifyEmailPage({ setAuthMode }) {
 
     const navigate = useNavigate()
-    const { timerCountdown, startTimer } = useTimer()
+    const clickEmailTimer = useTimer()
+    const showToastTimer = useTimer()
     const _useAuthModule = useAuthModule()
+
+    const [getToastConfig, setToastConfig] = useState()
 
     const authProvider = useSelector((state) => state.auth.value);
 
@@ -28,6 +32,14 @@ export default function SendVerifyEmailPage({ setAuthMode }) {
                                     Verify your email
                                 </div>
                             </div>
+                            {showToastTimer?.timerCountdown === 0 ? null :
+                                <StaticToast
+                                    config={getToastConfig ?? {
+                                        message: "Website is unavailable. Please try again later.",
+                                        mode: "error"
+                                    }}
+                                />
+                            }
                             <div className="text-center">
                                 <div className="text-center mb-3 font-normal">
                                     <small>We&apos;ve sent an email verification link to <p className="font-bold text-black mt-2">{authProvider.email}</p></small>
@@ -43,20 +55,32 @@ export default function SendVerifyEmailPage({ setAuthMode }) {
 
                             <div className="text-center mt-6">
                                 <button
-                                    className={`${timerCountdown === 0 ? "active:bg-gray-600 bg-gray-800 hover:shadow-lg" : "bg-gray-400"} text-white text-sm font-bold uppercase px-6 py-3 rounded shadow outline-none focus:outline-none mr-1 mb-1 w-full ease-linear transition-all duration-150`}
+                                    className={`${clickEmailTimer?.timerCountdown === 0 ? "active:bg-gray-600 bg-gray-800 hover:shadow-lg" : "bg-gray-400"} text-white text-sm font-bold uppercase px-6 py-3 rounded shadow outline-none focus:outline-none mr-1 mb-1 w-full ease-linear transition-all duration-150`}
                                     type="button"
-                                    disabled={timerCountdown === 0 ? false : true}
+                                    disabled={clickEmailTimer?.timerCountdown === 0 ? false : true}
                                     onClick={async () => {
-                                        startTimer(GetIntegerRandom({ min: 40, max: 60 }), 1000)
-                                        const result = await _useAuthModule.peopleSendVerifyEmail({
-                                            email: authProvider.email,
-                                        })
-                                        if (result) {
+                                        clickEmailTimer?.startTimer(GetIntegerRandom({ min: 40, max: 60 }), 1000)
 
+                                        const result = await _useAuthModule.peopleSendVerifyEmail({
+                                            email: authProvider?.email,
+                                        })
+                                        if (result?.error || !result) {
+                                            if (result?.error?.error) {
+                                                setToastConfig({
+                                                    message: "Website is unavailable. Please try again later.",
+                                                    mode: "error"
+                                                })
+                                            } else if (result?.error) {
+                                                setToastConfig({
+                                                    message: result?.error ?? "Website is unavailable. Please try again later.",
+                                                    mode: "error"
+                                                })
+                                            }
+                                            showToastTimer?.startTimer(10, 1000)
                                         }
                                     }}
                                 >
-                                    {timerCountdown === 0 ? "Send Reset Link" : `Resend link in (${timerCountdown}sec)`}
+                                    {clickEmailTimer?.timerCountdown === 0 ? "Send Reset Link" : `Resend link in (${clickEmailTimer?.timerCountdown}sec)`}
                                 </button>
                             </div>
                         </div>
