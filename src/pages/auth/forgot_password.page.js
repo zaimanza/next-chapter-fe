@@ -97,14 +97,14 @@ export default function ForgotPasswordPage({ setAuthMode }) {
                         <div className="w-1/2">
                             <div onClick={() => {
                                 setAuthMode("login")
-                            }} className="mx-auto w-fit hover:underline hover:text-blue-600">
+                            }} className="mr-auto w-fit hover:underline hover:text-blue-600">
                                 <small>Already have an account</small>
                             </div>
                         </div>
                         <div className="w-1/2 text-right">
                             <div onClick={() => {
                                 setAuthMode("register")
-                            }} className="mx-auto w-fit hover:underline hover:text-blue-600">
+                            }} className="ml-auto w-fit hover:underline hover:text-blue-600">
                                 <small>Create new account</small>
                             </div>
                         </div>
