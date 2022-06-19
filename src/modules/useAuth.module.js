@@ -8,16 +8,16 @@ const useAuthModule = () => {
     }
 
     const peopleRegister = async ({ email, password }) => {
-        const registerResult = await axios.post(
+        const registerResult = await axios?.post(
             `http://localhost:3001/auth/people_register`,
             {
                 email: email,
                 password: password
             })
             .catch(function (error) {
-                if (error.response.data) {
+                if (error?.response?.data) {
                     return {
-                        error: error.response.data
+                        error: error?.response?.data ?? "Website is currently offline."
                     }
                 } else {
                     return
@@ -27,18 +27,13 @@ const useAuthModule = () => {
         if (!registerResult?.data) {
             if (registerResult?.error) {
                 return {
-                    error: registerResult?.error
+                    error: registerResult?.error ?? "Website is currently offline."
                 }
             } else {
                 return
             }
         }
-        // const ecodedTicket = {
-        //     mode: "send-verify-email",
-        //     node_ticket: "email"
-        // }
-        // var encodedStringBtoA = btoa(JSON.stringify(ecodedTicket))
-        return registerResult.data
+        return registerResult?.data
     }
 
     const peopleForgotPassword = async ({ email }) => {
@@ -66,13 +61,42 @@ const useAuthModule = () => {
         return true
     }
 
+    const peopleVerifyEmail = async ({ node_ticket }) => {
+        const verifyEmailResult = await axios?.post(
+            `http://localhost:3001/auth/people_verify_email`,
+            {
+                node_ticket: node_ticket,
+            })
+            .catch(function (error) {
+                if (error?.response?.data) {
+                    return {
+                        error: error?.response?.data ?? "Website is currently offline."
+                    }
+                } else {
+                    return
+                }
+            })
+
+        if (!verifyEmailResult?.data) {
+            if (verifyEmailResult?.error) {
+                return {
+                    error: verifyEmailResult?.error ?? "Website is currently offline."
+                }
+            } else {
+                return
+            }
+        }
+        return verifyEmailResult?.data
+    }
+
     return {
         peopleLogin,
         peopleRegister,
         peopleForgotPassword,
         peopleResetPassword,
         peopleSendVerifyEmail,
-        peopleSendVerifyPassword
+        peopleSendVerifyPassword,
+        peopleVerifyEmail
     }
 }
 

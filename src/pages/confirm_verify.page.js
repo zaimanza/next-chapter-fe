@@ -1,16 +1,35 @@
 import React, { useEffect } from 'react'
-import { useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
+import useAuthModule from '../modules/useAuth.module'
 
 const ConfirmVerifyPage = () => {
+    const navigate = useNavigate();
     const { ticket } = useParams()
+    const _useAuthModule = useAuthModule()
 
     useEffect(() => {
-        if (ticket) {
+        const initFunction = async () => {
+            if (ticket) {
 
-            const decodedTicket = JSON.parse(atob(ticket))
+                const decodedTicket = JSON.parse(atob(ticket))
 
-            console.log(decodedTicket)
+                console.log(decodedTicket)
+                if (decodedTicket) {
+                    if (decodedTicket?.mode === "confirm-verify-email") {
+                        const result = await _useAuthModule.peopleVerifyEmail({
+                            node_ticket: decodedTicket?.node_ticket,
+                        })
+                        if (result) {
+                            navigate("/events")
+                        } else {
+                            navigate("/auth");
+                        }
+                    }
+                }
+            }
         }
+        initFunction()
+
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
