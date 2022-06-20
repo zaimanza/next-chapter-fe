@@ -4,7 +4,33 @@ const useAuthModule = () => {
 
     const peopleLogin = async ({ email, password, remember_me }) => {
 
-        return true
+        const loginResult = await axios?.post(
+            `http://localhost:3001/auth/people_login`,
+            {
+                email: email,
+                password: password,
+                remember_me: remember_me
+            })
+            .catch(function (error) {
+                if (error?.response?.data) {
+                    return {
+                        error: error?.response?.data ?? "Website is currently offline."
+                    }
+                } else {
+                    return
+                }
+            })
+
+        if (!loginResult?.data) {
+            if (loginResult?.error) {
+                return {
+                    error: loginResult?.error ?? "Website is currently offline."
+                }
+            } else {
+                return
+            }
+        }
+        return loginResult?.data
     }
 
     const peopleRegister = async ({ email, password }) => {

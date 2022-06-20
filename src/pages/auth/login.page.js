@@ -4,12 +4,15 @@ import { useNavigate } from "react-router-dom";
 import useRegex from '../../utils/useRegex';
 import { authSetEmailReducer, authSetPasswordReducer } from "../../providers/auth.provider";
 import useAuthModule from "../../modules/useAuth.module";
+import useTimer from "../../utils/useTimer";
+import StaticToast from "../../components/toasts/StaticToast.component";
 
 export default function LoginPage({ setAuthMode }) {
     const navigate = useNavigate()
     const dispatch = useDispatch()
     const { regexEmail, regexPassword } = useRegex()
     const _useAuthModule = useAuthModule()
+    const { timerCountdown, startTimer } = useTimer()
     const authProvider = useSelector((state) => state.auth.value)
 
     const [getEmailValue, setEmailValue] = useState("")
@@ -18,6 +21,7 @@ export default function LoginPage({ setAuthMode }) {
 
     const [getEmailError, setEmailError] = useState()
     const [getPasswordError, setPasswordError] = useState()
+    const [getToastConfig, setToastConfig] = useState()
 
     useEffect(() => {
         setEmailValue(authProvider.email)
@@ -41,7 +45,12 @@ export default function LoginPage({ setAuthMode }) {
                                     <small>Continue your journey.</small>
                                 </div>
                             </div>
-
+                            {timerCountdown === 0 ? null : <StaticToast
+                                config={getToastConfig ?? {
+                                    message: "Website is unavailable. Please try again later.",
+                                    mode: "error"
+                                }}
+                            />}
                             <div className="relative w-full mb-3">
                                 <label
                                     className="block uppercase text-xs font-bold mb-2"
@@ -122,7 +131,6 @@ export default function LoginPage({ setAuthMode }) {
                                         //regex password
                                         const passwordRes = regexPassword(getPasswordValue)
                                         if (passwordRes?.message) setPasswordError(passwordRes.message)
-                                        // navigate("/events")
 
                                         if (!emailRes && !passwordRes?.message) {
                                             const result = await _useAuthModule.peopleLogin({
@@ -130,7 +138,21 @@ export default function LoginPage({ setAuthMode }) {
                                                 password: getPasswordValue,
                                                 remember_me: getRememberMeCheck
                                             })
-                                            if (result) {
+
+                                            if (result?.error || !result) {
+                                                startTimer(10, 1000)
+                                                if (result?.error?.error) {
+                                                    setToastConfig({
+                                                        message: "Website is unavailable. Please try again later.",
+                                                        mode: "error"
+                                                    })
+                                                } else if (result?.error) {
+                                                    setToastConfig({
+                                                        message: result?.error ?? "Website is unavailable. Please try again later.",
+                                                        mode: "error"
+                                                    })
+                                                }
+                                            } else {
                                                 navigate("/events")
                                             }
                                         }
