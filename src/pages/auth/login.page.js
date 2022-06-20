@@ -140,19 +140,31 @@ export default function LoginPage({ setAuthMode }) {
                                             })
 
                                             if (result?.error || !result) {
+
                                                 startTimer(10, 1000)
                                                 if (result?.error?.error) {
+
                                                     setToastConfig({
                                                         message: "Website is unavailable. Please try again later.",
                                                         mode: "error"
                                                     })
                                                 } else if (result?.error) {
-                                                    setToastConfig({
-                                                        message: result?.error ?? "Website is unavailable. Please try again later.",
-                                                        mode: "error"
-                                                    })
+                                                    if (result?.error?.isemailverify === false) {
+                                                        dispatch(
+                                                            await authSetEmailReducer({
+                                                                email: result?.error?.email,
+                                                            })
+                                                        );
+                                                        setAuthMode("send-verify-email")
+                                                    } else {
+                                                        // setToastConfig({
+                                                        //     message: result?.error ?? "Website is unavailable. Please try again later.",
+                                                        //     mode: "error"
+                                                        // })
+                                                    }
                                                 }
                                             } else {
+                                                console.log(result)
                                                 navigate("/events")
                                             }
                                         }
