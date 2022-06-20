@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
+import { useSelector } from "react-redux"
 import ForgotPasswordPage from '../pages/auth/forgot_password.page'
 import LoginPage from '../pages/auth/login.page'
 import RegisterPage from '../pages/auth/register.page'
@@ -14,7 +15,16 @@ const PeopleAuthLayout = () => {
     const [getAuthMode, setAuthMode] = useState("login")
     const [getDecodedTicket, setDecodedTicket] = useState({})
 
+    const peopleProvider = useSelector((state) => state.people.value)
+
     useEffect(() => {
+
+        if (peopleProvider.access_token !== "") {
+            navigate("/events");
+        } else {
+            navigate("/auth");
+        }
+
         if (ticket) {
 
             // eyJtb2RlIjoicmVzZXQtcGFzc3dvcmQiLCJlbWFpbCI6InphaW1hbjY3MEBnbWFpbC5jb20ifQ==

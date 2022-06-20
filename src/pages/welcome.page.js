@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 const WelcomePage = () => {
   const navigate = useNavigate();
 
-  const peopleProvider = useSelector((state) => state.people.value);
+  const peopleProvider = useSelector((state) => state.people.value)
   const handleGetStartedButton = async () => {
     if (peopleProvider.access_token !== "") {
       navigate("/events");

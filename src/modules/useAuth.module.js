@@ -2,14 +2,13 @@ const axios = require('axios').default;
 
 const useAuthModule = () => {
 
-    const peopleLogin = async ({ email, password, remember_me }) => {
+    const peopleLogin = async ({ email, password }) => {
 
         const loginResult = await axios?.post(
             `http://localhost:3001/auth/people_login`,
             {
                 email: email,
-                password: password,
-                remember_me: remember_me
+                password: password
             })
             .catch(function (error) {
                 if (error?.response?.data) {

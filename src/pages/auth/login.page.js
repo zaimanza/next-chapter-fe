@@ -6,6 +6,7 @@ import { authSetEmailReducer, authSetPasswordReducer } from "../../providers/aut
 import useAuthModule from "../../modules/useAuth.module";
 import useTimer from "../../utils/useTimer";
 import StaticToast from "../../components/toasts/StaticToast.component";
+import { peopleLoginReducer } from "../../providers/people.provider";
 
 export default function LoginPage({ setAuthMode }) {
     const navigate = useNavigate()
@@ -17,7 +18,6 @@ export default function LoginPage({ setAuthMode }) {
 
     const [getEmailValue, setEmailValue] = useState("")
     const [getPasswordValue, setPasswordValue] = useState("")
-    const [getRememberMeCheck, setRememberMeCheck] = useState(false)
 
     const [getEmailError, setEmailError] = useState()
     const [getPasswordError, setPasswordError] = useState()
@@ -71,7 +71,7 @@ export default function LoginPage({ setAuthMode }) {
                                             authSetEmailReducer({
                                                 email: onChangeValue,
                                             })
-                                        );
+                                        )
                                     }}
                                 />
                                 {getEmailError ? (<p className="text-sm text-red-400 mt-1">{getEmailError}</p>) : null}
@@ -104,20 +104,6 @@ export default function LoginPage({ setAuthMode }) {
                             </div>
 
                             <div className="mb-11">
-                                <label className="inline-flex items-center cursor-pointer">
-                                    <input
-                                        id="customCheckLogin"
-                                        type="checkbox"
-                                        checked={getRememberMeCheck || false}
-                                        onChange={(event) => {
-                                            setRememberMeCheck(event.target.checked)
-                                        }}
-                                        className="form-checkbox border-0 rounded text-gray-700 ml-1 w-5 h-5 ease-linear transition-all duration-150"
-                                    />
-                                    <span className="ml-2 text-sm font-semibold text-gray-600">
-                                        Remember me
-                                    </span>
-                                </label>
                             </div>
 
                             <div className="text-center mt-6">
@@ -135,8 +121,7 @@ export default function LoginPage({ setAuthMode }) {
                                         if (!emailRes && !passwordRes?.message) {
                                             const result = await _useAuthModule.peopleLogin({
                                                 email: getEmailValue,
-                                                password: getPasswordValue,
-                                                remember_me: getRememberMeCheck
+                                                password: getPasswordValue
                                             })
 
                                             if (result?.error || !result) {
@@ -157,14 +142,17 @@ export default function LoginPage({ setAuthMode }) {
                                                         );
                                                         setAuthMode("send-verify-email")
                                                     } else {
-                                                        // setToastConfig({
-                                                        //     message: result?.error ?? "Website is unavailable. Please try again later.",
-                                                        //     mode: "error"
-                                                        // })
+                                                        setToastConfig({
+                                                            message: result?.error ?? "Website is unavailable. Please try again later.",
+                                                            mode: "error"
+                                                        })
                                                     }
                                                 }
                                             } else {
                                                 console.log(result)
+                                                dispatch(
+                                                    peopleLoginReducer(result)
+                                                )
                                                 navigate("/events")
                                             }
                                         }
