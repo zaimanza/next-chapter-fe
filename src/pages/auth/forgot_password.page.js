@@ -94,19 +94,14 @@ export default function ForgotPasswordPage({ setAuthMode }) {
                         </div>
                     </div>
                     <div className="flex flex-wrap mt-6 relative">
-                        <div className="w-1/2">
+                        <div className="w-full  justify-center">
                             <div onClick={() => {
                                 setAuthMode("login")
-                            }} className="mr-auto w-fit hover:underline hover:text-blue-600">
-                                <small>Already have an account</small>
+                                navigate("/auth")
+                            }} className="mx-auto w-fit hover:underline hover:text-blue-600">
+                                <small>Back to login</small>
                             </div>
-                        </div>
-                        <div className="w-1/2 text-right">
-                            <div onClick={() => {
-                                setAuthMode("register")
-                            }} className="ml-auto w-fit hover:underline hover:text-blue-600">
-                                <small>Create new account</small>
-                            </div>
+
                         </div>
                     </div>
                 </div>
