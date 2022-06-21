@@ -132,6 +132,17 @@ export default function ResetPasswordPage({ setAuthMode, getDecodedTicket }) {
                             </div>
                         </div>
                     </div>
+                    <div className="flex flex-wrap mt-6 relative">
+                        <div className="w-full  justify-center">
+                            <div onClick={() => {
+                                setAuthMode("login")
+                                navigate("/auth")
+                            }} className="mx-auto w-fit hover:underline hover:text-blue-600">
+                                <small>Back to login</small>
+                            </div>
+
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
