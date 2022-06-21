@@ -15,7 +15,7 @@ export default function SendVerifyEmailPage({ setAuthMode }) {
 
     const [getToastConfig, setToastConfig] = useState()
 
-    const authProvider = useSelector((state) => state.auth.value);
+    const authProvider = useSelector((state) => state.auth.value)
 
     useEffect(() => {
 

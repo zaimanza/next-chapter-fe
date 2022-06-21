@@ -4,7 +4,7 @@ const useAuthModule = () => {
 
     const peopleLogin = async ({ email, password }) => {
 
-        const loginResult = await axios?.post(
+        const result = await axios?.post(
             `http://localhost:3001/auth/people_login`,
             {
                 email: email,
@@ -20,21 +20,21 @@ const useAuthModule = () => {
                 }
             })
 
-        if (!loginResult?.data) {
-            if (loginResult?.error) {
+        if (!result?.data) {
+            if (result?.error) {
                 return {
-                    error: loginResult?.error ?? "Website is currently offline."
+                    error: result?.error ?? "Website is currently offline."
                 }
             } else {
                 return
             }
         }
-        return loginResult?.data
+        return result?.data
     }
 
     const peopleRegister = async ({ email, password }) => {
 
-        const registerResult = await axios?.post(
+        const result = await axios?.post(
             `http://localhost:3001/auth/people_register`,
             {
                 email: email,
@@ -50,36 +50,82 @@ const useAuthModule = () => {
                 }
             })
 
-        if (!registerResult?.data) {
-            if (registerResult?.error) {
+        if (!result?.data) {
+            if (result?.error) {
                 return {
-                    error: registerResult?.error ?? "Website is currently offline."
+                    error: result?.error ?? "Website is currently offline."
                 }
             } else {
                 return
             }
         }
-        return registerResult?.data
+        return result?.data
     }
 
     const peopleForgotPassword = async ({ email }) => {
-        console.log(email)
-        const ecodedTicket = {
-            mode: "send-verify-password",
-            node_ticket: "password"
+
+        const result = await axios?.post(
+            `http://localhost:3001/auth/people_send_verify_password`,
+            {
+                email: email,
+            })
+            .catch(function (error) {
+                if (error?.response?.data) {
+                    return {
+                        error: error?.response?.data ?? "Website is currently offline."
+                    }
+                } else {
+                    return
+                }
+            })
+
+        if (!result?.data) {
+            if (result?.error) {
+                return {
+                    error: result?.error ?? "Website is currently offline."
+                }
+            } else {
+                return
+            }
         }
-        var encodedStringBtoA = btoa(JSON.stringify(ecodedTicket))
-        return encodedStringBtoA
+        return result?.data
     }
 
-    const peopleResetPassword = async ({ password }) => {
+    const peopleResetPassword = async ({ password, node_ticket }) => {
         console.log(password)
-        return true
+        console.log(node_ticket)
+
+        const result = await axios?.post(
+            `http://localhost:3001/auth/people_reset_password`,
+            {
+                password: password,
+                node_ticket: node_ticket,
+            })
+            .catch(function (error) {
+                if (error?.response?.data) {
+                    return {
+                        error: error?.response?.data ?? "Website is currently offline."
+                    }
+                } else {
+                    return
+                }
+            })
+
+        if (!result?.data) {
+            if (result?.error) {
+                return {
+                    error: result?.error ?? "Website is currently offline."
+                }
+            } else {
+                return
+            }
+        }
+        return result?.data
     }
 
     const peopleSendVerifyEmail = async ({ email }) => {
 
-        const sendVerifyEmailResult = await axios?.post(
+        const result = await axios?.post(
             `http://localhost:3001/auth/people_send_verify_email`,
             {
                 email: email,
@@ -94,25 +140,20 @@ const useAuthModule = () => {
                 }
             })
 
-        if (!sendVerifyEmailResult?.data) {
-            if (sendVerifyEmailResult?.error) {
+        if (!result?.data) {
+            if (result?.error) {
                 return {
-                    error: sendVerifyEmailResult?.error ?? "Website is currently offline."
+                    error: result?.error ?? "Website is currently offline."
                 }
             } else {
                 return
             }
         }
-        return sendVerifyEmailResult?.data
-    }
-
-    const peopleSendVerifyPassword = async ({ node_ticket }) => {
-        console.log(node_ticket)
-        return true
+        return result?.data
     }
 
     const peopleVerifyEmail = async ({ node_ticket }) => {
-        const verifyEmailResult = await axios?.post(
+        const result = await axios?.post(
             `http://localhost:3001/auth/people_verify_email`,
             {
                 node_ticket: node_ticket,
@@ -127,16 +168,16 @@ const useAuthModule = () => {
                 }
             })
 
-        if (!verifyEmailResult?.data) {
-            if (verifyEmailResult?.error) {
+        if (!result?.data) {
+            if (result?.error) {
                 return {
-                    error: verifyEmailResult?.error ?? "Website is currently offline."
+                    error: result?.error ?? "Website is currently offline."
                 }
             } else {
                 return
             }
         }
-        return verifyEmailResult?.data
+        return result?.data
     }
 
     return {
@@ -145,7 +186,6 @@ const useAuthModule = () => {
         peopleForgotPassword,
         peopleResetPassword,
         peopleSendVerifyEmail,
-        peopleSendVerifyPassword,
         peopleVerifyEmail
     }
 }

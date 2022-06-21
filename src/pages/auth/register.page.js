@@ -173,7 +173,7 @@ export default function RegisterPage({ setAuthMode }) {
                                                     await authSetEmailReducer({
                                                         email: result?.email,
                                                     })
-                                                );
+                                                )
                                                 setAuthMode("send-verify-email")
                                             }
                                         }

@@ -4,10 +4,13 @@ import useRegex from '../../utils/useRegex';
 import { authSetEmailReducer } from "../../providers/auth.provider"
 import useAuthModule from "../../modules/useAuth.module";
 import { useNavigate } from "react-router-dom";
+import useTimer from "../../utils/useTimer";
+import StaticToast from "../../components/toasts/StaticToast.component";
 
 export default function ForgotPasswordPage({ setAuthMode }) {
     const navigate = useNavigate()
     const dispatch = useDispatch()
+    const { timerCountdown, startTimer } = useTimer()
     const { regexEmail } = useRegex()
     const _useAuthModule = useAuthModule()
     const authProvider = useSelector((state) => state.auth.value)
@@ -15,6 +18,7 @@ export default function ForgotPasswordPage({ setAuthMode }) {
     const [getEmailValue, setEmailValue] = useState("")
 
     const [getEmailError, setEmailError] = useState()
+    const [getToastConfig, setToastConfig] = useState()
 
     useEffect(() => {
         setEmailValue(authProvider.email)
@@ -36,7 +40,12 @@ export default function ForgotPasswordPage({ setAuthMode }) {
                                     <small>Enter the email address associated with your account, and we'll email you a link to reset your password.</small>
                                 </div>
                             </div>
-
+                            {timerCountdown === 0 ? null : <StaticToast
+                                config={getToastConfig ?? {
+                                    message: "Website is unavailable. Please try again later.",
+                                    mode: "error"
+                                }}
+                            />}
                             <div className="relative w-full mb-3">
                                 <label
                                     className="block uppercase text-xs font-bold mb-2"
@@ -80,10 +89,27 @@ export default function ForgotPasswordPage({ setAuthMode }) {
                                             const result = await _useAuthModule.peopleForgotPassword({
                                                 email: getEmailValue
                                             })
-                                            if (result) {
+                                            if (result?.error || !result) {
+                                                startTimer(10, 1000)
+                                                if (result?.error?.error) {
+                                                    setToastConfig({
+                                                        message: "Website is unavailable. Please try again later.",
+                                                        mode: "error"
+                                                    })
+                                                } else if (result?.error) {
+                                                    setToastConfig({
+                                                        message: result?.error ?? "Website is unavailable. Please try again later.",
+                                                        mode: "error"
+                                                    })
+                                                }
+                                            } else {
+                                                dispatch(
+                                                    await authSetEmailReducer({
+                                                        email: getEmailValue,
+                                                    })
+                                                )
                                                 setAuthMode("send-verify-password")
-                                                navigate(`/auth/${result}`)
-
+                                                navigate(`/auth`)
                                             }
                                         }
                                     }}

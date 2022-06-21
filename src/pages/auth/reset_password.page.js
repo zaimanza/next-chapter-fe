@@ -1,18 +1,21 @@
 import React, { useState } from "react"
 import { useNavigate } from "react-router-dom";
+import StaticToast from "../../components/toasts/StaticToast.component";
 import useAuthModule from "../../modules/useAuth.module";
 import useRegex from '../../utils/useRegex';
+import useTimer from "../../utils/useTimer";
 
 export default function ResetPasswordPage({ setAuthMode, getDecodedTicket }) {
     const navigate = useNavigate()
     const { regexPassword } = useRegex()
+    const { timerCountdown, startTimer } = useTimer()
     const _useAuthModule = useAuthModule()
-
     const [getNewPasswordValue, setNewPasswordValue] = useState("")
     const [getConfirmNewPasswordValue, setConfirmNewPasswordValue] = useState("")
 
     const [getNewPasswordError, setNewPasswordError] = useState()
     const [getConfirmNewPasswordError, setConfirmNewPasswordError] = useState()
+    const [getToastConfig, setToastConfig] = useState()
 
     return (
         <div className="container mx-auto px-4 h-full">
@@ -27,10 +30,15 @@ export default function ResetPasswordPage({ setAuthMode, getDecodedTicket }) {
                             </div>
                             <div className="text-center">
                                 <div className="text-center mb-3 font-normal">
-                                    <small>Enter a new password for {getDecodedTicket.email}.</small>
+                                    <small>Enter a new password</small>
                                 </div>
                             </div>
-
+                            {timerCountdown === 0 ? null : <StaticToast
+                                config={getToastConfig ?? {
+                                    message: "Website is unavailable. Please try again later.",
+                                    mode: "error"
+                                }}
+                            />}
                             <div className="relative w-full mb-3">
                                 <label
                                     className="block uppercase text-xs font-bold mb-2"
@@ -93,8 +101,23 @@ export default function ResetPasswordPage({ setAuthMode, getDecodedTicket }) {
                                             if (getNewPasswordValue === getConfirmNewPasswordValue) {
                                                 const result = await _useAuthModule.peopleResetPassword({
                                                     password: getNewPasswordValue,
+                                                    node_ticket: getDecodedTicket?.node_ticket,
                                                 })
-                                                if (result) {
+
+                                                if (result?.error || !result) {
+                                                    startTimer(10, 1000)
+                                                    if (result?.error?.error) {
+                                                        setToastConfig({
+                                                            message: "Website is unavailable. Please try again later.",
+                                                            mode: "error"
+                                                        })
+                                                    } else if (result?.error) {
+                                                        setToastConfig({
+                                                            message: result?.error ?? "Website is unavailable. Please try again later.",
+                                                            mode: "error"
+                                                        })
+                                                    }
+                                                } else {
                                                     setAuthMode("login")
                                                     navigate("/auth")
                                                 }
