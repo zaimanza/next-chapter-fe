@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react"
+import React, { useEffect, useRef, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { useNavigate } from "react-router-dom";
 import useRegex from '../../utils/useRegex';
@@ -14,6 +14,7 @@ export default function LoginPage({ setAuthMode }) {
     const { regexEmail, regexPassword } = useRegex()
     const _useAuthModule = useAuthModule()
     const { timerCountdown, startTimer } = useTimer()
+    const run_uno = useRef(false)
     const authProvider = useSelector((state) => state.auth.value)
 
     const [getEmailValue, setEmailValue] = useState("")
@@ -22,12 +23,79 @@ export default function LoginPage({ setAuthMode }) {
     const [getEmailError, setEmailError] = useState()
     const [getPasswordError, setPasswordError] = useState()
     const [getToastConfig, setToastConfig] = useState()
+    const email_ref = useRef()
+    const password_ref = useRef()
 
     useEffect(() => {
-        setEmailValue(authProvider.email)
-        setPasswordValue(authProvider.password)
+        if (run_uno.current === false) {
+            run_uno.current = true
+            console.log("pel")
+            setEmailValue(authProvider.email)
+            setPasswordValue(authProvider.password)
+            window.addEventListener('keydown', e => { })
+            window.addEventListener('keydown', e => {
+                if (e.key === 'Enter') {
+                    console.log('You pressed Enter')
+                    console.log(email_ref.current)
+                    handleSubmit()
+                }
+            })
+        }
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
+    useEffect(() => {
+        email_ref.current = getEmailValue
+        password_ref.current = getPasswordValue
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [getEmailValue, getPasswordValue])
+
+    const handleSubmit = async () => {
+        //regex email
+        const emailRes = regexEmail(email_ref.current)
+        if (emailRes) setEmailError(emailRes)
+        //regex password
+        const passwordRes = regexPassword(password_ref.current)
+        if (passwordRes?.message) setPasswordError(passwordRes.message)
+
+        if (!emailRes && !passwordRes?.message) {
+            const result = await _useAuthModule.peopleLogin({
+                email: email_ref.current,
+                password: password_ref.current
+            })
+
+            if (result?.error || !result) {
+
+                startTimer(10, 1000)
+                if (result?.error?.error) {
+
+                    setToastConfig({
+                        message: "Website is unavailable. Please try again later.",
+                        mode: "error"
+                    })
+                } else if (result?.error) {
+                    if (result?.error?.isemailverify === false) {
+                        dispatch(
+                            await authSetEmailReducer({
+                                email: result?.error?.email,
+                            })
+                        );
+                        setAuthMode("send-verify-email")
+                    } else {
+                        setToastConfig({
+                            message: result?.error ?? "Website is unavailable. Please try again later.",
+                            mode: "error"
+                        })
+                    }
+                }
+            } else {
+                console.log(result)
+                dispatch(
+                    peopleLoginReducer(result)
+                )
+                navigate("/events")
+            }
+        }
+    }
 
     return (
         <div className="container mx-auto px-4 h-full">
@@ -110,53 +178,7 @@ export default function LoginPage({ setAuthMode }) {
                                 <button
                                     className="bg-gray-800 text-white active:bg-gray-600 text-sm font-bold uppercase px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 w-full ease-linear transition-all duration-150"
                                     type="button"
-                                    onClick={async () => {
-                                        //regex email
-                                        const emailRes = regexEmail(getEmailValue)
-                                        if (emailRes) setEmailError(emailRes)
-                                        //regex password
-                                        const passwordRes = regexPassword(getPasswordValue)
-                                        if (passwordRes?.message) setPasswordError(passwordRes.message)
-
-                                        if (!emailRes && !passwordRes?.message) {
-                                            const result = await _useAuthModule.peopleLogin({
-                                                email: getEmailValue,
-                                                password: getPasswordValue
-                                            })
-
-                                            if (result?.error || !result) {
-
-                                                startTimer(10, 1000)
-                                                if (result?.error?.error) {
-
-                                                    setToastConfig({
-                                                        message: "Website is unavailable. Please try again later.",
-                                                        mode: "error"
-                                                    })
-                                                } else if (result?.error) {
-                                                    if (result?.error?.isemailverify === false) {
-                                                        dispatch(
-                                                            await authSetEmailReducer({
-                                                                email: result?.error?.email,
-                                                            })
-                                                        );
-                                                        setAuthMode("send-verify-email")
-                                                    } else {
-                                                        setToastConfig({
-                                                            message: result?.error ?? "Website is unavailable. Please try again later.",
-                                                            mode: "error"
-                                                        })
-                                                    }
-                                                }
-                                            } else {
-                                                console.log(result)
-                                                dispatch(
-                                                    peopleLoginReducer(result)
-                                                )
-                                                navigate("/events")
-                                            }
-                                        }
-                                    }}
+                                    onClick={handleSubmit}
                                 >
                                     Sign In
                                 </button>

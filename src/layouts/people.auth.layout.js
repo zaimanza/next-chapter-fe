@@ -7,6 +7,7 @@ import RegisterPage from '../pages/auth/register.page'
 import ResetPasswordPage from '../pages/auth/reset_password.page'
 import SendVerifyEmailPage from '../pages/auth/send_verify_email.page'
 import SendVerifyPasswordPage from '../pages/auth/send_verify_password.page'
+import { useRef } from 'react'
 
 const PeopleAuthLayout = () => {
     const navigate = useNavigate()
@@ -14,34 +15,25 @@ const PeopleAuthLayout = () => {
 
     const [getAuthMode, setAuthMode] = useState("login")
     const [getDecodedTicket, setDecodedTicket] = useState({})
+    const run_uno = useRef(false)
 
     const peopleProvider = useSelector((state) => state.people.value)
 
     useEffect(() => {
+        if (run_uno.current === false) {
+            run_uno.current = true
+            console.log("run_one")
+            if (peopleProvider.access_token !== "") {
+                navigate("/events");
+            }
 
-        if (peopleProvider.access_token !== "") {
-            navigate("/events");
-        } else {
-            navigate("/auth");
-        }
+            if (ticket) {
+                const decodedTicket = JSON.parse(atob(ticket))
 
-        if (ticket) {
-
-            // eyJtb2RlIjoicmVzZXQtcGFzc3dvcmQiLCJlbWFpbCI6InphaW1hbjY3MEBnbWFpbC5jb20ifQ==
-            // const ecodedTicket = {
-            //     mode: "reset-password",
-            //     email: "zaiman670@gmail.com"
-            // }
-            // var encodedStringBtoA = btoa(JSON.stringify(ecodedTicket))
-            // console.log(encodedStringBtoA)
-
-            const decodedTicket = JSON.parse(atob(ticket))
-
-            if (Object.keys(decodedTicket).length !== 0) {
-                setAuthMode(decodedTicket?.mode)
-                setDecodedTicket(decodedTicket)
-            } else {
-                navigate("/auth");
+                if (Object.keys(decodedTicket).length !== 0) {
+                    setAuthMode(decodedTicket?.mode)
+                    setDecodedTicket(decodedTicket)
+                }
             }
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps

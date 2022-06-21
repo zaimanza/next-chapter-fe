@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react"
+import React, { useState } from "react"
 import { useSelector } from "react-redux"
 import { useNavigate } from "react-router-dom"
 import StaticToast from "../../components/toasts/StaticToast.component"
@@ -17,10 +17,6 @@ export default function SendVerifyPasswordPage({ setAuthMode, getDecodedTicket }
 
     const authProvider = useSelector((state) => state.auth.value)
 
-    useEffect(() => {
-
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [])
     return (
         <div className="container mx-auto px-4 h-full">
             <div className="flex content-center items-center justify-center h-full">

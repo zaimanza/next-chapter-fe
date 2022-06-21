@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useRef } from 'react'
 import { useDispatch } from "react-redux"
 import { useNavigate, useParams } from 'react-router-dom'
 import useAuthModule from '../modules/useAuth.module'
@@ -9,6 +9,7 @@ const ConfirmVerifyPage = () => {
     const { ticket } = useParams()
     const dispatch = useDispatch()
     const _useAuthModule = useAuthModule()
+    const run_uno = useRef(false)
 
     const initFunction = async () => {
         try {
@@ -40,8 +41,10 @@ const ConfirmVerifyPage = () => {
     }
 
     useEffect(() => {
-        initFunction()
-
+        if (run_uno.current === false) {
+            run_uno.current = true
+            initFunction()
+        }
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 

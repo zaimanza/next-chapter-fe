@@ -1,6 +1,6 @@
 
 
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 import { HiDownload } from 'react-icons/hi';
 import { useDispatch, useSelector } from "react-redux"
 import { useNavigate } from 'react-router-dom';
@@ -9,14 +9,18 @@ import { peopleLogoutReducer } from '../../providers/people.provider';
 const EventsPage = () => {
     const navigate = useNavigate()
     const dispatch = useDispatch()
+    const run_uno = useRef(false)
 
     const peopleProvider = useSelector((state) => state.people.value)
 
     useEffect(() => {
-        if (peopleProvider.access_token !== "") {
-            navigate("/events");
-        } else {
-            navigate("/auth");
+        if (run_uno.current === false) {
+            run_uno.current = true
+            if (peopleProvider.access_token !== "") {
+                navigate("/events");
+            } else {
+                navigate("/auth");
+            }
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])

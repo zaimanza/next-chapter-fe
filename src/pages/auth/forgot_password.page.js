@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react"
+import React, { useEffect, useRef, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import useRegex from '../../utils/useRegex';
 import { authSetEmailReducer } from "../../providers/auth.provider"
@@ -13,6 +13,7 @@ export default function ForgotPasswordPage({ setAuthMode }) {
     const { timerCountdown, startTimer } = useTimer()
     const { regexEmail } = useRegex()
     const _useAuthModule = useAuthModule()
+    const run_uno = useRef(false)
     const authProvider = useSelector((state) => state.auth.value)
 
     const [getEmailValue, setEmailValue] = useState("")
@@ -21,7 +22,10 @@ export default function ForgotPasswordPage({ setAuthMode }) {
     const [getToastConfig, setToastConfig] = useState()
 
     useEffect(() => {
-        setEmailValue(authProvider.email)
+        if (run_uno.current === false) {
+            run_uno.current = true
+            setEmailValue(authProvider.email)
+        }
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
     return (
