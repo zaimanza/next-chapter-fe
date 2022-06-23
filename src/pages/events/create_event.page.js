@@ -87,7 +87,8 @@ const CreateEventPage = () => {
                     })
                 }
             } else {
-                navigate("/events")
+                // will go to id
+                // navigate("/")
             }
         }
     }
