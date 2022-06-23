@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom"
 import useRegex from '../../utils/useRegex';
 import { authSetEmailReducer, authSetPasswordReducer } from "../../providers/auth.provider";
 import useAuthModule from "../../modules/useAuth.module";

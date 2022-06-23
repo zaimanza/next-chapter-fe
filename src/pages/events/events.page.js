@@ -17,7 +17,7 @@ const EventsPage = () => {
         if (run_uno.current === false) {
             run_uno.current = true
             if (peopleProvider.access_token !== "") {
-                navigate("/events");
+
             } else {
                 navigate("/auth");
             }
