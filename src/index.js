@@ -11,8 +11,10 @@ import {
 import WelcomePage from './pages/welcome.page';
 import PeopleAuthLayout from './layouts/people.auth.layout';
 import EventsPage from './pages/events/events.page';
-import ConfirmVerifyPage from './pages/confirm_verify.page';
+import ConfirmVerifyPage from './pages/auth/confirm_verify.page';
 import CreateEventPage from './pages/events/create_event.page';
+import WeddingCardPage from './pages/events/wedding_card.page';
+import EditDashboardPage from './pages/events/edit/edit_dashboard.page';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -26,6 +28,8 @@ root.render(
           <Route path="/events" element={<EventsPage />} />
           <Route path="/cv/:ticket" element={<ConfirmVerifyPage />} />
           <Route path="/create_event" element={<CreateEventPage />} />
+          <Route path="/:nc_wedding_id" element={<WeddingCardPage />} />
+          <Route path="/:nc_wedding_id/edit" element={<EditDashboardPage />} />
         </Routes>
       </BrowserRouter>
     </Provider>

@@ -1,8 +1,8 @@
 import React, { useEffect, useRef } from 'react'
 import { useDispatch } from "react-redux"
 import { useNavigate, useParams } from 'react-router-dom'
-import useAuthModule from '../modules/useAuth.module'
-import { peopleLoginReducer } from '../providers/people.provider'
+import useAuthModule from '../../modules/useAuth.module'
+import { peopleLoginReducer } from '../../providers/people.provider'
 
 const ConfirmVerifyPage = () => {
     const navigate = useNavigate();
