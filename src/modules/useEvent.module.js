@@ -30,12 +30,12 @@ const useEventModule = () => {
         return result?.data
     }
 
-    const findAllGeneralByOwnerId = async ({ owner_id }) => {
+    const findAllGeneralByOwnerId = async ({ owner_uid }) => {
 
         const result = await axios?.post(
             `http://localhost:3001/event/find_all_general_by_owner_id`,
             {
-                owner_id: owner_id
+                owner_uid: owner_uid
             }
         )
             .catch(function (error) {

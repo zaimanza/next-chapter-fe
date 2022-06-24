@@ -62,8 +62,9 @@ const CreateEventPage = () => {
             var createData = {
                 your_first_name: getYourFirstNameValue,
                 your_partner_first_name: getYourPartnerFirstNameValue,
-                wedding_location: getLocationValue
-                // password: getWeddingDateValue
+                wedding_location: getLocationValue,
+                owner_uid: peopleProvider?.uid,
+                email: peopleProvider?.email
             }
             if (getIsWeddingDateCheck === false) {
                 createData.wedding_date = getWeddingDateValue
