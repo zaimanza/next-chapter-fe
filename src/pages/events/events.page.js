@@ -107,7 +107,7 @@ const EventsPage = () => {
     }
     return (
         <div className="">
-
+            {/* floating_action_button */}
             <div className='sm:hidden bottom-0 right-0 fixed mr-4 mb-4'>
                 <div className="text-center mt-6">
                     <button
@@ -119,6 +119,7 @@ const EventsPage = () => {
                     </button>
                 </div>
             </div>
+            {/* app_bar */}
             <div
                 className=" mx-auto max-w-container px-4 sm:px-6 lg:px-8">
                 <div className="relative flex items-center">
@@ -139,7 +140,7 @@ const EventsPage = () => {
                             </svg>
                         </button>
                         {getIsHamburgerOpen ?
-                            <div className="bg-white rounded shadow-md  absolute mt-16 top-0 right-0 min-w-full overflow-auto z-30 ">
+                            <div className="hidden sm:flex bg-white rounded shadow-md  absolute mt-16 top-0 right-0 min-w-full overflow-auto z-30 ">
                                 <ul className="w-[10rem]">
                                     <li><div id="profile_button" className="px-4 py-4 block  hover:bg-gray-100 no-underline hover:no-underline">My profile</div></li>
                                     <li>
@@ -154,26 +155,19 @@ const EventsPage = () => {
                             </div> : null}
                     </div>
                 </div>
-
             </div>
-            {/* 
-            <div className=' mx-auto max-w-container px-4 sm:px-6 lg:px-8'>
-                <div className="relative flex items-center py-[2.125rem]">
-                    <div className="absolute inset-x-0 bottom-0 h-px bg-slate-900/5">
-                    </div>
-                    <label className="mr-auto flex-none text-slate-900" href="/">
-                        nextChapter
-                    </label>
-                    <button type="button" className="-my-1 ml-6 -mr-1 flex h-8 w-8 items-center justify-center">
-                        <svg viewBox="0 0 24 24" className="h-6 w-6 stroke-slate-900">
-                            <path d="M3.75 12h16.5M3.75 6.75h16.5M3.75 17.25h16.5" fill="none" strokeWidth="1.5" strokeLinecap="round"></path>
-                        </svg>
-                    </button>
-                </div>
-            </div> */}
 
+            {/* body */}
+            {getIsHamburgerOpen ?
+                <div className="bg-white w-full sm:hidden mb-20 fixed h-full">
+                    <div id="profile_button" className="px-4 py-4 block  hover:bg-gray-100 no-underline hover:no-underline">My profile</div>
+                    <hr className="border-t mx-4 border-gray-400" />
+                    <div id="logout_button" className="px-4 py-4 block  hover:bg-gray-100 no-underline hover:no-underline">
+                        Logout
+                    </div>
+                </div> : null}
             <div className="mx-6 mb-20">
-                <div className="sm:hidden flex flex-row relative py-5">
+                <div className="sm:hidden flex flex-row py-5">
                     <div className="w-full  justify-center">
                         <div className="mx-auto w-fit text-3xl">
                             Wedding Events
@@ -190,7 +184,7 @@ const EventsPage = () => {
                     </div>
                     <div className="my-auto flex flex-row text-lg hover:text-pink-400">
                         Create
-                        <IoAdd className='h-7 w-5 ml-1' />
+                        <IoAdd className='h-7 w-5 ml-1 mr-1' />
                     </div>
                 </div>
                 {getToastConfig && getCardList.length === 0 ?
