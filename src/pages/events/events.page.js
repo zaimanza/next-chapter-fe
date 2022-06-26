@@ -79,7 +79,6 @@ const EventsPage = () => {
 
     useEffect(() => {
         const handleClickOutside = (event) => {
-            console.log(event.target)
             if (event.target.id === "logout_button") {
                 handleLogoutButton()
             }
@@ -125,7 +124,7 @@ const EventsPage = () => {
                 <div className="relative flex items-center">
                     <div className="absolute inset-x-0 bottom-0 h-px bg-slate-900/5">
                     </div>
-                    <label className="mr-auto flex-none text-slate-900" href="/">
+                    <label className="mr-auto flex-none text-slate-900 font-semibold" href="/">
                         nextChapter
                     </label>
                     <div
@@ -207,17 +206,27 @@ const EventsPage = () => {
                             <div
                                 key={index}
                                 onClick={() => {
-                                    console.log(oneEvent.nc_wedding_id)
+                                    navigate(`/${oneEvent?.nc_wedding_id}/edit`)
                                 }} className="shadow-lg rounded-lg">
                                 <div>
-                                    <img
+                                    {oneEvent?.cover_img ? <img
                                         alt={oneEvent?.your_first_name + " & " + oneEvent?.your_partner_first_name}
                                         onError={({ currentTarget }) => {
-                                            currentTarget.onerror = null; // prevents looping
-                                            // currentTarget.src = "https://wegotthiscovered.com/wp-content/uploads/2022/05/image1-65-1200x900.jpg";
+                                            currentTarget.onerror = null
                                         }}
-                                        src="https://wegotthiscovered.com/wp-content/uploads/202"
-                                        className="object-cover h-48 w-full rounded-tl-lg rounded-tr-lg" />
+                                        src={oneEvent?.cover_img}
+                                        className="object-cover h-48 w-full rounded-tl-lg rounded-tr-lg" /> :
+
+                                        <div className="text-center mt-6">
+                                            <button
+                                                className="cursor-default h-48 bg-pink-400 text-white  text-sm font-bold uppercase px-3 py-3 rounded-tl-lg rounded-tr-lg outline-none mr-1 mb-1 w-full ease-linear transition-all duration-150"
+                                                type="submit"
+                                            // onClick={handleSubmit}
+                                            >
+                                                <label className='lowercase'>next</label>C<label className='lowercase'>hapter</label>
+                                            </button>
+                                        </div>
+                                    }
                                 </div>
                                 <div className="p-5">
                                     <div className="capitalize text-lg font-medium">{oneEvent?.your_first_name + " & " + oneEvent?.your_partner_first_name}</div>
@@ -234,7 +243,7 @@ const EventsPage = () => {
                         )}
                     </div> : null}
             </div>
-        </div>
+        </div >
     );
 }
 

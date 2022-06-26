@@ -97,8 +97,7 @@ const CreateEventPage = () => {
                 }
             } else {
                 // will go to id
-                // navigate("/")
-                navigate(`/${result?.nc_wedding_id}/edit`);
+                navigate(`/${result?.nc_wedding_id}/edit`)
             }
         }
         setIsLoadingBackend(false)
