@@ -105,6 +105,11 @@ const EventsPage = () => {
         navigate("/auth");
 
     }
+
+    const handleCreateEvent = async () => {
+        console.log("creating_event")
+    }
+
     return (
         <div className="">
             {/* floating_action_button */}
@@ -113,7 +118,7 @@ const EventsPage = () => {
                     <button
                         className="bg-pink-400 text-white active:bg-gray-600 text-sm font-bold uppercase px-3 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 w-full ease-linear transition-all duration-150"
                         type="submit"
-                    // onClick={handleSubmit}
+                        onClick={handleCreateEvent}
                     >
                         <IoAdd className='m-auto h-[1.25rem] w-[1.25rem]' size={'4rem'} />
                     </button>
@@ -176,7 +181,7 @@ const EventsPage = () => {
                     </div>
                 </div>
 
-                <div className="hidden sm:flex justify-between my-5">
+                <div onClick={handleCreateEvent} className="hidden sm:flex justify-between my-5">
                     <div className="">
                         <div className="mx-auto w-fit text-3xl">
                             Wedding Events
