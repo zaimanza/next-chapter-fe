@@ -44,6 +44,12 @@ const EventsPage = () => {
                                 message: result?.error ?? "Website is unavailable. Please try again later.",
                                 mode: "error"
                             })
+                            if (result?.error === "Account does not exists.") {
+                                dispatch(
+                                    peopleLogoutReducer()
+                                )
+                                navigate("/auth");
+                            }
                         } else {
                             setToastConfig({
                                 message: "There's no event available.",

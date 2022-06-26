@@ -73,7 +73,6 @@ const CreateEventPage = () => {
             if (getIsWeddingDateCheck === false) {
                 createData.wedding_date = getWeddingDateValue
             }
-            console.log(createData)
             const result = await _useEventModule.createEvent(createData)
 
             if (result?.error || !result) {
@@ -85,7 +84,6 @@ const CreateEventPage = () => {
                         mode: "error"
                     })
                 } else if (result?.error) {
-                    console.log("hi_2")
                     setToastConfig({
                         message: result?.error ?? "Website is unavailable. Please try again later.",
                         mode: "error"
