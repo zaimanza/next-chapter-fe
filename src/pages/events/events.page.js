@@ -108,8 +108,6 @@ const EventsPage = () => {
 
                         <button
                             onClick={() => {
-
-
                             }}
                             className="flex focus:outline-none">
                             <svg id="hamburget_icon" viewBox="0 0 24 24" className="h-6 w-6 stroke-slate-900">
