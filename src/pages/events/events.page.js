@@ -121,7 +121,7 @@ const EventsPage = () => {
             </div>
             {/* app_bar */}
             <div
-                className=" mx-auto max-w-container px-4 sm:px-6 lg:px-8">
+                className="fixed sm:static bg-white w-full mx-auto max-w-container px-4 sm:px-6 lg:px-8">
                 <div className="relative flex items-center">
                     <div className="absolute inset-x-0 bottom-0 h-px bg-slate-900/5">
                     </div>
@@ -159,7 +159,7 @@ const EventsPage = () => {
 
             {/* body */}
             {getIsHamburgerOpen ?
-                <div className="bg-white w-full sm:hidden mb-20 fixed h-full">
+                <div className="bg-white w-full sm:hidden mb-20 fixed h-full mt-20">
                     <div id="profile_button" className="px-4 py-4 block  hover:bg-gray-100 no-underline hover:no-underline">My profile</div>
                     <hr className="border-t mx-4 border-gray-400" />
                     <div id="logout_button" className="px-4 py-4 block  hover:bg-gray-100 no-underline hover:no-underline">
@@ -167,7 +167,7 @@ const EventsPage = () => {
                     </div>
                 </div> : null}
             <div className="mx-6 mb-20">
-                <div className="sm:hidden flex flex-row py-5">
+                <div className="sm:hidden flex flex-row py-5 pt-28">
                     <div className="w-full  justify-center">
                         <div className="mx-auto w-fit text-3xl">
                             Wedding Events
@@ -227,8 +227,8 @@ const EventsPage = () => {
                                     {oneEvent?.wedding_date ? <div className="capitalize">{oneEvent?.wedding_date}</div> : null}
                                     {oneEvent?.wedding_location ? <div className="capitalize">{oneEvent?.wedding_location}</div> : null}
                                     {oneEvent?.owner_uid === peopleProvider?.uid ?
-                                        <div className="mt-4 flex flex-row">
-                                            <div className="border rounded-lg  px-2 py-2 text-gray-400">
+                                        <div className="mt-4 flex">
+                                            <div className="border rounded-lg px-2 py-2 text-gray-400">
                                                 Yours
                                             </div>
                                         </div> : null}
