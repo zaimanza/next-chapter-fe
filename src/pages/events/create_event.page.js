@@ -12,7 +12,7 @@ const CreateEventPage = () => {
     const { timerCountdown, startTimer } = useTimer()
     const navigate = useNavigate()
     const [getToastConfig, setToastConfig] = useState()
-    const { regexName, regexDate } = useRegex()
+    const { regexName, regexDate, regexAddress } = useRegex()
     const _useEventModule = useEventModule()
 
     const [getYourFirstNameValue, setYourFirstNameValue] = useState("")
@@ -53,7 +53,7 @@ const CreateEventPage = () => {
         const yourPartnerFirstNameRes = regexName(getYourPartnerFirstNameValue)
         if (yourPartnerFirstNameRes) setYourPartnerFirstNameError("Set a name. e.g. Katie")
         //regex name
-        const locationRes = regexName(getLocationValue)
+        const locationRes = regexAddress(getLocationValue)
         if (locationRes) setLocationError("Set a wedding location")
         //regex date
         const weddingDateRes = true

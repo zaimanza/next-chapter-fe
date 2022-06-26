@@ -4,6 +4,11 @@ import { isValidPhoneNumber } from 'libphonenumber-js';
 import lookup from 'country-code-lookup';
 
 function useRegex() {
+    const regexAddress = (address) => {
+        if (address.length === 0) {
+            return "Invalid address"
+        }
+    }
     const regexName = (name) => {
         if (name.match(/[||^|*|<|>|?|\\|;]/g) || name.length === 0) {
             return "Invalid name. e.g. Elon Musk"
@@ -74,6 +79,7 @@ function useRegex() {
         return d.toISOString().slice(0, 10) === dateString;
     }
     return {
+        regexAddress,
         regexName,
         regexEmail,
         regexPassword,

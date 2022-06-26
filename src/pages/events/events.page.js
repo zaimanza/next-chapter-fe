@@ -203,86 +203,35 @@ const EventsPage = () => {
                     /> : null}
                 {getCardList.length !== 0 ?
                     <div className="grid grid-flow-row grid-cols-1 md:grid-cols-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-10">
-                        <div className="shadow-lg rounded-lg">
-                            <div>
-                                <img
-                                    alt=""
-                                    src="https://wegotthiscovered.com/wp-content/uploads/2022/05/image1-65-1200x900.jpg"
-                                    className="object-cover h-48 w-full rounded-tl-lg rounded-tr-lg" />
-                            </div>
-                            <div className="p-5">
-                                <h3>Mens T-Shirt</h3>
-                                <div className="flex flex-row my-3">
-                                    <div className="bg-black rounded-full h-5 w-5 shadow-md mr-2"></div>
-                                    <div className="bg-blue-800 rounded-full h-5 w-5 shadow-md mr-2"></div>
-                                    <div className="bg-white rounded-full h-5 w-5 shadow-md mr-2"></div>
-                                    <div className="bg-red-800 rounded-full h-5 w-5 shadow-md mr-2"></div>
-                                    <div className="bg-green-700 rounded-full h-5 w-5 shadow-md mr-2"></div>
+                        {getCardList.map((oneEvent, index) =>
+                            <div
+                                key={index}
+                                onClick={() => {
+                                    console.log(oneEvent.nc_wedding_id)
+                                }} className="shadow-lg rounded-lg">
+                                <div>
+                                    <img
+                                        alt={oneEvent?.your_first_name + " & " + oneEvent?.your_partner_first_name}
+                                        onError={({ currentTarget }) => {
+                                            currentTarget.onerror = null; // prevents looping
+                                            // currentTarget.src = "https://wegotthiscovered.com/wp-content/uploads/2022/05/image1-65-1200x900.jpg";
+                                        }}
+                                        src="https://wegotthiscovered.com/wp-content/uploads/202"
+                                        className="object-cover h-48 w-full rounded-tl-lg rounded-tr-lg" />
                                 </div>
-                                <div className="flex flex-row my-3">
-                                </div>
-                            </div>
-                        </div>
-                        <div className="shadow-lg rounded-lg">
-                            <div>
-                                <img
-                                    alt=""
-                                    src="https://cdn.vox-cdn.com/thumbor/PFtQ82KNz7yHiIEAB6T-01AqO74=/1400x0/filters:no_upscale()/cdn.vox-cdn.com/uploads/chorus_asset/file/9490727/thor_ragnarok_thor.jpg"
-                                    className="object-cover h-48 w-full rounded-tl-lg rounded-tr-lg" />
-                            </div>
-                            <div className="p-5">
-                                <h3>Mens T-Shirt</h3>
-                                <div className="flex flex-row my-3">
-                                    <div className="bg-black rounded-full h-5 w-5 shadow-md mr-2"></div>
-                                    <div className="bg-blue-800 rounded-full h-5 w-5 shadow-md mr-2"></div>
-                                    <div className="bg-white rounded-full h-5 w-5 shadow-md mr-2"></div>
-                                    <div className="bg-red-800 rounded-full h-5 w-5 shadow-md mr-2"></div>
-                                    <div className="bg-green-700 rounded-full h-5 w-5 shadow-md mr-2"></div>
-                                </div>
-                                <div className="flex flex-row my-3">
+                                <div className="p-5">
+                                    <div className="capitalize text-lg font-medium">{oneEvent?.your_first_name + " & " + oneEvent?.your_partner_first_name}</div>
+                                    {oneEvent?.wedding_date ? <div className="capitalize">{oneEvent?.wedding_date}</div> : null}
+                                    {oneEvent?.wedding_location ? <div className="capitalize">{oneEvent?.wedding_location}</div> : null}
+                                    {oneEvent?.owner_uid === peopleProvider?.uid ?
+                                        <div className="mt-4 flex flex-row">
+                                            <div className="border rounded-lg  px-2 py-2 text-gray-400">
+                                                Yours
+                                            </div>
+                                        </div> : null}
                                 </div>
                             </div>
-                        </div>
-                        <div className="shadow-lg rounded-lg">
-                            <div >
-                                <img
-                                    alt=""
-                                    src="https://www.denofgeek.com/wp-content/uploads/2019/03/thor_the_dark_world-main.jpg?fit=1200%2C675"
-                                    className="object-cover h-48 w-full rounded-tl-lg rounded-tr-lg" />
-                            </div>
-                            <div className="p-5">
-                                <h3>Mens T-Shirt</h3>
-                                <div className="flex flex-row my-3">
-                                    <div className="bg-black rounded-full h-5 w-5 shadow-md mr-2"></div>
-                                    <div className="bg-blue-800 rounded-full h-5 w-5 shadow-md mr-2"></div>
-                                    <div className="bg-white rounded-full h-5 w-5 shadow-md mr-2"></div>
-                                    <div className="bg-red-800 rounded-full h-5 w-5 shadow-md mr-2"></div>
-                                    <div className="bg-green-700 rounded-full h-5 w-5 shadow-md mr-2"></div>
-                                </div>
-                                <div className="flex flex-row my-3">
-                                </div>
-                            </div>
-                        </div>
-                        <div className="shadow-lg rounded-lg">
-                            <div>
-                                <img
-                                    alt=""
-                                    src="https://mytvonline.io/wp-content/uploads/2022/05/thor-recap-feature.jpg"
-                                    className="object-cover h-48 w-full rounded-tl-lg rounded-tr-lg" />
-                            </div>
-                            <div className="p-5">
-                                <h3>Mens T-Shirt</h3>
-                                <div className="flex flex-row my-3">
-                                    <div className="bg-black rounded-full h-5 w-5 shadow-md mr-2"></div>
-                                    <div className="bg-blue-800 rounded-full h-5 w-5 shadow-md mr-2"></div>
-                                    <div className="bg-white rounded-full h-5 w-5 shadow-md mr-2"></div>
-                                    <div className="bg-red-800 rounded-full h-5 w-5 shadow-md mr-2"></div>
-                                    <div className="bg-green-700 rounded-full h-5 w-5 shadow-md mr-2"></div>
-                                </div>
-                                <div className="flex flex-row my-3">
-                                </div>
-                            </div>
-                        </div>
+                        )}
                     </div> : null}
             </div>
         </div>
