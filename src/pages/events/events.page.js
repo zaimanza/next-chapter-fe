@@ -119,12 +119,12 @@ const EventsPage = () => {
                         {getIsHamburgerOpen ?
                             <div className="bg-white rounded shadow-md  absolute mt-16 top-0 right-0 min-w-full overflow-auto z-30 ">
                                 <ul className="w-[10rem]">
-                                    <li><div id="profile_button" className="px-4 py-2 block  hover:bg-gray-100 no-underline hover:no-underline">My profile</div></li>
+                                    <li><div id="profile_button" className="px-4 py-4 block  hover:bg-gray-100 no-underline hover:no-underline">My profile</div></li>
                                     <li>
-                                        <hr className="border-t mx-2 border-gray-400" />
+                                        <hr className="border-t mx-4 border-gray-400" />
                                     </li>
                                     <li>
-                                        <div id="logout_button" className="px-4 py-2 block  hover:bg-gray-100 no-underline hover:no-underline">
+                                        <div id="logout_button" className="px-4 py-4 block  hover:bg-gray-100 no-underline hover:no-underline">
                                             Logout
                                         </div>
                                     </li>
