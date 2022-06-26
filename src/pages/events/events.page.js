@@ -6,6 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import { IoAdd } from "react-icons/io5";
 import useEventModule from '../../modules/useEvent.module';
 import { peopleLogoutReducer } from '../../providers/people.provider';
+import StaticToast from '../../components/toasts/StaticToast.component';
 
 const EventsPage = () => {
     const navigate = useNavigate()
@@ -17,6 +18,7 @@ const EventsPage = () => {
 
     // eslint-disable-next-line no-unused-vars
     const [getToastConfig, setToastConfig] = useState()
+    const [getCardList, setCardList] = useState([])
     const [getIsHamburgerOpen, setIsHamburgerOpen] = useState(false)
 
     useEffect(() => {
@@ -33,7 +35,6 @@ const EventsPage = () => {
 
                     if (result?.error || !result) {
                         if (result?.error?.error) {
-
                             setToastConfig({
                                 message: "Website is unavailable. Please try again later.",
                                 mode: "error"
@@ -43,10 +44,16 @@ const EventsPage = () => {
                                 message: result?.error ?? "Website is unavailable. Please try again later.",
                                 mode: "error"
                             })
+                        } else {
+                            setToastConfig({
+                                message: "There's no event available.",
+                                mode: "warning"
+                            })
                         }
                     } else {
                         if (result.length !== 0) {
                             // if exist view
+                            setCardList(result)
                         } else {
                             // else go to create_event
                             navigate("/create_event")
@@ -181,90 +188,98 @@ const EventsPage = () => {
                         <IoAdd className='h-7 w-5 ml-1' />
                     </div>
                 </div>
-                <div className="grid grid-flow-row grid-cols-1 md:grid-cols-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-10">
-                    <div className="shadow-lg rounded-lg">
-                        <div>
-                            <img
-                                alt=""
-                                src="https://wegotthiscovered.com/wp-content/uploads/2022/05/image1-65-1200x900.jpg"
-                                className="object-cover h-48 w-full rounded-tl-lg rounded-tr-lg" />
-                        </div>
-                        <div className="p-5">
-                            <h3>Mens T-Shirt</h3>
-                            <div className="flex flex-row my-3">
-                                <div className="bg-black rounded-full h-5 w-5 shadow-md mr-2"></div>
-                                <div className="bg-blue-800 rounded-full h-5 w-5 shadow-md mr-2"></div>
-                                <div className="bg-white rounded-full h-5 w-5 shadow-md mr-2"></div>
-                                <div className="bg-red-800 rounded-full h-5 w-5 shadow-md mr-2"></div>
-                                <div className="bg-green-700 rounded-full h-5 w-5 shadow-md mr-2"></div>
+                {getToastConfig && getCardList.length === 0 ?
+                    <StaticToast
+                        config={getToastConfig ?? {
+                            message: "Website is unavailable. Please try again later.",
+                            mode: "error"
+                        }}
+                    /> : null}
+                {getCardList.length !== 0 ?
+                    <div className="grid grid-flow-row grid-cols-1 md:grid-cols-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-10">
+                        <div className="shadow-lg rounded-lg">
+                            <div>
+                                <img
+                                    alt=""
+                                    src="https://wegotthiscovered.com/wp-content/uploads/2022/05/image1-65-1200x900.jpg"
+                                    className="object-cover h-48 w-full rounded-tl-lg rounded-tr-lg" />
                             </div>
-                            <div className="flex flex-row my-3">
-                            </div>
-                        </div>
-                    </div>
-                    <div className="shadow-lg rounded-lg">
-                        <div>
-                            <img
-                                alt=""
-                                src="https://cdn.vox-cdn.com/thumbor/PFtQ82KNz7yHiIEAB6T-01AqO74=/1400x0/filters:no_upscale()/cdn.vox-cdn.com/uploads/chorus_asset/file/9490727/thor_ragnarok_thor.jpg"
-                                className="object-cover h-48 w-full rounded-tl-lg rounded-tr-lg" />
-                        </div>
-                        <div className="p-5">
-                            <h3>Mens T-Shirt</h3>
-                            <div className="flex flex-row my-3">
-                                <div className="bg-black rounded-full h-5 w-5 shadow-md mr-2"></div>
-                                <div className="bg-blue-800 rounded-full h-5 w-5 shadow-md mr-2"></div>
-                                <div className="bg-white rounded-full h-5 w-5 shadow-md mr-2"></div>
-                                <div className="bg-red-800 rounded-full h-5 w-5 shadow-md mr-2"></div>
-                                <div className="bg-green-700 rounded-full h-5 w-5 shadow-md mr-2"></div>
-                            </div>
-                            <div className="flex flex-row my-3">
+                            <div className="p-5">
+                                <h3>Mens T-Shirt</h3>
+                                <div className="flex flex-row my-3">
+                                    <div className="bg-black rounded-full h-5 w-5 shadow-md mr-2"></div>
+                                    <div className="bg-blue-800 rounded-full h-5 w-5 shadow-md mr-2"></div>
+                                    <div className="bg-white rounded-full h-5 w-5 shadow-md mr-2"></div>
+                                    <div className="bg-red-800 rounded-full h-5 w-5 shadow-md mr-2"></div>
+                                    <div className="bg-green-700 rounded-full h-5 w-5 shadow-md mr-2"></div>
+                                </div>
+                                <div className="flex flex-row my-3">
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div className="shadow-lg rounded-lg">
-                        <div >
-                            <img
-                                alt=""
-                                src="https://www.denofgeek.com/wp-content/uploads/2019/03/thor_the_dark_world-main.jpg?fit=1200%2C675"
-                                className="object-cover h-48 w-full rounded-tl-lg rounded-tr-lg" />
-                        </div>
-                        <div className="p-5">
-                            <h3>Mens T-Shirt</h3>
-                            <div className="flex flex-row my-3">
-                                <div className="bg-black rounded-full h-5 w-5 shadow-md mr-2"></div>
-                                <div className="bg-blue-800 rounded-full h-5 w-5 shadow-md mr-2"></div>
-                                <div className="bg-white rounded-full h-5 w-5 shadow-md mr-2"></div>
-                                <div className="bg-red-800 rounded-full h-5 w-5 shadow-md mr-2"></div>
-                                <div className="bg-green-700 rounded-full h-5 w-5 shadow-md mr-2"></div>
+                        <div className="shadow-lg rounded-lg">
+                            <div>
+                                <img
+                                    alt=""
+                                    src="https://cdn.vox-cdn.com/thumbor/PFtQ82KNz7yHiIEAB6T-01AqO74=/1400x0/filters:no_upscale()/cdn.vox-cdn.com/uploads/chorus_asset/file/9490727/thor_ragnarok_thor.jpg"
+                                    className="object-cover h-48 w-full rounded-tl-lg rounded-tr-lg" />
                             </div>
-                            <div className="flex flex-row my-3">
-                            </div>
-                        </div>
-                    </div>
-                    <div className="shadow-lg rounded-lg">
-                        <div>
-                            <img
-                                alt=""
-                                src="https://mytvonline.io/wp-content/uploads/2022/05/thor-recap-feature.jpg"
-                                className="object-cover h-48 w-full rounded-tl-lg rounded-tr-lg" />
-                        </div>
-                        <div className="p-5">
-                            <h3>Mens T-Shirt</h3>
-                            <div className="flex flex-row my-3">
-                                <div className="bg-black rounded-full h-5 w-5 shadow-md mr-2"></div>
-                                <div className="bg-blue-800 rounded-full h-5 w-5 shadow-md mr-2"></div>
-                                <div className="bg-white rounded-full h-5 w-5 shadow-md mr-2"></div>
-                                <div className="bg-red-800 rounded-full h-5 w-5 shadow-md mr-2"></div>
-                                <div className="bg-green-700 rounded-full h-5 w-5 shadow-md mr-2"></div>
-                            </div>
-                            <div className="flex flex-row my-3">
+                            <div className="p-5">
+                                <h3>Mens T-Shirt</h3>
+                                <div className="flex flex-row my-3">
+                                    <div className="bg-black rounded-full h-5 w-5 shadow-md mr-2"></div>
+                                    <div className="bg-blue-800 rounded-full h-5 w-5 shadow-md mr-2"></div>
+                                    <div className="bg-white rounded-full h-5 w-5 shadow-md mr-2"></div>
+                                    <div className="bg-red-800 rounded-full h-5 w-5 shadow-md mr-2"></div>
+                                    <div className="bg-green-700 rounded-full h-5 w-5 shadow-md mr-2"></div>
+                                </div>
+                                <div className="flex flex-row my-3">
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </div>
+                        <div className="shadow-lg rounded-lg">
+                            <div >
+                                <img
+                                    alt=""
+                                    src="https://www.denofgeek.com/wp-content/uploads/2019/03/thor_the_dark_world-main.jpg?fit=1200%2C675"
+                                    className="object-cover h-48 w-full rounded-tl-lg rounded-tr-lg" />
+                            </div>
+                            <div className="p-5">
+                                <h3>Mens T-Shirt</h3>
+                                <div className="flex flex-row my-3">
+                                    <div className="bg-black rounded-full h-5 w-5 shadow-md mr-2"></div>
+                                    <div className="bg-blue-800 rounded-full h-5 w-5 shadow-md mr-2"></div>
+                                    <div className="bg-white rounded-full h-5 w-5 shadow-md mr-2"></div>
+                                    <div className="bg-red-800 rounded-full h-5 w-5 shadow-md mr-2"></div>
+                                    <div className="bg-green-700 rounded-full h-5 w-5 shadow-md mr-2"></div>
+                                </div>
+                                <div className="flex flex-row my-3">
+                                </div>
+                            </div>
+                        </div>
+                        <div className="shadow-lg rounded-lg">
+                            <div>
+                                <img
+                                    alt=""
+                                    src="https://mytvonline.io/wp-content/uploads/2022/05/thor-recap-feature.jpg"
+                                    className="object-cover h-48 w-full rounded-tl-lg rounded-tr-lg" />
+                            </div>
+                            <div className="p-5">
+                                <h3>Mens T-Shirt</h3>
+                                <div className="flex flex-row my-3">
+                                    <div className="bg-black rounded-full h-5 w-5 shadow-md mr-2"></div>
+                                    <div className="bg-blue-800 rounded-full h-5 w-5 shadow-md mr-2"></div>
+                                    <div className="bg-white rounded-full h-5 w-5 shadow-md mr-2"></div>
+                                    <div className="bg-red-800 rounded-full h-5 w-5 shadow-md mr-2"></div>
+                                    <div className="bg-green-700 rounded-full h-5 w-5 shadow-md mr-2"></div>
+                                </div>
+                                <div className="flex flex-row my-3">
+                                </div>
+                            </div>
+                        </div>
+                    </div> : null}
             </div>
-        </div >
+        </div>
     );
 }
 

@@ -1,12 +1,14 @@
 import React, { useEffect, useRef, useState } from 'react'
+import { useDispatch, useSelector } from "react-redux"
 import { useNavigate } from "react-router-dom"
-import { useSelector } from "react-redux"
 import StaticToast from '../../components/toasts/StaticToast.component'
 import useEventModule from '../../modules/useEvent.module'
+import { peopleLogoutReducer } from '../../providers/people.provider'
 import useRegex from '../../utils/useRegex'
 import useTimer from '../../utils/useTimer'
 
 const CreateEventPage = () => {
+    const dispatch = useDispatch()
     const { timerCountdown, startTimer } = useTimer()
     const navigate = useNavigate()
     const [getToastConfig, setToastConfig] = useState()
@@ -78,16 +80,22 @@ const CreateEventPage = () => {
 
                 startTimer(10, 1000)
                 if (result?.error?.error) {
-
                     setToastConfig({
                         message: "Website is unavailable. Please try again later.",
                         mode: "error"
                     })
                 } else if (result?.error) {
+                    console.log("hi_2")
                     setToastConfig({
                         message: result?.error ?? "Website is unavailable. Please try again later.",
                         mode: "error"
                     })
+                    if (result?.error === "Account does not exists.") {
+                        dispatch(
+                            peopleLogoutReducer()
+                        )
+                        navigate("/auth");
+                    }
                 }
             } else {
                 // will go to id
