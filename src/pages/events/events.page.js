@@ -109,7 +109,7 @@ const EventsPage = () => {
         <div className="">
             {/* floating_action_button */}
             <div className='sm:hidden bottom-0 right-0 fixed mr-4 mb-4'>
-                <div className="text-center mt-6">
+                <div className="text-center">
                     <button
                         className="bg-pink-400 text-white active:bg-gray-600 text-sm font-bold uppercase px-3 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 w-full ease-linear transition-all duration-150"
                         type="submit"
@@ -211,7 +211,7 @@ const EventsPage = () => {
                                         src={oneEvent?.cover_img}
                                         className="object-cover h-48 w-full rounded-tl-lg rounded-tr-lg" /> :
 
-                                        <div className="text-center mt-6">
+                                        <div className="text-center">
                                             <button
                                                 className="cursor-default h-48 bg-pink-400 text-white  text-sm font-bold uppercase px-3 py-3 rounded-tl-lg rounded-tr-lg outline-none mr-1 mb-1 w-full ease-linear transition-all duration-150"
                                                 type="submit"
