@@ -1,9 +1,9 @@
 
 
 import { useEffect, useRef, useState } from 'react';
-import { HiDownload } from 'react-icons/hi';
 import { useDispatch, useSelector } from "react-redux"
 import { useNavigate } from 'react-router-dom';
+import { IoAdd } from "react-icons/io5";
 import useEventModule from '../../modules/useEvent.module';
 import { peopleLogoutReducer } from '../../providers/people.provider';
 
@@ -95,6 +95,18 @@ const EventsPage = () => {
     }
     return (
         <div className="">
+
+            <div className='sm:hidden bottom-0 right-0 fixed mr-4 mb-4'>
+                <div className="text-center mt-6">
+                    <button
+                        className="bg-pink-400 text-white active:bg-gray-600 text-sm font-bold uppercase px-3 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 w-full ease-linear transition-all duration-150"
+                        type="submit"
+                    // onClick={handleSubmit}
+                    >
+                        <IoAdd className='m-auto h-[1.25rem] w-[1.25rem]' size={'4rem'} />
+                    </button>
+                </div>
+            </div>
             <div
                 className=" mx-auto max-w-container px-4 sm:px-6 lg:px-8">
                 <div className="relative flex items-center">
@@ -149,15 +161,24 @@ const EventsPage = () => {
             </div> */}
 
             <div className="mx-6 mb-20">
-                <div className="flex flex-row relative py-5">
+                <div className="sm:hidden flex flex-row relative py-5">
                     <div className="w-full  justify-center">
-                        <div onClick={() => {
-                            // setAuthMode("login")
-                            navigate("/auth")
-                        }} className="mx-auto w-fit text-3xl">
+                        <div className="mx-auto w-fit text-3xl">
                             Wedding Events
                         </div>
 
+                    </div>
+                </div>
+
+                <div className="hidden sm:flex justify-between my-5">
+                    <div className="">
+                        <div className="mx-auto w-fit text-3xl">
+                            Wedding Events
+                        </div>
+                    </div>
+                    <div className="my-auto flex flex-row text-lg hover:text-pink-400">
+                        Create
+                        <IoAdd className='h-7 w-5 ml-1' />
                     </div>
                 </div>
                 <div className="grid grid-flow-row grid-cols-1 md:grid-cols-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-10">
