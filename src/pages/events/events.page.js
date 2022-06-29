@@ -137,8 +137,6 @@ const EventsPage = () => {
                         className="py-[2.125rem] relative text-sm ">
 
                         <button
-                            onClick={() => {
-                            }}
                             className="flex focus:outline-none">
                             <svg id="hamburget_icon" viewBox="0 0 24 24" className="h-6 w-6 stroke-slate-900">
                                 <path d="M3.75 12h16.5M3.75 6.75h16.5M3.75 17.25h16.5" fill="none" strokeWidth="1.5" strokeLinecap="round"></path>

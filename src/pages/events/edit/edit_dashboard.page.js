@@ -1,18 +1,21 @@
 import React, { useEffect, useRef } from 'react'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate, useParams } from 'react-router-dom'
 import { BsPhone } from "react-icons/bs";
 import { FiMonitor } from "react-icons/fi";
 import { useState } from 'react';
+import { peopleLogoutReducer } from '../../../providers/people.provider';
 
 const EditDashboardPage = () => {
     const navigate = useNavigate()
     const run_uno = useRef(false)
+    const dispatch = useDispatch()
     const { nc_wedding_id } = useParams()
 
     const peopleProvider = useSelector((state) => state.people.value)
 
     const [getScreenSize, setScreenSize] = useState(0)
+    const [getIsHamburgerOpen, setIsHamburgerOpen] = useState(false)
 
     useEffect(() => {
         if (run_uno.current === false) {
@@ -23,6 +26,36 @@ const EditDashboardPage = () => {
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
+
+
+    useEffect(() => {
+        const handleClickOutside = (event) => {
+            if (event.target.id === "logout_button") {
+                handleLogoutButton()
+            }
+            else if (event.target.id === "profile_button") { }
+            else if (event.target.id === "hamburget_icon") {
+                setIsHamburgerOpen(!getIsHamburgerOpen)
+            }
+            else {
+                setIsHamburgerOpen(false)
+            }
+        }
+        // Bind the event listener
+        document.addEventListener('mousedown', handleClickOutside);
+        return () => {
+            // Unbind the event listener on clean up
+            document.removeEventListener('mousedown', handleClickOutside);
+        };
+    });
+
+    const handleLogoutButton = async () => {
+        dispatch(
+            peopleLogoutReducer()
+        )
+        navigate("/auth");
+
+    }
 
     return (
         <div className='h-full bg-gray-900 shadow-sm overflow-hidden'>
@@ -39,9 +72,64 @@ const EditDashboardPage = () => {
             </div>
             <div className="flex">
                 <div className="bg-white shadow-sm max-w-[700px] w-full sm:min-w-[500px] h-screen overflow-hidden">
-                    <div className="">aiman</div>
+
+
+
+
+
+                    {/* app_bar */}
+                    <div
+                        className="fixed sm:static bg-white w-full mx-auto max-w-container px-4 sm:px-6 lg:px-8">
+                        <div className="relative flex items-center">
+                            <div className="absolute inset-x-0 bottom-0 h-px bg-slate-900/5">
+                            </div>
+                            <label className="mr-auto flex-none text-slate-900 font-semibold" href="/">
+                                nextChapter
+                            </label>
+                            <div
+                                className="py-[2.125rem] relative text-sm ">
+
+                                <button
+                                    className="flex focus:outline-none">
+                                    <svg id="hamburget_icon" viewBox="0 0 24 24" className="h-6 w-6 stroke-slate-900">
+                                        <path d="M3.75 12h16.5M3.75 6.75h16.5M3.75 17.25h16.5" fill="none" strokeWidth="1.5" strokeLinecap="round"></path>
+                                    </svg>
+                                </button>
+                                {getIsHamburgerOpen ?
+                                    <div className="hidden sm:flex bg-white rounded shadow-md  absolute mt-16 top-0 right-0 min-w-full overflow-auto z-30 ">
+                                        <ul className="w-[10rem]">
+                                            <li><div id="profile_button" className="px-4 py-4 block  hover:bg-gray-100 no-underline hover:no-underline">My profile</div></li>
+                                            <li>
+                                                <hr className="border-t mx-4 border-gray-400" />
+                                            </li>
+                                            <li>
+                                                <div id="logout_button" className="px-4 py-4 block  hover:bg-gray-100 no-underline hover:no-underline">
+                                                    Logout
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div> : null}
+                            </div>
+                        </div>
+                    </div>
+
+                    {/* body */}
+                    {getIsHamburgerOpen ?
+                        <div className="bg-white w-full sm:hidden mb-20 fixed h-full mt-20">
+                            <div id="profile_button" className="px-4 py-4 block  hover:bg-gray-100 no-underline hover:no-underline">My profile</div>
+                            <hr className="border-t mx-4 border-gray-400" />
+                            <div id="logout_button" className="px-4 py-4 block  hover:bg-gray-100 no-underline hover:no-underline">
+                                Logout
+                            </div>
+                        </div> : null}
+                    <div className="mb-20 sm:pt-0 pt-24">
+                        <div className="">
+                            aku keris yang mengilau, aku mat kilau
+                        </div>
+                    </div>
+
                 </div>
-                <div className=" w-full hidden sm:block flex-grow overflow-hidden text-white ">
+                <div className=" duration-300 w-full hidden sm:block flex-grow overflow-hidden text-white ">
                     <div className="py-2 flex w-full justify-center">
                         <div onClick={() => {
                             setScreenSize(0)
@@ -52,14 +140,14 @@ const EditDashboardPage = () => {
                             setScreenSize(1)
                         }} className=''><BsPhone className={`${getScreenSize === 1 ? "text-pink-400" : ""} m-2 w-8 h-8`} /></div>
                     </div>
-                    <div className={`${getScreenSize === 0 ? "ease-in-out duration-300 max-w-[50rem] m-auto" :
+                    <div className={`${getScreenSize === 0 ? "ease-in-out duration-150 max-w-[50rem] m-auto" :
                         ""} ${getScreenSize === 1 ? "ease-in-out max-w-[30rem] m-auto" :
                             ""} overflow-y-auto h-[93%] flex items-center justify-center`}>
                         <div className='mx-10 w-full'>
                             <iframe
                                 title="wedding card"
                                 className={`rounded w-full shadow-lg ${getScreenSize === 0 ? " aspect-[16/9]" : ""} ${getScreenSize === 1 ? " aspect-[9/16]" : ""}`}
-                                src="https://www.youtube.com/embed/dQw4w9WgXcQ"
+                                src="/nc_wedding_id"
                                 frameborder="0"
                                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                             >   </iframe>

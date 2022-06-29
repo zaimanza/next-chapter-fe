@@ -2,7 +2,9 @@ import React from 'react'
 
 const WeddingCardPage = () => {
     return (
-        <div>wedding_card.page</div>
+        <div className="bg-white w-full  h-screen overflow-hidden">
+            <div className="">wedding_card_page</div>
+        </div>
     )
 }
 
