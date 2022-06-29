@@ -130,8 +130,14 @@ const EditDashboardPage = () => {
                             </div>
                         </div> : null}
                     <div className="mb-20 sm:pt-0 pt-24">
-                        <div className="">
-                            aku keris yang mengilau, aku mat kilau
+                        aku keris yang mengilau, aku mat kilau
+                        <div className="bg-green-400">
+                            <div className='text-xl'>
+                                Card Settings
+                            </div>
+                            <div className=''>
+                                Card Settings
+                            </div>
                         </div>
                     </div>
 
@@ -143,7 +149,6 @@ const EditDashboardPage = () => {
                         }} className=''><FiMonitor className={`${getScreenSize === 0 ? "text-gray-900" : ""} m-2 w-8 h-8`} /></div>
                         <div className='w-2 h-2'></div>
                         <div onClick={() => {
-                            console.log('hello')
                             setScreenSize(1)
                         }} className=''><BsPhone className={`${getScreenSize === 1 ? "text-gray-900" : ""} m-2 w-8 h-8`} /></div>
                     </div>

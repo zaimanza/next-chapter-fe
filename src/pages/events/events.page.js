@@ -223,7 +223,7 @@ const EventsPage = () => {
 
                                         <div className="text-center">
                                             <button
-                                                className="cursor-default h-48 bg-pink-400 text-white  text-sm font-bold uppercase px-3 py-3 rounded-tl-lg rounded-tr-lg outline-none mr-1 mb-1 w-full ease-linear transition-all duration-150"
+                                                className="cursor-default h-48 bg-pink-400 text-white  text-sm font-bold uppercase px-3 py-3 rounded-tl-lg rounded-tr-lg outline-none w-full ease-linear transition-all duration-150"
                                                 type="submit"
                                             // onClick={handleSubmit}
                                             >
@@ -232,16 +232,20 @@ const EventsPage = () => {
                                         </div>
                                     }
                                 </div>
-                                <div className="p-5">
-                                    <div className="capitalize text-lg font-medium">{oneEvent?.your_first_name + " & " + oneEvent?.your_partner_first_name}</div>
-                                    {oneEvent?.wedding_date ? <div className="capitalize">{oneEvent?.wedding_date}</div> : null}
-                                    {oneEvent?.wedding_location ? <div className="capitalize">{oneEvent?.wedding_location}</div> : null}
-                                    {oneEvent?.owner_uid === peopleProvider?.uid ?
-                                        <div className="mt-4 flex">
-                                            <div className="border rounded-lg px-2 py-2 text-gray-400">
-                                                Yours
-                                            </div>
-                                        </div> : null}
+                                <div className=" px-5 pt-2 pb-3">
+                                    <div>
+                                        <div className="capitalize font-semibold text-lg">{oneEvent?.your_first_name + " & " + oneEvent?.your_partner_first_name}</div>
+                                        {oneEvent?.wedding_date ? <div className="capitalize">{oneEvent?.wedding_date}</div> : null}
+                                        {oneEvent?.wedding_location ? <div className="capitalize">{oneEvent?.wedding_location}</div> : null}
+                                    </div>
+                                    <div>
+                                        {oneEvent?.owner_uid === peopleProvider?.uid ?
+                                            <div className="mt-2 flex">
+                                                <div className="border rounded-lg px-2 py-2 text-gray-400">
+                                                    Yours
+                                                </div>
+                                            </div> : null}
+                                    </div>
                                 </div>
                             </div>
                         )}
