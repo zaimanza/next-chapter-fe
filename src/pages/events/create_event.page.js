@@ -160,6 +160,7 @@ const CreateEventPage = () => {
                                                 </label>
                                                 <input
                                                     type="text"
+                                                    maxlength="100"
                                                     className={`${getYourFirstNameError ? "ring ring-red-500 placeholder-red-300 text-red-600" : "focus:ring placeholder-gray-300 text-gray-600"} focus:outline-none border-0 px-3 py-3 bg-white rounded text-sm shadow w-full ease-linear transition-all duration-150`}
                                                     placeholder="Ryan"
                                                     value={getYourFirstNameValue}
@@ -180,6 +181,7 @@ const CreateEventPage = () => {
                                                 </label>
                                                 <input
                                                     type="text"
+                                                    maxlength="100"
                                                     className={`${getYourPartnerFirstNameError ? "ring ring-red-500 placeholder-red-300 text-red-600" : "focus:ring placeholder-gray-300 text-gray-600"} focus:outline-none border-0 px-3 py-3 bg-white rounded text-sm shadow w-full ease-linear transition-all duration-150`}
                                                     placeholder="Katie"
                                                     value={getYourPartnerFirstNameValue}
@@ -201,6 +203,7 @@ const CreateEventPage = () => {
                                                 <input
                                                     disabled={getIsWeddingDateCheck ? true : false}
                                                     type="date"
+                                                    maxlength="100"
                                                     min={new Date().toISOString().split('T')[0]}
                                                     className={`${getWeddingDateError ?
                                                         "ring ring-red-500 placeholder-red-300 text-red-600" :
@@ -246,6 +249,7 @@ const CreateEventPage = () => {
                                                 </label>
                                                 <input
                                                     type="text"
+                                                    maxlength="300"
                                                     className={`${getLocationError ? "ring ring-red-500 placeholder-red-300 text-red-600" : "focus:ring placeholder-gray-300 text-gray-600"} focus:outline-none border-0 px-3 py-3 bg-white rounded text-sm shadow w-full ease-linear transition-all duration-150`}
                                                     placeholder="Kuala lumpur"
                                                     value={getLocationValue}

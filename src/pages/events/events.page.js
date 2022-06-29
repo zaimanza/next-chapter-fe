@@ -108,6 +108,7 @@ const EventsPage = () => {
 
     const handleCreateEvent = async () => {
         console.log("creating_event")
+        navigate("/create_event");
     }
 
     return (
@@ -152,7 +153,7 @@ const EventsPage = () => {
                         {getIsHamburgerOpen ?
                             <div className="hidden sm:flex bg-white rounded shadow-md  absolute mt-16 top-0 right-0 min-w-full overflow-auto z-30 ">
                                 <ul className="w-[10rem]">
-                                    <li><div id="profile_button" className="px-4 py-4 block  hover:bg-gray-100 no-underline hover:no-underline">My profile</div></li>
+                                    <li><div id="profile_button" className="px-4 py-4 block  hover:bg-gray-100 no-underline hover:no-underline">Profile</div></li>
                                     <li>
                                         <hr className="border-t mx-4 border-gray-400" />
                                     </li>
@@ -170,7 +171,7 @@ const EventsPage = () => {
             {/* body */}
             {getIsHamburgerOpen ?
                 <div className="bg-white w-full sm:hidden mb-20 fixed h-full mt-20">
-                    <div id="profile_button" className="px-4 py-4 block  hover:bg-gray-100 no-underline hover:no-underline">My profile</div>
+                    <div id="profile_button" className="px-4 py-4 block  hover:bg-gray-100 no-underline hover:no-underline">Profile</div>
                     <hr className="border-t mx-4 border-gray-400" />
                     <div id="logout_button" className="px-4 py-4 block  hover:bg-gray-100 no-underline hover:no-underline">
                         Logout
@@ -186,13 +187,13 @@ const EventsPage = () => {
                     </div>
                 </div>
 
-                <div onClick={handleCreateEvent} className="hidden sm:flex justify-between my-5">
+                <div className="hidden sm:flex justify-between my-5">
                     <div className="">
                         <div className="mx-auto w-fit text-3xl">
                             Wedding Events
                         </div>
                     </div>
-                    <div className="my-auto flex flex-row text-lg hover:text-pink-400">
+                    <div onClick={handleCreateEvent} className="my-auto flex flex-row text-lg hover:text-pink-400">
                         Create
                         <IoAdd className='h-7 w-5 ml-1 mr-1' />
                     </div>
@@ -219,7 +220,7 @@ const EventsPage = () => {
                                             currentTarget.onerror = null
                                         }}
                                         src={oneEvent?.cover_img}
-                                        className="object-cover h-48 w-full rounded-tl-lg rounded-tr-lg" /> :
+                                        className="truncate object-cover h-48 w-full rounded-tl-lg rounded-tr-lg" /> :
 
                                         <div className="text-center">
                                             <button
@@ -234,9 +235,9 @@ const EventsPage = () => {
                                 </div>
                                 <div className=" px-5 pt-2 pb-3">
                                     <div>
-                                        <div className="capitalize font-semibold text-lg">{oneEvent?.your_first_name + " & " + oneEvent?.your_partner_first_name}</div>
-                                        {oneEvent?.wedding_date ? <div className="capitalize">{oneEvent?.wedding_date}</div> : null}
-                                        {oneEvent?.wedding_location ? <div className="capitalize">{oneEvent?.wedding_location}</div> : null}
+                                        <div className="truncate capitalize font-semibold text-lg">{oneEvent?.your_first_name + " & " + oneEvent?.your_partner_first_name}</div>
+                                        {oneEvent?.wedding_date ? <div className="truncate capitalize">{oneEvent?.wedding_date}</div> : null}
+                                        {oneEvent?.wedding_location ? <div className="truncate capitalize">{oneEvent?.wedding_location}</div> : null}
                                     </div>
                                     <div>
                                         {oneEvent?.owner_uid === peopleProvider?.uid ?

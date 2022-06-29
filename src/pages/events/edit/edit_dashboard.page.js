@@ -34,6 +34,9 @@ const EditDashboardPage = () => {
             if (event.target.id === "logout_button") {
                 handleLogoutButton()
             }
+            else if (event.target.id === "events_button") {
+                navigate("/events");
+            }
             else if (event.target.id === "profile_button") { }
             else if (event.target.id === "hamburget_icon") {
                 setIsHamburgerOpen(!getIsHamburgerOpen)
@@ -114,7 +117,8 @@ const EditDashboardPage = () => {
                                 {getIsHamburgerOpen ?
                                     <div className="hidden sm:flex bg-white rounded shadow-md  absolute mt-16 top-0 right-0 min-w-full overflow-auto z-30 ">
                                         <ul className="w-[10rem]">
-                                            <li><div id="profile_button" className="px-4 py-4 block  hover:bg-gray-100 no-underline hover:no-underline">My profile</div></li>
+                                            <li><div id="events_button" className="px-4 py-4 block  hover:bg-gray-100 no-underline hover:no-underline">Events</div></li>
+                                            <li><div id="profile_button" className="px-4 py-4 block  hover:bg-gray-100 no-underline hover:no-underline">Profile</div></li>
                                             <li>
                                                 <hr className="border-t mx-4 border-gray-400" />
                                             </li>
@@ -132,7 +136,8 @@ const EditDashboardPage = () => {
                     {/* body */}
                     {getIsHamburgerOpen ?
                         <div className="bg-white w-full sm:hidden mb-20 fixed h-full mt-20">
-                            <div id="profile_button" className="px-4 py-4 block  hover:bg-gray-100 no-underline hover:no-underline">My profile</div>
+                            <div id="events_button" className="px-4 py-4 block  hover:bg-gray-100 no-underline hover:no-underline">Events</div>
+                            <div id="profile_button" className="px-4 py-4 block  hover:bg-gray-100 no-underline hover:no-underline">Profile</div>
                             <hr className="border-t mx-4 border-gray-400" />
                             <div id="logout_button" className="px-4 py-4 block  hover:bg-gray-100 no-underline hover:no-underline">
                                 Logout
