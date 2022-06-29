@@ -58,11 +58,11 @@ const EditDashboardPage = () => {
     }
 
     return (
-        <div className='h-full bg-gray-900 shadow-sm overflow-hidden'>
+        <div className='h-full bg-pink-400 shadow-sm overflow-hidden'>
             <div className='bottom-0 right-0 fixed mr-4 mb-4'>
                 <div className="text-center mt-6">
                     <button
-                        className="bg-pink-400 text-white active:bg-gray-600 text-sm font-bold uppercase px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 w-full ease-linear transition-all duration-150"
+                        className="bg-gray-900 text-white active:bg-gray-600 text-sm font-bold uppercase px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 w-full ease-linear transition-all duration-150"
                         type="submit"
                     // onClick={handleSubmit}
                     >
@@ -83,9 +83,16 @@ const EditDashboardPage = () => {
                         <div className="relative flex items-center">
                             <div className="absolute inset-x-0 bottom-0 h-px bg-slate-900/5">
                             </div>
-                            <label className="mr-auto flex-none text-slate-900 font-semibold" href="/">
-                                nextChapter
-                            </label>
+                            <div
+                                onClick={() => {
+                                    navigate("/events");
+                                }}
+                                className="mr-auto flex-none text-slate-900 font-semibold"
+                            >
+                                <label href="/">
+                                    nextChapter
+                                </label>
+                            </div>
                             <div
                                 className="py-[2.125rem] relative text-sm ">
 
@@ -133,12 +140,12 @@ const EditDashboardPage = () => {
                     <div className="py-2 flex w-full justify-center">
                         <div onClick={() => {
                             setScreenSize(0)
-                        }} className=''><FiMonitor className={`${getScreenSize === 0 ? "text-pink-400" : ""} m-2 w-8 h-8`} /></div>
+                        }} className=''><FiMonitor className={`${getScreenSize === 0 ? "text-gray-900" : ""} m-2 w-8 h-8`} /></div>
                         <div className='w-2 h-2'></div>
                         <div onClick={() => {
                             console.log('hello')
                             setScreenSize(1)
-                        }} className=''><BsPhone className={`${getScreenSize === 1 ? "text-pink-400" : ""} m-2 w-8 h-8`} /></div>
+                        }} className=''><BsPhone className={`${getScreenSize === 1 ? "text-gray-900" : ""} m-2 w-8 h-8`} /></div>
                     </div>
                     <div className={`${getScreenSize === 0 ? "ease-in-out duration-150 max-w-[50rem] m-auto" :
                         ""} ${getScreenSize === 1 ? "ease-in-out max-w-[30rem] m-auto" :
@@ -146,8 +153,8 @@ const EditDashboardPage = () => {
                         <div className='mx-10 w-full'>
                             <iframe
                                 title="wedding card"
-                                className={`rounded w-full shadow-lg ${getScreenSize === 0 ? " aspect-[16/9]" : ""} ${getScreenSize === 1 ? " aspect-[9/16]" : ""}`}
-                                src="/nc_wedding_id"
+                                className={`bg-gray-900 rounded w-full shadow-lg ${getScreenSize === 0 ? " aspect-[16/9]" : ""} ${getScreenSize === 1 ? " aspect-[9/16]" : ""}`}
+                                src={`/${nc_wedding_id}`}
                                 frameborder="0"
                                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                             >   </iframe>

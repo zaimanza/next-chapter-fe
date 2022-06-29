@@ -130,9 +130,16 @@ const EventsPage = () => {
                 <div className="relative flex items-center">
                     <div className="absolute inset-x-0 bottom-0 h-px bg-slate-900/5">
                     </div>
-                    <label className="mr-auto flex-none text-slate-900 font-semibold" href="/">
-                        nextChapter
-                    </label>
+                    <div
+                        onClick={() => {
+                            navigate("/events");
+                        }}
+                        className="mr-auto flex-none text-slate-900 font-semibold"
+                    >
+                        <label href="/">
+                            nextChapter
+                        </label>
+                    </div>
                     <div
                         className="py-[2.125rem] relative text-sm ">
 
