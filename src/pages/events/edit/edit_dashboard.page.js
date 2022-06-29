@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate, useParams } from 'react-router-dom'
 import { BsPhone } from "react-icons/bs";
 import { FiMonitor } from "react-icons/fi";
+import { AiFillEdit } from "react-icons/ai";
 import { useState } from 'react';
 import { peopleLogoutReducer } from '../../../providers/people.provider';
 
@@ -57,6 +58,19 @@ const EditDashboardPage = () => {
 
     }
 
+    const config_edit_menu = [
+        {
+            "category_name": "Card Settings",
+            "category_items": [
+                {
+                    "url": "card_detail",
+                    "name": "Card Detail",
+                    "icon": <AiFillEdit className="mx-auto w-8 h-8" />
+                },
+            ]
+        }
+    ]
+
     return (
         <div className='h-full bg-pink-400 shadow-sm overflow-hidden'>
             <div className='bottom-0 right-0 fixed mr-4 mb-4'>
@@ -72,11 +86,6 @@ const EditDashboardPage = () => {
             </div>
             <div className="flex">
                 <div className="bg-white shadow-sm max-w-[700px] w-full sm:min-w-[500px] h-screen overflow-hidden">
-
-
-
-
-
                     {/* app_bar */}
                     <div
                         className="fixed sm:static bg-white w-full mx-auto max-w-container px-4 sm:px-6 lg:px-8">
@@ -129,18 +138,35 @@ const EditDashboardPage = () => {
                                 Logout
                             </div>
                         </div> : null}
-                    <div className="mb-20 sm:pt-0 pt-24">
-                        aku keris yang mengilau, aku mat kilau
-                        <div className="bg-green-400">
-                            <div className='text-xl'>
-                                Card Settings
+                    {
+                        config_edit_menu.map((one_config, index) =>
+                            <div className="mb-20 sm:pt-0 pt-24">
+                                <div className='m-4 text-xl'>
+                                    {one_config?.category_name}
+                                </div>
+                                <div className="m-4 grid grid-flow-row grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 xl:grid-cols-4">
+                                    {
+                                        one_config?.category_items?.map((category_item, index) =>
+                                            <div
+                                                onClick={() => {
+                                                    navigate(`/${nc_wedding_id}/${category_item?.url}`)
+                                                }} className="group group-hover:shadow-sm rounded-lg">
+                                                <div className="text-center">
+                                                    <button
+                                                        className="overflow-hidden cursor-default h-48 group-hover:border text-gray-900  text-sm font-medium uppercase px-3 py-3 rounded-lg outline-none w-full ease-linear transition-all duration-150"
+                                                        type="submit"
+                                                    // onClick={handleSubmit}
+                                                    >
+                                                        {category_item?.icon}
+                                                        {/* ease-in-out duration-150 hidden group-hover:block  */}
+                                                        <label className='capitalize'>{category_item?.name}</label>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        )}
+                                </div>
                             </div>
-                            <div className=''>
-                                Card Settings
-                            </div>
-                        </div>
-                    </div>
-
+                        )}
                 </div>
                 <div className=" duration-300 w-full hidden sm:block flex-grow overflow-hidden text-white ">
                     <div className="py-2 flex w-full justify-center">

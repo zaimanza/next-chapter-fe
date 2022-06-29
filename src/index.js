@@ -15,6 +15,7 @@ import ConfirmVerifyPage from './pages/auth/confirm_verify.page';
 import CreateEventPage from './pages/events/create_event.page';
 import WeddingCardPage from './pages/events/wedding_card.page';
 import EditDashboardPage from './pages/events/edit/edit_dashboard.page';
+import CardDetailPage from './pages/events/edit/card_detail.page';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -30,6 +31,7 @@ root.render(
           <Route path="/create_event" element={<CreateEventPage />} />
           <Route path="/:nc_wedding_id" element={<WeddingCardPage />} />
           <Route path="/:nc_wedding_id/edit" element={<EditDashboardPage />} />
+          <Route path="/:nc_wedding_id/card_detail" element={<CardDetailPage />} />
         </Routes>
       </BrowserRouter>
     </Provider>
