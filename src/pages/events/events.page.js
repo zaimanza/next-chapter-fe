@@ -110,9 +110,11 @@ const EventsPage = () => {
         console.log("creating_event")
         navigate("/create_event");
     }
+    const [noImage, setNoImage] = useState(true)
 
     return (
         <div className="">
+            {noImage.toString()}
             {/* floating_action_button */}
             <div className='sm:hidden bottom-0 right-0 fixed mr-4 mb-4'>
                 <div className="text-center">
@@ -207,48 +209,52 @@ const EventsPage = () => {
                     /> : null}
                 {getCardList.length !== 0 ?
                     <div className="grid grid-flow-row grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-10">
-                        {getCardList.map((oneEvent, index) =>
-                            <div
-                                key={index}
-                                onClick={() => {
-                                    navigate(`/${oneEvent?.nc_wedding_id}/edit`)
-                                }} className="shadow-lg rounded-lg">
-                                <div>
-                                    {oneEvent?.cover_img ? <img
-                                        alt={oneEvent?.your_first_name + " & " + oneEvent?.your_partner_first_name}
-                                        onError={({ currentTarget }) => {
-                                            currentTarget.onerror = null
-                                        }}
-                                        src={oneEvent?.cover_img}
-                                        className="truncate object-cover h-48 w-full rounded-tl-lg rounded-tr-lg" /> :
+                        {getCardList.map((oneEvent, index) => {
+                            return (
+                                <div
+                                    key={index}
+                                    onClick={() => {
+                                        navigate(`/${oneEvent?.nc_wedding_id}/edit`)
+                                    }} className="shadow-lg rounded-lg">
+                                    <div>
+                                        {oneEvent?.cover_img && noImage.toString() === "true" ? <img
+                                            alt={oneEvent?.your_first_name + " & " + oneEvent?.your_partner_first_name}
+                                            onError={({ currentTarget }) => {
+                                                currentTarget.onerror = null
+                                                setNoImage(false)
+                                            }}
+                                            src={oneEvent?.cover_img}
+                                            className="truncate object-cover h-48 w-full rounded-tl-lg rounded-tr-lg" /> :
 
-                                        <div className="text-center">
-                                            <button
-                                                className="cursor-default h-48 bg-pink-400 text-white  text-sm font-bold uppercase px-3 py-3 rounded-tl-lg rounded-tr-lg outline-none w-full ease-linear transition-all duration-150"
-                                                type="submit"
-                                            // onClick={handleSubmit}
-                                            >
-                                                <label className='lowercase'>next</label>C<label className='lowercase'>hapter</label>
-                                            </button>
+                                            <div className="text-center">
+                                                <button
+                                                    className="cursor-default h-48 bg-pink-400 text-white  text-sm font-bold uppercase px-3 py-3 rounded-tl-lg rounded-tr-lg outline-none w-full ease-linear transition-all duration-150"
+                                                    type="submit"
+                                                // onClick={handleSubmit}
+                                                >
+                                                    <label className='lowercase'>next</label>C<label className='lowercase'>hapter</label>
+                                                </button>
+                                            </div>
+                                        }
+                                    </div>
+                                    <div className=" px-5 pt-2 pb-3">
+                                        <div>
+                                            <div className="truncate capitalize font-semibold text-lg">{oneEvent?.your_first_name + " & " + oneEvent?.your_partner_first_name}</div>
+                                            {oneEvent?.wedding_date ? <div className="truncate capitalize">{oneEvent?.wedding_date}</div> : null}
+                                            {oneEvent?.wedding_location ? <div className="truncate capitalize">{oneEvent?.wedding_location}</div> : null}
                                         </div>
-                                    }
-                                </div>
-                                <div className=" px-5 pt-2 pb-3">
-                                    <div>
-                                        <div className="truncate capitalize font-semibold text-lg">{oneEvent?.your_first_name + " & " + oneEvent?.your_partner_first_name}</div>
-                                        {oneEvent?.wedding_date ? <div className="truncate capitalize">{oneEvent?.wedding_date}</div> : null}
-                                        {oneEvent?.wedding_location ? <div className="truncate capitalize">{oneEvent?.wedding_location}</div> : null}
-                                    </div>
-                                    <div>
-                                        {oneEvent?.owner_uid === peopleProvider?.uid ?
-                                            <div className="mt-2 flex">
-                                                <div className="border rounded-lg px-2 py-2 text-gray-400">
-                                                    Yours
-                                                </div>
-                                            </div> : null}
+                                        <div>
+                                            {oneEvent?.owner_uid === peopleProvider?.uid ?
+                                                <div className="mt-2 flex">
+                                                    <div className="border rounded-lg px-2 py-2 text-gray-400">
+                                                        Yours
+                                                    </div>
+                                                </div> : null}
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
+                            )
+                        }
                         )}
                     </div> : null}
             </div>
