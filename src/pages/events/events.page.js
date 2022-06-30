@@ -114,7 +114,6 @@ const EventsPage = () => {
 
     return (
         <div className="">
-            {noImage.toString()}
             {/* floating_action_button */}
             <div className='sm:hidden bottom-0 right-0 fixed mr-4 mb-4'>
                 <div className="text-center">
