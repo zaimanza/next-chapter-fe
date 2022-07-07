@@ -23,7 +23,7 @@ const ConfirmVerifyPage = () => {
                         })
                         if (!result?.error) {
                             if (result?.error?.error) { navigate("/auth"); } else {
-                                console.log(result)
+
                                 dispatch(
                                     peopleLoginReducer(result)
                                 )

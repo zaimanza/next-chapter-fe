@@ -105,7 +105,7 @@ const EventsPage = () => {
     }
 
     const handleCreateEvent = async () => {
-        console.log("creating_event")
+
         navigate("/create_event");
     }
     const [noImage, setNoImage] = useState(true)

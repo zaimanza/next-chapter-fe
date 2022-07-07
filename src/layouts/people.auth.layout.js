@@ -22,7 +22,6 @@ const PeopleAuthLayout = () => {
     useEffect(() => {
         if (run_uno.current === false) {
             run_uno.current = true
-            console.log("run_one")
             if (peopleProvider.access_token !== "") {
                 navigate("/events");
             }

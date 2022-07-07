@@ -27,7 +27,7 @@ export default function LoginPage({ setAuthMode }) {
     useEffect(() => {
         if (run_uno.current === false) {
             run_uno.current = true
-            console.log("pel")
+
             setEmailValue(authProvider.email)
             setPasswordValue(authProvider.password)
         }
@@ -74,7 +74,7 @@ export default function LoginPage({ setAuthMode }) {
                     }
                 }
             } else {
-                console.log(result)
+
                 dispatch(
                     peopleLoginReducer(result)
                 )
