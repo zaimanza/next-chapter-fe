@@ -56,19 +56,22 @@ const CreateEventPage = () => {
         const locationRes = regexAddress(getLocationValue)
         if (locationRes) setLocationError("Set a wedding location")
         //regex date
-        const weddingDateRes = true
+        var weddingDateRes = true
         if (getIsWeddingDateCheck === false) {
-            const weddingDateRes = regexDate(getWeddingDateValue)
+            weddingDateRes = regexDate(getWeddingDateValue)
+
             if (!weddingDateRes) setWeddingDateError("Invalid date")
         }
 
-        if (!yourFirstNameRes && !yourPartnerFirstNameRes && !locationRes && weddingDateRes) {
+        if (!yourFirstNameRes &&
+            !yourPartnerFirstNameRes &&
+            !locationRes &&
+            weddingDateRes) {
+
             var createData = {
                 your_first_name: getYourFirstNameValue,
                 your_partner_first_name: getYourPartnerFirstNameValue,
                 wedding_location: getLocationValue,
-                owner_uid: peopleProvider?.uid,
-                email: peopleProvider?.email
             }
             if (getIsWeddingDateCheck === false) {
                 createData.wedding_date = getWeddingDateValue
@@ -160,7 +163,7 @@ const CreateEventPage = () => {
                                                 </label>
                                                 <input
                                                     type="text"
-                                                    maxlength="100"
+                                                    maxLength="100"
                                                     className={`${getYourFirstNameError ? "ring ring-red-500 placeholder-red-300 text-red-600" : "focus:ring placeholder-gray-300 text-gray-600"} focus:outline-none border-0 px-3 py-3 bg-white rounded text-sm shadow w-full ease-linear transition-all duration-150`}
                                                     placeholder="Ryan"
                                                     value={getYourFirstNameValue}
@@ -181,7 +184,7 @@ const CreateEventPage = () => {
                                                 </label>
                                                 <input
                                                     type="text"
-                                                    maxlength="100"
+                                                    maxLength="100"
                                                     className={`${getYourPartnerFirstNameError ? "ring ring-red-500 placeholder-red-300 text-red-600" : "focus:ring placeholder-gray-300 text-gray-600"} focus:outline-none border-0 px-3 py-3 bg-white rounded text-sm shadow w-full ease-linear transition-all duration-150`}
                                                     placeholder="Katie"
                                                     value={getYourPartnerFirstNameValue}
@@ -203,7 +206,7 @@ const CreateEventPage = () => {
                                                 <input
                                                     disabled={getIsWeddingDateCheck ? true : false}
                                                     type="date"
-                                                    maxlength="100"
+                                                    maxLength="100"
                                                     min={new Date().toISOString().split('T')[0]}
                                                     className={`${getWeddingDateError ?
                                                         "ring ring-red-500 placeholder-red-300 text-red-600" :
@@ -249,7 +252,7 @@ const CreateEventPage = () => {
                                                 </label>
                                                 <input
                                                     type="text"
-                                                    maxlength="300"
+                                                    maxLength="300"
                                                     className={`${getLocationError ? "ring ring-red-500 placeholder-red-300 text-red-600" : "focus:ring placeholder-gray-300 text-gray-600"} focus:outline-none border-0 px-3 py-3 bg-white rounded text-sm shadow w-full ease-linear transition-all duration-150`}
                                                     placeholder="Kuala lumpur"
                                                     value={getLocationValue}
