@@ -193,7 +193,7 @@ const EditDashboardPage = () => {
                             <iframe
                                 title="wedding card"
                                 className={`rounded w-full shadow-lg ${getScreenSize === 0 ? " aspect-[16/9]" : ""} ${getScreenSize === 1 ? " aspect-[9/16]" : ""}`}
-                                src={`/${nc_wedding_id}`}
+                                src={`/${nc_wedding_id}?template=true`}
                                 frameBorder="0"
                                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                             >   </iframe>

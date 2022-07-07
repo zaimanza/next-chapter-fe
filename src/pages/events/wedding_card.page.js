@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react'
-import { useNavigate, useParams } from 'react-router-dom'
+import { useLocation, useNavigate, useParams } from 'react-router-dom'
 import useEventModule from '../../modules/useEvent.module'
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -12,6 +12,11 @@ const WeddingCardPage = () => {
     const navigate = useNavigate()
     const _useEventModule = useEventModule()
     const run_uno = useRef(false)
+    const location = useLocation()
+    const queryParams = new URLSearchParams(location.search)
+
+    const param_template = queryParams.get('template')
+    if (param_template) { }
 
     // eslint-disable-next-line no-unused-vars
     const [getToastConfig, setToastConfig] = useState()
