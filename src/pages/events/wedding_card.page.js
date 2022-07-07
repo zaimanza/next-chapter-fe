@@ -143,10 +143,10 @@ const WeddingCardPage = () => {
 
     if (Object.keys(getDisplayData).length !== 0) {
         return (
-            <div className="relative flex min-h-screen flex-col">
+            <div className="text-[1.7vh] relative flex min-h-screen flex-col">
                 <div className="flex w-full items-start">
-                    <div className='sticky top-0'>
-                        <div className='hidden sm:block p-2 max-w-[600px] xl min-w-[300px] h-screen bg-green-400'>
+                    <div className='sticky top-0 sm:w-full'>
+                        <div className='hidden sm:block p-2 w-full h-screen bg-green-400'>
                             {
                                 getDisplayData?.data?.map((currentValue, index) => {
                                     return (
@@ -169,7 +169,7 @@ const WeddingCardPage = () => {
                             <div>{getDisplayData?.data[getCurrentDisplayIndex]?.item_name}</div>
                         </div>
                     </div>
-                    <div className="w-full">
+                    <div className="w-[100vw] sm:max-w-[40vw] sm:min-w-[40vw]">
                         {
                             getDisplayData?.data?.map((currentValue, index) => {
                                 return (
