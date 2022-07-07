@@ -29,9 +29,7 @@ const EventsPage = () => {
                 const initFunctionCall = async () => {
 
                     // findallByOwnerId
-                    const result = await _useEventModule.findAllGeneralByOwnerId({
-                        owner_uid: peopleProvider?.uid
-                    })
+                    const result = await _useEventModule.findAllGeneralByOwner()
 
                     if (result?.error || !result) {
                         if (result?.error?.error) {

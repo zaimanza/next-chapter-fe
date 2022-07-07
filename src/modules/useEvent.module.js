@@ -41,12 +41,17 @@ const useEventModule = () => {
         return result?.data
     }
 
-    const findAllGeneralByOwnerId = async ({ owner_uid }) => {
+    const findAllGeneralByOwner = async () => {
 
         const result = await axios?.post(
             `http://localhost:3001/event/find_all_general_by_owner_id`,
+            {},
             {
-                owner_uid: owner_uid
+                headers: {
+                    "grXgmgKx3WU42b79": peopleProvider?.access_token
+                },
+                timeout: 1000,
+                // plenty more options can be added, refer source link above
             }
         )
             .catch(function (error) {
@@ -73,7 +78,7 @@ const useEventModule = () => {
 
     return {
         createEvent,
-        findAllGeneralByOwnerId
+        findAllGeneralByOwner
     }
 }
 
