@@ -16,6 +16,8 @@ import CreateEventPage from './pages/events/create_event.page';
 import WeddingCardPage from './pages/events/wedding_card.page';
 import EditDashboardPage from './pages/events/edit/edit_dashboard.page';
 import CardDetailPage from './pages/events/edit/card_detail.page';
+import Page404 from './pages/error/404.page';
+import WeddingCardNotFound from './pages/error/WeddingCardNotFound.page';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -32,6 +34,8 @@ root.render(
           <Route path="/:nc_wedding_id" element={<WeddingCardPage />} />
           <Route path="/:nc_wedding_id/edit" element={<EditDashboardPage />} />
           <Route path="/:nc_wedding_id/card_detail" element={<CardDetailPage />} />
+          <Route path="/404" element={<Page404 />} />
+          <Route path="/wedding_card_not_found" element={<WeddingCardNotFound />} />
         </Routes>
       </BrowserRouter>
     </Provider>

@@ -76,9 +76,50 @@ const useEventModule = () => {
         return result?.data
     }
 
+    const findWeddingCard = async ({
+        nc_wedding_id
+    }) => {
+
+        const result = await axios?.post(
+            `http://localhost:3001/event/findWeddingCard/${nc_wedding_id}`,
+            {},
+            {
+                headers: {
+                    "grXgmgKx3WU42b79": peopleProvider?.access_token
+                },
+                timeout: 1000,
+                // plenty more options can be added, refer source link above
+            }
+        )
+            .catch(function (error) {
+                if (error?.response?.data) {
+                    return {
+                        error: error?.response?.data ?? "Website is currently offline."
+                    }
+                } else {
+                    return
+                }
+            })
+
+        if (!result?.data) {
+            if (result?.error) {
+                console.log(result?.error)
+                return {
+                    error: result?.error ?? {
+                        message: "Website is currently offline."
+                    }
+                }
+            } else {
+                return
+            }
+        }
+        return result?.data
+    }
+
     return {
         createEvent,
-        findAllGeneralByOwner
+        findAllGeneralByOwner,
+        findWeddingCard
     }
 }
 

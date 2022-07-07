@@ -145,7 +145,9 @@ const EditDashboardPage = () => {
                         </div> : null}
                     {
                         config_edit_menu.map((one_config, index) =>
-                            <div className="mb-20 sm:pt-0 pt-24">
+                            <div
+                                key={index}
+                                className="mb-20 sm:pt-0 pt-24">
                                 <div className='m-4 text-xl'>
                                     {one_config?.category_name}
                                 </div>
@@ -153,6 +155,7 @@ const EditDashboardPage = () => {
                                     {
                                         one_config?.category_items?.map((category_item, index) =>
                                             <div
+                                                key={index}
                                                 onClick={() => {
                                                     navigate(`/${nc_wedding_id}/${category_item?.url}`)
                                                 }} className="group group-hover:shadow-sm rounded-lg">
@@ -191,7 +194,7 @@ const EditDashboardPage = () => {
                                 title="wedding card"
                                 className={`bg-gray-900 rounded w-full shadow-lg ${getScreenSize === 0 ? " aspect-[16/9]" : ""} ${getScreenSize === 1 ? " aspect-[9/16]" : ""}`}
                                 src={`/${nc_wedding_id}`}
-                                frameborder="0"
+                                frameBorder="0"
                                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                             >   </iframe>
                             <div className="">
