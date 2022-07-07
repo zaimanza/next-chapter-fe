@@ -89,7 +89,7 @@ export default function ResetPasswordPage({ setAuthMode, getDecodedTicket }) {
                                     </label>
                                     <input
                                         type="password"
-                                        maxlength="100"
+                                        maxLength="100"
                                         className={`${getNewPasswordError ? "ring ring-red-500 placeholder-red-300 text-red-600" : "focus:ring placeholder-gray-300 text-gray-600"} focus:outline-none border-0 px-3 py-3 bg-white rounded text-sm shadow w-full ease-linear transition-all duration-150`}
                                         placeholder="Your new password"
                                         value={getNewPasswordValue}
@@ -111,7 +111,7 @@ export default function ResetPasswordPage({ setAuthMode, getDecodedTicket }) {
                                     </label>
                                     <input
                                         type="password"
-                                        maxlength="100"
+                                        maxLength="100"
                                         className={`${getConfirmNewPasswordError ? "ring ring-red-500 placeholder-red-300 text-red-600" : "focus:ring placeholder-gray-300 text-gray-600"} focus:outline-none border-0 px-3 py-3 bg-white rounded text-sm shadow w-full ease-linear transition-all duration-150`}
                                         placeholder="Confirm your new password"
                                         value={getConfirmNewPasswordValue}

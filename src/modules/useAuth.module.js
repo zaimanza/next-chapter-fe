@@ -92,8 +92,6 @@ const useAuthModule = () => {
     }
 
     const peopleResetPassword = async ({ password, node_ticket }) => {
-        console.log(password)
-        console.log(node_ticket)
 
         const result = await axios?.post(
             `http://localhost:3001/auth/people_reset_password`,

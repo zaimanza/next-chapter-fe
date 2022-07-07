@@ -104,7 +104,7 @@ export default function RegisterPage({ setAuthMode }) {
                                     </label>
                                     <input
                                         type="email"
-                                        maxlength="100"
+                                        maxLength="100"
                                         className={`${getEmailError ? "ring ring-red-500 placeholder-red-300 text-red-600" : "focus:ring placeholder-gray-300 text-gray-600"} focus:outline-none border-0 px-3 py-3 bg-white rounded text-sm shadow w-full ease-linear transition-all duration-150`}
                                         placeholder="Email"
                                         value={getEmailValue}
@@ -131,7 +131,7 @@ export default function RegisterPage({ setAuthMode }) {
                                     </label>
                                     <input
                                         type="password"
-                                        maxlength="100"
+                                        maxLength="100"
                                         className={`${getPasswordError ? "ring ring-red-500 placeholder-red-300 text-red-600" : "focus:ring placeholder-gray-300 text-gray-600"} focus:outline-none border-0 px-3 py-3 bg-white rounded text-sm shadow w-full ease-linear transition-all duration-150`}
                                         placeholder="Password"
                                         value={getPasswordValue}
