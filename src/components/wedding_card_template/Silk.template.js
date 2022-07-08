@@ -7,6 +7,7 @@ const SilkTemplate = ({
     getCurrentDisplayIndex,
     addRightSideRef,
     gsap,
+    event_font,
 }) => {
 
     return (
@@ -33,7 +34,7 @@ const SilkTemplate = ({
                                 )
                             })
                         }
-                        <div>{getDisplayData?.data[getCurrentDisplayIndex]?.item_name}</div>
+                        <div className={`font-${event_font}`}>{getDisplayData?.data[getCurrentDisplayIndex]?.item_name}</div>
                     </div>
                 </div>
                 <div className={`${getParamTemplate ? (getParamDisplay === 'desktop') ? ' max-w-[40vw] min-w-[40vw]' : ' w-[100vw] sm:max-w-[40vw] sm:min-w-[40vw]' : ' w-[100vw] sm:max-w-[40vw] sm:min-w-[40vw]'}`}>

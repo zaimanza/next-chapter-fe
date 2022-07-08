@@ -165,14 +165,19 @@ const WeddingCardPage = () => {
     }
     if (!getIsLoadingPageOpen) {
         if (Object.keys(getDisplayData).length !== 0) {
-            return SilkTemplate({
-                getDisplayData: getDisplayData,
-                getParamTemplate: getParamTemplate,
-                getParamDisplay: getParamDisplay,
-                getCurrentDisplayIndex: getCurrentDisplayIndex,
-                addRightSideRef: addRightSideRef,
-                gsap: gsap,
-            })
+            if (getDisplayData?.event_theme === 'silk') {
+                return SilkTemplate({
+                    getDisplayData: getDisplayData,
+                    getParamTemplate: getParamTemplate,
+                    getParamDisplay: getParamDisplay,
+                    getCurrentDisplayIndex: getCurrentDisplayIndex,
+                    addRightSideRef: addRightSideRef,
+                    gsap: gsap,
+                    event_font: getDisplayData?.event_font,
+                })
+            } else {
+                return WeddingCardNotFound()
+            }
         } else {
             return WeddingCardNotFound()
         }
