@@ -58,7 +58,7 @@ const WeddingCardPage = () => {
         if (run_uno.current === false) {
             run_uno.current = true
 
-            if (queryParams.get('template').toString() === 'true') {
+            if (queryParams.get('template')?.toString() === 'true') {
 
                 setParamTemplate(queryParams.get('template'))
             }
@@ -154,9 +154,9 @@ const WeddingCardPage = () => {
     if (Object.keys(getDisplayData).length !== 0) {
         return (
             <div className="text-[1.7vh] relative flex min-h-screen flex-col">
-                <div className="flex w-full items-start">
-                    <div className={`sticky top-0 ${getParamTemplate ? 'w-full' : 'w-full'}`}>
-                        <div className='p-2 w-full h-screen bg-green-400'>
+                <div className={`flex ${getParamTemplate ? 'w-full' : 'w-full'} items-start`}>
+                    <div className={`sticky top-0 ${getParamTemplate ? 'w-full' : 'sm:w-full'}`}>
+                        <div className={`${getParamTemplate ? '' : 'hidden sm:block'} p-2 w-full h-screen bg-green-400`}>
                             {
                                 getDisplayData?.data?.map((currentValue, index) => {
                                     return (
@@ -179,7 +179,7 @@ const WeddingCardPage = () => {
                             <div>{getDisplayData?.data[getCurrentDisplayIndex]?.item_name}</div>
                         </div>
                     </div>
-                    <div className="max-w-[40vw] min-w-[40vw]">
+                    <div className={`${getParamTemplate ? ' max-w-[40vw] min-w-[40vw]' : ' w-[100vw] sm:max-w-[40vw] sm:min-w-[40vw]'}`}>
                         {
                             getDisplayData?.data?.map((currentValue, index) => {
                                 return (
