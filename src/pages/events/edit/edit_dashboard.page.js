@@ -186,14 +186,14 @@ const EditDashboardPage = () => {
                             setScreenSize(1)
                         }} className=''><BsPhone className={`${getScreenSize === 1 ? "text-gray-900" : ""} m-2 w-8 h-8`} /></div>
                     </div>
-                    <div className={`${getScreenSize === 0 ? "ease-in-out duration-150 max-w-[50rem] m-auto" :
+                    <div className={`${getScreenSize === 0 ? "ease-in-out max-w-[50rem] m-auto" :
                         ""} ${getScreenSize === 1 ? "ease-in-out max-w-[30rem] m-auto" :
                             ""} overflow-y-auto h-[93%] flex items-center justify-center`}>
                         <div className='mx-10 w-full'>
                             <iframe
                                 title="wedding card"
-                                className={`rounded w-full shadow-lg ${getScreenSize === 0 ? " aspect-[16/9]" : ""} ${getScreenSize === 1 ? " aspect-[9/16]" : ""}`}
-                                src={`/${nc_wedding_id}?template=true`}
+                                className={`rounded w-full shadow-lg bg-white ${getScreenSize === 0 ? " aspect-[16/9]" : ""} ${getScreenSize === 1 ? " aspect-[9/16]" : ""}`}
+                                src={`/${nc_wedding_id}?template=true${getScreenSize === 0 ? "&display=desktop" : ""}${getScreenSize === 1 ? "&display=mobile" : ""}`}
                                 frameBorder="0"
                                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                             >   </iframe>
