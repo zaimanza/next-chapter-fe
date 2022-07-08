@@ -186,7 +186,7 @@ const EditDashboardPage = () => {
                             setScreenSize(1)
                         }} className=''><BsPhone className={`${getScreenSize === 1 ? "text-gray-900" : ""} m-2 w-8 h-8`} /></div>
                     </div>
-                    <div className={`${getScreenSize === 0 ? "ease-in-out max-w-[50rem] m-auto" :
+                    <div className={`${getScreenSize === 0 ? "ease-in-out w-full m-auto" :
                         ""} ${getScreenSize === 1 ? "ease-in-out max-w-[30rem] m-auto" :
                             ""} overflow-y-auto h-[93%] flex items-center justify-center`}>
                         <div className='mx-10 w-full'>
