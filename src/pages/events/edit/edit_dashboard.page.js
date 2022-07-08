@@ -236,7 +236,7 @@ const EditDashboardPage = () => {
                             <div className='mx-10 w-full'>
                                 <iframe
                                     title="wedding card"
-                                    className={`rounded w-full shadow-lg bg-white ${getScreenSize === 0 ? " aspect-[16/9]" : ""} ${getScreenSize === 1 ? " aspect-[9/16]" : ""}`}
+                                    className={`overflow-hidden rounded w-full ${getScreenSize === 0 ? " aspect-[16/9]" : ""} ${getScreenSize === 1 ? " aspect-[9/16]" : ""}`}
                                     src={`/${nc_wedding_id}?template=true${getScreenSize === 0 ? "&display=desktop" : ""}${getScreenSize === 1 ? "&display=mobile" : ""}`}
                                     frameBorder="0"
                                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
