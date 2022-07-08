@@ -71,13 +71,16 @@ const WeddingCardPage = () => {
                 })
                 console.log(result)
                 if (result?.error || !result) {
-
+                    console.log("lps")
+                    console.log(result)
                     if (result?.error?.error) {
                         setToastConfig({
                             message: "Website is unavailable. Please try again later.",
                             mode: "error"
                         })
+                        navigate("/500")
                     } else if (result?.error) {
+                        console.log("lps_3")
                         setToastConfig({
                             message: result?.error?.message ?? "Website is unavailable. Please try again later.",
                             mode: "error"
@@ -88,6 +91,7 @@ const WeddingCardPage = () => {
                             message: "There's no event available.",
                             mode: "warning"
                         })
+                        navigate("/500")
                     }
                 } else {
                     if (result.length !== 0) {
