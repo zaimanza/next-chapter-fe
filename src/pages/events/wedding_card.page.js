@@ -4,6 +4,8 @@ import useEventModule from '../../modules/useEvent.module'
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ScrollToPlugin } from "gsap/ScrollToPlugin";
+import CircularLoadingPage from '../error/circular_loading.page';
+import WeddingCardNotFound from '../error/WeddingCardNotFound.page';
 
 gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
 
@@ -28,6 +30,8 @@ const WeddingCardPage = () => {
 
     const rightSideRefs = useRef([]);
     const [getRightSiderefs, setRightSiderefs] = useState([])
+
+    const [getIsLoadingPageOpen, setIsLoadingPageOpen] = useState(true)
 
     const handleIndex = async (state, index) => {
         var current_index = currentDisplayIndexRef.current
@@ -104,7 +108,11 @@ const WeddingCardPage = () => {
                     }
                 }
 
-                // if error view problem with system
+                const timeout = setTimeout(() => {
+                    console.log("lalu timeout")
+                    setIsLoadingPageOpen(false)
+                    clearTimeout(timeout)
+                }, 2000)
             }
             initFunctionCall()
         }
@@ -154,59 +162,58 @@ const WeddingCardPage = () => {
         }
         setRightSiderefs(rightSideRefs.current)
     }
-
-    if (Object.keys(getDisplayData).length !== 0) {
-        return (
-            <div className="text-[1.7vh] relative flex min-h-screen flex-col">
-                <div className={`flex ${getParamTemplate ? 'w-full' : 'w-full'} items-start`}>
-                    <div className={`sticky top-0 ${getParamTemplate ? (getParamDisplay === 'desktop') ? 'w-full' : 'sm:w-full' : 'sm:w-full'}`}>
-                        <div className={`${getParamTemplate ? (getParamDisplay === 'desktop') ? '' : 'hidden sm:block' : 'hidden sm:block'} p-2 w-full h-screen bg-green-400`}>
+    if (!getIsLoadingPageOpen) {
+        if (Object.keys(getDisplayData).length !== 0) {
+            return (
+                <div className="text-[1.7vh] relative flex min-h-screen flex-col">
+                    <div className={`flex ${getParamTemplate ? 'w-full' : 'w-full'} items-start`}>
+                        <div className={`sticky top-0 ${getParamTemplate ? (getParamDisplay === 'desktop') ? 'w-full' : 'sm:w-full' : 'sm:w-full'}`}>
+                            <div className={`${getParamTemplate ? (getParamDisplay === 'desktop') ? '' : 'hidden sm:block' : 'hidden sm:block'} p-2 w-full h-screen bg-green-400`}>
+                                {
+                                    getDisplayData?.data?.map((currentValue, index) => {
+                                        return (
+                                            <div
+                                                key={index}>
+                                                <div
+                                                    onClick={() => {
+                                                        gsap.to(window, {
+                                                            duration: 1,
+                                                            scrollTo: {
+                                                                y: `#display_data_${index + 1}`
+                                                            }
+                                                        })
+                                                    }}
+                                                >Go to item {index + 1}</div>
+                                            </div>
+                                        )
+                                    })
+                                }
+                                <div>{getDisplayData?.data[getCurrentDisplayIndex]?.item_name}</div>
+                            </div>
+                        </div>
+                        <div className={`${getParamTemplate ? (getParamDisplay === 'desktop') ? ' max-w-[40vw] min-w-[40vw]' : ' w-[100vw] sm:max-w-[40vw] sm:min-w-[40vw]' : ' w-[100vw] sm:max-w-[40vw] sm:min-w-[40vw]'}`}>
                             {
                                 getDisplayData?.data?.map((currentValue, index) => {
                                     return (
                                         <div
-                                            key={index}>
-                                            <div
-                                                onClick={() => {
-                                                    gsap.to(window, {
-                                                        duration: 1,
-                                                        scrollTo: {
-                                                            y: `#display_data_${index + 1}`
-                                                        }
-                                                    })
-                                                }}
-                                            >Go to item {index + 1}</div>
+                                            key={index}
+                                            ref={addRightSideRef}
+                                            id={`display_data_${index + 1}`}
+                                            className='h-[100vh] bg-blue-400'>
+                                            {getDisplayData?.data[index]?.item_name}
                                         </div>
                                     )
                                 })
                             }
-                            <div>{getDisplayData?.data[getCurrentDisplayIndex]?.item_name}</div>
                         </div>
                     </div>
-                    <div className={`${getParamTemplate ? (getParamDisplay === 'desktop') ? ' max-w-[40vw] min-w-[40vw]' : ' w-[100vw] sm:max-w-[40vw] sm:min-w-[40vw]' : ' w-[100vw] sm:max-w-[40vw] sm:min-w-[40vw]'}`}>
-                        {
-                            getDisplayData?.data?.map((currentValue, index) => {
-                                return (
-                                    <div
-                                        key={index}
-                                        ref={addRightSideRef}
-                                        id={`display_data_${index + 1}`}
-                                        className='h-[100vh] bg-blue-400'>
-                                        {getDisplayData?.data[index]?.item_name}
-                                    </div>
-                                )
-                            })
-                        }
-                    </div>
                 </div>
-            </div>
-        )
+            )
+        } else {
+            return WeddingCardNotFound()
+        }
     } else {
-        return (
-            <div>
-
-            </div>
-        )
+        return CircularLoadingPage()
     }
 }
 
