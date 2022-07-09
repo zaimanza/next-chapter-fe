@@ -75,10 +75,7 @@ const WeddingCardPage = () => {
                 const result = await _useEventModule.findWeddingCard({
                     nc_wedding_id: nc_wedding_id
                 })
-                console.log(result)
                 if (result?.error || !result) {
-                    console.log("lps")
-                    console.log(result)
                     if (result?.error?.error) {
                         setToastConfig({
                             message: "Website is unavailable. Please try again later.",
@@ -86,7 +83,6 @@ const WeddingCardPage = () => {
                         })
                         navigate("/500")
                     } else if (result?.error) {
-                        console.log("lps_3")
                         setToastConfig({
                             message: result?.error?.message ?? "Website is unavailable. Please try again later.",
                             mode: "error"
@@ -111,7 +107,6 @@ const WeddingCardPage = () => {
                 }
 
                 const timeout = setTimeout(() => {
-                    console.log("lalu timeout")
                     setIsLoadingPageOpen(false)
                     clearTimeout(timeout)
                 }, 2000)

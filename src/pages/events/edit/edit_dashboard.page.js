@@ -35,15 +35,11 @@ const EditDashboardPage = () => {
                 const result = await _useEventModule.isWeddingCardExists({
                     nc_wedding_id: nc_wedding_id
                 })
-                console.log(result)
                 if (result?.error || !result) {
-                    console.log("lps")
-                    console.log(result)
                     if (result?.error?.error) {
 
                         navigate("/500")
                     } else if (result?.error) {
-                        console.log("lps_3")
 
                         navigate("/wedding_card_not_found")
                     } else {
@@ -60,7 +56,6 @@ const EditDashboardPage = () => {
                 }
 
                 const timeout = setTimeout(() => {
-                    console.log("lalu timeout")
                     setIsLoadingPageOpen(false)
                     clearTimeout(timeout)
                 }, 2000)

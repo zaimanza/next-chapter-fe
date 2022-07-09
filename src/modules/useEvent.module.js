@@ -103,7 +103,6 @@ const useEventModule = () => {
 
         if (!result?.data) {
             if (result?.error) {
-                console.log(result?.error)
                 return {
                     error: result?.error ?? {
                         message: "Website is currently offline."
@@ -143,7 +142,6 @@ const useEventModule = () => {
 
         if (!result?.data) {
             if (result?.error) {
-                console.log(result?.error)
                 return {
                     error: result?.error ?? {
                         message: "Website is currently offline."
