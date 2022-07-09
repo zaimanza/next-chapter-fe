@@ -5,7 +5,7 @@ const HeaderComponent = ({
     getDisplayHeader
 }) => {
     return (
-        <div className=" h-full w-full">
+        <div className="relative h-full w-full">
             <div className="bg-red-400 absolute z-0 h-full w-full">
                 <img
                     src={getCurrentImg}

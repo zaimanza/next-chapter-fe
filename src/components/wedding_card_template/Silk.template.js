@@ -10,7 +10,6 @@ const SilkTemplate = ({
     gsap,
     event_font,
     getDisplayHeader,
-    getDisplayBody,
     getCurrentImg,
 }) => {
 
@@ -68,10 +67,61 @@ const SilkTemplate = ({
                                 ' w-[100vw] sm:max-w-[40vw] sm:min-w-[40vw]' :
                             ' w-[100vw] sm:max-w-[40vw] sm:min-w-[40vw]'
                         }` :
-                        `w-[100vw] md:max-w-[40vw] md:min-w-[40vw] justify-center`}`
+                        `w-[100vw] md:max-w-[40vw] md:min-w-[40vw] justify-center`
+                    } relative`
                 }>
-                    hi
-                    {getDisplayBody}
+                    <div className={`block ${getCurrentImg !== "" ? 'sm:hidden' : ''}  absolute z-[1] bg-green-400 h-[8vh] w-full`}>
+                        {
+                            getDisplayData?.data?.map((currentValue, index) => {
+                                return (
+                                    <div
+                                        key={index}>
+                                        <div
+                                            onClick={() => {
+                                                gsap.to(window, {
+                                                    duration: 1,
+                                                    scrollTo: {
+                                                        y: `#display_data_${index + 1}`
+                                                    }
+                                                })
+                                            }}
+                                        >Go to item {index + 1}</div>
+                                    </div>
+                                )
+                            })
+                        }
+                    </div>
+                    <div className={`block ${getCurrentImg !== "" ? 'sm:hidden' : ''} absolute z-[1] pt-1`}>as</div>
+                    {
+                        getDisplayData?.data?.map((currentValue, index) => {
+
+                            switch (currentValue?.item_title) {
+                                case 'Welcome':
+                                    return (
+                                        <div
+                                            key={index}
+                                            ref={addRightSideRef}
+                                            id={`display_data_${index + 1}`}
+                                            className='relative z-0 min-h-[100vh]'>
+
+
+                                            {
+                                                (getCurrentImg !== "") ? (<div className="block sm:hidden h-[100vh]">
+                                                    <HeaderComponent
+                                                        getCurrentImg={getCurrentImg}
+                                                        getDisplayHeader={getDisplayHeader}
+                                                    />
+                                                </div>) : null
+                                            }
+
+                                            <div className="  h-[100vh] bg-purple-400">{getDisplayData?.data[index]?.item_name}</div>
+                                        </div>
+                                    )
+                                default:
+                                    return (<div key={index}></div>)
+                            }
+                        })
+                    }
                 </div>
             </div>
         </div>

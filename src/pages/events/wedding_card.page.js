@@ -35,9 +35,9 @@ const WeddingCardPage = () => {
     const [getRightSiderefs, setRightSiderefs] = useState([])
 
     const [getIsLoadingPageOpen, setIsLoadingPageOpen] = useState(true)
-
+    // https://www.w3schools.com/howto/img_avatar2.png
     // eslint-disable-next-line no-unused-vars
-    const [getCurrentImg, setCurrentImg] = useState("https://www.w3schools.com/howto/img_avatar2.png")
+    const [getCurrentImg, setCurrentImg] = useState("")
 
     const handleIndex = async (state, index) => {
         var current_index = currentDisplayIndexRef.current
@@ -104,7 +104,6 @@ const WeddingCardPage = () => {
                         result?.data?.sort((a, b) => (a.index_position > b.index_position) ? 1 : -1)
                         setDisplayData(result)
                         SetHeader(result)
-                        SetBody(result)
                     } else {
                         navigate("/wedding_card_not_found")
                     }
@@ -165,7 +164,6 @@ const WeddingCardPage = () => {
     }
 
     const [getDisplayHeader, setDisplayHeader] = useState([])
-    const [getDisplayBody, setDisplayBody] = useState([])
 
     const SetHeader = async (result) => {
 
@@ -191,39 +189,6 @@ const WeddingCardPage = () => {
         setDisplayHeader(tempp_diaplay_header)
     }
 
-    const SetBody = async (result) => {
-        const tempp_diaplay_body = await result?.data?.map((currentValue, index) => {
-
-            switch (currentValue?.item_title) {
-                case 'Welcome':
-                    return (
-                        <div
-                            key={index}
-                            ref={addRightSideRef}
-                            id={`display_data_${index + 1}`}
-                            className='min-h-[100vh]'>
-
-                            <div className="h-[100vh] bg-blue-400">{result?.data[index]?.item_name}</div>
-                        </div>
-                    )
-                case 'eer':
-                    return (
-                        <div
-                            key={index}
-                            ref={addRightSideRef}
-                            id={`display_data_${index + 1}`}
-                            className='min-h-[100vh]'>
-
-                            <div className="h-[100vh] bg-red-400">{result?.data[index]?.item_name}</div>
-                        </div>
-                    )
-                default:
-                    return (<div key={index}></div>)
-            }
-        });
-        setDisplayBody(tempp_diaplay_body)
-    }
-
     if (!getIsLoadingPageOpen) {
         if (Object.keys(getDisplayData).length !== 0) {
             if (getDisplayData?.event_theme === 'silk') {
@@ -238,7 +203,6 @@ const WeddingCardPage = () => {
                         font_name: getDisplayData?.event_font
                     }),
                     getDisplayHeader: getDisplayHeader,
-                    getDisplayBody: getDisplayBody,
                     getCurrentImg: getCurrentImg
                 })
             } else {
