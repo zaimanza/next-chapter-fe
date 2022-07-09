@@ -22,24 +22,22 @@ import WeddingCardNotFound from './pages/error/WeddingCardNotFound.page';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <React.StrictMode>
-    <Provider store={store}>
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<WelcomePage />} />
-          <Route path="/auth" element={<PeopleAuthLayout />} />
-          <Route path="/auth/:ticket" element={<PeopleAuthLayout />} />
-          <Route path="/events" element={<EventsPage />} />
-          <Route path="/cv/:ticket" element={<ConfirmVerifyPage />} />
-          <Route path="/create_event" element={<CreateEventPage />} />
-          <Route path="/:nc_wedding_id" element={<WeddingCardPage />} />
-          <Route path="/:nc_wedding_id/edit" element={<EditDashboardPage />} />
-          <Route path="/:nc_wedding_id/card_detail" element={<CardDetailPage />} />
-          <Route path="/404" element={<Page404 />} />
-          <Route path="/500" element={<Page500 />} />
-          <Route path="/wedding_card_not_found" element={<WeddingCardNotFound />} />
-        </Routes>
-      </BrowserRouter>
-    </Provider>
-  </React.StrictMode>
+  <Provider store={store}>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<WelcomePage />} />
+        <Route path="/auth" element={<PeopleAuthLayout />} />
+        <Route path="/auth/:ticket" element={<PeopleAuthLayout />} />
+        <Route path="/events" element={<EventsPage />} />
+        <Route path="/cv/:ticket" element={<ConfirmVerifyPage />} />
+        <Route path="/create_event" element={<CreateEventPage />} />
+        <Route path="/:nc_wedding_id" element={<WeddingCardPage />} />
+        <Route path="/:nc_wedding_id/edit" element={<EditDashboardPage />} />
+        <Route path="/:nc_wedding_id/card_detail" element={<CardDetailPage />} />
+        <Route path="/404" element={<Page404 />} />
+        <Route path="/500" element={<Page500 />} />
+        <Route path="/wedding_card_not_found" element={<WeddingCardNotFound />} />
+      </Routes>
+    </BrowserRouter>
+  </Provider>
 )
