@@ -8,6 +8,7 @@ import CircularLoadingPage from '../error/circular_loading.page';
 import WeddingCardNotFound from '../error/WeddingCardNotFound.page';
 import SilkTemplate from '../../components/wedding_card_template/Silk.template';
 import GetFont from '../../utils/GetFont.util';
+import WelcomeHeader from '../../components/wedding_card_header/WelcomeHeader.component';
 
 gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
 
@@ -99,6 +100,7 @@ const WeddingCardPage = () => {
                     if (result.length !== 0) {
                         result?.data?.sort((a, b) => (a.index_position > b.index_position) ? 1 : -1)
                         setDisplayData(result)
+                        SetHeader(result)
                     } else {
                         navigate("/wedding_card_not_found")
                     }
@@ -157,6 +159,34 @@ const WeddingCardPage = () => {
         }
         setRightSiderefs(rightSideRefs.current)
     }
+
+    const [getDisplayHeader, setDisplayHeader] = useState([])
+
+    const SetHeader = async (result) => {
+
+        const tempp_diaplay_header = await result?.data?.map((currentValue, index) => {
+            console.log(currentValue)
+            console.log(result?.event_font)
+            switch (currentValue?.item_title) {
+                case 'Welcome':
+                    return (<WelcomeHeader
+                        key={index}
+                        header={currentValue?.header}
+                        event_font={
+                            GetFont({
+                                font_name: result?.event_font
+                            })
+                        }
+
+                    />)
+
+                default:
+                    return (<div key={index}></div>)
+            }
+        });
+        setDisplayHeader(tempp_diaplay_header)
+    }
+
     if (!getIsLoadingPageOpen) {
         if (Object.keys(getDisplayData).length !== 0) {
             if (getDisplayData?.event_theme === 'silk') {
@@ -170,6 +200,7 @@ const WeddingCardPage = () => {
                     event_font: GetFont({
                         font_name: getDisplayData?.event_font
                     }),
+                    getDisplayHeader: getDisplayHeader,
                 })
             } else {
                 return WeddingCardNotFound()
