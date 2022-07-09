@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { useLocation, useNavigate, useParams } from 'react-router-dom'
 import useEventModule from '../../modules/useEvent.module'
 import { gsap } from "gsap";
@@ -7,6 +7,7 @@ import { ScrollToPlugin } from "gsap/ScrollToPlugin";
 import CircularLoadingPage from '../error/circular_loading.page';
 import WeddingCardNotFound from '../error/WeddingCardNotFound.page';
 import SilkTemplate from '../../components/wedding_card_template/Silk.template';
+import GetFont from '../../utils/GetFont.util';
 
 gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
 
@@ -173,7 +174,9 @@ const WeddingCardPage = () => {
                     getCurrentDisplayIndex: getCurrentDisplayIndex,
                     addRightSideRef: addRightSideRef,
                     gsap: gsap,
-                    event_font: getDisplayData?.event_font,
+                    event_font: GetFont({
+                        font_name: getDisplayData?.event_font
+                    }),
                 })
             } else {
                 return WeddingCardNotFound()

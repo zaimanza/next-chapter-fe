@@ -5,7 +5,7 @@ module.exports = {
   ],
   theme: {
     fontFamily: {
-      'dancing-script': '"Dancing Script"'
+      'dancing-script': '"Dancing Script",system-ui'
     },
     extend: {},
   },

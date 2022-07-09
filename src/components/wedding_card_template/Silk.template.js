@@ -34,7 +34,7 @@ const SilkTemplate = ({
                                 )
                             })
                         }
-                        <div className={`font-${event_font}`}>{getDisplayData?.data[getCurrentDisplayIndex]?.item_name}</div>
+                        <div className={`${event_font}`}>{getDisplayData?.data[getCurrentDisplayIndex]?.item_name}</div>
                     </div>
                 </div>
                 <div className={`${getParamTemplate ? (getParamDisplay === 'desktop') ? ' max-w-[40vw] min-w-[40vw]' : ' w-[100vw] sm:max-w-[40vw] sm:min-w-[40vw]' : ' w-[100vw] sm:max-w-[40vw] sm:min-w-[40vw]'}`}>
@@ -53,7 +53,7 @@ const SilkTemplate = ({
                     }
                 </div>
             </div>
-        </div>
+        </div >
     )
 }
 
