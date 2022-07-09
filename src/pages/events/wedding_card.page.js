@@ -36,6 +36,8 @@ const WeddingCardPage = () => {
 
     const [getIsLoadingPageOpen, setIsLoadingPageOpen] = useState(true)
 
+    const [getCurrentImg, setCurrentImg] = useState("https://www.w3schools.com/howto/img_avatar2.png")
+
     const handleIndex = async (state, index) => {
         var current_index = currentDisplayIndexRef.current
         switch (state) {
@@ -201,6 +203,7 @@ const WeddingCardPage = () => {
                         font_name: getDisplayData?.event_font
                     }),
                     getDisplayHeader: getDisplayHeader,
+                    getCurrentImg: getCurrentImg
                 })
             } else {
                 return WeddingCardNotFound()
