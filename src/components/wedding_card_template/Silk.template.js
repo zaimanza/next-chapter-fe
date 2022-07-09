@@ -10,6 +10,7 @@ const SilkTemplate = ({
     gsap,
     event_font,
     getDisplayHeader,
+    getDisplayBody,
     getCurrentImg,
 }) => {
 
@@ -70,26 +71,7 @@ const SilkTemplate = ({
                         `w-[100vw] md:max-w-[40vw] md:min-w-[40vw] justify-center`}`
                 }>
                     hi
-                    {/* {
-                        (getDisplayData?.data) ? getDisplayData?.data?.map((currentValue, index) => {
-
-                            switch (currentValue?.item_title) {
-                                case 'Welcome':
-                                    return (
-                                        <div
-                                            key={index}
-                                            ref={addRightSideRef}
-                                            id={`display_data_${index + 1}`}
-                                            className='min-h-[100vh]'>
-
-                                            <div className="h-[100vh] bg-blue-400">{getDisplayData?.data[index]?.item_name}</div>
-                                        </div>
-                                    )
-                                default:
-                                    return (<div key={index}></div>)
-                            }
-                        }) : null
-                    } */}
+                    {getDisplayBody}
                 </div>
             </div>
         </div>
