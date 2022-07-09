@@ -69,7 +69,8 @@ const SilkTemplate = ({
                         }` :
                         `w-[100vw] md:max-w-[40vw] md:min-w-[40vw] justify-center`}`
                 }>
-                    {
+                    hi
+                    {/* {
                         (getDisplayData?.data) ? getDisplayData?.data?.map((currentValue, index) => {
 
                             switch (currentValue?.item_title) {
@@ -80,12 +81,7 @@ const SilkTemplate = ({
                                             ref={addRightSideRef}
                                             id={`display_data_${index + 1}`}
                                             className='min-h-[100vh]'>
-                                            <div className="h-[100vh] relative z-0 block sm:hidden">
-                                                <HeaderComponent
-                                                    getCurrentImg={getCurrentImg}
-                                                    getDisplayHeader={getDisplayHeader}
-                                                />
-                                            </div>
+
                                             <div className="h-[100vh] bg-blue-400">{getDisplayData?.data[index]?.item_name}</div>
                                         </div>
                                     )
@@ -93,7 +89,7 @@ const SilkTemplate = ({
                                     return (<div key={index}></div>)
                             }
                         }) : null
-                    }
+                    } */}
                 </div>
             </div>
         </div>
