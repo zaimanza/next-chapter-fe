@@ -1,4 +1,5 @@
 import React from 'react'
+import HeaderComponent from '../wedding_card_header/Header.component'
 
 const SilkTemplate = ({
     getDisplayData,
@@ -50,13 +51,10 @@ const SilkTemplate = ({
                                     }
                                 </div>
                                 <div className="absolute z-10 pt-1">as</div>
-                                <div className="bg-red-400 absolute z-0 h-full w-full">
-                                    <img
-                                        src={getCurrentImg}
-                                        alt="Avatar"
-                                        className="object-cover w-full h-full" />
-                                </div>
-                                {getDisplayHeader}
+                                <HeaderComponent
+                                    getCurrentImg={getCurrentImg}
+                                    getDisplayHeader={getDisplayHeader}
+                                />
                             </div>
                         </div>
                     ) : null
@@ -72,21 +70,33 @@ const SilkTemplate = ({
                         `w-[100vw] md:max-w-[40vw] md:min-w-[40vw] justify-center`}`
                 }>
                     {
-                        getDisplayData?.data?.map((currentValue, index) => {
-                            return (
-                                <div
-                                    key={index}
-                                    ref={addRightSideRef}
-                                    id={`display_data_${index + 1}`}
-                                    className='h-[100vh] bg-blue-400'>
-                                    {getDisplayData?.data[index]?.item_name}
-                                </div>
-                            )
-                        })
+                        (getDisplayData?.data) ? getDisplayData?.data?.map((currentValue, index) => {
+
+                            switch (currentValue?.item_title) {
+                                case 'Welcome':
+                                    return (
+                                        <div
+                                            key={index}
+                                            ref={addRightSideRef}
+                                            id={`display_data_${index + 1}`}
+                                            className='min-h-[100vh]'>
+                                            <div className="h-[100vh] relative z-0 block sm:hidden">
+                                                <HeaderComponent
+                                                    getCurrentImg={getCurrentImg}
+                                                    getDisplayHeader={getDisplayHeader}
+                                                />
+                                            </div>
+                                            <div className="h-[100vh] bg-blue-400">{getDisplayData?.data[index]?.item_name}</div>
+                                        </div>
+                                    )
+                                default:
+                                    return (<div key={index}></div>)
+                            }
+                        }) : null
                     }
                 </div>
             </div>
-        </div >
+        </div>
     )
 }
 
