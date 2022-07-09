@@ -72,7 +72,7 @@ const WeddingCardPage = () => {
             const initFunctionCall = async () => {
 
                 // findallByOwnerId
-                const result = await _useEventModule.findWeddingCard({
+                var result = await _useEventModule.findWeddingCard({
                     nc_wedding_id: nc_wedding_id
                 })
                 if (result?.error || !result) {
@@ -97,10 +97,8 @@ const WeddingCardPage = () => {
                     }
                 } else {
                     if (result.length !== 0) {
+                        result?.data?.sort((a, b) => (a.index_position > b.index_position) ? 1 : -1)
                         setDisplayData(result)
-
-
-
                     } else {
                         navigate("/wedding_card_not_found")
                     }
