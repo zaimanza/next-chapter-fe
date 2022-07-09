@@ -15,26 +15,31 @@ const SilkTemplate = ({
         <div className="text-[1.7vh] relative flex min-h-screen flex-col">
             <div className={`flex ${getParamTemplate ? 'w-full' : 'w-full'} items-start`}>
                 <div className={`sticky top-0 ${getParamTemplate ? (getParamDisplay === 'desktop') ? 'w-full' : 'sm:w-full' : 'sm:w-full'}`}>
-                    <div className={`${getParamTemplate ? (getParamDisplay === 'desktop') ? '' : 'hidden sm:block' : 'hidden sm:block'} overflow-hidden w-full h-screen bg-white`}>
-                        {/* {
-                            getDisplayData?.data?.map((currentValue, index) => {
-                                return (
-                                    <div
-                                        key={index}>
+                    <div className={`relative z-0  ${getParamTemplate ? (getParamDisplay === 'desktop') ? '' : 'hidden sm:block' : 'hidden sm:block'} overflow-hidden w-full h-screen bg-white`}>
+
+
+                        <div className="absolute z-10 bg-green-400 h-[8vh] w-full">
+                            {
+                                getDisplayData?.data?.map((currentValue, index) => {
+                                    return (
                                         <div
-                                            onClick={() => {
-                                                gsap.to(window, {
-                                                    duration: 1,
-                                                    scrollTo: {
-                                                        y: `#display_data_${index + 1}`
-                                                    }
-                                                })
-                                            }}
-                                        >Go to item {index + 1}</div>
-                                    </div>
-                                )
-                            })
-                        } */}
+                                            key={index}>
+                                            <div
+                                                onClick={() => {
+                                                    gsap.to(window, {
+                                                        duration: 1,
+                                                        scrollTo: {
+                                                            y: `#display_data_${index + 1}`
+                                                        }
+                                                    })
+                                                }}
+                                            >Go to item {index + 1}</div>
+                                        </div>
+                                    )
+                                })
+                            }
+                        </div>
+                        <div className="absolute z-10 pt-1">as</div>
                         {getDisplayHeader}
                     </div>
                 </div>
