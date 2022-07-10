@@ -37,7 +37,7 @@ const WeddingCardPage = () => {
     const [getIsLoadingPageOpen, setIsLoadingPageOpen] = useState(true)
     // https://www.w3schools.com/howto/img_avatar2.png
     // eslint-disable-next-line no-unused-vars
-    const [getCurrentImg, setCurrentImg] = useState("")
+    const [getCurrentImg, setCurrentImg] = useState("https://cdn.maskulin.com.my/2022/06/462868.jpeg")
 
     const handleIndex = async (state, index) => {
         var current_index = currentDisplayIndexRef.current

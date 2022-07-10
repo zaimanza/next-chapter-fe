@@ -14,7 +14,7 @@ const SilkTemplate = ({
 }) => {
 
     return (
-        <div className="text-[1.7vh] relative flex min-h-screen flex-col">
+        <div className="text-[1.7vh] relative flex min-h-screen flex-col bg-white">
             <div className={
                 `${(getCurrentImg !== "") ?
                     `flex ${getParamTemplate ?
@@ -50,7 +50,13 @@ const SilkTemplate = ({
                                         })
                                     }
                                 </div>
-                                <div className="absolute z-10 pt-1">as</div>
+                                <div className="absolute z-10">
+                                    <div>as</div>
+                                    <div>as</div>
+                                    <div>as</div>
+                                    <div>as</div>
+                                    <div>as</div>
+                                </div>
                                 <HeaderComponent
                                     getCurrentImg={getCurrentImg}
                                     getDisplayHeader={getDisplayHeader}
@@ -67,7 +73,11 @@ const SilkTemplate = ({
                                 ' w-[100vw] sm:max-w-[40vw] sm:min-w-[40vw]' :
                             ' w-[100vw] sm:max-w-[40vw] sm:min-w-[40vw]'
                         }` :
-                        `w-[100vw] md:max-w-[40vw] md:min-w-[40vw] justify-center`
+                        getParamTemplate ?
+                            (getParamDisplay === 'desktop') ?
+                                `max-w-[40vw] min-w-[40vw] justify-center shadow-md shadow-gray-600` :
+                                `w-[100vw] justify-center` :
+                            `w-[100vw] md:max-w-[40vw] md:min-w-[40vw] justify-center shadow-lg shadow-gray-600`
                     } relative`
                 }>
                     <div className={`block ${getCurrentImg !== "" ? 'sm:hidden' : ''}  absolute z-[1] bg-green-400 h-[8vh] w-full`}>
@@ -91,7 +101,13 @@ const SilkTemplate = ({
                             })
                         }
                     </div>
-                    <div className={`block ${getCurrentImg !== "" ? 'sm:hidden' : ''} absolute z-[1] pt-1`}>as</div>
+                    <div className={`block ${getCurrentImg !== "" ? 'sm:hidden' : ''} absolute z-[1] pt-1`}>
+                        <div>as</div>
+                        <div>as</div>
+                        <div>as</div>
+                        <div>as</div>
+                        <div>as</div>
+                    </div>
                     {
                         getDisplayData?.data?.map((currentValue, index) => {
 
