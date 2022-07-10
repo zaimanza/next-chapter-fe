@@ -20,7 +20,7 @@ const SilkTemplate = ({
                     `flex ${getParamTemplate ?
                         'w-full' :
                         'w-full'} items-start` :
-                    `flex justify-center items-center shadow-lg`
+                    `flex justify-center items-center`
                 }`
             }>
                 {
@@ -75,21 +75,22 @@ const SilkTemplate = ({
                         }` :
                         getParamTemplate ?
                             (getParamDisplay === 'desktop') ?
-                                `max-w-[40vw] min-w-[40vw] justify-center shadow-md shadow-gray-600` :
+                                `max-w-[40vw] min-w-[40vw] justify-center shadow-[0_0px_6px_0px] shadow-gray-400` :
                                 `w-[100vw] justify-center` :
-                            `w-[100vw] md:max-w-[40vw] md:min-w-[40vw] justify-center shadow-lg shadow-gray-600`
+                            `w-[100vw] md:max-w-[40vw] md:min-w-[40vw] justify-center shadow-[0_0px_10px_0px] shadow-gray-400`
                     } relative`
                 }>
-                    <div className={
-                        `block ${getCurrentImg !== "" ?
-                            getParamTemplate ?
-                                (getParamDisplay === 'desktop') ?
-                                    `hidden` :
-                                    `` :
-                                'sm:hidden' :
-                            ''
-                        }  absolute z-[1] bg-green-400 h-[8vh] w-full`
-                    }>
+                    <div
+                        className={
+                            `block ${getCurrentImg !== "" ?
+                                getParamTemplate ?
+                                    (getParamDisplay === 'desktop') ?
+                                        `hidden` :
+                                        `` :
+                                    'sm:hidden' :
+                                ''
+                            }  absolute z-[1] bg-green-400 h-[8vh] w-full`
+                        }>
                         {
                             getDisplayData?.data?.map((currentValue, index) => {
                                 return (
@@ -110,22 +111,21 @@ const SilkTemplate = ({
                             })
                         }
                     </div>
-                    <div className={`block ${getCurrentImg !== "" ?
-                        getParamTemplate ?
-                            (getParamDisplay === 'desktop') ?
-                                `hidden` :
-                                `` :
-                            'sm:hidden' :
-                        ''
-                        } absolute z-[1] pt-1`}>
+                    <div
+                        className={`block ${getCurrentImg !== "" ?
+                            getParamTemplate ?
+                                (getParamDisplay === 'desktop') ?
+                                    `hidden` :
+                                    `` :
+                                'sm:hidden' :
+                            ''
+                            } absolute z-[1] pt-1`}>
                         <div>as</div>
                         <div>as</div>
                         <div>as</div>
                         <div>as</div>
                         <div>as</div>
                     </div>
-
-
                     {
                         (getCurrentImg !== "") ? (<div className={`block ${getCurrentImg !== "" ?
                             getParamTemplate ?
