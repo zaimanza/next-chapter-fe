@@ -80,7 +80,16 @@ const SilkTemplate = ({
                             `w-[100vw] md:max-w-[40vw] md:min-w-[40vw] justify-center shadow-lg shadow-gray-600`
                     } relative`
                 }>
-                    <div className={`block ${getCurrentImg !== "" ? 'sm:hidden' : ''}  absolute z-[1] bg-green-400 h-[8vh] w-full`}>
+                    <div className={
+                        `block ${getCurrentImg !== "" ?
+                            getParamTemplate ?
+                                (getParamDisplay === 'desktop') ?
+                                    `hidden` :
+                                    `` :
+                                'sm:hidden' :
+                            ''
+                        }  absolute z-[1] bg-green-400 h-[8vh] w-full`
+                    }>
                         {
                             getDisplayData?.data?.map((currentValue, index) => {
                                 return (
@@ -101,13 +110,37 @@ const SilkTemplate = ({
                             })
                         }
                     </div>
-                    <div className={`block ${getCurrentImg !== "" ? 'sm:hidden' : ''} absolute z-[1] pt-1`}>
+                    <div className={`block ${getCurrentImg !== "" ?
+                        getParamTemplate ?
+                            (getParamDisplay === 'desktop') ?
+                                `hidden` :
+                                `` :
+                            'sm:hidden' :
+                        ''
+                        } absolute z-[1] pt-1`}>
                         <div>as</div>
                         <div>as</div>
                         <div>as</div>
                         <div>as</div>
                         <div>as</div>
                     </div>
+
+
+                    {
+                        (getCurrentImg !== "") ? (<div className={`block ${getCurrentImg !== "" ?
+                            getParamTemplate ?
+                                (getParamDisplay === 'desktop') ?
+                                    `hidden` :
+                                    `` :
+                                'sm:hidden' :
+                            ''
+                            } h-[100vh]`}>
+                            <HeaderComponent
+                                getCurrentImg={getCurrentImg}
+                                getDisplayHeader={getDisplayHeader}
+                            />
+                        </div>) : null
+                    }
                     {
                         getDisplayData?.data?.map((currentValue, index) => {
 
@@ -120,15 +153,6 @@ const SilkTemplate = ({
                                             id={`display_data_${index + 1}`}
                                             className='relative z-0 min-h-[100vh]'>
 
-
-                                            {
-                                                (getCurrentImg !== "") ? (<div className="block sm:hidden h-[100vh]">
-                                                    <HeaderComponent
-                                                        getCurrentImg={getCurrentImg}
-                                                        getDisplayHeader={getDisplayHeader}
-                                                    />
-                                                </div>) : null
-                                            }
 
                                             <div className="  h-[100vh] bg-purple-400">{getDisplayData?.data[index]?.item_name}</div>
                                         </div>
