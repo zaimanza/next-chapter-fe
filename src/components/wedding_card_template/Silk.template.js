@@ -80,52 +80,60 @@ const SilkTemplate = ({
                             `w-[100vw] md:max-w-[40vw] md:min-w-[40vw] justify-center shadow-[0_0px_10px_0px] shadow-gray-400`
                     } relative`
                 }>
-                    <div
-                        className={
-                            `block ${getCurrentImg !== "" ?
-                                getParamTemplate ?
-                                    (getParamDisplay === 'desktop') ?
-                                        `hidden` :
-                                        `` :
-                                    'sm:hidden' :
-                                ''
-                            }  absolute z-[1] bg-green-400 h-[8vh] w-full`
-                        }>
-                        {
-                            getDisplayData?.data?.map((currentValue, index) => {
-                                return (
-                                    <div
-                                        key={index}>
-                                        <div
-                                            onClick={() => {
-                                                gsap.to(window, {
-                                                    duration: 1,
-                                                    scrollTo: {
-                                                        y: `#display_data_${index + 1}`
-                                                    }
-                                                })
-                                            }}
-                                        >Go to item {index + 1}</div>
-                                    </div>
-                                )
-                            })
-                        }
+                    <div className="absolute z-[1] w-full h-full">
+                        <viv className="sticky top-0 w-full h-full ">
+                            <div className="relative w-full h-[100vh]">
+                                <div
+                                    className={
+                                        `block ${getCurrentImg !== "" ?
+                                            getParamTemplate ?
+                                                (getParamDisplay === 'desktop') ?
+                                                    `hidden` :
+                                                    `` :
+                                                'sm:hidden' :
+                                            ''
+                                        }  absolute bg-green-400 h-[8vh] w-full`
+                                    }>
+                                    {
+                                        getDisplayData?.data?.map((currentValue, index) => {
+                                            return (
+                                                <div
+                                                    key={index}>
+                                                    <div
+                                                        onClick={() => {
+                                                            gsap.to(window, {
+                                                                duration: 1,
+                                                                scrollTo: {
+                                                                    y: `#display_data_${index + 1}`
+                                                                }
+                                                            })
+                                                        }}
+                                                    >Go to item {index + 1}</div>
+                                                </div>
+                                            )
+                                        })
+                                    }
+                                </div>
+                                <div
+                                    className={`block ${getCurrentImg !== "" ?
+                                        getParamTemplate ?
+                                            (getParamDisplay === 'desktop') ?
+                                                `hidden` :
+                                                `` :
+                                            'sm:hidden' :
+                                        ''
+                                        } absolute z-[1] pt-1`}>
+                                    <div>as</div>
+                                    <div>as</div>
+                                    <div>as</div>
+                                    <div>as</div>
+                                    <div>as</div>
+                                </div>
+                            </div>
+                        </viv>
                     </div>
-                    <div
-                        className={`block ${getCurrentImg !== "" ?
-                            getParamTemplate ?
-                                (getParamDisplay === 'desktop') ?
-                                    `hidden` :
-                                    `` :
-                                'sm:hidden' :
-                            ''
-                            } absolute z-[1] pt-1`}>
-                        <div>as</div>
-                        <div>as</div>
-                        <div>as</div>
-                        <div>as</div>
-                        <div>as</div>
-                    </div>
+
+
                     {
                         (getCurrentImg !== "") ? (<div className={`block ${getCurrentImg !== "" ?
                             getParamTemplate ?
