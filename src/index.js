@@ -19,7 +19,7 @@ import CardDetailPage from './pages/events/edit/card_detail.page';
 import Page404 from './pages/error/404.page';
 import Page500 from './pages/error/500.page';
 import WeddingCardNotFound from './pages/error/WeddingCardNotFound.page';
-import Dummy from './components/wedding_card_template/dummy';
+import Dummy from './components/wedding_card_template/Silk.template';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -38,7 +38,6 @@ root.render(
         <Route path="/404" element={<Page404 />} />
         <Route path="/500" element={<Page500 />} />
         <Route path="/wedding_card_not_found" element={<WeddingCardNotFound />} />
-        <Route path="/dummy" element={<Dummy />} />
       </Routes>
     </BrowserRouter>
   </Provider>

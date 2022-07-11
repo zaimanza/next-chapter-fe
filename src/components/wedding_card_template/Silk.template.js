@@ -1,154 +1,105 @@
 import React from 'react'
-import HeaderComponent from '../wedding_card_header/Header.component'
+import GetFont from '../../utils/GetFont.util'
+import WelcomeHeader from '../wedding_card_header/WelcomeHeader.component'
 
 const SilkTemplate = ({
     getDisplayData,
-    getParamTemplate,
-    getParamDisplay,
-    getCurrentDisplayIndex,
     addRightSideRef,
     gsap,
-    event_font,
-    getDisplayHeader,
     getCurrentImg,
 }) => {
 
-    return (
-        <div className="text-[1.7vh] relative flex min-h-screen flex-col bg-white">
-            <div className={
-                `${(getCurrentImg !== "") ?
-                    `flex ${getParamTemplate ?
-                        'w-full' :
-                        'w-full'} items-start` :
-                    `flex justify-center items-center`
-                }`
-            }>
-                {
-                    (getCurrentImg !== "") ? (
-                        <div className={`sticky top-0 ${getParamTemplate ? (getParamDisplay === 'desktop') ? 'w-full' : 'sm:w-full' : 'sm:w-full'}`}>
-                            <div className={`relative z-0  ${getParamTemplate ? (getParamDisplay === 'desktop') ? '' : 'hidden sm:block' : 'hidden sm:block'} overflow-hidden w-full h-screen bg-white`}>
-                                {/* img here */}
-
-                                <div className="absolute z-10 bg-green-400 h-[8vh] w-full">
-                                    {
-                                        getDisplayData?.data?.map((currentValue, index) => {
-                                            return (
-                                                <div
-                                                    key={index}>
-                                                    <div
-                                                        onClick={() => {
-                                                            gsap.to(window, {
-                                                                duration: 1,
-                                                                scrollTo: {
-                                                                    y: `#display_data_${index + 1}`
-                                                                }
-                                                            })
-                                                        }}
-                                                    >Go to item {index + 1}</div>
-                                                </div>
-                                            )
-                                        })
-                                    }
-                                </div>
-                                <div className="absolute z-10">
-                                    <div>as</div>
-                                    <div>as</div>
-                                    <div>as</div>
-                                    <div>as</div>
-                                    <div>as</div>
-                                </div>
-                                <HeaderComponent
-                                    getCurrentImg={getCurrentImg}
-                                    getDisplayHeader={getDisplayHeader}
-                                />
-                            </div>
-                        </div>
-                    ) : null
-                }
-                <div className={
-                    `${(getCurrentImg !== "") ?
-                        `${getParamTemplate ?
-                            (getParamDisplay === 'desktop') ?
-                                ' max-w-[40vw] min-w-[40vw]' :
-                                ' w-[100vw] sm:max-w-[40vw] sm:min-w-[40vw]' :
-                            ' w-[100vw] sm:max-w-[40vw] sm:min-w-[40vw]'
-                        }` :
-                        getParamTemplate ?
-                            (getParamDisplay === 'desktop') ?
-                                `max-w-[40vw] min-w-[40vw] justify-center shadow-[0_0px_6px_0px] shadow-gray-400` :
-                                `w-[100vw] justify-center` :
-                            `w-[100vw] md:max-w-[40vw] md:min-w-[40vw] justify-center shadow-[0_0px_10px_0px] shadow-gray-400`
-                    } relative`
-                }>
-                    <div className="absolute z-[1] w-full h-full">
-                        <div className="sticky top-0 w-full h-full ">
-                            <div className="relative w-full h-[100vh]">
-                                <div
-                                    className={
-                                        `block ${getCurrentImg !== "" ?
-                                            getParamTemplate ?
-                                                (getParamDisplay === 'desktop') ?
-                                                    `hidden` :
-                                                    `` :
-                                                'sm:hidden' :
-                                            ''
-                                        }  absolute bg-green-400 h-[8vh] w-full`
-                                    }>
-                                    {
-                                        getDisplayData?.data?.map((currentValue, index) => {
-                                            return (
-                                                <div
-                                                    key={index}>
-                                                    <div
-                                                        onClick={() => {
-                                                            gsap.to(window, {
-                                                                duration: 1,
-                                                                scrollTo: {
-                                                                    y: `#display_data_${index + 1}`
-                                                                }
-                                                            })
-                                                        }}
-                                                    >Go to item {index + 1}</div>
-                                                </div>
-                                            )
-                                        })
-                                    }
-                                </div>
-                                <div
-                                    className={`block ${getCurrentImg !== "" ?
-                                        getParamTemplate ?
-                                            (getParamDisplay === 'desktop') ?
-                                                `hidden` :
-                                                `` :
-                                            'sm:hidden' :
-                                        ''
-                                        } absolute z-[1] pt-1`}>
-                                    <div>as</div>
-                                    <div>as</div>
-                                    <div>as</div>
-                                    <div>as</div>
-                                    <div>as</div>
-                                </div>
-                            </div>
-                        </div>
+    const LeftComponent = () => {
+        return (
+            <div className="bg-yellow-400 h-[100vh]">
+                <div className="relative h-full w-full">
+                    <div className="bg-pink-400 absolute h-full w-full">
+                        <img
+                            src={getCurrentImg}
+                            alt="Avatar"
+                            className="object-cover w-full h-full" />
                     </div>
-
-
                     {
-                        (getCurrentImg !== "") ? (<div className={`block ${getCurrentImg !== "" ?
-                            getParamTemplate ?
-                                (getParamDisplay === 'desktop') ?
-                                    `hidden` :
-                                    `` :
-                                'sm:hidden' :
-                            ''
-                            } h-[100vh]`}>
-                            <HeaderComponent
-                                getCurrentImg={getCurrentImg}
-                                getDisplayHeader={getDisplayHeader}
-                            />
-                        </div>) : null
+                        getDisplayData?.data?.map((currentValue, index) => {
+
+                            switch (currentValue?.item_title) {
+                                case 'Welcome':
+                                    return (<WelcomeHeader
+                                        key={index}
+                                        header={currentValue?.header}
+                                        event_font={
+                                            GetFont({
+                                                font_name: getDisplayData?.event_font
+                                            })
+                                        }
+
+                                    />)
+
+                                default:
+                                    return (<div key={index}></div>)
+                            }
+                        })
                     }
+                </div>
+            </div>
+        )
+    }
+
+    const HeaderComponent = () => {
+        return (
+            <div>
+                <div className="absolute h-16 bg-green-400 w-full">
+                    BARNAV
+                </div>
+                <div className="absolute">
+                    {
+                        getDisplayData?.data?.map((currentValue, index) => {
+                            return (
+                                <div
+                                    key={index}>
+                                    <div
+                                        onClick={() => {
+                                            gsap.to(window, {
+                                                duration: 1,
+                                                scrollTo: {
+                                                    y: `#display_data_${index + 1}`
+                                                }
+                                            })
+                                        }}
+                                    >Go to item {index + 1}</div>
+                                </div>
+                            )
+                        })
+                    }
+                </div>
+            </div>
+        )
+    }
+
+
+    return (
+        <div className="text-[1.7vh] flex items-start bg-white">
+            <div className='text-black sticky top-0 hidden sm:block h-[100vh] w-full'>
+
+                <div className="absolute w-full ">
+                    <div className="relative w-full z-50">
+                        <HeaderComponent />
+                    </div>
+                </div>
+
+                <LeftComponent />
+            </div>
+            <div className='w-full sm:min-w-[530px] sm:max-w-[580px]'>
+                <div id="body-navbar" className="fixed z-50 flex w-full sm:min-w-[530px] sm:max-w-[580px]">
+                    <div className="relative w-full block sm:hidden">
+                        <HeaderComponent />
+                    </div>
+                </div>
+
+                <div id="body" className="">
+                    <div className="block sm:hidden">
+                        <LeftComponent />
+                    </div>
                     {
                         getDisplayData?.data?.map((currentValue, index) => {
 
@@ -159,10 +110,31 @@ const SilkTemplate = ({
                                             key={index}
                                             ref={addRightSideRef}
                                             id={`display_data_${index + 1}`}
-                                            className='relative z-0 min-h-[100vh]'>
+                                            className='relative h-[100vh] min-h-[50rem] sm:h-[100vh] sm:min-h-[100vh]'>
+
+                                            <div className="absolute h-[100vh] min-h-[50rem] sm:h-[100vh] sm:min-h-[100vh] w-full">
+                                                <img
+                                                    alt="ss"
+                                                    className=" object-cover h-[100vh] min-h-[50rem] sm:h-[100vh] sm:min-h-[100vh] w-full"
+                                                    src="https://aliveinvite.com/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbHhYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--813fb1481ee2552eda4282e915d2780dc8d469ea/Syazwani-Main.png">
+
+                                                </img>
+                                            </div>
+                                            <div className="absolute h-[100vh] min-h-[50rem] sm:h-[100vh] sm:min-h-[100vh] w-full flex justify-center items-center ">
+                                                <div>{getDisplayData?.data[index]?.item_name}</div>
+                                            </div>
+                                        </div>
+                                    )
+                                case 'ref':
+                                    return (
+                                        <div
+                                            key={index}
+                                            ref={addRightSideRef}
+                                            id={`display_data_${index + 1}`}
+                                            className='relative min-h-[100vh]'>
 
 
-                                            <div className="  h-[100vh] bg-purple-400">{getDisplayData?.data[index]?.item_name}</div>
+                                            <div className="  h-[100vh] bg-red-400">{getDisplayData?.data[index]?.item_name}</div>
                                         </div>
                                     )
                                 default:
@@ -177,3 +149,4 @@ const SilkTemplate = ({
 }
 
 export default SilkTemplate
+

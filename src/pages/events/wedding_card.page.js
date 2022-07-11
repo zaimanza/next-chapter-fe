@@ -37,7 +37,7 @@ const WeddingCardPage = () => {
     const [getIsLoadingPageOpen, setIsLoadingPageOpen] = useState(true)
     // https://www.w3schools.com/howto/img_avatar2.png
     // eslint-disable-next-line no-unused-vars
-    const [getCurrentImg, setCurrentImg] = useState("https://cdn.maskulin.com.my/2022/06/462868.jpeg")
+    const [getCurrentImg, setCurrentImg] = useState("https://assets.vogue.com/photos/61b388f4d44d041a901d9d7c/master/pass/Katrina%20Kaif%20Sabyasachi%20wedding%20lehenga%20Vicky%20Kaushal.jpg")
 
     const handleIndex = async (state, index) => {
         var current_index = currentDisplayIndexRef.current
