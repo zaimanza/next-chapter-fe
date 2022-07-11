@@ -48,7 +48,7 @@ const SilkTemplate = ({
     const HeaderComponent = () => {
         return (
             <div>
-                <div className="absolute h-16 bg-green-400 w-full">
+                <div className="absolute h-[7vh] bg-green-400 w-full">
                     BARNAV
                 </div>
                 <div className="absolute">
