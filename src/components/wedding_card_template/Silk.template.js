@@ -81,7 +81,7 @@ const SilkTemplate = ({
                     } relative`
                 }>
                     <div className="absolute z-[1] w-full h-full">
-                        <viv className="sticky top-0 w-full h-full ">
+                        <div className="sticky top-0 w-full h-full ">
                             <div className="relative w-full h-[100vh]">
                                 <div
                                     className={
@@ -130,7 +130,7 @@ const SilkTemplate = ({
                                     <div>as</div>
                                 </div>
                             </div>
-                        </viv>
+                        </div>
                     </div>
 
 
