@@ -7,6 +7,8 @@ const SilkTemplate = ({
     addRightSideRef,
     gsap,
     getCurrentImg,
+    getParamTemplate,
+    getParamDisplay,
 }) => {
 
     const LeftComponent = () => {
@@ -44,7 +46,7 @@ const SilkTemplate = ({
             </div>
         )
     }
-
+    console.log(getParamTemplate)
     const HeaderComponent = () => {
         return (
             <div>
@@ -82,9 +84,19 @@ const SilkTemplate = ({
 
             {
                 getCurrentImg !== "" ? (
-                    <div className='text-black sticky top-0 hidden sm:block h-[100vh] w-full'>
-                        <div className="absolute w-full ">
-                            <div className="relative w-full z-50">
+                    <div
+                        className={`text-black sticky top-0 h-[100vh] w-full ${getParamTemplate === 'true' ?
+                            getParamDisplay === 'desktop' ?
+                                `` :
+                                `hidden` :
+                            `hidden sm:block`}`}
+                    >
+                        <div
+                            className="absolute w-full "
+                        >
+                            <div
+                                className="relative w-full z-50"
+                            >
                                 <HeaderComponent />
                             </div>
                         </div>
@@ -92,11 +104,27 @@ const SilkTemplate = ({
                     </div>
                 ) : null
             }
-            <div className={`w-full sm:min-w-[530px] sm:max-w-[580px] ${getCurrentImg !== "" ?
-                `` :
-                `w-full `}`}>
-                <div id="body-navbar" className="fixed z-50 flex w-full sm:min-w-[530px] sm:max-w-[580px]">
-                    <div className={`relative w-full block ${getCurrentImg !== "" ? `sm:hidden` : ``}`}>
+            <div className={`w-full ${getCurrentImg !== "" ?
+                getParamTemplate === 'true' ?
+                    getParamDisplay === 'desktop' ?
+                        `min-w-[30vw] max-w-[30vw]` :
+                        `sm:min-w-[30vw] sm:max-w-[30vw]` :
+                    `sm:min-w-[530px] sm:max-w-[30vw]` :
+                `sm:min-w-[530px] sm:max-w-[30vw] w-full`}`}>
+                <div id="body-navbar" className={`fixed z-50 flex w-full ${getCurrentImg !== "" ?
+                    getParamTemplate === 'true' ?
+                        getParamDisplay === 'desktop' ?
+                            `min-w-[30vw] max-w-[30vw]` :
+                            `sm:min-w-[30vw] sm:max-w-[30vw]` :
+                        `sm:min-w-[530px] sm:max-w-[30vw]` :
+                    `sm:min-w-[530px] sm:max-w-[30vw] w-full`}`}>
+                    <div className={`relative w-full block ${getCurrentImg !== "" ?
+                        getParamTemplate === 'true' ?
+                            getParamDisplay === 'desktop' ?
+                                `hidden` :
+                                `` :
+                            `sm:hidden` :
+                        ``}`}>
                         <HeaderComponent />
                     </div>
                 </div>
@@ -104,7 +132,13 @@ const SilkTemplate = ({
                 <div id="body" className="">
                     {
                         getCurrentImg !== "" ? (
-                            <div className="block sm:hidden">
+                            <div
+                                className={`${getParamTemplate === 'true' ?
+                                    getParamDisplay === 'desktop' ?
+                                        `hidden` :
+                                        `` :
+                                    `block sm:hidden`}`}
+                            >
                                 <LeftComponent />
                             </div>
                         ) : null
@@ -119,16 +153,27 @@ const SilkTemplate = ({
                                             key={index}
                                             ref={addRightSideRef}
                                             id={`display_data_${index + 1}`}
-                                            className='relative h-[100vh] min-h-[50rem] sm:h-[100vh] sm:min-h-[100vh]'>
+                                            className={`relative ${getParamTemplate === 'true' ?
+                                                `h-[100vh]` :
+                                                `h-[100vh] min-h-[50rem] sm:h-[100vh] sm:min-h-[100vh]`}`}
+                                        >
 
-                                            <div className="absolute h-[100vh] min-h-[50rem] sm:h-[100vh] sm:min-h-[100vh] w-full">
+                                            <div
+                                                className={`absolute w-full  ${getParamTemplate === 'true' ?
+                                                    `h-[100vh]` :
+                                                    `h-[100vh] min-h-[50rem] sm:h-[100vh] sm:min-h-[100vh]`}`}
+                                            >
                                                 <img
                                                     alt="ss"
-                                                    className=" object-cover h-[100vh] min-h-[50rem] sm:h-[100vh] sm:min-h-[100vh] w-full"
+                                                    className={`object-cover object-center w-full  ${getParamTemplate === 'true' ?
+                                                        `h-[100vh]` :
+                                                        `h-[100vh] min-h-[50rem] sm:h-[100vh] sm:min-h-[100vh]`}`}
                                                     src="https://aliveinvite.com/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbHhYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--813fb1481ee2552eda4282e915d2780dc8d469ea/Syazwani-Main.png" />
 
                                             </div>
-                                            <div className="absolute h-[100vh] min-h-[50rem] sm:h-[100vh] sm:min-h-[100vh] w-full flex justify-center items-center ">
+                                            <div className={`absolute w-full flex justify-center items-center ${getParamTemplate === 'true' ?
+                                                ` min-h-[100vh]` :
+                                                `h-[100vh] min-h-[50rem] sm:h-[100vh] sm:min-h-[100vh]`}`}>
                                                 <div>{getDisplayData?.data[index]?.item_name}</div>
                                             </div>
                                         </div>
