@@ -119,7 +119,7 @@ const EditDashboardPage = () => {
                     <div className="text-center mt-6">
                         <button
                             className="bg-gray-900 text-white active:bg-gray-600 text-sm font-bold uppercase px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 w-full ease-linear transition-all duration-150"
-                            type="submit"
+                            type="button"
                         // onClick={handleSubmit}
                         >
                             Launch Event
@@ -127,7 +127,7 @@ const EditDashboardPage = () => {
                     </div>
                 </div>
                 <div className="flex">
-                    <div className="bg-white shadow-sm max-w-[700px] w-full sm:min-w-[500px] h-screen overflow-hidden">
+                    <div className="bg-white shadow-sm max-w-[700px] w-full sm:min-w-[500px] h-[100vh] overflow-hidden">
                         {/* app_bar */}
                         <div
                             className="fixed sm:static bg-white w-full mx-auto max-w-container px-4 sm:px-6 lg:px-8">

@@ -35,9 +35,10 @@ const WeddingCardPage = () => {
     const [getRightSiderefs, setRightSiderefs] = useState([])
 
     const [getIsLoadingPageOpen, setIsLoadingPageOpen] = useState(true)
+    const [getIsHamburgerOpen, setIsHamburgerOpen] = useState(false)
     // https://www.w3schools.com/howto/img_avatar2.png
     // eslint-disable-next-line no-unused-vars
-    const [getCurrentImg, setCurrentImg] = useState("https://assets.vogue.com/photos/61b388f4d44d041a901d9d7c/master/pass/Katrina%20Kaif%20Sabyasachi%20wedding%20lehenga%20Vicky%20Kaushal.jpg")
+    const [getCurrentImg, setCurrentImg] = useState("")
 
     const handleIndex = async (state, index) => {
         var current_index = currentDisplayIndexRef.current
@@ -156,6 +157,34 @@ const WeddingCardPage = () => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [getRightSiderefs])
 
+
+    useEffect(() => {
+        if (getRightSiderefs.length > 0) {
+            console.log("helo helo helo")
+
+            const handleClickOutside = (event) => {
+                if (event.target.id === "events_button") {
+                    navigate("/events");
+                }
+                else if (event.target.id === "profile_button") { }
+                else if (event.target.id === "hamburget_icon") {
+                    console.log("halt")
+                    setIsHamburgerOpen(!getIsHamburgerOpen)
+                }
+                else {
+                    // setIsHamburgerOpen(false)
+                }
+            }
+            // Bind the event listener
+            document.addEventListener('mousedown', handleClickOutside);
+            return () => {
+                // Unbind the event listener on clean up
+                document.removeEventListener('mousedown', handleClickOutside);
+            };
+        }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [getRightSiderefs]);
+
     const addRightSideRef = (el) => {
         if (el && !rightSideRefs.current.includes(el)) {
             rightSideRefs.current.push(el);
@@ -203,7 +232,9 @@ const WeddingCardPage = () => {
                         font_name: getDisplayData?.event_font
                     }),
                     getDisplayHeader: getDisplayHeader,
-                    getCurrentImg: getCurrentImg
+                    getCurrentImg: getCurrentImg,
+                    getIsHamburgerOpen: getIsHamburgerOpen,
+                    setIsHamburgerOpen: setIsHamburgerOpen,
                 })
             } else {
                 return WeddingCardNotFound()

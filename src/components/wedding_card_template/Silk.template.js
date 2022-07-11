@@ -9,6 +9,8 @@ const SilkTemplate = ({
     getCurrentImg,
     getParamTemplate,
     getParamDisplay,
+    getIsHamburgerOpen,
+    setIsHamburgerOpen,
 }) => {
 
     const LeftComponent = () => {
@@ -46,33 +48,46 @@ const SilkTemplate = ({
             </div>
         )
     }
-    console.log(getParamTemplate)
     const HeaderComponent = () => {
         return (
             <div>
-                <div className="absolute h-[7vh] bg-green-400 w-full">
-                    BARNAV
+
+                <div className="absolute h-[7vh] w-full flex justify-center flex-col">
+                    <button
+                        id="hamburget_icon"
+                        className="ml-[1vh] focus:outline-none bg-gray-900/[.3] w-min p-[1vh] rounded">
+
+                        <svg
+                            id="hamburget_icon"
+                            viewBox="0 0 24 24" className="h-[3vh] w-[3vh] stroke-white ">
+                            <path d="M3.75 12h16.5M3.75 6.75h16.5M3.75 17.25h16.5" fill="none" strokeWidth="1.5" strokeLinecap="round"></path>
+                        </svg>
+                    </button>
                 </div>
-                <div className="absolute">
-                    {
-                        getDisplayData?.data?.map((currentValue, index) => {
-                            return (
-                                <div
-                                    key={index}>
-                                    <div
-                                        onClick={() => {
-                                            gsap.to(window, {
-                                                duration: 1,
-                                                scrollTo: {
-                                                    y: `#display_data_${index + 1}`
-                                                }
-                                            })
-                                        }}
-                                    >Go to item {index + 1}</div>
-                                </div>
-                            )
-                        })
-                    }
+                <div className="absolute pl-[1vh] pt-[6vh]">
+                    {getIsHamburgerOpen ?
+                        <div className="bg-white rounded shadow-md w-[17vh]">
+                            {
+                                getDisplayData?.data?.map((currentValue, index) => {
+                                    return (
+                                        <div
+                                            key={index}
+                                            id={`hamburger_icon_${index + 1}`}
+                                            onClick={() => {
+                                                gsap.to(window, {
+                                                    duration: 1,
+                                                    scrollTo: {
+                                                        y: `#display_data_${index + 1}`
+                                                    }
+                                                })
+                                                setIsHamburgerOpen(!getIsHamburgerOpen)
+                                            }}
+                                            className='px-[2vh] py-[2vh] block hover:bg-gray-100 no-underline hover:no-underline truncate capitalize'
+                                        >{currentValue?.item_name}</div>
+                                    )
+                                })
+                            }
+                        </div> : null}
                 </div>
             </div>
         )
