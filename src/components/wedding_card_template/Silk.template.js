@@ -1,4 +1,6 @@
 import React from 'react'
+import GetDateDMNY from '../../utils/GetDateDMNY.util'
+import GetDayName from '../../utils/GetDayName.util'
 import GetFont from '../../utils/GetFont.util'
 import WelcomeHeader from '../wedding_card_header/WelcomeHeader.component'
 
@@ -190,10 +192,61 @@ const SilkTemplate = ({
                                                     src="https://aliveinvite.com/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbHhYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--813fb1481ee2552eda4282e915d2780dc8d469ea/Syazwani-Main.png" />
 
                                             </div>
-                                            <div className={`absolute w-full flex justify-center items-center ${getParamTemplate === 'true' ?
+                                            <div className={`absolute w-full flex flex-col text-center justify-center items-center ${getParamTemplate === 'true' ?
                                                 ` min-h-[100vh]` :
                                                 `h-[100vh] min-h-[50rem] sm:h-[100vh] sm:min-h-[100vh]`}`}>
-                                                <div>{getDisplayData?.data[index]?.item_name}</div>
+                                                <div className={`max-w-full px-[6vh]  font-['Cinzel'] capitalize line-clamp-1`}>{getDisplayData?.data[index]?.body?.wedding_title}</div>
+                                                {
+                                                    getCurrentImg !== "" &&
+                                                        (getDisplayData?.data[index]?.header?.title_name && getDisplayData?.data[index]?.header?.title_partner_name)
+                                                        ? (<>
+                                                            <br />
+                                                            <div className={`max-w-full px-[6vh]  font-['Cinzel'] capitalize ${getCurrentImg !== "" ?
+                                                                `text-[3.5vh]` :
+                                                                ``}`}
+                                                            >{GetDayName({
+                                                                date: getDisplayData?.data[index]?.body?.wedding_date
+                                                            })}</div>
+                                                            <div className={`max-w-full px-[6vh]  font-['Cinzel'] capitalize ${getCurrentImg !== "" ?
+                                                                `text-[4vh]` :
+                                                                ``}`}
+                                                            >{GetDateDMNY({
+                                                                date: getDisplayData?.data[index]?.body?.wedding_date
+                                                            })}</div>
+                                                        </>) : (<>
+                                                            <br />
+                                                            <div className={`max-w-full px-[6vh]  font-['Cinzel'] capitalize ${getCurrentImg !== "" ?
+                                                                `` :
+                                                                `text-[3.5vh]`}`}
+                                                            >
+
+                                                                <div className={` capitalize ${GetFont(
+                                                                    {
+                                                                        font_name: getDisplayData?.event_font
+                                                                    })
+                                                                    }`}>
+                                                                    <div className='line-clamp-2'>{getDisplayData?.data[index]?.header?.title_name}</div>
+                                                                    <div className=''>{" &"}</div>
+                                                                    <div className='line-clamp-2'>{getDisplayData?.data[index]?.header?.title_partner_name}</div>
+                                                                </div>
+                                                            </div>
+                                                            <br />
+                                                            <div className={`max-w-full px-[6vh]  font-['Cinzel'] capitalize ${getCurrentImg !== "" ?
+                                                                `` :
+                                                                ``}`}
+                                                            >
+                                                                {GetDayName({
+                                                                    date: getDisplayData?.data[index]?.body?.wedding_date
+                                                                })}
+                                                                {", "}
+                                                                {GetDateDMNY({
+                                                                    date: getDisplayData?.data[index]?.body?.wedding_date
+                                                                })}
+                                                            </div>
+                                                        </>)
+                                                }
+                                                <br />
+                                                <div className={`max-w-full px-[6vh]  font-['Cinzel'] capitalize line-clamp-5`}>{getDisplayData?.data[index]?.body?.wedding_location}</div>
                                             </div>
                                         </div>
                                     )

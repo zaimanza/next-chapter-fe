@@ -5,9 +5,13 @@ module.exports = {
   ],
   theme: {
     fontFamily: {
-      'dancing-script': '"Dancing Script",system-ui'
+      'dancing-script': '"Dancing Script",system-ui',
+      'cinzel': '"Cinzel",system-ui',
+      'cormorant_garamond': '"Cormorant Garamond",system-ui',
     },
     extend: {},
   },
-  plugins: [],
+  plugins: [
+    require('@tailwindcss/line-clamp'),
+  ],
 }
