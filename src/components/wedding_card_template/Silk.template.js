@@ -125,14 +125,18 @@ const SilkTemplate = ({
                         `min-w-[30vw] max-w-[30vw]` :
                         `sm:min-w-[30vw] sm:max-w-[30vw]` :
                     `sm:min-w-[530px] sm:max-w-[30vw]` :
-                `sm:min-w-[530px] sm:max-w-[30vw] w-full`}`}>
+                getParamTemplate === 'true' ?
+                    getParamDisplay === 'desktop' ?
+                        `w-[30vw]` :
+                        `` :
+                    ` sm:w-[530px]  w-full`}`}>
                 <div id="body-navbar" className={`fixed z-50 flex w-full ${getCurrentImg !== "" ?
                     getParamTemplate === 'true' ?
                         getParamDisplay === 'desktop' ?
                             `min-w-[30vw] max-w-[30vw]` :
                             `sm:min-w-[30vw] sm:max-w-[30vw]` :
                         `sm:min-w-[530px] sm:max-w-[30vw]` :
-                    `sm:min-w-[530px] sm:max-w-[30vw] w-full`}`}>
+                    `w-full`}`}>
                     <div className={`relative w-full block ${getCurrentImg !== "" ?
                         getParamTemplate === 'true' ?
                             getParamDisplay === 'desktop' ?
