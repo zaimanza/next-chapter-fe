@@ -197,7 +197,7 @@ const SilkTemplate = ({
                                                 `h-[100vh] min-h-[50rem] sm:h-[100vh] sm:min-h-[100vh]`}`}>
                                                 <div className={`max-w-full px-[6vh]  font-['Cinzel'] capitalize line-clamp-1`}>{getDisplayData?.data[index]?.body?.wedding_title}</div>
                                                 {
-                                                    getCurrentImg !== "" &&
+                                                    getCurrentImg !== "" && getDisplayData?.data[index]?.body?.wedding_date &&
                                                         (getDisplayData?.data[index]?.header?.title_name && getDisplayData?.data[index]?.header?.title_partner_name)
                                                         ? (<>
                                                             <br />
@@ -230,19 +230,23 @@ const SilkTemplate = ({
                                                                     <div className='line-clamp-2'>{getDisplayData?.data[index]?.header?.title_partner_name}</div>
                                                                 </div>
                                                             </div>
-                                                            <br />
-                                                            <div className={`max-w-full px-[6vh]  font-['Cinzel'] capitalize ${getCurrentImg !== "" ?
-                                                                `` :
-                                                                ``}`}
-                                                            >
-                                                                {GetDayName({
-                                                                    date: getDisplayData?.data[index]?.body?.wedding_date
-                                                                })}
-                                                                {", "}
-                                                                {GetDateDMNY({
-                                                                    date: getDisplayData?.data[index]?.body?.wedding_date
-                                                                })}
-                                                            </div>
+                                                            {
+                                                                getDisplayData?.data[index]?.body?.wedding_date && (<>
+                                                                    <br />
+                                                                    <div className={`max-w-full px-[6vh]  font-['Cinzel'] capitalize ${getCurrentImg !== "" ?
+                                                                        `` :
+                                                                        ``}`}
+                                                                    >
+                                                                        {GetDayName({
+                                                                            date: getDisplayData?.data[index]?.body?.wedding_date
+                                                                        })}
+                                                                        {", "}
+                                                                        {GetDateDMNY({
+                                                                            date: getDisplayData?.data[index]?.body?.wedding_date
+                                                                        })}
+                                                                    </div>
+                                                                </>)
+                                                            }
                                                         </>)
                                                 }
                                                 <br />

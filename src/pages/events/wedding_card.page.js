@@ -163,16 +163,18 @@ const WeddingCardPage = () => {
             console.log("helo helo helo")
 
             const handleClickOutside = (event) => {
-                if (event.target.id === "events_button") {
+                if (event?.target?.id === "events_button") {
                     navigate("/events");
                 }
-                else if (event.target.id === "profile_button") { }
-                else if (event.target.id === "hamburget_icon") {
+                else if (event?.target?.id === "profile_button") { }
+                else if (event?.target?.id === "hamburget_icon") {
                     console.log("halt")
                     setIsHamburgerOpen(!getIsHamburgerOpen)
                 }
+                else if (event?.target?.id?.substring(0, 15) === "hamburger_icon_") {
+                }
                 else {
-                    // setIsHamburgerOpen(false)
+                    setIsHamburgerOpen(false)
                 }
             }
             // Bind the event listener
