@@ -156,7 +156,7 @@ const EventsPage = () => {
                                     <path d="M3.75 12h16.5M3.75 6.75h16.5M3.75 17.25h16.5" fill="none" strokeWidth="1.5" strokeLinecap="round"></path>
                                 </svg>
                             </button>
-                            {getIsHamburgerOpen ?
+                            {getIsHamburgerOpen &&
                                 <div className="hidden sm:flex bg-white rounded shadow-md  absolute mt-16 top-0 right-0 min-w-full overflow-auto z-30 ">
                                     <ul className="w-[10rem]">
                                         <li><div id="profile_button" className="px-4 py-4 block  hover:bg-gray-100 no-underline hover:no-underline">Profile</div></li>
@@ -169,20 +169,22 @@ const EventsPage = () => {
                                             </div>
                                         </li>
                                     </ul>
-                                </div> : null}
+                                </div>
+                            }
                         </div>
                     </div>
                 </div>
 
                 {/* body */}
-                {getIsHamburgerOpen ?
+                {getIsHamburgerOpen &&
                     <div className="bg-white w-full sm:hidden mb-20 fixed h-full mt-20">
                         <div id="profile_button" className="px-4 py-4 block  hover:bg-gray-100 no-underline hover:no-underline">Profile</div>
                         <hr className="border-t mx-4 border-gray-400" />
                         <div id="logout_button" className="px-4 py-4 block  hover:bg-gray-100 no-underline hover:no-underline">
                             Logout
                         </div>
-                    </div> : null}
+                    </div>
+                }
                 <div className="mx-6 mb-20">
                     <div className="sm:hidden flex flex-row py-5 pt-28">
                         <div className="w-full  justify-center">
@@ -204,14 +206,15 @@ const EventsPage = () => {
                             <IoAdd className='h-7 w-5 ml-1 mr-1' />
                         </div>
                     </div>
-                    {getToastConfig && getCardList.length === 0 ?
+                    {getToastConfig && getCardList.length === 0 &&
                         <StaticToast
                             config={getToastConfig ?? {
                                 message: "Website is unavailable. Please try again later.",
                                 mode: "error"
                             }}
-                        /> : null}
-                    {getCardList.length !== 0 ?
+                        />
+                    }
+                    {getCardList.length !== 0 &&
                         <div className="grid grid-flow-row grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-10">
                             {getCardList.map((oneEvent, index) => {
                                 return (
@@ -244,23 +247,24 @@ const EventsPage = () => {
                                         <div className=" px-5 pt-2 pb-3">
                                             <div>
                                                 <div className="truncate capitalize font-semibold text-lg">{oneEvent?.your_first_name + " & " + oneEvent?.your_partner_first_name}</div>
-                                                {oneEvent?.wedding_date ? <div className="truncate capitalize">{oneEvent?.wedding_date}</div> : null}
-                                                {oneEvent?.wedding_location ? <div className="truncate capitalize">{oneEvent?.wedding_location}</div> : null}
+                                                {oneEvent?.wedding_date && <div className="truncate capitalize">{oneEvent?.wedding_date}</div>}
+                                                {oneEvent?.wedding_location && <div className="truncate capitalize">{oneEvent?.wedding_location}</div>}
                                             </div>
                                             <div>
-                                                {oneEvent?.owner_uid === peopleProvider?.uid ?
+                                                {oneEvent?.owner_uid === peopleProvider?.uid &&
                                                     <div className="mt-2 flex">
                                                         <div className="border rounded-lg px-2 py-2 text-gray-400">
                                                             Yours
                                                         </div>
-                                                    </div> : null}
+                                                    </div>
+                                                }
                                             </div>
                                         </div>
                                     </div>
                                 )
                             }
                             )}
-                        </div> : null}
+                        </div>}
                 </div>
             </div>
         );

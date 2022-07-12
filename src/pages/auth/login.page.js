@@ -130,7 +130,7 @@ export default function LoginPage({ setAuthMode }) {
                                             )
                                         }}
                                     />
-                                    {getEmailError ? (<p className="text-sm text-red-400 mt-1">{getEmailError}</p>) : null}
+                                    {getEmailError && (<p className="text-sm text-red-400 mt-1">{getEmailError}</p>)}
                                 </div>
 
                                 <div className="relative w-full mb-3">
@@ -157,7 +157,7 @@ export default function LoginPage({ setAuthMode }) {
                                             );
                                         }}
                                     />
-                                    {getPasswordError ? (<p className="text-sm text-red-400 mt-1">{getPasswordError}</p>) : null}
+                                    {getPasswordError && (<p className="text-sm text-red-400 mt-1">{getPasswordError}</p>)}
                                 </div>
 
                                 <div className="mb-11">

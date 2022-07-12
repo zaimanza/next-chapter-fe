@@ -67,7 +67,7 @@ const SilkTemplate = ({
                     </button>
                 </div>
                 <div className="absolute pl-[1vh] pt-[6vh]">
-                    {getIsHamburgerOpen ?
+                    {getIsHamburgerOpen &&
                         <div className="bg-white rounded shadow-md w-[17vh]">
                             {
                                 getDisplayData?.data?.map((currentValue, index) => {
@@ -89,7 +89,8 @@ const SilkTemplate = ({
                                     )
                                 })
                             }
-                        </div> : null}
+                        </div>
+                    }
                 </div>
             </div>
         )
@@ -100,7 +101,7 @@ const SilkTemplate = ({
         <div className={`text-[1.7vh] flex items-start bg-white ${getCurrentImg !== "" ? `` : `shadow-[0_6px_0px_0px] shadow-black w-full items-center justify-center`}`}>
 
             {
-                getCurrentImg !== "" ? (
+                getCurrentImg !== "" && (
                     <div
                         className={`text-black sticky top-0 h-[100vh] w-full ${getParamTemplate === 'true' ?
                             getParamDisplay === 'desktop' ?
@@ -119,7 +120,7 @@ const SilkTemplate = ({
                         </div>
                         <LeftComponent />
                     </div>
-                ) : null
+                )
             }
             <div className={`w-full ${getCurrentImg !== "" ?
                 getParamTemplate === 'true' ?
@@ -152,7 +153,7 @@ const SilkTemplate = ({
 
                 <div id="body" className="">
                     {
-                        getCurrentImg !== "" ? (
+                        getCurrentImg !== "" && (
                             <div
                                 className={`${getParamTemplate === 'true' ?
                                     getParamDisplay === 'desktop' ?
@@ -162,7 +163,7 @@ const SilkTemplate = ({
                             >
                                 <LeftComponent />
                             </div>
-                        ) : null
+                        )
                     }
                     {
                         getDisplayData?.data?.map((currentValue, index) => {

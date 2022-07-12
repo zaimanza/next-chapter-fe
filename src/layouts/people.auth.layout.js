@@ -48,20 +48,20 @@ const PeopleAuthLayout = () => {
                 //         "url(" + require("assets/img/register_bg_2.png").default + ")",
                 // }}
                 >
-                    {(getAuthMode === "login") ? <LoginPage setAuthMode={setAuthMode} /> : null}
-                    {(getAuthMode === "register") ? <RegisterPage setAuthMode={setAuthMode} /> : null}
-                    {(getAuthMode === "forgot-password") ? <ForgotPasswordPage setAuthMode={setAuthMode} /> : null}
-                    {(getAuthMode === "reset-password") ? <ResetPasswordPage
+                    {(getAuthMode === "login") && <LoginPage setAuthMode={setAuthMode} />}
+                    {(getAuthMode === "register") && <RegisterPage setAuthMode={setAuthMode} />}
+                    {(getAuthMode === "forgot-password") && <ForgotPasswordPage setAuthMode={setAuthMode} />}
+                    {(getAuthMode === "reset-password") && <ResetPasswordPage
                         setAuthMode={setAuthMode}
                         getDecodedTicket={getDecodedTicket}
-                    /> : null}
-                    {(getAuthMode === "send-verify-email") ? <SendVerifyEmailPage
+                    />}
+                    {(getAuthMode === "send-verify-email") && <SendVerifyEmailPage
                         setAuthMode={setAuthMode}
-                    /> : null}
-                    {(getAuthMode === "send-verify-password") ? <SendVerifyPasswordPage
+                    />}
+                    {(getAuthMode === "send-verify-password") && <SendVerifyPasswordPage
                         setAuthMode={setAuthMode}
                         getDecodedTicket={getDecodedTicket}
-                    /> : null}
+                    />}
                 </div>
             </div>
         </div>

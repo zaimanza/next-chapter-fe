@@ -21,6 +21,7 @@ const EditDashboardPage = () => {
     const [getScreenSize, setScreenSize] = useState(0)
     const [getIsHamburgerOpen, setIsHamburgerOpen] = useState(false)
     const [getIsLoadingPageOpen, setIsLoadingPageOpen] = useState(true)
+    const [getBufferLoad, setBufferLoad] = useState(false)
 
     useEffect(() => {
         if (run_uno.current === false) {
@@ -153,7 +154,7 @@ const EditDashboardPage = () => {
                                             <path d="M3.75 12h16.5M3.75 6.75h16.5M3.75 17.25h16.5" fill="none" strokeWidth="1.5" strokeLinecap="round"></path>
                                         </svg>
                                     </button>
-                                    {getIsHamburgerOpen ?
+                                    {getIsHamburgerOpen &&
                                         <div className="hidden sm:flex bg-white rounded shadow-md  absolute mt-16 top-0 right-0 min-w-full overflow-auto z-30 ">
                                             <ul className="w-[10rem]">
                                                 <li><div id="events_button" className="px-4 py-4 block  hover:bg-gray-100 no-underline hover:no-underline">Events</div></li>
@@ -167,13 +168,14 @@ const EditDashboardPage = () => {
                                                     </div>
                                                 </li>
                                             </ul>
-                                        </div> : null}
+                                        </div>
+                                    }
                                 </div>
                             </div>
                         </div>
 
                         {/* body */}
-                        {getIsHamburgerOpen ?
+                        {getIsHamburgerOpen &&
                             <div className="bg-white w-full sm:hidden mb-20 fixed h-full mt-20">
                                 <div id="events_button" className="px-4 py-4 block  hover:bg-gray-100 no-underline hover:no-underline">Events</div>
                                 <div id="profile_button" className="px-4 py-4 block  hover:bg-gray-100 no-underline hover:no-underline">Profile</div>
@@ -181,7 +183,8 @@ const EditDashboardPage = () => {
                                 <div id="logout_button" className="px-4 py-4 block  hover:bg-gray-100 no-underline hover:no-underline">
                                     Logout
                                 </div>
-                            </div> : null}
+                            </div>
+                        }
                         {
                             config_edit_menu.map((one_config, index) =>
                                 <div
@@ -219,25 +222,37 @@ const EditDashboardPage = () => {
                         <div className="py-2 flex w-full justify-center">
                             <div onClick={() => {
                                 setScreenSize(0)
+
+                                setBufferLoad(true)
+                                const timeout = setTimeout(() => {
+                                    setBufferLoad(false)
+                                    clearTimeout(timeout)
+                                }, 500)
                             }} className=''><FiMonitor className={`${getScreenSize === 0 ? "text-gray-900" : ""} m-2 w-8 h-8`} /></div>
                             <div className='w-2 h-2'></div>
                             <div onClick={() => {
                                 setScreenSize(1)
+
+                                setBufferLoad(true)
+                                const timeout = setTimeout(() => {
+                                    setBufferLoad(false)
+                                    clearTimeout(timeout)
+                                }, 500)
                             }} className=''><BsPhone className={`${getScreenSize === 1 ? "text-gray-900" : ""} m-2 w-8 h-8`} /></div>
                         </div>
                         <div className={`${getScreenSize === 0 ? "ease-in-out w-full m-auto" :
                             ""} ${getScreenSize === 1 ? "ease-in-out max-w-[30rem] m-auto" :
                                 ""} overflow-y-auto h-[93%] flex items-center justify-center`}>
                             <div className='mx-10 w-full'>
-                                <iframe
-                                    title="wedding card"
-                                    className={`overflow-hidden rounded w-full ${getScreenSize === 0 ? " aspect-[16/9]" : ""} ${getScreenSize === 1 ? " aspect-[9/16]" : ""}`}
-                                    src={`/${nc_wedding_id}?template=true${getScreenSize === 0 ? "&display=desktop" : ""}${getScreenSize === 1 ? "&display=mobile" : ""}`}
-                                    frameBorder="0"
-                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                                >   </iframe>
-                                <div className="">
-                                </div>
+                                {getBufferLoad === false && (<>
+                                    <iframe
+                                        title="wedding card"
+                                        className={`overflow-hidden rounded w-full ${getScreenSize === 0 ? " aspect-[16/9]" : ""} ${getScreenSize === 1 ? " aspect-[9/16]" : ""}`}
+                                        src={`/${nc_wedding_id}?template=true${getScreenSize === 0 ? "&display=desktop" : ""}${getScreenSize === 1 ? "&display=mobile" : ""}`}
+                                        frameBorder="0"
+                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                    >   </iframe>
+                                </>)}
                             </div>
                         </div>
                     </div>

@@ -173,7 +173,7 @@ const CreateEventPage = () => {
                                                         setYourFirstNameValue(onChangeValue)
                                                     }}
                                                 />
-                                                {getYourFirstNameError ? (<p className="text-sm text-red-600 mt-1">{getYourFirstNameError}</p>) : null}
+                                                {getYourFirstNameError && (<p className="text-sm text-red-600 mt-1">{getYourFirstNameError}</p>)}
                                             </div>
                                             <div className="relative w-full mb-3">
                                                 <label
@@ -194,7 +194,7 @@ const CreateEventPage = () => {
                                                         setYourPartnerFirstNameValue(onChangeValue)
                                                     }}
                                                 />
-                                                {getYourPartnerFirstNameError ? (<p className="text-sm text-red-600 mt-1">{getYourPartnerFirstNameError}</p>) : null}
+                                                {getYourPartnerFirstNameError && (<p className="text-sm text-red-600 mt-1">{getYourPartnerFirstNameError}</p>)}
                                             </div>
                                             <div className="relative w-full mb-3">
                                                 <label
@@ -223,7 +223,7 @@ const CreateEventPage = () => {
                                                         setWeddingDateValue(onChangeValue)
                                                     }}
                                                 />
-                                                {getWeddingDateError ? (<p className="text-sm text-red-600 mt-1">{getWeddingDateError}</p>) : null}
+                                                {getWeddingDateError && (<p className="text-sm text-red-600 mt-1">{getWeddingDateError}</p>)}
                                             </div>
 
                                             <div className="mb-3">
@@ -262,7 +262,7 @@ const CreateEventPage = () => {
                                                         setLocationValue(onChangeValue)
                                                     }}
                                                 />
-                                                {getLocationError ? (<p className="text-sm text-red-600 mt-1">{getLocationError}</p>) : null}
+                                                {getLocationError && (<p className="text-sm text-red-600 mt-1">{getLocationError}</p>)}
                                             </div>
                                             <div className="mb-11">
                                             </div>

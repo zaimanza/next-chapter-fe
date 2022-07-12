@@ -99,7 +99,7 @@ export default function ResetPasswordPage({ setAuthMode, getDecodedTicket }) {
                                             setNewPasswordValue(onChangeValue)
                                         }}
                                     />
-                                    {getNewPasswordError ? (<p className="text-sm text-red-400 mt-1">{getNewPasswordError}</p>) : null}
+                                    {getNewPasswordError && (<p className="text-sm text-red-400 mt-1">{getNewPasswordError}</p>)}
                                 </div>
 
                                 <div className="relative w-full mb-3">
@@ -121,7 +121,7 @@ export default function ResetPasswordPage({ setAuthMode, getDecodedTicket }) {
                                             setConfirmNewPasswordValue(onChangeValue)
                                         }}
                                     />
-                                    {getConfirmNewPasswordError ? (<p className="text-sm text-red-400 mt-1">{getConfirmNewPasswordError}</p>) : null}
+                                    {getConfirmNewPasswordError && (<p className="text-sm text-red-400 mt-1">{getConfirmNewPasswordError}</p>)}
                                 </div>
                                 <div className="mb-11">
 

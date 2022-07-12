@@ -110,7 +110,7 @@ export default function ForgotPasswordPage({ setAuthMode }) {
                                             );
                                         }}
                                     />
-                                    {getEmailError ? (<p className="text-sm text-red-400 mt-1">{getEmailError}</p>) : null}
+                                    {getEmailError && (<p className="text-sm text-red-400 mt-1">{getEmailError}</p>)}
                                 </div>
 
                                 <div className="mb-11">
