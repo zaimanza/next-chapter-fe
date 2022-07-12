@@ -193,7 +193,7 @@ const SilkTemplate = ({
                                                     src="https://aliveinvite.com/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbHhYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--813fb1481ee2552eda4282e915d2780dc8d469ea/Syazwani-Main.png" />
 
                                             </div>
-                                            <div className={`absolute w-full flex flex-col text-center justify-center items-center ${getParamTemplate === 'true' ?
+                                            <div className={`text-[${getDisplayData?.template?.text_color ?? `#111827`}] absolute w-full flex flex-col text-center justify-center items-center ${getParamTemplate === 'true' ?
                                                 ` min-h-[100vh]` :
                                                 `h-[100vh] min-h-[50rem] sm:h-[100vh] sm:min-h-[100vh]`}`}>
                                                 <div className={`max-w-full px-[6vh]  font-['Cinzel'] capitalize line-clamp-1`}>{getDisplayData?.data[index]?.body?.wedding_title}</div>
