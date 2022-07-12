@@ -84,7 +84,7 @@ const SilkTemplate = ({
                                                 })
                                                 setIsHamburgerOpen(!getIsHamburgerOpen)
                                             }}
-                                            className='px-[2vh] py-[2vh] block hover:bg-gray-100 no-underline hover:no-underline truncate capitalize'
+                                            className='px-[1.5vh] py-[1.5vh] block hover:rounded hover:bg-gray-100 no-underline hover:no-underline truncate capitalize'
                                         >{currentValue?.item_name}</div>
                                     )
                                 })
@@ -98,7 +98,7 @@ const SilkTemplate = ({
 
 
     return (
-        <div className={`text-[1.7vh] flex items-start bg-white ${getCurrentImg !== "" ? `` : `shadow-[0_6px_0px_0px] shadow-black w-full items-center justify-center`}`}>
+        <div className={`text-[1.7vh] flex items-start bg-white ${getCurrentImg !== "" ? `` : `w-full items-center justify-center`}`}>
 
             {
                 getCurrentImg !== "" && (
@@ -130,9 +130,9 @@ const SilkTemplate = ({
                     `sm:min-w-[530px] sm:max-w-[30vw]` :
                 getParamTemplate === 'true' ?
                     getParamDisplay === 'desktop' ?
-                        `w-[30vw]` :
+                        `shadow-[0_0px_10px_0px] shadow-gray-400 w-[30vw]` :
                         `` :
-                    ` sm:w-[530px]  w-full`}`}>
+                    `shadow-[0_0px_10px_0px] shadow-gray-400 sm:w-[530px]  w-full`}`}>
                 <div id="body-navbar" className={`fixed z-50 flex w-full ${getCurrentImg !== "" ?
                     getParamTemplate === 'true' ?
                         getParamDisplay === 'desktop' ?
