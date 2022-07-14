@@ -209,7 +209,6 @@ const EditDashboardPage = () => {
                 <div className='bottom-0 right-0 fixed mr-[1.7vh] mb-[1.7vh]'>
                     <button
                         className="bg-gray-900 text-center text-white active:bg-gray-600 text-[1.5vh] font-bold uppercase px-[2.5vh] py-[1.2vh] rounded shadow hover:shadow-lg outline-none focus:outline-none w-full ease-linear transition-all duration-150"
-                        type="button"
                     // onClick={handleSubmit}
                     >
                         Launch Event

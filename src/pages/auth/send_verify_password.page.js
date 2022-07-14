@@ -67,7 +67,7 @@ export default function SendVerifyPasswordPage({ setAuthMode, getDecodedTicket }
 
                                 <button
                                     className={`${clickPasswordTimer?.timerCountdown === 0 ? "active:bg-gray-600 bg-gray-800 hover:shadow-lg" : "bg-gray-400"} text-white text-[1.5vh] font-bold uppercase px-[1.7vh] py-[1.2vh] rounded shadow outline-none focus:outline-none w-full ease-linear transition-all duration-150`}
-                                    type="button"
+                                    type="submit"
                                     disabled={clickPasswordTimer?.timerCountdown === 0 ? false : true}
                                     onClick={handleSubmit}
                                 >

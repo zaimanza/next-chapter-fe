@@ -114,7 +114,7 @@ export default function ForgotPasswordPage({ setAuthMode }) {
 
                                 <button
                                     className="bg-gray-800 text-center text-white active:bg-gray-600 text-[1.5vh] font-bold uppercase px-[1.7vh] py-[1.2vh] rounded shadow hover:shadow-lg outline-none focus:outline-none w-full ease-linear transition-all duration-150"
-                                    type="button"
+                                    type="submit"
                                     onClick={handleSubmit}
                                 >
                                     Send Reset Link

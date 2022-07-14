@@ -124,7 +124,7 @@ const EventsPage = () => {
                     <div className="text-center">
                         <button
                             className="bg-pink-400 text-white active:bg-gray-600 text-[1.5vh] font-bold uppercase px-[1.2vh] py-[1.2vh] rounded shadow hover:shadow-lg outline-none focus:outline-none w-full ease-linear transition-all duration-150"
-                            type="button"
+
                             onClick={handleCreateEvent}
                         >
                             <IoAdd className='m-auto h-[2vh] w-[2vh]' />

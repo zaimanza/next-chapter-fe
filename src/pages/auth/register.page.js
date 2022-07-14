@@ -157,7 +157,7 @@ export default function RegisterPage({ setAuthMode }) {
                                             }}
                                             className={`${getTermsPolicyError ? "text-red-600 " : "text-gray-700"} selection:form-checkbox border-0 rounded ml-[0.3vh] w-[2vh] h-[2vh] ease-linear transition-all duration-150`}
                                         />
-                                        <span className={`${getTermsPolicyError ? "text-red-600" : "text-gray-600"} ml-[0.7vh] text-sm font-semibold`}>
+                                        <span className={`${getTermsPolicyError ? "text-red-600" : "text-gray-600"} ml-[0.7vh] text-[1.5vh] font-semibold`}>
                                             I agree with the{" "}
                                             <a
                                                 href="https://www.google.com/"
