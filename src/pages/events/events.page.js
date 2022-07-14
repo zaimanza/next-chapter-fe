@@ -118,23 +118,23 @@ const EventsPage = () => {
     const [noImage, setNoImage] = useState(true)
     if (!getIsLoadingPageOpen) {
         return (
-            <div className="">
+            <div className=" text-[1.7vh]">
                 {/* floating_action_button */}
-                <div className='sm:hidden bottom-0 right-0 fixed mr-4 mb-4'>
+                <div className='sm:hidden bottom-0 right-0 fixed mr-[1.7vh] mb-[1.7vh]'>
                     <div className="text-center">
                         <button
-                            className="bg-pink-400 text-white active:bg-gray-600 text-sm font-bold uppercase px-3 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 w-full ease-linear transition-all duration-150"
-                            type="submit"
+                            className="bg-pink-400 text-white active:bg-gray-600 text-[1.5vh] font-bold uppercase px-[1.2vh] py-[1.2vh] rounded shadow hover:shadow-lg outline-none focus:outline-none w-full ease-linear transition-all duration-150"
+                            type="button"
                             onClick={handleCreateEvent}
                         >
-                            <IoAdd className='m-auto h-[1.25rem] w-[1.25rem]' size={'4rem'} />
+                            <IoAdd className='m-auto h-[2vh] w-[2vh]' />
                         </button>
                     </div>
                 </div>
                 {/* app_bar */}
                 <div
-                    className="fixed sm:static bg-white w-full mx-auto max-w-container px-4 sm:px-6 lg:px-8">
-                    <div className="relative flex items-center">
+                    className="fixed  bg-white w-full mx-auto ">
+                    <div className="relative flex items-center px-[1.7vh]">
                         <div className="absolute inset-x-0 bottom-0 h-px bg-slate-900/5">
                         </div>
                         <div
@@ -148,27 +148,27 @@ const EventsPage = () => {
                             </label>
                         </div>
                         <div
-                            className="py-[2.125rem] relative text-sm ">
+                            className="py-[2vh] relative text-[1.5vh] ">
 
                             <button
-                                className="flex focus:outline-none">
-                                <svg id="hamburget_icon" viewBox="0 0 24 24" className="h-6 w-6 stroke-slate-900">
+                                className="flex">
+                                <svg id="hamburget_icon" viewBox="0 0 24 24" className="h-[2.6vh] w-[2.6vh] stroke-slate-900">
                                     <path d="M3.75 12h16.5M3.75 6.75h16.5M3.75 17.25h16.5" fill="none" strokeWidth="1.5" strokeLinecap="round"></path>
                                 </svg>
                             </button>
                             {getIsHamburgerOpen &&
-                                <div className="hidden sm:flex bg-white rounded shadow-md  absolute mt-16 top-0 right-0 min-w-full overflow-auto z-30 ">
-                                    <ul className="w-[10rem]">
-                                        <li><div id="profile_button" className="px-4 py-4 block  hover:bg-gray-100 no-underline hover:no-underline">Profile</div></li>
-                                        <li>
-                                            <hr className="border-t mx-4 border-gray-400" />
-                                        </li>
-                                        <li>
-                                            <div id="logout_button" className="px-4 py-4 block  hover:bg-gray-100 no-underline hover:no-underline">
-                                                Logout
-                                            </div>
-                                        </li>
-                                    </ul>
+                                <div className="hidden sm:block w-[17vh] bg-white rounded shadow-md  absolute mt-[4vh] top-0 right-0 min-w-full overflow-auto z-30 ">
+
+                                    <div id="events_button" className="px-[1.7vh] py-[1.7vh] block  hover:bg-gray-100 no-underline hover:no-underline">Events</div>
+                                    <div id="profile_button" className="px-[1.7vh] py-[1.7vh] block  hover:bg-gray-100 no-underline hover:no-underline">Profile</div>
+
+                                    <hr className="border-t mx-[1.7vh] border-gray-400" />
+
+
+                                    <div id="logout_button" className="px-[1.7vh] py-[1.7vh] block  hover:bg-gray-100 no-underline hover:no-underline">
+                                        Logout
+                                    </div>
+
                                 </div>
                             }
                         </div>
@@ -177,33 +177,35 @@ const EventsPage = () => {
 
                 {/* body */}
                 {getIsHamburgerOpen &&
-                    <div className="bg-white w-full sm:hidden mb-20 fixed h-full mt-20">
-                        <div id="profile_button" className="px-4 py-4 block  hover:bg-gray-100 no-underline hover:no-underline">Profile</div>
-                        <hr className="border-t mx-4 border-gray-400" />
-                        <div id="logout_button" className="px-4 py-4 block  hover:bg-gray-100 no-underline hover:no-underline">
+                    <div className="bg-white w-full sm:hidden fixed h-full mt-[6vh]">
+                        <div id="events_button" className="px-[1.7vh] py-[1.7vh] block  hover:bg-gray-100 no-underline hover:no-underline">Events</div>
+                        <div id="profile_button" className="px-[1.7vh] py-[1.7vh] block  hover:bg-gray-100 no-underline hover:no-underline">Profile</div>
+                        <hr className="border-t mx-[1.7vh] border-gray-400" />
+                        <div id="logout_button" className="px-[1.7vh] py-[1.7vh] block  hover:bg-gray-100 no-underline hover:no-underline">
                             Logout
                         </div>
                     </div>
                 }
                 <div className="mx-6 mb-20">
-                    <div className="sm:hidden flex flex-row py-5 pt-28">
+                    <div className="sm:hidden flex flex-row py-[2.2vh] pt-[8vh]">
                         <div className="w-full  justify-center">
-                            <div className="mx-auto w-fit text-3xl">
+                            <div className="mx-auto w-fit text-[1.5vh] font-semibold">
                                 Wedding Events
                             </div>
 
                         </div>
                     </div>
 
-                    <div className="hidden sm:flex justify-between my-5">
+                    <div className="hidden sm:flex justify-between py-[2.2vh] pt-[8vh]">
                         <div className="">
-                            <div className="mx-auto w-fit text-3xl">
+                            <div className="mx-auto w-fit text-[1.5vh] font-semibold">
                                 Wedding Events
                             </div>
                         </div>
-                        <div onClick={handleCreateEvent} className="my-auto flex flex-row text-lg hover:text-pink-400">
+                        <div onClick={handleCreateEvent} className="my-auto flex flex-row text-[1.5vh] hover:text-pink-400">
                             Create
-                            <IoAdd className='h-7 w-5 ml-1 mr-1' />
+
+                            <IoAdd className='ml-[1vh] m-auto h-[2vh] w-[2vh]' />
                         </div>
                     </div>
                     {getToastConfig && getCardList.length === 0 &&
