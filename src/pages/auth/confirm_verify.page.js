@@ -49,10 +49,7 @@ const ConfirmVerifyPage = () => {
     }, [])
 
     return (
-        <div className='bg-pink-400'>
-            <div className="relative w-full h-full py-40 min-h-screen">
-
-            </div>
+        <div className='bg-pink-400 w-full h-full'>
         </div>
     )
 }
