@@ -39,8 +39,8 @@ const PeopleAuthLayout = () => {
     }, [])
 
     return (
-        <div className='bg-pink-400'>
-            <div className="w-full h-full py-40 min-h-screen">
+        <div className='bg-pink-400 text-[1.7vh]'>
+            <div className="w-full h-full flex items-center justify-center min-h-[100vh]">
                 <div
                     className="my-auto top-0 w-full h-full bg-no-repeat bg-full"
                 // style={{
