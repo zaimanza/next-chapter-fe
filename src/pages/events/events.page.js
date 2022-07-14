@@ -224,7 +224,7 @@ const EventsPage = () => {
                                         key={index}
                                         onClick={() => {
                                             navigate(`/${oneEvent?.nc_wedding_id}/edit`)
-                                        }} className="shadow-lg rounded-lg">
+                                        }} className="shadow-lg rounded-lg h-min">
                                         <div>
                                             {oneEvent?.cover_img && noImage.toString() === "true" ? <img
                                                 alt={oneEvent?.your_first_name + " & " + oneEvent?.your_partner_first_name}
@@ -233,34 +233,27 @@ const EventsPage = () => {
                                                     setNoImage(false)
                                                 }}
                                                 src={oneEvent?.cover_img}
-                                                className="truncate object-cover h-48 w-full rounded-tl-lg rounded-tr-lg" /> :
-
-                                                <div className="text-center">
-                                                    <button
-                                                        className="cursor-default h-48 bg-pink-400 text-white  text-sm font-bold uppercase px-3 py-3 rounded-tl-lg rounded-tr-lg outline-none w-full ease-linear transition-all duration-150"
-                                                        type="submit"
-                                                    // onClick={handleSubmit}
-                                                    >
-                                                        <label className='lowercase'>next</label>C<label className='lowercase'>hapter</label>
-                                                    </button>
+                                                className="truncate object-cover w-full rounded-tl-lg rounded-tr-lg" /> :
+                                                <div
+                                                    className="cursor-default h-[18vh] bg-pink-400 text-white flex items-center justify-center text-[1.5vh] font-bold uppercase rounded-tl-lg rounded-tr-lg outline-none w-full ease-linear transition-all duration-150"
+                                                    type="submit"
+                                                // onClick={handleSubmit}
+                                                >
+                                                    <label className='lowercase'>next</label>C<label className='lowercase'>hapter</label>
                                                 </div>
                                             }
                                         </div>
-                                        <div className=" px-5 pt-2 pb-3">
-                                            <div>
-                                                <div className="truncate capitalize font-semibold text-lg">{oneEvent?.your_first_name + " & " + oneEvent?.your_partner_first_name}</div>
-                                                {oneEvent?.wedding_date && <div className="truncate capitalize">{oneEvent?.wedding_date}</div>}
-                                                {oneEvent?.wedding_location && <div className="truncate capitalize">{oneEvent?.wedding_location}</div>}
-                                            </div>
-                                            <div>
-                                                {oneEvent?.owner_uid === peopleProvider?.uid &&
-                                                    <div className="mt-2 flex">
-                                                        <div className="border rounded-lg px-2 py-2 text-gray-400">
-                                                            Yours
-                                                        </div>
+                                        <div className=" px-[1.4vh] pt-[0.5vh] pb-[1vh]">
+                                            <div className="truncate capitalize font-semibold text-[1.5vh]">{oneEvent?.your_first_name + " & " + oneEvent?.your_partner_first_name}</div>
+                                            {oneEvent?.wedding_date && <div className="truncate capitalize text-[1.5vh]">{oneEvent?.wedding_date}</div>}
+                                            {oneEvent?.wedding_location && <div className="truncate capitalize text-[1.5vh]">{oneEvent?.wedding_location}</div>}
+                                            {oneEvent?.owner_uid === peopleProvider?.uid &&
+                                                <div className="mt-[0.5vh] flex">
+                                                    <div className="border rounded-lg px-[0.8vh] py-[0.3vh] text-gray-400  text-[1.5vh]">
+                                                        Yours
                                                     </div>
-                                                }
-                                            </div>
+                                                </div>
+                                            }
                                         </div>
                                     </div>
                                 )
