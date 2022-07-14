@@ -107,34 +107,120 @@ const EditDashboardPage = () => {
                 {
                     "url": "card_detail",
                     "name": "Card Detail",
-                    "icon": <AiFillEdit className="mx-auto w-8 h-8" />
+                    "icon": <AiFillEdit className="mx-auto w-[3.5vh] h-[3.5vh]" />
+                },
+                {
+                    "url": "card_detail",
+                    "name": "Card Detail",
+                    "icon": <AiFillEdit className="mx-auto w-[3.5vh] h-[3.5vh]" />
+                },
+                {
+                    "url": "card_detail",
+                    "name": "Card Detail",
+                    "icon": <AiFillEdit className="mx-auto w-[3.5vh] h-[3.5vh]" />
+                },
+                {
+                    "url": "card_detail",
+                    "name": "Card Detail",
+                    "icon": <AiFillEdit className="mx-auto w-[3.5vh] h-[3.5vh]" />
                 },
             ]
-        }
+        },
+        {
+            "category_name": "Card Settings",
+            "category_items": [
+                {
+                    "url": "card_detail",
+                    "name": "Card Detail",
+                    "icon": <AiFillEdit className="mx-auto w-[3.5vh] h-[3.5vh]" />
+                },
+                {
+                    "url": "card_detail",
+                    "name": "Card Detail",
+                    "icon": <AiFillEdit className="mx-auto w-[3.5vh] h-[3.5vh]" />
+                },
+                {
+                    "url": "card_detail",
+                    "name": "Card Detail",
+                    "icon": <AiFillEdit className="mx-auto w-[3.5vh] h-[3.5vh]" />
+                },
+                {
+                    "url": "card_detail",
+                    "name": "Card Detail",
+                    "icon": <AiFillEdit className="mx-auto w-[3.5vh] h-[3.5vh]" />
+                },
+            ]
+        },
+        {
+            "category_name": "Card Settings",
+            "category_items": [
+                {
+                    "url": "card_detail",
+                    "name": "Card Detail",
+                    "icon": <AiFillEdit className="mx-auto w-[3.5vh] h-[3.5vh]" />
+                },
+                {
+                    "url": "card_detail",
+                    "name": "Card Detail",
+                    "icon": <AiFillEdit className="mx-auto w-[3.5vh] h-[3.5vh]" />
+                },
+                {
+                    "url": "card_detail",
+                    "name": "Card Detail",
+                    "icon": <AiFillEdit className="mx-auto w-[3.5vh] h-[3.5vh]" />
+                },
+                {
+                    "url": "card_detail",
+                    "name": "Card Detail",
+                    "icon": <AiFillEdit className="mx-auto w-[3.5vh] h-[3.5vh]" />
+                },
+            ]
+        },
+        {
+            "category_name": "Card Settings",
+            "category_items": [
+                {
+                    "url": "card_detail",
+                    "name": "Card Detail",
+                    "icon": <AiFillEdit className="mx-auto w-[3.5vh] h-[3.5vh]" />
+                },
+                {
+                    "url": "card_detail",
+                    "name": "Card Detail",
+                    "icon": <AiFillEdit className="mx-auto w-[3.5vh] h-[3.5vh]" />
+                },
+                {
+                    "url": "card_detail",
+                    "name": "Card Detail",
+                    "icon": <AiFillEdit className="mx-auto w-[3.5vh] h-[3.5vh]" />
+                },
+                {
+                    "url": "card_detail",
+                    "name": "Card Detail",
+                    "icon": <AiFillEdit className="mx-auto w-[3.5vh] h-[3.5vh]" />
+                },
+            ]
+        },
     ]
 
     if (!getIsLoadingPageOpen) {
         return (
-            <div className='h-full bg-pink-400 shadow-sm overflow-hidden'>
-                <div className='bottom-0 right-0 fixed mr-4 mb-4'>
-                    <div className="text-center mt-6">
-                        <button
-                            className="bg-gray-900 text-white active:bg-gray-600 text-sm font-bold uppercase px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 w-full ease-linear transition-all duration-150"
-                            type="button"
-                        // onClick={handleSubmit}
-                        >
-                            Launch Event
-                        </button>
-                    </div>
+            <div className='h-full text-[1.7vh] bg-pink-400 overflow-hidden'>
+                <div className='bottom-0 right-0 fixed mr-[1.7vh] mb-[1.7vh]'>
+                    <button
+                        className="bg-gray-900 text-center text-white active:bg-gray-600 text-[1.5vh] font-bold uppercase px-[2.5vh] py-[1.2vh] rounded shadow hover:shadow-lg outline-none focus:outline-none w-full ease-linear transition-all duration-150"
+                        type="button"
+                    // onClick={handleSubmit}
+                    >
+                        Launch Event
+                    </button>
                 </div>
-                <div className="flex">
-                    <div className="bg-white shadow-sm max-w-[700px] w-full sm:min-w-[500px] h-[100vh] overflow-hidden">
+                <div className="flex h-[100vh]">
+                    <div className="bg-white shadow-sm max-w-[700px] w-full sm:min-w-[500px] h-[100vh] overflow-auto">
                         {/* app_bar */}
                         <div
-                            className="fixed sm:static bg-white w-full mx-auto max-w-container px-4 sm:px-6 lg:px-8">
-                            <div className="relative flex items-center">
-                                <div className="absolute inset-x-0 bottom-0 h-px bg-slate-900/5">
-                                </div>
+                            className="  fixed sm:sticky top-0 bg-white w-full mx-auto">
+                            <div className="shadow flex items-center px-[1.7vh]">
                                 <div
                                     onClick={() => {
                                         navigate("/events");
@@ -146,28 +232,27 @@ const EditDashboardPage = () => {
                                     </label>
                                 </div>
                                 <div
-                                    className="py-[2.125rem] relative text-sm ">
+                                    className="py-[2vh] relative text-[1.5vh] ">
 
                                     <button
-                                        className="flex focus:outline-none">
-                                        <svg id="hamburget_icon" viewBox="0 0 24 24" className="h-6 w-6 stroke-slate-900">
+                                        className="flex">
+                                        <svg id="hamburget_icon" viewBox="0 0 24 24" className="h-[2.6vh] w-[2.6vh] stroke-slate-900">
                                             <path d="M3.75 12h16.5M3.75 6.75h16.5M3.75 17.25h16.5" fill="none" strokeWidth="1.5" strokeLinecap="round"></path>
                                         </svg>
                                     </button>
                                     {getIsHamburgerOpen &&
-                                        <div className="hidden sm:flex bg-white rounded shadow-md  absolute mt-16 top-0 right-0 min-w-full overflow-auto z-30 ">
-                                            <ul className="w-[10rem]">
-                                                <li><div id="events_button" className="px-4 py-4 block  hover:bg-gray-100 no-underline hover:no-underline">Events</div></li>
-                                                <li><div id="profile_button" className="px-4 py-4 block  hover:bg-gray-100 no-underline hover:no-underline">Profile</div></li>
-                                                <li>
-                                                    <hr className="border-t mx-4 border-gray-400" />
-                                                </li>
-                                                <li>
-                                                    <div id="logout_button" className="px-4 py-4 block  hover:bg-gray-100 no-underline hover:no-underline">
-                                                        Logout
-                                                    </div>
-                                                </li>
-                                            </ul>
+                                        <div className="hidden sm:block w-[17vh] bg-white rounded shadow-md  absolute mt-[4vh] top-0 right-0 min-w-full overflow-auto z-30 ">
+
+                                            <div id="events_button" className="px-[1.7vh] py-[1.7vh] block  hover:bg-gray-100 no-underline hover:no-underline">Events</div>
+                                            <div id="profile_button" className="px-[1.7vh] py-[1.7vh] block  hover:bg-gray-100 no-underline hover:no-underline">Profile</div>
+
+                                            <hr className="border-t mx-[1.7vh] border-gray-400" />
+
+
+                                            <div id="logout_button" className="px-[1.7vh] py-[1.7vh] block  hover:bg-gray-100 no-underline hover:no-underline">
+                                                Logout
+                                            </div>
+
                                         </div>
                                     }
                                 </div>
@@ -176,24 +261,25 @@ const EditDashboardPage = () => {
 
                         {/* body */}
                         {getIsHamburgerOpen &&
-                            <div className="bg-white w-full sm:hidden mb-20 fixed h-full mt-20">
-                                <div id="events_button" className="px-4 py-4 block  hover:bg-gray-100 no-underline hover:no-underline">Events</div>
-                                <div id="profile_button" className="px-4 py-4 block  hover:bg-gray-100 no-underline hover:no-underline">Profile</div>
+                            <div className="bg-white w-full sm:hidden fixed h-full mt-[6vh]">
+                                <div id="events_button" className="px-[1.7vh] py-[1.7vh] block  hover:bg-gray-100 no-underline hover:no-underline">Events</div>
+                                <div id="profile_button" className="px-[1.7vh] py-[1.7vh] block  hover:bg-gray-100 no-underline hover:no-underline">Profile</div>
                                 <hr className="border-t mx-4 border-gray-400" />
-                                <div id="logout_button" className="px-4 py-4 block  hover:bg-gray-100 no-underline hover:no-underline">
+                                <div id="logout_button" className="px-[1.7vh] py-[1.7vh] block  hover:bg-gray-100 no-underline hover:no-underline">
                                     Logout
                                 </div>
                             </div>
                         }
+
                         {
                             config_edit_menu.map((one_config, index) =>
                                 <div
                                     key={index}
-                                    className="mb-20 sm:pt-0 pt-24">
-                                    <div className='m-4 text-xl'>
+                                    className="mb-[2vh] sm:pt-0">
+                                    <div className='m-[1vh] font-semibold'>
                                         {one_config?.category_name}
                                     </div>
-                                    <div className="m-4 grid grid-flow-row grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 xl:grid-cols-4">
+                                    <div className="m-[1vh] grid grid-flow-row grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 xl:grid-cols-4">
                                         {
                                             one_config?.category_items?.map((category_item, index) =>
                                                 <div
@@ -203,12 +289,10 @@ const EditDashboardPage = () => {
                                                     }} className="group group-hover:shadow-sm rounded-lg">
                                                     <div className="text-center">
                                                         <button
-                                                            className="overflow-hidden cursor-default h-48 group-hover:border text-gray-900  text-sm font-medium uppercase px-3 py-3 rounded-lg outline-none w-full ease-linear transition-all duration-150"
-                                                            type="submit"
+                                                            className="overflow-hidden cursor-default h-[15vh] w-[15vh] group-hover:border text-gray-900 text-[1.5vh] uppercase rounded-lg outline-none ease-linear transition-all duration-150"
                                                         // onClick={handleSubmit}
                                                         >
                                                             {category_item?.icon}
-                                                            {/* ease-in-out duration-150 hidden group-hover:block  */}
                                                             <label className='capitalize'>{category_item?.name}</label>
                                                         </button>
                                                     </div>
@@ -218,8 +302,8 @@ const EditDashboardPage = () => {
                                 </div>
                             )}
                     </div>
-                    <div className=" duration-300 w-full hidden sm:block flex-grow overflow-hidden text-white ">
-                        <div className="py-2 flex w-full justify-center">
+                    <div className="duration-300 w-full hidden sm:block flex-grow overflow-hidden text-white ">
+                        <div className="flex w-full justify-center">
                             <div onClick={() => {
                                 setScreenSize(0)
 
@@ -228,7 +312,7 @@ const EditDashboardPage = () => {
                                     setBufferLoad(false)
                                     clearTimeout(timeout)
                                 }, 500)
-                            }} className=''><FiMonitor className={`${getScreenSize === 0 ? "text-gray-900" : ""} m-2 w-8 h-8`} /></div>
+                            }} className=''><FiMonitor className={`${getScreenSize === 0 ? "text-gray-900" : ""} m-[1.7vh] w-[3vh] h-[3vh]`} /></div>
                             <div className='w-2 h-2'></div>
                             <div onClick={() => {
                                 setScreenSize(1)
@@ -238,12 +322,12 @@ const EditDashboardPage = () => {
                                     setBufferLoad(false)
                                     clearTimeout(timeout)
                                 }, 500)
-                            }} className=''><BsPhone className={`${getScreenSize === 1 ? "text-gray-900" : ""} m-2 w-8 h-8`} /></div>
+                            }} className=''><BsPhone className={`${getScreenSize === 1 ? "text-gray-900" : ""} m-[1.7vh] w-[3vh] h-[3vh]`} /></div>
                         </div>
                         <div className={`${getScreenSize === 0 ? "ease-in-out w-full m-auto" :
                             ""} ${getScreenSize === 1 ? "ease-in-out max-w-[30rem] m-auto" :
-                                ""} overflow-y-auto h-[93%] flex items-center justify-center`}>
-                            <div className='mx-10 w-full'>
+                                ""} overflow-hidden h-[93%] flex items-center justify-center`}>
+                            <div className='mx-[3vh] w-full'>
                                 {getBufferLoad === false && (<>
                                     <iframe
                                         title="wedding card"
