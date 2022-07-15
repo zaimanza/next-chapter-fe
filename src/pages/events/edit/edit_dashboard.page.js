@@ -274,7 +274,7 @@ const EditDashboardPage = () => {
                             config_edit_menu.map((one_config, index) =>
                                 <div
                                     key={index}
-                                    className="mb-[2vh] sm:pt-0">
+                                    className="mx-[0.8vh] mb-[2vh] sm:pt-0">
                                     <div className='m-[1vh] font-semibold'>
                                         {one_config?.category_name}
                                     </div>
