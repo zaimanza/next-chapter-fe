@@ -13,6 +13,8 @@ const SilkTemplate = ({
     getParamDisplay,
     getIsHamburgerOpen,
     setIsHamburgerOpen,
+    getNoImage,
+    setNoImage,
 }) => {
 
     const LeftComponent = () => {
@@ -185,12 +187,24 @@ const SilkTemplate = ({
                                                     `h-[100vh]` :
                                                     `h-[100vh] min-h-[50rem] sm:h-[100vh] sm:min-h-[100vh]`}`}
                                             >
-                                                <img
-                                                    alt="ss"
-                                                    className={`object-cover object-center w-full  ${getParamTemplate === 'true' ?
-                                                        `h-[100vh]` :
-                                                        `h-[100vh] min-h-[50rem] sm:h-[100vh] sm:min-h-[100vh]`}`}
-                                                    src="https://aliveinvite.com/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbHhYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--813fb1481ee2552eda4282e915d2780dc8d469ea/Syazwani-Main.png" />
+                                                {
+                                                    getDisplayData?.template?.cover_img_url && getNoImage.toString() === "false" ? <img
+                                                        alt="ss"
+                                                        className={`object-cover object-center w-full  ${getParamTemplate === 'true' ?
+                                                            `h-[100vh]` :
+                                                            `h-[100vh] min-h-[50rem] sm:h-[100vh] sm:min-h-[100vh]`}`}
+                                                        onError={({ currentTarget }) => {
+                                                            currentTarget.onerror = null
+                                                            setNoImage(true)
+                                                        }}
+                                                        src={getDisplayData?.template?.cover_img_url ? getDisplayData?.template?.cover_img_url : ``}
+
+                                                    /> : <div
+                                                        className={`bg-pink-400 w-full  ${getParamTemplate === 'true' ?
+                                                            `h-[100vh]` :
+                                                            `h-[100vh] min-h-[50rem] sm:h-[100vh] sm:min-h-[100vh]`}`}
+                                                    >     </div>
+                                                }
 
                                             </div>
                                             <div className={`text-[${getDisplayData?.template?.text_color ?? `#111827`}] absolute w-full flex flex-col text-center justify-center items-center ${getParamTemplate === 'true' ?

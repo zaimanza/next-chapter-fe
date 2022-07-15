@@ -36,6 +36,7 @@ const WeddingCardPage = () => {
 
     const [getIsLoadingPageOpen, setIsLoadingPageOpen] = useState(true)
     const [getIsHamburgerOpen, setIsHamburgerOpen] = useState(false)
+    const [getNoImage, setNoImage] = useState(false)
     // https://www.w3schools.com/howto/img_avatar2.png
     // eslint-disable-next-line no-unused-vars
     const [getCurrentImg, setCurrentImg] = useState("https://assets.vogue.com/photos/61b388f4d44d041a901d9d7c/master/pass/Katrina%20Kaif%20Sabyasachi%20wedding%20lehenga%20Vicky%20Kaushal.jpg")
@@ -237,6 +238,8 @@ const WeddingCardPage = () => {
                     getCurrentImg: getCurrentImg,
                     getIsHamburgerOpen: getIsHamburgerOpen,
                     setIsHamburgerOpen: setIsHamburgerOpen,
+                    getNoImage: getNoImage,
+                    setNoImage: setNoImage,
                 })
             } else {
                 return WeddingCardNotFound()
