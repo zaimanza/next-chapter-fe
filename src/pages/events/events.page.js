@@ -186,7 +186,7 @@ const EventsPage = () => {
                         </div>
                     </div>
                 }
-                <div className="mx-6 mb-20">
+                <div className="mx-[1.8vh] mb-20">
                     <div className="sm:hidden flex flex-row py-[2.2vh] pt-[8vh]">
                         <div className="w-full  justify-center">
                             <div className="mx-auto w-fit text-[1.5vh] font-semibold">
