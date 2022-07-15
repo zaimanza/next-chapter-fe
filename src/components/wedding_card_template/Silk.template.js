@@ -208,19 +208,19 @@ const SilkTemplate = ({
                                                     `h-[100vh] min-h-[50rem] sm:h-[100vh] sm:min-h-[100vh]`}`}
                                                 style={{ color: getDisplayData?.template?.text_color ?? `#111827` }}
                                             >
-                                                <div className={`max-w-full px-[6vh]  font-['Cinzel'] capitalize line-clamp-1`}>{getDisplayData?.data[index]?.body?.wedding_title}</div>
+                                                <div className={`max-w-full px-[7.4vh]  font-['Cinzel'] capitalize line-clamp-1`}>{getDisplayData?.data[index]?.body?.wedding_title}</div>
                                                 {
                                                     getCurrentImg !== "" && getDisplayData?.data[index]?.body?.wedding_date &&
                                                         (getDisplayData?.data[index]?.header?.title_name && getDisplayData?.data[index]?.header?.title_partner_name)
                                                         ? (<>
                                                             <br />
-                                                            <div className={`max-w-full px-[6vh]  font-['Cinzel'] capitalize ${getCurrentImg !== "" ?
+                                                            <div className={`max-w-full px-[7.4vh]  font-['Cinzel'] capitalize ${getCurrentImg !== "" ?
                                                                 `text-[3.5vh]` :
                                                                 ``}`}
                                                             >{GetDayName({
                                                                 date: getDisplayData?.data[index]?.body?.wedding_date
                                                             })}</div>
-                                                            <div className={`max-w-full px-[6vh]  font-['Cinzel'] capitalize ${getCurrentImg !== "" ?
+                                                            <div className={`max-w-full px-[7.4vh]  font-['Cinzel'] capitalize ${getCurrentImg !== "" ?
                                                                 `text-[4vh]` :
                                                                 ``}`}
                                                             >{GetDateDMNY({
@@ -228,8 +228,8 @@ const SilkTemplate = ({
                                                             })}</div>
                                                         </>) : (<>
                                                             <br />
-                                                            <div className={`max-w-full px-[6vh]  font-['Cinzel'] capitalize ${getCurrentImg !== "" ?
-                                                                `` :
+                                                            <div className={`max-w-full px-[7.4vh]  font-['Cinzel'] capitalize ${getCurrentImg !== "" ?
+                                                                `text-[3.5vh]` :
                                                                 `text-[3.5vh]`}`}
                                                             >
 
@@ -242,7 +242,7 @@ const SilkTemplate = ({
                                                             {
                                                                 getDisplayData?.data[index]?.body?.wedding_date && (<>
                                                                     <br />
-                                                                    <div className={`max-w-full px-[6vh]  font-['Cinzel'] capitalize ${getCurrentImg !== "" ?
+                                                                    <div className={`max-w-full px-[7.4vh]  font-['Cinzel'] capitalize ${getCurrentImg !== "" ?
                                                                         `` :
                                                                         ``}`}
                                                                     >
@@ -259,7 +259,7 @@ const SilkTemplate = ({
                                                         </>)
                                                 }
                                                 <br />
-                                                <div className={`max-w-full px-[6vh]  font-['Cinzel'] capitalize line-clamp-5`}>{getDisplayData?.data[index]?.body?.wedding_location}</div>
+                                                <div className={`max-w-full px-[7.4vh]  font-['Cinzel'] capitalize line-clamp-5`}>{getDisplayData?.data[index]?.body?.wedding_location}</div>
                                             </div>
                                         </div>
                                     )
