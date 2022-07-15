@@ -1,4 +1,5 @@
 import React from 'react'
+import GetFont from '../../utils/GetFont.util'
 
 const WelcomeHeader = ({
     header,
@@ -12,7 +13,10 @@ const WelcomeHeader = ({
                     {
                         (header?.title_name && header?.title_partner_name) &&
                         (
-                            <div className={`text-[6vh] text-white ${event_font} truncate capitalize`}>
+                            <div
+                                className={`text-[6vh] text-white truncate capitalize`}
+                                style={{ fontFamily: GetFont({ font_name: event_font }) }}
+                            >
                                 <div className='truncate'>{header?.title_name + " &"}</div>
                                 <div className='truncate'>{header?.title_partner_name}</div>
                             </div>
@@ -21,7 +25,7 @@ const WelcomeHeader = ({
                     {
                         (header?.wedding_welcome_greetings) &&
                         (
-                            <div className={`text-[2.5vh] text-white  overflow-hidden`}>
+                            <div className={`text-[2.5vh] text-white font-['Cormorant_Garamond'] overflow-hidden`}>
                                 <div>{header?.wedding_welcome_greetings}</div>
                             </div>
                         )

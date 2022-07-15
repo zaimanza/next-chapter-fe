@@ -2,7 +2,7 @@
 const GetFont = ({ font_name }) => {
     switch (font_name) {
         case 'Dancing_Script':
-            return "font-['Dancing_Script']"
+            return "Dancing Script"
         default:
             return ''
     }

@@ -1,7 +1,6 @@
 import React from 'react'
 import GetDateDMNY from '../../utils/GetDateDMNY.util'
 import GetDayName from '../../utils/GetDayName.util'
-import GetFont from '../../utils/GetFont.util'
 import WelcomeHeader from '../wedding_card_header/WelcomeHeader.component'
 
 const SilkTemplate = ({
@@ -35,11 +34,7 @@ const SilkTemplate = ({
                                     return (<WelcomeHeader
                                         key={index}
                                         header={currentValue?.header}
-                                        event_font={
-                                            GetFont({
-                                                font_name: getDisplayData?.event_font
-                                            })
-                                        }
+                                        event_font={getDisplayData?.event_font}
 
                                     />)
 
@@ -207,9 +202,12 @@ const SilkTemplate = ({
                                                 }
 
                                             </div>
-                                            <div className={`text-[${getDisplayData?.template?.text_color ?? `#111827`}] absolute w-full flex flex-col text-center justify-center items-center ${getParamTemplate === 'true' ?
-                                                ` min-h-[100vh]` :
-                                                `h-[100vh] min-h-[50rem] sm:h-[100vh] sm:min-h-[100vh]`}`}>
+                                            <div
+                                                className={`text-[${getDisplayData?.template?.text_color ?? `#111827`}] absolute w-full flex flex-col text-center justify-center items-center ${getParamTemplate === 'true' ?
+                                                    ` min-h-[100vh]` :
+                                                    `h-[100vh] min-h-[50rem] sm:h-[100vh] sm:min-h-[100vh]`}`}
+                                                style={{ color: getDisplayData?.template?.text_color ?? `#111827` }}
+                                            >
                                                 <div className={`max-w-full px-[6vh]  font-['Cinzel'] capitalize line-clamp-1`}>{getDisplayData?.data[index]?.body?.wedding_title}</div>
                                                 {
                                                     getCurrentImg !== "" && getDisplayData?.data[index]?.body?.wedding_date &&
@@ -235,11 +233,7 @@ const SilkTemplate = ({
                                                                 `text-[3.5vh]`}`}
                                                             >
 
-                                                                <div className={` capitalize ${GetFont(
-                                                                    {
-                                                                        font_name: getDisplayData?.event_font
-                                                                    })
-                                                                    }`}>
+                                                                <div className={` capitalize font-['${getDisplayData?.event_font}']`}>
                                                                     <div className='line-clamp-2'>{getDisplayData?.data[index]?.header?.title_name}</div>
                                                                     <div className=''>{" &"}</div>
                                                                     <div className='line-clamp-2'>{getDisplayData?.data[index]?.header?.title_partner_name}</div>

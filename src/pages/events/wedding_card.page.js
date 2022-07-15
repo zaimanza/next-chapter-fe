@@ -7,7 +7,6 @@ import { ScrollToPlugin } from "gsap/ScrollToPlugin";
 import CircularLoadingPage from '../error/circular_loading.page';
 import WeddingCardNotFound from '../error/WeddingCardNotFound.page';
 import SilkTemplate from '../../components/wedding_card_template/Silk.template';
-import GetFont from '../../utils/GetFont.util';
 import WelcomeHeader from '../../components/wedding_card_header/WelcomeHeader.component';
 
 gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
@@ -206,11 +205,7 @@ const WeddingCardPage = () => {
                     return (<WelcomeHeader
                         key={index}
                         header={currentValue?.header}
-                        event_font={
-                            GetFont({
-                                font_name: result?.event_font
-                            })
-                        }
+                        event_font={result?.event_font}
 
                     />)
 
@@ -231,9 +226,7 @@ const WeddingCardPage = () => {
                     getCurrentDisplayIndex: getCurrentDisplayIndex,
                     addRightSideRef: addRightSideRef,
                     gsap: gsap,
-                    event_font: GetFont({
-                        font_name: getDisplayData?.event_font
-                    }),
+                    event_font: getDisplayData?.event_font,
                     getDisplayHeader: getDisplayHeader,
                     getCurrentImg: getCurrentImg,
                     getIsHamburgerOpen: getIsHamburgerOpen,
