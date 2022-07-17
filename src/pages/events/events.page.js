@@ -115,7 +115,7 @@ const EventsPage = () => {
 
         navigate("/create_event");
     }
-    const [noImage, setNoImage] = useState(true)
+    const [getNoImage, setNoImage] = useState([])
     if (!getIsLoadingPageOpen) {
         return (
             <div className=" text-[1.7vh]">
@@ -226,14 +226,17 @@ const EventsPage = () => {
                                             navigate(`/${oneEvent?.nc_wedding_id}/edit`)
                                         }} className="shadow-lg rounded-lg h-min">
                                         <div>
-                                            {oneEvent?.cover_img && noImage.toString() === "true" ? <img
+                                            {console.log(oneEvent?.cover_img)}
+                                            {oneEvent?.cover_img && getNoImage[index] === undefined ? <img
                                                 alt={oneEvent?.your_first_name + " & " + oneEvent?.your_partner_first_name}
                                                 onError={({ currentTarget }) => {
                                                     currentTarget.onerror = null
-                                                    setNoImage(false)
+                                                    var temp_getNoImage = getNoImage
+                                                    temp_getNoImage[index] = true
+                                                    setNoImage(temp_getNoImage)
                                                 }}
                                                 src={oneEvent?.cover_img}
-                                                className="truncate object-cover w-full rounded-tl-lg rounded-tr-lg" /> :
+                                                className="truncate object-cover w-full h-[18vh] rounded-tl-lg rounded-tr-lg" /> :
                                                 <div
                                                     className="cursor-default h-[18vh] bg-pink-400 text-white flex items-center justify-center text-[1.5vh] font-bold uppercase rounded-tl-lg rounded-tr-lg outline-none w-full ease-linear transition-all duration-150"
                                                     type="submit"
