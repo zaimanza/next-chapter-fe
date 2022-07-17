@@ -39,6 +39,7 @@ const WeddingCardPage = () => {
     // https://www.w3schools.com/howto/img_avatar2.png
     // eslint-disable-next-line no-unused-vars
     const [getCurrentImg, setCurrentImg] = useState("https://assets.vogue.com/photos/61b388f4d44d041a901d9d7c/master/pass/Katrina%20Kaif%20Sabyasachi%20wedding%20lehenga%20Vicky%20Kaushal.jpg")
+    const [getImgLength, setImgLength] = useState(0)
 
     const handleIndex = async (state, index) => {
         var current_index = currentDisplayIndexRef.current
@@ -104,6 +105,14 @@ const WeddingCardPage = () => {
                     if (result.length !== 0) {
                         result?.data?.sort((a, b) => (a.index_position > b.index_position) ? 1 : -1)
                         setDisplayData(result)
+
+                        const filtered_result = result?.data?.filter((element) => {
+                            if (element?.wedding_img_url)
+                                return true
+                            return false
+                        });
+
+                        setImgLength(filtered_result?.length ?? 0)
                         SetHeader(result)
                     } else {
                         navigate("/wedding_card_not_found")
@@ -229,6 +238,7 @@ const WeddingCardPage = () => {
                     event_font: getDisplayData?.event_font,
                     getDisplayHeader: getDisplayHeader,
                     getCurrentImg: getCurrentImg,
+                    getImgLength: getImgLength,
                     getIsHamburgerOpen: getIsHamburgerOpen,
                     setIsHamburgerOpen: setIsHamburgerOpen,
                     getNoImage: getNoImage,

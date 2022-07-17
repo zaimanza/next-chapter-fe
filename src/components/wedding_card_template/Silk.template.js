@@ -8,6 +8,7 @@ const SilkTemplate = ({
     addRightSideRef,
     gsap,
     getCurrentImg,
+    getImgLength,
     getParamTemplate,
     getParamDisplay,
     getIsHamburgerOpen,
@@ -95,10 +96,10 @@ const SilkTemplate = ({
 
 
     return (
-        <div className={`text-[1.7vh] flex items-start bg-white ${getCurrentImg !== "" ? `` : `w-full items-center justify-center`}`}>
+        <div className={`text-[1.7vh] flex items-start bg-white ${getImgLength > 0 ? `` : `w-full items-center justify-center`}`}>
 
             {
-                getCurrentImg !== "" && (
+                getImgLength > 0 && (
                     <div
                         className={`text-black sticky top-0 h-[100vh] w-full ${getParamTemplate === 'true' ?
                             getParamDisplay === 'desktop' ?
@@ -119,7 +120,7 @@ const SilkTemplate = ({
                     </div>
                 )
             }
-            <div className={`w-full ${getCurrentImg !== "" ?
+            <div className={`w-full ${getImgLength > 0 ?
                 getParamTemplate === 'true' ?
                     getParamDisplay === 'desktop' ?
                         `min-w-[30vw] max-w-[30vw]` :
@@ -130,14 +131,14 @@ const SilkTemplate = ({
                         `shadow-[0_0px_10px_0px] shadow-gray-400 w-[30vw]` :
                         `` :
                     `shadow-[0_0px_10px_0px] shadow-gray-400 sm:w-[530px]  w-full`}`}>
-                <div id="body-navbar" className={`fixed z-50 flex w-full ${getCurrentImg !== "" ?
+                <div id="body-navbar" className={`fixed z-50 flex w-full ${getImgLength > 0 ?
                     getParamTemplate === 'true' ?
                         getParamDisplay === 'desktop' ?
                             `min-w-[30vw] max-w-[30vw]` :
                             `sm:min-w-[30vw] sm:max-w-[30vw]` :
                         `sm:min-w-[530px] sm:max-w-[30vw]` :
                     `w-full`}`}>
-                    <div className={`relative w-full block ${getCurrentImg !== "" ?
+                    <div className={`relative w-full block ${getImgLength > 0 ?
                         getParamTemplate === 'true' ?
                             getParamDisplay === 'desktop' ?
                                 `hidden` :
@@ -150,7 +151,7 @@ const SilkTemplate = ({
 
                 <div id="body" className="">
                     {
-                        getCurrentImg !== "" && (
+                        getImgLength > 0 && (
                             <div
                                 className={`${getParamTemplate === 'true' ?
                                     getParamDisplay === 'desktop' ?
@@ -210,17 +211,17 @@ const SilkTemplate = ({
                                             >
                                                 <div className={`max-w-full px-[7.4vh]  font-['Cinzel'] capitalize line-clamp-1`}>{getDisplayData?.data[index]?.body?.wedding_title}</div>
                                                 {
-                                                    getCurrentImg !== "" && getDisplayData?.data[index]?.body?.wedding_date &&
+                                                    getImgLength > 0 && getDisplayData?.data[index]?.body?.wedding_date &&
                                                         (getDisplayData?.data[index]?.header?.title_name && getDisplayData?.data[index]?.header?.title_partner_name)
                                                         ? (<>
                                                             <br />
-                                                            <div className={`max-w-full px-[7.4vh]  font-['Cinzel'] capitalize ${getCurrentImg !== "" ?
+                                                            <div className={`max-w-full px-[7.4vh]  font-['Cinzel'] capitalize ${getImgLength > 0 ?
                                                                 `text-[3.5vh]` :
                                                                 ``}`}
                                                             >{GetDayName({
                                                                 date: getDisplayData?.data[index]?.body?.wedding_date
                                                             })}</div>
-                                                            <div className={`max-w-full px-[7.4vh]  font-['Cinzel'] capitalize ${getCurrentImg !== "" ?
+                                                            <div className={`max-w-full px-[7.4vh]  font-['Cinzel'] capitalize ${getImgLength > 0 ?
                                                                 `text-[4vh]` :
                                                                 ``}`}
                                                             >{GetDateDMNY({
@@ -228,7 +229,7 @@ const SilkTemplate = ({
                                                             })}</div>
                                                         </>) : (<>
                                                             <br />
-                                                            <div className={`max-w-full px-[7.4vh]  font-['Cinzel'] capitalize ${getCurrentImg !== "" ?
+                                                            <div className={`max-w-full px-[7.4vh]  font-['Cinzel'] capitalize ${getImgLength > 0 ?
                                                                 `text-[3.5vh]` :
                                                                 `text-[3.5vh]`}`}
                                                             >
@@ -242,7 +243,7 @@ const SilkTemplate = ({
                                                             {
                                                                 getDisplayData?.data[index]?.body?.wedding_date && (<>
                                                                     <br />
-                                                                    <div className={`max-w-full px-[7.4vh]  font-['Cinzel'] capitalize ${getCurrentImg !== "" ?
+                                                                    <div className={`max-w-full px-[7.4vh]  font-['Cinzel'] capitalize ${getImgLength > 0 ?
                                                                         `` :
                                                                         ``}`}
                                                                     >
