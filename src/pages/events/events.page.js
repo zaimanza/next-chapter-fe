@@ -226,7 +226,6 @@ const EventsPage = () => {
                                             navigate(`/${oneEvent?.nc_wedding_id}/edit`)
                                         }} className="shadow-lg rounded-lg h-min">
                                         <div>
-                                            {console.log(oneEvent?.cover_img)}
                                             {oneEvent?.cover_img && getNoImage[index] === undefined ? <img
                                                 alt={oneEvent?.your_first_name + " & " + oneEvent?.your_partner_first_name}
                                                 onError={({ currentTarget }) => {
