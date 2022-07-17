@@ -36,17 +36,16 @@ const WeddingCardPage = () => {
     const [getIsLoadingPageOpen, setIsLoadingPageOpen] = useState(true)
     const [getIsHamburgerOpen, setIsHamburgerOpen] = useState(false)
     const [getNoImage, setNoImage] = useState(false)
+    const [getNoImageCover, setNoImageCover] = useState(false)
     // https://www.w3schools.com/howto/img_avatar2.png
-    // eslint-disable-next-line no-unused-vars
-    const [getCurrentImg, setCurrentImg] = useState("https://assets.vogue.com/photos/61b388f4d44d041a901d9d7c/master/pass/Katrina%20Kaif%20Sabyasachi%20wedding%20lehenga%20Vicky%20Kaushal.jpg")
     const [getImgLength, setImgLength] = useState(0)
 
     const handleIndex = async (state, index) => {
         var current_index = currentDisplayIndexRef.current
         switch (state) {
             case 1:
-                if (index > (getDisplayData.length - getDisplayData.length)) {
-                    if (current_index < getDisplayData.length) {
+                if (index > (getRightSiderefs.length - getRightSiderefs.length)) {
+                    if (current_index < getRightSiderefs.length) {
                         current_index = current_index + 1
                         setCurrentDisplayIndex(current_index)
                     }
@@ -54,7 +53,7 @@ const WeddingCardPage = () => {
                 break;
             case 0:
             default:
-                if (index < (getDisplayData.length)) {
+                if (index < (getRightSiderefs.length)) {
                     if (current_index > 0) {
                         current_index = current_index - 1
                         setCurrentDisplayIndex(current_index)
@@ -135,29 +134,27 @@ const WeddingCardPage = () => {
     }, [getCurrentDisplayIndex]);
 
     useEffect(() => {
-        if (getRightSiderefs.length === getDisplayData.length) {
-            if (run_uno.current === false) {
-                getRightSiderefs.forEach((currentValue, index) => {
-                    gsap.to(currentValue, {
-                        // x: 700,
-                        duration: 1,
-                        scrollTrigger: {
-                            trigger: currentValue,
-                            start: "top 50%",
-                            // end: vhToPixels(100),
-                            scrub: true,
-                            toggleActions: "play none none none",
-                            // markers: true,
-                            onEnter: () => {
-                                handleIndex(1, index)
-                            },
-                            onLeaveBack: () => {
-                                handleIndex(0, index)
-                            }
+        if (getRightSiderefs.length > 0) {
+            getRightSiderefs.forEach((currentValue, index) => {
+                gsap.to(currentValue, {
+                    // x: 700,
+                    duration: 1,
+                    scrollTrigger: {
+                        trigger: currentValue,
+                        start: "top 50%",
+                        // end: vhToPixels(100),
+                        scrub: true,
+                        toggleActions: "play none none none",
+                        // markers: true,
+                        onEnter: () => {
+                            handleIndex(1, index)
                         },
-                    });
-                })
-            }
+                        onLeaveBack: () => {
+                            handleIndex(0, index)
+                        }
+                    },
+                });
+            })
         }
 
         return () => {
@@ -169,7 +166,6 @@ const WeddingCardPage = () => {
 
     useEffect(() => {
         if (getRightSiderefs.length > 0) {
-            console.log("helo helo helo")
 
             const handleClickOutside = (event) => {
                 if (event?.target?.id === "events_button") {
@@ -177,7 +173,6 @@ const WeddingCardPage = () => {
                 }
                 else if (event?.target?.id === "profile_button") { }
                 else if (event?.target?.id === "hamburget_icon") {
-                    console.log("halt")
                     setIsHamburgerOpen(!getIsHamburgerOpen)
                 }
                 else if (event?.target?.id?.substring(0, 15) === "hamburger_icon_") {
@@ -237,12 +232,13 @@ const WeddingCardPage = () => {
                     gsap: gsap,
                     event_font: getDisplayData?.event_font,
                     getDisplayHeader: getDisplayHeader,
-                    getCurrentImg: getCurrentImg,
                     getImgLength: getImgLength,
                     getIsHamburgerOpen: getIsHamburgerOpen,
                     setIsHamburgerOpen: setIsHamburgerOpen,
                     getNoImage: getNoImage,
                     setNoImage: setNoImage,
+                    getNoImageCover: getNoImageCover,
+                    setNoImageCover: setNoImageCover,
                 })
             } else {
                 return WeddingCardNotFound()

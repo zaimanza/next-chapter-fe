@@ -1,48 +1,72 @@
 import React from 'react'
 import GetDateDMNY from '../../utils/GetDateDMNY.util'
 import GetDayName from '../../utils/GetDayName.util'
+import IntroductionHeader from '../wedding_card_header/IntroductionHeader.component'
 import WelcomeHeader from '../wedding_card_header/WelcomeHeader.component'
 
 const SilkTemplate = ({
     getDisplayData,
     addRightSideRef,
     gsap,
-    getCurrentImg,
     getImgLength,
     getParamTemplate,
     getParamDisplay,
     getIsHamburgerOpen,
     setIsHamburgerOpen,
+    getCurrentDisplayIndex,
     getNoImage,
     setNoImage,
+    getNoImageCover,
+    setNoImageCover
 }) => {
 
+    const LeftHUD = (currentValue) => {
+        switch (currentValue?.item_title) {
+            case 'Welcome':
+                return (<WelcomeHeader
+                    header={currentValue?.header}
+                    event_font={getDisplayData?.event_font}
+
+                />)
+            case 'ref':
+                return (<IntroductionHeader
+                    header={currentValue?.header}
+                    event_font={getDisplayData?.event_font}
+
+                />)
+
+            default:
+                return (<div></div>)
+        }
+    }
     const LeftComponent = () => {
         return (
             <div className="bg-yellow-400 h-[100vh]">
                 <div className="relative h-full w-full">
-                    <div className="bg-pink-400 absolute h-full w-full">
-                        <img
-                            src={getCurrentImg}
-                            alt="Avatar"
-                            className="object-cover w-full h-full" />
+                    <div className="bg-white absolute h-full w-full">
+                        {/* onimg err */}
+                        {
+                            getDisplayData?.data[getCurrentDisplayIndex]?.wedding_img_url && getNoImageCover === false ? <img
+                                src={getDisplayData?.data[getCurrentDisplayIndex]?.wedding_img_url}
+                                alt="Avatar"
+                                onError={({ currentTarget }) => {
+                                    currentTarget.onerror = null
+                                    setNoImageCover(true)
+                                }}
+                                onLoad={({ currentTarget }) => {
+                                    currentTarget.onerror = null
+                                    setNoImageCover(false)
+                                }}
+                                onChange={({ currentTarget }) => {
+                                    currentTarget.onerror = null
+                                    setNoImageCover(false)
+                                }}
+                                className="transition ease-in-out delay-150 object-cover w-full h-full" /> :
+                                <div className='bg-white w-full h-full'></div>
+                        }
                     </div>
                     {
-                        getDisplayData?.data?.map((currentValue, index) => {
-
-                            switch (currentValue?.item_title) {
-                                case 'Welcome':
-                                    return (<WelcomeHeader
-                                        key={index}
-                                        header={currentValue?.header}
-                                        event_font={getDisplayData?.event_font}
-
-                                    />)
-
-                                default:
-                                    return (<div key={index}></div>)
-                            }
-                        })
+                        LeftHUD(getDisplayData?.data[getCurrentDisplayIndex])
                     }
                 </div>
             </div>
