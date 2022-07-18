@@ -2,6 +2,8 @@
 import { useSelector } from "react-redux"
 const axios = require('axios').default;
 
+const nc_be_url = process.env.REACT_APP_NEXT_CHAPTER_BE_API
+
 const useEventModule = () => {
 
     const peopleProvider = useSelector((state) => state.people.value)
@@ -9,7 +11,7 @@ const useEventModule = () => {
     const createEvent = async (createData) => {
 
         const result = await axios?.post(
-            `http://localhost:3001/event/create_event`,
+            nc_be_url + `/event/create_event`,
             createData,
             {
                 headers: {
@@ -44,7 +46,7 @@ const useEventModule = () => {
     const findAllGeneralByOwner = async () => {
 
         const result = await axios?.post(
-            `http://localhost:3001/event/find_all_general_by_owner_id`,
+            nc_be_url + `/event/find_all_general_by_owner_id`,
             {},
             {
                 headers: {
@@ -81,7 +83,7 @@ const useEventModule = () => {
     }) => {
 
         const result = await axios?.post(
-            `http://localhost:3001/event/findWeddingCard/${nc_wedding_id}`,
+            nc_be_url + `/event/findWeddingCard/${nc_wedding_id}`,
             {},
             {
                 headers: {
@@ -120,7 +122,7 @@ const useEventModule = () => {
     }) => {
 
         const result = await axios?.post(
-            `http://localhost:3001/event/is_nc_wedding_id/${nc_wedding_id}`,
+            nc_be_url + `/event/is_nc_wedding_id/${nc_wedding_id}`,
             {},
             {
                 headers: {

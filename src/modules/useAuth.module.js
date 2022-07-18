@@ -1,11 +1,13 @@
 const axios = require('axios').default;
 
+const nc_be_url = process.env.REACT_APP_NEXT_CHAPTER_BE_API
+
 const useAuthModule = () => {
 
     const peopleLogin = async ({ email, password }) => {
 
         const result = await axios?.post(
-            `http://localhost:3001/auth/people_login`,
+            nc_be_url + `/auth/people_login`,
             {
                 email: email,
                 password: password
