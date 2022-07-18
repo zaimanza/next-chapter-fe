@@ -9,7 +9,7 @@ const useEventModule = () => {
     const createEvent = async (createData) => {
 
         const result = await axios?.post(
-            `http://localhost:3001/event/create_event`,
+            process.env.REACT_APP_NEXT_CHAPTER_BE_API + `/event/create_event`,
             createData,
             {
                 headers: {
@@ -42,9 +42,10 @@ const useEventModule = () => {
     }
 
     const findAllGeneralByOwner = async () => {
-
+        const url = process.env.REACT_APP_NEXT_CHAPTER_BE_API + `/event/find_all_general_by_owner_id`
+        console.log(url)
         const result = await axios?.post(
-            `http://localhost:3001/event/find_all_general_by_owner_id`,
+            url,
             {},
             {
                 headers: {
@@ -63,7 +64,7 @@ const useEventModule = () => {
                     return
                 }
             })
-
+        console.log(result)
         if (!result?.data) {
             if (result?.error) {
                 return {
@@ -81,7 +82,7 @@ const useEventModule = () => {
     }) => {
 
         const result = await axios?.post(
-            `http://localhost:3001/event/findWeddingCard/${nc_wedding_id}`,
+            process.env.REACT_APP_NEXT_CHAPTER_BE_API + `/event/findWeddingCard/${nc_wedding_id}`,
             {},
             {
                 headers: {
@@ -120,7 +121,7 @@ const useEventModule = () => {
     }) => {
 
         const result = await axios?.post(
-            `http://localhost:3001/event/is_nc_wedding_id/${nc_wedding_id}`,
+            process.env.REACT_APP_NEXT_CHAPTER_BE_API + `/event/is_nc_wedding_id/${nc_wedding_id}`,
             {},
             {
                 headers: {
