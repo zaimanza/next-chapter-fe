@@ -68,7 +68,7 @@ const WeddingCardPage = () => {
                             setIsFadeAnimOn(false)
                             clearTimeout(timeoutMinus)
                         }, 1000)
-                    } else if (current_index <= 0) {
+                    } else if (current_index < 0) {
                         setCurrentDisplayIndex(0)
                     }
                 }
