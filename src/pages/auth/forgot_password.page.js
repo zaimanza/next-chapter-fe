@@ -5,7 +5,7 @@ import { authSetEmailReducer } from "../../providers/auth.provider"
 import useAuthModule from "../../modules/useAuth.module";
 import { useNavigate } from "react-router-dom";
 import useTimer from "../../utils/useTimer";
-import StaticToast from "../../components/toasts/StaticToast.component";
+// import StaticToast from "../../components/toasts/StaticToast.component";
 
 export default function ForgotPasswordPage({ setAuthMode }) {
     const navigate = useNavigate()
@@ -76,12 +76,12 @@ export default function ForgotPasswordPage({ setAuthMode }) {
                                 <div className="text-center mb-[1.5vh] font-normal">
                                     <small>Enter the email address associated with your account, and we'll email you a link to reset your password.</small>
                                 </div>
-                                {timerCountdown === 0 ? null : <StaticToast
+                                {/* {timerCountdown === 0 ? null : <StaticToast
                                     config={getToastConfig ?? {
                                         message: "Website is unavailable. Please try again later.",
                                         mode: "error"
                                     }}
-                                />}
+                                />} */}
                                 <div className="relative w-full mb-[1.5vh]">
                                     <label
                                         className="block uppercase text-[1.5vh] font-bold mb-[1vh]"

@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux"
 import useRegex from '../../utils/useRegex';
 import { authSetEmailReducer, authSetPasswordReducer } from "../../providers/auth.provider";
 import useAuthModule from "../../modules/useAuth.module";
-import StaticToast from "../../components/toasts/StaticToast.component";
+// import StaticToast from "../../components/toasts/StaticToast.component";
 import useTimer from "../../utils/useTimer";
 
 export default function RegisterPage({ setAuthMode }) {
@@ -85,12 +85,12 @@ export default function RegisterPage({ setAuthMode }) {
                                 <div className="text-center mb-[1.5vh] font-normal">
                                     <small>Create your account</small>
                                 </div>
-                                {timerCountdown === 0 ? null : <StaticToast
+                                {/* {timerCountdown === 0 ? null : <StaticToast
                                     config={getToastConfig ?? {
                                         message: "Website is unavailable. Please try again later.",
                                         mode: "error"
                                     }}
-                                />}
+                                />} */}
                                 <div className="relative w-full mb-[1.5vh]">
                                     <label
                                         className="block uppercase text-[1.5vh] font-bold mb-[1vh]"

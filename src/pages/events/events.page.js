@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import { IoAdd } from "react-icons/io5";
 import useEventModule from '../../modules/useEvent.module';
 import { peopleLogoutReducer } from '../../providers/people.provider';
-import StaticToast from '../../components/toasts/StaticToast.component';
+// import StaticToast from '../../components/toasts/StaticToast.component';
 import CircularLoadingPage from '../error/circular_loading.page';
 
 const EventsPage = () => {
@@ -208,14 +208,14 @@ const EventsPage = () => {
                             <IoAdd className='ml-[1vh] m-auto h-[2vh] w-[2vh]' />
                         </div>
                     </div>
-                    {getToastConfig && getCardList.length === 0 &&
+                    {/* {getToastConfig && getCardList.length === 0 &&
                         <StaticToast
                             config={getToastConfig ?? {
                                 message: "Website is unavailable. Please try again later.",
                                 mode: "error"
                             }}
                         />
-                    }
+                    } */}
                     {getCardList.length !== 0 &&
                         <div className="grid grid-flow-row grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-10">
                             {getCardList.map((oneEvent, index) => {

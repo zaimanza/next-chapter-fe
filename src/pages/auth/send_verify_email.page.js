@@ -1,7 +1,7 @@
 import React, { useState } from "react"
 import { useSelector } from "react-redux"
 import { useNavigate } from "react-router-dom"
-import StaticToast from "../../components/toasts/StaticToast.component"
+// import StaticToast from "../../components/toasts/StaticToast.component"
 import useAuthModule from "../../modules/useAuth.module"
 import GetIntegerRandom from "../../utils/GetIntegerRandom"
 import useTimer from '../../utils/useTimer'
@@ -52,14 +52,14 @@ export default function SendVerifyEmailPage({ setAuthMode }) {
                                 <div className="text-center mb-[1.5vh] font-bold ">
                                     Verify your email
                                 </div>
-                                {showToastTimer?.timerCountdown === 0 ? null :
+                                {/* {showToastTimer?.timerCountdown === 0 ? null :
                                     <StaticToast
                                         config={getToastConfig ?? {
                                             message: "Website is unavailable. Please try again later.",
                                             mode: "error"
                                         }}
                                     />
-                                }
+                                } */}
                                 <div className="text-center mb-[1.5vh] font-normal">
                                     <small>We&apos;ve sent an email verification link to <p className="font-bold text-black mt-2">{authProvider.email}</p></small>
                                 </div>

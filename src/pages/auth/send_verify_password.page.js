@@ -1,7 +1,7 @@
 import React, { useState } from "react"
 import { useSelector } from "react-redux"
 import { useNavigate } from "react-router-dom"
-import StaticToast from "../../components/toasts/StaticToast.component"
+// import StaticToast from "../../components/toasts/StaticToast.component"
 import useAuthModule from "../../modules/useAuth.module"
 import GetIntegerRandom from "../../utils/GetIntegerRandom"
 import useTimer from '../../utils/useTimer'
@@ -52,12 +52,12 @@ export default function SendVerifyPasswordPage({ setAuthMode, getDecodedTicket }
                                 <div className="text-center mb-[1.5vh] font-bold ">
                                     Reset your password
                                 </div>
-                                {showToastTimer?.timerCountdown === 0 ? null : <StaticToast
+                                {/* {showToastTimer?.timerCountdown === 0 ? null : <StaticToast
                                     config={getToastConfig ?? {
                                         message: "Website is unavailable. Please try again later.",
                                         mode: "error"
                                     }}
-                                />}
+                                />} */}
                                 <div className="text-center mb-[1.5vh] font-normal">
                                     <small>We&apos;ve sent a password verification link to <p className="font-bold text-black mt-[0.5vh]">{authProvider.email}</p></small>
                                 </div>
