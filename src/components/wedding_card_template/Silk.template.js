@@ -17,7 +17,7 @@ const SilkTemplate = ({
     getNoImage,
     setNoImage,
     getNoImageCover,
-    setNoImageCover
+    setNoImageCover,
 }) => {
 
     const LeftHUD = (currentValue) => {
@@ -41,9 +41,9 @@ const SilkTemplate = ({
     }
     const LeftComponent = () => {
         return (
-            <div className="bg-yellow-400 h-[100vh]">
+            <div className=" h-[100vh]">
                 <div className="relative h-full w-full">
-                    <div className="bg-white absolute h-full w-full">
+                    <div className="bg-gray-900 absolute h-full w-full">
                         {/* onimg err */}
                         {
                             getDisplayData?.data[getCurrentDisplayIndex]?.wedding_img_url && getNoImageCover === false ? <img
@@ -61,8 +61,8 @@ const SilkTemplate = ({
                                     currentTarget.onerror = null
                                     setNoImageCover(false)
                                 }}
-                                className="transition ease-in-out delay-150 object-cover w-full h-full" /> :
-                                <div className='bg-white w-full h-full'></div>
+                                className=" fade-anim transition ease-in-out delay-150 object-cover w-full h-full" /> :
+                                <div className=' fade-anim bg-black w-full h-full'></div>
                         }
                     </div>
                     {
