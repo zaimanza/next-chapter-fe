@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { useDispatch, useSelector } from "react-redux"
 import { useNavigate } from "react-router-dom"
-// import StaticToast from '../../components/toasts/StaticToast.component'
+import StaticToast from '../../components/toasts/StaticToast.component'
 import useEventModule from '../../modules/useEvent.module'
 import { peopleLogoutReducer } from '../../providers/people.provider'
 import useRegex from '../../utils/useRegex'
@@ -137,12 +137,12 @@ const CreateEventPage = () => {
                                         <div className="text-center mb-[1.5vh] font-normal">
                                             <small>Let's add some details.</small>
                                         </div>
-                                        {/* {timerCountdown === 0 ? null : <StaticToast
+                                        {timerCountdown === 0 ? null : <StaticToast
                                             config={getToastConfig ?? {
                                                 message: "Website is unavailable. Please try again later.",
                                                 mode: "error"
                                             }}
-                                        />} */}
+                                        />}
                                         <div className="relative w-full mb-[1.5vh]">
                                             <label
                                                 className="block uppercase text-[1.5vh] font-bold mb-[1vh]"
