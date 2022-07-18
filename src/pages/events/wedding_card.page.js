@@ -37,6 +37,7 @@ const WeddingCardPage = () => {
     const [getIsHamburgerOpen, setIsHamburgerOpen] = useState(false)
     const [getNoImage, setNoImage] = useState(false)
     const [getNoImageCover, setNoImageCover] = useState(false)
+    const [getIsFadeAnimOn, setIsFadeAnimOn] = useState(false)
     // https://www.w3schools.com/howto/img_avatar2.png
     const [getImgLength, setImgLength] = useState(0)
 
@@ -44,15 +45,21 @@ const WeddingCardPage = () => {
         var current_index = currentDisplayIndexRef.current
         switch (state) {
             case 1:
+                setIsFadeAnimOn(true)
                 if (index > (getRightSiderefs.length - getRightSiderefs.length)) {
                     if (current_index < getRightSiderefs.length) {
                         current_index = current_index + 1
                         setCurrentDisplayIndex(current_index)
                     }
                 }
+                const timeoutAdd = setTimeout(() => {
+                    setIsFadeAnimOn(false)
+                    clearTimeout(timeoutAdd)
+                }, 1000)
                 break;
             case 0:
             default:
+                setIsFadeAnimOn(true)
                 if (index < (getRightSiderefs.length)) {
                     if (current_index > 0) {
                         current_index = current_index - 1
@@ -61,6 +68,11 @@ const WeddingCardPage = () => {
                         setCurrentDisplayIndex(0)
                     }
                 }
+
+                const timeoutMinus = setTimeout(() => {
+                    setIsFadeAnimOn(false)
+                    clearTimeout(timeoutMinus)
+                }, 1000)
                 break;
 
         }
@@ -166,7 +178,6 @@ const WeddingCardPage = () => {
 
     useEffect(() => {
         if (getRightSiderefs.length > 0) {
-
             const handleClickOutside = (event) => {
                 if (event?.target?.id === "events_button") {
                     navigate("/events");
@@ -239,6 +250,7 @@ const WeddingCardPage = () => {
                     setNoImage: setNoImage,
                     getNoImageCover: getNoImageCover,
                     setNoImageCover: setNoImageCover,
+                    getIsFadeAnimOn: getIsFadeAnimOn,
                 })
             } else {
                 return WeddingCardNotFound()

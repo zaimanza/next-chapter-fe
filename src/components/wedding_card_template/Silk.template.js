@@ -18,6 +18,7 @@ const SilkTemplate = ({
     setNoImage,
     getNoImageCover,
     setNoImageCover,
+    getIsFadeAnimOn,
 }) => {
 
     const LeftHUD = (currentValue) => {
@@ -61,8 +62,8 @@ const SilkTemplate = ({
                                     currentTarget.onerror = null
                                     setNoImageCover(false)
                                 }}
-                                className=" fade-anim transition ease-in-out delay-150 object-cover w-full h-full" /> :
-                                <div className=' fade-anim bg-black w-full h-full'></div>
+                                className={`${getIsFadeAnimOn && `fade-anim`} transition ease-in-out delay-150 object-cover w-full h-full`} /> :
+                                <div className={`${getIsFadeAnimOn && `fade-anim`} bg-black w-full h-full`}></div>
                         }
                     </div>
                     {
