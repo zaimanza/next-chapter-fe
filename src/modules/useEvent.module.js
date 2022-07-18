@@ -17,7 +17,7 @@ const useEventModule = () => {
                 headers: {
                     "grXgmgKx3WU42b79": peopleProvider?.access_token
                 },
-                timeout: 1000,
+                // timeout: 100000,
                 // plenty more options can be added, refer source link above
             }
         )
@@ -52,7 +52,7 @@ const useEventModule = () => {
                 headers: {
                     "grXgmgKx3WU42b79": peopleProvider?.access_token
                 },
-                timeout: 1000,
+                // timeout: 100000,
                 // plenty more options can be added, refer source link above
             }
         )
@@ -89,7 +89,7 @@ const useEventModule = () => {
                 headers: {
                     "grXgmgKx3WU42b79": peopleProvider?.access_token
                 },
-                timeout: 1000,
+                // timeout: 100000,
                 // plenty more options can be added, refer source link above
             }
         )
@@ -128,7 +128,7 @@ const useEventModule = () => {
                 headers: {
                     "grXgmgKx3WU42b79": peopleProvider?.access_token
                 },
-                timeout: 1000,
+                // timeout: 100000,
                 // plenty more options can be added, refer source link above
             }
         )
