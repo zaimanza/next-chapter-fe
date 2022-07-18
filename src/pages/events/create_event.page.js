@@ -111,10 +111,7 @@ const CreateEventPage = () => {
             <div className="w-full h-full flex items-center justify-center min-h-[100vh]">
                 <div
                     className="my-auto top-0 w-full h-full bg-no-repeat bg-full"
-                // style={{
-                //     backgroundImage:
-                //         "url(" + require("assets/img/register_bg_2.png").default + ")",
-                // }}
+
                 >
                     <div className="container mx-auto px-[1.7vh] h-full">
                         <div className="flex content-center items-center justify-center h-full">
