@@ -256,7 +256,7 @@ const EditDashboardPage = () => {
                         </div>
                         {/* body */}
                         {getIsHamburgerOpen &&
-                            <div className="bg-white w-full sm:hidden fixed h-full mt-[6vh]">
+                            <div className="bg-white w-full sm:hidden fixed h-full mt-[vh]">
                                 <div id="events_button" className="px-[1.7vh] py-[1.7vh] block  hover:bg-gray-100 no-underline hover:no-underline">Events</div>
                                 <div id="profile_button" className="px-[1.7vh] py-[1.7vh] block  hover:bg-gray-100 no-underline hover:no-underline">Profile</div>
                                 <hr className="border-t mx-[1.7vh] border-gray-400" />
