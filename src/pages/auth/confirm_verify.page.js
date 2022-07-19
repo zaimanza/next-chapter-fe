@@ -15,7 +15,6 @@ const ConfirmVerifyPage = () => {
         try {
             if (ticket) {
                 const decodedTicket = JSON.parse(atob(ticket))
-
                 if (decodedTicket) {
                     if (decodedTicket?.mode === "confirm-verify-email") {
                         const result = await _useAuthModule.peopleVerifyEmail({
