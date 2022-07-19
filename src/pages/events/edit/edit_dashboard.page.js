@@ -215,7 +215,7 @@ const EditDashboardPage = () => {
                     <div className="bg-white shadow-sm max-w-[700px] w-full sm:min-w-[500px] h-[100vh] overflow-auto">
                         {/* app_bar */}
                         <div
-                            className="  fixed sm:sticky top-0 bg-white w-full mx-auto">
+                            className="  sticky top-0 bg-white w-full mx-auto">
                             <div className="shadow flex items-center px-[1.7vh]">
                                 <div
                                     onClick={() => {
@@ -254,7 +254,6 @@ const EditDashboardPage = () => {
                                 </div>
                             </div>
                         </div>
-
                         {/* body */}
                         {getIsHamburgerOpen &&
                             <div className="bg-white w-full sm:hidden fixed h-full mt-[6vh]">
@@ -272,26 +271,25 @@ const EditDashboardPage = () => {
                                 <div
                                     key={index}
                                     className="mx-[0.8vh] mb-[2vh] sm:pt-0">
-                                    <div className='m-[1vh] font-semibold'>
+                                    <div className='p-[1vh] font-semibold'>
                                         {one_config?.category_name}
                                     </div>
-                                    <div className="m-[1vh] grid grid-flow-row grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 xl:grid-cols-4">
+                                    <div className="p-[1vh] grid grid-flow-row grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 xl:grid-cols-4">
                                         {
                                             one_config?.category_items?.map((category_item, index) =>
-                                                <div
-                                                    key={index}
-                                                    onClick={() => {
-                                                        navigate(`/${nc_wedding_id}/${category_item?.url}`)
-                                                    }} className="group group-hover:shadow-sm rounded-lg">
-                                                    <div className="text-center">
-                                                        <button
-                                                            className="overflow-hidden cursor-default h-[15vh] w-[15vh] group-hover:border text-gray-900 text-[1.5vh] uppercase rounded-lg outline-none ease-linear transition-all duration-150"
-                                                        // onClick={handleSubmit}
-                                                        >
-                                                            {category_item?.icon}
-                                                            <label className='capitalize'>{category_item?.name}</label>
-                                                        </button>
-                                                    </div>
+                                                <div className="text-center">
+                                                    <button
+                                                        key={index}
+                                                        onClick={() => {
+                                                            navigate(`/${nc_wedding_id}/${category_item?.url}`)
+                                                        }}
+
+                                                        className="overflow-hidden cursor-default h-[15vh] w-[15vh] hover:border text-gray-900 text-[1.5vh] uppercase rounded-lg outline-none ease-linear transition-all duration-150"
+                                                    // onClick={handleSubmit}
+                                                    >
+                                                        {category_item?.icon}
+                                                        <label className='capitalize'>{category_item?.name}</label>
+                                                    </button>
                                                 </div>
                                             )}
                                     </div>
