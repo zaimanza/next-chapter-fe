@@ -34,43 +34,40 @@ const EventsPage = () => {
                     // findallByOwnerId
                     const result = await _useEventModule.findAllGeneralByOwner()
 
-                    const timeout = setTimeout(() => {
-
-                        if (result?.error || !result) {
-                            if (result?.error?.error) {
-                                setToastConfig({
-                                    message: "Website is unavailable. Please try again later.",
-                                    mode: "error"
-                                })
-                            } else if (result?.error) {
-                                setToastConfig({
-                                    message: result?.error ?? "Website is unavailable. Please try again later.",
-                                    mode: "error"
-                                })
-                                if (result?.error === "Account does not exists.") {
-                                    dispatch(
-                                        peopleLogoutReducer()
-                                    )
-                                    navigate("/auth");
-                                }
-                            } else {
-                                setToastConfig({
-                                    message: "There's no event available.",
-                                    mode: "warning"
-                                })
+                    if (result?.error || !result) {
+                        if (result?.error?.error) {
+                            setToastConfig({
+                                message: "Website is unavailable. Please try again later.",
+                                mode: "error"
+                            })
+                        } else if (result?.error) {
+                            setToastConfig({
+                                message: result?.error ?? "Website is unavailable. Please try again later.",
+                                mode: "error"
+                            })
+                            if (result?.error === "Account does not exists.") {
+                                dispatch(
+                                    peopleLogoutReducer()
+                                )
+                                navigate("/auth");
                             }
                         } else {
-                            if (result.length !== 0) {
-                                // if exist view
-                                setCardList(result)
-                            } else {
-                                // else go to create_event
-                                navigate("/create_event")
-                            }
+                            setToastConfig({
+                                message: "There's no event available.",
+                                mode: "warning"
+                            })
                         }
                         setIsLoadingPageOpen(false)
-                        clearTimeout(timeout)
-                    }, 2000)
+                    } else {
+                        if (result.length !== 0) {
+                            // if exist view
+                            setCardList(result)
+                        } else {
+                            // else go to create_event
+                            navigate("/create_event")
+                        }
+                        setIsLoadingPageOpen(false)
+                    }
 
                     // if error view problem with system
                 }
