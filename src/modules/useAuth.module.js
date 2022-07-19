@@ -37,7 +37,7 @@ const useAuthModule = () => {
     const peopleRegister = async ({ email, password }) => {
 
         const result = await axios?.post(
-            `http://localhost:3001/auth/people_register`,
+            nc_be_url + `/auth/people_register`,
             {
                 email: email,
                 password: password
@@ -67,7 +67,7 @@ const useAuthModule = () => {
     const peopleForgotPassword = async ({ email }) => {
 
         const result = await axios?.post(
-            `http://localhost:3001/auth/people_send_verify_password`,
+            nc_be_url + `/auth/people_send_verify_password`,
             {
                 email: email,
             })
@@ -96,7 +96,7 @@ const useAuthModule = () => {
     const peopleResetPassword = async ({ password, node_ticket }) => {
 
         const result = await axios?.post(
-            `http://localhost:3001/auth/people_reset_password`,
+            nc_be_url + `/auth/people_reset_password`,
             {
                 password: password,
                 node_ticket: node_ticket,
@@ -126,7 +126,7 @@ const useAuthModule = () => {
     const peopleSendVerifyEmail = async ({ email }) => {
 
         const result = await axios?.post(
-            `http://localhost:3001/auth/people_send_verify_email`,
+            nc_be_url + `/auth/people_send_verify_email`,
             {
                 email: email,
             })
@@ -154,7 +154,7 @@ const useAuthModule = () => {
 
     const peopleVerifyEmail = async ({ node_ticket }) => {
         const result = await axios?.post(
-            `http://localhost:3001/auth/people_verify_email`,
+            nc_be_url + `/auth/people_verify_email`,
             {
                 node_ticket: node_ticket,
             })
