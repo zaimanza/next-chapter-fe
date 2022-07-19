@@ -47,6 +47,7 @@ const EditDashboardPage = () => {
 
                         navigate("/500")
                     }
+                    setIsLoadingPageOpen(false)
                 } else {
                     if (result.length !== 0) {
 
@@ -54,12 +55,8 @@ const EditDashboardPage = () => {
                     } else {
                         navigate("/wedding_card_not_found")
                     }
-                }
-
-                const timeout = setTimeout(() => {
                     setIsLoadingPageOpen(false)
-                    clearTimeout(timeout)
-                }, 2000)
+                }
 
             }
             initFunctionCall()
