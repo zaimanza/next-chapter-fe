@@ -303,7 +303,7 @@ const SilkTemplate = ({
                                                     <div>{getDisplayData?.data[0]?.body?.wedding_title}</div>
                                                     <div>{getDisplayData?.data[index]?.body?.father_name}</div>
                                                     <div>{getDisplayData?.data[index]?.body?.mother_name}</div>
-                                                    <div>{getDisplayData?.data[index]?.body?.introduction_message}</div>
+                                                    <div style={{ whiteSpace: "pre-wrap" }}>{getDisplayData?.data[index]?.body?.introduction_message}</div>
                                                     <div>{getDisplayData?.data[index]?.body?.your_full_name}</div>
                                                     <div>{getDisplayData?.data[index]?.body?.your_partner_full_name}</div>
                                                     <div>{getDisplayData?.data[0]?.body?.wedding_date}</div>
