@@ -39,31 +39,21 @@ const PeopleAuthLayout = () => {
     }, [])
 
     return (
-        <div className='bg-pink-400 text-[1.7vh]'>
-            <div className="w-full h-full flex items-center justify-center min-h-[100vh]">
-                <div
-                    className="my-auto top-0 w-full h-full bg-no-repeat bg-full"
-                // style={{
-                //     backgroundImage:
-                //         "url(" + require("assets/img/register_bg_2.png").default + ")",
-                // }}
-                >
-                    {(getAuthMode === "login") && <LoginPage setAuthMode={setAuthMode} />}
-                    {(getAuthMode === "register") && <RegisterPage setAuthMode={setAuthMode} />}
-                    {(getAuthMode === "forgot-password") && <ForgotPasswordPage setAuthMode={setAuthMode} />}
-                    {(getAuthMode === "reset-password") && <ResetPasswordPage
-                        setAuthMode={setAuthMode}
-                        getDecodedTicket={getDecodedTicket}
-                    />}
-                    {(getAuthMode === "send-verify-email") && <SendVerifyEmailPage
-                        setAuthMode={setAuthMode}
-                    />}
-                    {(getAuthMode === "send-verify-password") && <SendVerifyPasswordPage
-                        setAuthMode={setAuthMode}
-                        getDecodedTicket={getDecodedTicket}
-                    />}
-                </div>
-            </div>
+        <div className='bg-pink-400 w-[100%] min-h-[100vh] flex items-center justify-center'>
+            {(getAuthMode === "login") && <LoginPage setAuthMode={setAuthMode} />}
+            {(getAuthMode === "register") && <RegisterPage setAuthMode={setAuthMode} />}
+            {(getAuthMode === "forgot-password") && <ForgotPasswordPage setAuthMode={setAuthMode} />}
+            {(getAuthMode === "reset-password") && <ResetPasswordPage
+                setAuthMode={setAuthMode}
+                getDecodedTicket={getDecodedTicket}
+            />}
+            {(getAuthMode === "send-verify-email") && <SendVerifyEmailPage
+                setAuthMode={setAuthMode}
+            />}
+            {(getAuthMode === "send-verify-password") && <SendVerifyPasswordPage
+                setAuthMode={setAuthMode}
+                getDecodedTicket={getDecodedTicket}
+            />}
         </div>
     )
 }

@@ -5,20 +5,20 @@ const StaticToast = ({ config }) => {
     const bgColor = useRef("bg-red-300")
     const bgToastIcon = useRef("bg-red-800")
     const textToastIcon = useRef("text-red-200")
-    const toastIcon = useRef(<MdOutlineClose className="w-[2vh] h-[2vh]" />)
+    const toastIcon = useRef(<MdOutlineClose className="w-[1.2rem] h-[1.2rem]" />)
     switch (config.mode) {
         case "error": {
             bgColor.current = "bg-red-300"
             bgToastIcon.current = "bg-red-800"
             textToastIcon.current = "text-red-200"
-            toastIcon.current = <MdOutlineClose className="w-[2vh] h-[2vh]" />
+            toastIcon.current = <MdOutlineClose className="w-[1.2rem] h-[1.2rem]" />
             break;
         }
         case "warning": {
             bgColor.current = "bg-orange-300"
             bgToastIcon.current = "bg-orange-800"
             textToastIcon.current = "text-orange-200"
-            toastIcon.current = <MdOutlineWarning className="w-[2vh] h-[2vh]" />
+            toastIcon.current = <MdOutlineWarning className="w-[1.2rem] h-[1.2rem]" />
             break;
         }
         case "success":
@@ -26,7 +26,7 @@ const StaticToast = ({ config }) => {
             bgColor.current = "bg-green-300"
             bgToastIcon.current = "bg-green-800"
             textToastIcon.current = "text-green-200"
-            toastIcon.current = <MdCheck className="w-[2vh] h-[2vh]" />
+            toastIcon.current = <MdCheck className="w-[1.2rem] h-[1.2rem]" />
             break;
         }
         // code block
@@ -37,7 +37,7 @@ const StaticToast = ({ config }) => {
             <div className={`inline-flex items-center justify-center flex-shrink-0 w-[3.3vh] h-[3.3vh] ${bgToastIcon.current} rounded-lg ${textToastIcon.current}`}>
                 {toastIcon.current}
             </div>
-            <div className="ml-[1vh] text-[1.5vh] font-normal">{config.message}</div>
+            <div className="ml-[1vh] text-sm font-normal">{config.message}</div>
 
         </div>
     )

@@ -43,13 +43,13 @@ export default function SendVerifyPasswordPage({ setAuthMode, getDecodedTicket }
     }
 
     return (
-        <div className="container mx-auto px-[1.7vh] h-full">
+        <div className="container mx-auto h-full">
             <form onSubmit={handleSubmit}>
                 <div className="flex content-center items-center justify-center h-full">
-                    <div className="w-full max-w-[35rem] px-[1.7vh]">
+                    <div className="w-full max-w-[35rem] px-4">
                         <div className="relative flex flex-col min-w-0 break-words w-full shadow-lg rounded-lg border-0 bg-white">
-                            <div className="rounded-t mb-0 px-[2.5vh] py-[2.5vh]">
-                                <div className="text-center mb-[1.5vh] font-bold ">
+                            <div className="rounded-t mb-0 px-[1.5rem] py-[1.5rem]">
+                                <div className="text-center mb-[1rem] font-bold ">
                                     Reset your password
                                 </div>
                                 {showToastTimer?.timerCountdown === 0 ? null : <StaticToast
@@ -58,15 +58,15 @@ export default function SendVerifyPasswordPage({ setAuthMode, getDecodedTicket }
                                         mode: "error"
                                     }}
                                 />}
-                                <div className="text-center mb-[1.5vh] font-normal">
-                                    <small>We&apos;ve sent a password verification link to <p className="font-bold text-black mt-[0.5vh]">{authProvider.email}</p></small>
+                                <div className="text-center mb-[1rem] font-normal">
+                                    <small>We&apos;ve sent a password verification link to <p className="font-bold text-black mt-2">{authProvider.email}</p></small>
                                 </div>
 
-                                <div className="mb-[4.5vh]">
+                                <div className="mb-[2rem]">
                                 </div>
 
                                 <button
-                                    className={`${clickPasswordTimer?.timerCountdown === 0 ? "active:bg-gray-600 bg-gray-800 hover:shadow-lg" : "bg-gray-400"} text-white text-[1.5vh] font-bold uppercase px-[1.7vh] py-[1.2vh] rounded shadow outline-none focus:outline-none w-full ease-linear transition-all duration-150`}
+                                    className={`${clickPasswordTimer?.timerCountdown === 0 ? "active:bg-gray-600 bg-gray-800 hover:shadow-lg" : "bg-gray-400"} text-white text-sm font-bold uppercase px-[0.7rem] py-[0.7rem] rounded shadow outline-none focus:outline-none w-full ease-linear transition-all duration-150`}
                                     type="submit"
                                     disabled={clickPasswordTimer?.timerCountdown === 0 ? false : true}
                                     onClick={handleSubmit}
@@ -75,7 +75,7 @@ export default function SendVerifyPasswordPage({ setAuthMode, getDecodedTicket }
                                 </button>
                             </div>
                         </div>
-                        <div className="flex flex-wrap mt-[2vh] relative">
+                        <div className="flex flex-wrap mt-[1.2rem] relative">
                             <div className="w-full  justify-center">
                                 <div onClick={() => {
                                     setAuthMode("login")
