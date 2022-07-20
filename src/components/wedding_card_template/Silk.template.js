@@ -29,7 +29,7 @@ const SilkTemplate = ({
                     event_font={getDisplayData?.event_font}
 
                 />)
-            case 'ref':
+            case 'Introduction':
                 return (<IntroductionHeader
                     header={currentValue?.header}
                     event_font={getDisplayData?.event_font}
@@ -289,7 +289,7 @@ const SilkTemplate = ({
                                             </div>
                                         </div>
                                     )
-                                case 'ref':
+                                case 'Introduction':
                                     return (
                                         <div
                                             key={index}
