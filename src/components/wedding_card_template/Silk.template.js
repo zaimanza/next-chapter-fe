@@ -296,8 +296,6 @@ const SilkTemplate = ({
                                             ref={addRightSideRef}
                                             id={`display_data_${index + 1}`}
                                             className='relative min-h-[100vh]'>
-
-                                            {console.log(getDisplayData)}
                                             <div className="  h-[100vh] flex items-center justify-center">
                                                 <div>
                                                     <div>{getDisplayData?.data[0]?.body?.wedding_title}</div>
