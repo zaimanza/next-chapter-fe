@@ -266,6 +266,7 @@ const EditDashboardPage = () => {
                             </div>
                         }
 
+                        <br />
                         {
                             config_edit_menu.map((one_config, index) =>
                                 <div
