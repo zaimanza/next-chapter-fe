@@ -297,8 +297,23 @@ const SilkTemplate = ({
                                             id={`display_data_${index + 1}`}
                                             className='relative min-h-[100vh]'>
 
+                                            {console.log(getDisplayData)}
+                                            <div className="  h-[100vh] flex items-center justify-center">
+                                                <div>
+                                                    <div>{getDisplayData?.data[0]?.body?.wedding_title}</div>
+                                                    <div>{getDisplayData?.data[index]?.body?.father_name}</div>
+                                                    <div>{getDisplayData?.data[index]?.body?.mother_name}</div>
+                                                    <div>{getDisplayData?.data[index]?.body?.introduction_message}</div>
+                                                    <div>{getDisplayData?.data[index]?.body?.your_full_name}</div>
+                                                    <div>{getDisplayData?.data[index]?.body?.your_partner_full_name}</div>
+                                                    <div>{getDisplayData?.data[0]?.body?.wedding_date}</div>
+                                                    <div>{getDisplayData?.data[index]?.body?.start_time}</div>
+                                                    <div>{getDisplayData?.data[index]?.body?.end_time}</div>
+                                                    <div>{getDisplayData?.data[0]?.body?.wedding_location}</div>
+                                                    <div>{getDisplayData?.data[index]?.body?.dress_code}</div>
 
-                                            <div className="  h-[100vh] bg-red-400">{getDisplayData?.data[index]?.item_name}</div>
+                                                </div>
+                                            </div>
                                         </div>
                                     )
                                 default:
