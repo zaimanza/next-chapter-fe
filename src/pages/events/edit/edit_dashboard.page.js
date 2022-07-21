@@ -278,9 +278,10 @@ const EditDashboardPage = () => {
                                     <div className="p-[1vh] grid grid-flow-row grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 xl:grid-cols-4">
                                         {
                                             one_config?.category_items?.map((category_item, index) =>
-                                                <div className="text-center">
+                                                <div
+                                                    key={index}
+                                                    className="text-center">
                                                     <button
-                                                        key={index}
                                                         onClick={() => {
                                                             navigate(`/${nc_wedding_id}/${category_item?.url}`)
                                                         }}

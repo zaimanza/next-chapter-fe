@@ -21,7 +21,6 @@ const SilkTemplate = ({
     setNoImageCover,
     getIsFadeAnimOn,
 }) => {
-
     const LeftHUD = (currentValue) => {
         switch (currentValue?.item_title) {
             case 'Welcome':
@@ -33,7 +32,9 @@ const SilkTemplate = ({
             case 'Introduction':
                 return (<IntroductionHeader
                     header={currentValue?.header}
+                    start_time={currentValue?.body?.start_time}
                     event_font={getDisplayData?.event_font}
+                    index_0_body={getDisplayData?.data[0]?.body}
 
                 />)
 
@@ -191,7 +192,6 @@ const SilkTemplate = ({
                     }
                     {
                         getDisplayData?.data?.map((currentValue, index) => {
-
                             switch (currentValue?.item_title) {
                                 case 'Welcome':
                                     return (
@@ -203,7 +203,6 @@ const SilkTemplate = ({
                                                 `h-[100vh]` :
                                                 `h-[100vh] min-h-[50rem] sm:h-[100vh] sm:min-h-[100vh]`}`}
                                         >
-
                                             <div
                                                 className={`absolute w-full  ${getParamTemplate === 'true' ?
                                                     `h-[100vh]` :
@@ -220,14 +219,12 @@ const SilkTemplate = ({
                                                             setNoImage(true)
                                                         }}
                                                         src={getDisplayData?.template?.cover_img_url ? getDisplayData?.template?.cover_img_url : ``}
-
                                                     /> : <div
                                                         className={`bg-pink-400 w-full  ${getParamTemplate === 'true' ?
                                                             `h-[100vh]` :
                                                             `h-[100vh] min-h-[50rem] sm:h-[100vh] sm:min-h-[100vh]`}`}
                                                     >     </div>
                                                 }
-
                                             </div>
                                             <div
                                                 className={`text-[${getDisplayData?.template?.text_color ?? `#111827`}] absolute w-full flex flex-col text-center justify-center items-center ${getParamTemplate === 'true' ?
@@ -259,7 +256,6 @@ const SilkTemplate = ({
                                                                 `text-[3.5vh]` :
                                                                 `text-[3.5vh]`}`}
                                                             >
-
                                                                 <div className={` capitalize font-['${getDisplayData?.event_font}']`}>
                                                                     <div className='line-clamp-2'>{getDisplayData?.data[index]?.header?.title_name}</div>
                                                                     <div className=''>{" &"}</div>
