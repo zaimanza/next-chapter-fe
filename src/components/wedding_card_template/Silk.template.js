@@ -35,6 +35,7 @@ const SilkTemplate = ({
                     start_time={currentValue?.body?.start_time}
                     event_font={getDisplayData?.event_font}
                     index_0_body={getDisplayData?.data[0]?.body}
+                    getParamTemplate={getParamTemplate}
 
                 />)
 
