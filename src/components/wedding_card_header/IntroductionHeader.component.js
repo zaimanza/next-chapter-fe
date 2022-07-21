@@ -6,7 +6,11 @@ const IntroductionHeader = ({
     header,
     event_font,
     index_0_body,
-    getParamTemplate
+    getParamTemplate,
+    getTimerDays,
+    getTimerHours,
+    getTimerMinutes,
+    getTimerSeconds,
 }) => {
     return (
         <div className="w-full h-full">
@@ -17,25 +21,25 @@ const IntroductionHeader = ({
                             <div className={`${getParamTemplate === 'true' ? `grid gap-0 grid-cols-4` : `grid gap-0 grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-4`} max-w-[50vh] text-white font-['Cormorant_Garamond'] overflow-hidden`}>
                                 <div className='w-[10vh] h-[10vh] rounded'>
                                     <div className='text-[4vh]'>
-                                        00
+                                        {getTimerDays}
                                     </div>
                                     <div>Days</div>
                                 </div>
                                 <div className='w-[10vh] h-[10vh] rounded'>
                                     <div className='text-[4vh]'>
-                                        12
+                                        {getTimerHours}
                                     </div>
                                     <div>Hours</div>
                                 </div>
                                 <div className='w-[10vh] h-[10vh] rounded'>
                                     <div className='text-[4vh]'>
-                                        60
+                                        {getTimerMinutes}
                                     </div>
                                     <div>Minutes</div>
                                 </div>
                                 <div className=' w-[10vh] h-[10vh] rounded'>
                                     <div className='text-[4vh]'>
-                                        60
+                                        {getTimerSeconds}
                                     </div>
                                     <div>Seconds</div>
                                 </div>

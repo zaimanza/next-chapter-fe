@@ -38,8 +38,52 @@ const WeddingCardPage = () => {
     const [getNoImage, setNoImage] = useState(false)
     const [getNoImageCover, setNoImageCover] = useState(false)
     const [getIsFadeAnimOn, setIsFadeAnimOn] = useState(false)
+    const refFadeAnimOn = useRef(false)
     // https://www.w3schools.com/howto/img_avatar2.png
     const [getImgLength, setImgLength] = useState(0)
+
+    const [getTimerDays, setTimerDays] = useState('00')
+    const [getTimerHours, setTimerHours] = useState('00')
+    const [getTimerMinutes, setTimerMinutes] = useState('00')
+    const [getTimerSeconds, setTimerSeconds] = useState('00')
+
+
+    const startTimerCountdown = () => {
+        var wedding_date = getDisplayData?.data[0]?.body?.wedding_date
+        var total_date = new Date(wedding_date)
+
+        var start_time = getDisplayData?.data[1]?.body?.start_time
+        start_time = new Date(start_time)
+        total_date.setHours(start_time.getHours())
+        total_date.setMinutes(start_time.getMinutes())
+        total_date.setSeconds(start_time.getSeconds())
+
+        total_date.setHours(total_date.getHours() + (total_date.getTimezoneOffset() / 60))
+
+        const countdownDate = new Date(total_date).getTime()
+
+        const interval = setInterval(() => {
+            const now = new Date().getTime()
+            const distance = countdownDate - now
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24))
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24) / (1000 * 60 * 60)))
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60))
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000)
+
+            if (distance < 0) {
+
+                clearTimeout(interval)
+            } else {
+                if (refFadeAnimOn.current === false) {
+                    setTimerDays(days)
+                    setTimerHours(hours)
+                    setTimerMinutes(minutes)
+                    setTimerSeconds(seconds)
+                }
+            }
+        }, 1000)
+    }
 
     const handleIndex = async (state, index) => {
         var current_index = currentDisplayIndexRef.current
@@ -48,10 +92,12 @@ const WeddingCardPage = () => {
                 if (index > (getRightSiderefs.length - getRightSiderefs.length)) {
                     if (current_index < getRightSiderefs.length) {
                         setIsFadeAnimOn(true)
+                        refFadeAnimOn.current = true
                         current_index = current_index + 1
                         setCurrentDisplayIndex(current_index)
                         const timeoutAdd = setTimeout(() => {
                             setIsFadeAnimOn(false)
+                            refFadeAnimOn.current = false
                             clearTimeout(timeoutAdd)
                         }, 1000)
                     }
@@ -63,9 +109,11 @@ const WeddingCardPage = () => {
                     if (current_index > 0) {
                         current_index = current_index - 1
                         setIsFadeAnimOn(true)
+                        refFadeAnimOn.current = true
                         setCurrentDisplayIndex(current_index)
                         const timeoutMinus = setTimeout(() => {
                             setIsFadeAnimOn(false)
+                            refFadeAnimOn.current = false
                             clearTimeout(timeoutMinus)
                         }, 1000)
                     } else if (current_index < 0) {
@@ -139,7 +187,6 @@ const WeddingCardPage = () => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
-
     useEffect(() => {
         currentDisplayIndexRef.current = getCurrentDisplayIndex
     }, [getCurrentDisplayIndex]);
@@ -174,7 +221,6 @@ const WeddingCardPage = () => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [getRightSiderefs])
 
-
     useEffect(() => {
         if (getRightSiderefs.length > 0) {
             const handleClickOutside = (event) => {
@@ -197,6 +243,14 @@ const WeddingCardPage = () => {
                 // Unbind the event listener on clean up
                 document.removeEventListener('mousedown', handleClickOutside);
             };
+        }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [getRightSiderefs]);
+
+    useEffect(() => {
+        if (getRightSiderefs.length > 0) {
+            startTimerCountdown()
+
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [getRightSiderefs]);
@@ -250,6 +304,10 @@ const WeddingCardPage = () => {
                     getNoImageCover: getNoImageCover,
                     setNoImageCover: setNoImageCover,
                     getIsFadeAnimOn: getIsFadeAnimOn,
+                    getTimerDays,
+                    getTimerHours,
+                    getTimerMinutes,
+                    getTimerSeconds,
                 })
             } else {
                 return WeddingCardNotFound()
