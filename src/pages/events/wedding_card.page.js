@@ -61,28 +61,29 @@ const WeddingCardPage = () => {
         total_date.setHours(total_date.getHours() + (total_date.getTimezoneOffset() / 60))
 
         const countdownDate = new Date(total_date).getTime()
+        if (getImgLength > 0) {
+            const interval = setInterval(() => {
+                const now = new Date().getTime()
+                const distance = countdownDate - now
 
-        const interval = setInterval(() => {
-            const now = new Date().getTime()
-            const distance = countdownDate - now
+                const days = Math.floor(distance / (1000 * 60 * 60 * 24))
+                const hours = Math.floor((distance % (1000 * 60 * 60 * 24) / (1000 * 60 * 60)))
+                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60))
+                const seconds = Math.floor((distance % (1000 * 60)) / 1000)
 
-            const days = Math.floor(distance / (1000 * 60 * 60 * 24))
-            const hours = Math.floor((distance % (1000 * 60 * 60 * 24) / (1000 * 60 * 60)))
-            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60))
-            const seconds = Math.floor((distance % (1000 * 60)) / 1000)
+                if (distance < 0) {
 
-            if (distance < 0) {
-
-                clearTimeout(interval)
-            } else {
-                if (refFadeAnimOn.current === false) {
-                    setTimerDays(days)
-                    setTimerHours(hours)
-                    setTimerMinutes(minutes)
-                    setTimerSeconds(seconds)
+                    clearTimeout(interval)
+                } else {
+                    if (refFadeAnimOn.current === false) {
+                        setTimerDays(days)
+                        setTimerHours(hours)
+                        setTimerMinutes(minutes)
+                        setTimerSeconds(seconds)
+                    }
                 }
-            }
-        }, 1000)
+            }, 1000)
+        }
     }
 
     const handleIndex = async (state, index) => {
