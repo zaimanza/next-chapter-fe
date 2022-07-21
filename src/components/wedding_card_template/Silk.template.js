@@ -305,7 +305,7 @@ const SilkTemplate = ({
                                                         className={`max-w-full px-[7.4vh]  font-['Cinzel'] capitalize ${getImgLength > 0 ?
                                                             `text-[3.5vh]` :
                                                             `text-[3.5vh]`}`}
-                                                        style={{ color: getDisplayData?.template?.text_color ?? `#111827` }}
+                                                        style={{ color: `#FFCA43` }}
                                                     >
 
                                                         <div className={` capitalize font-['${getDisplayData?.event_font}']`}>
@@ -330,7 +330,7 @@ const SilkTemplate = ({
                                                     className={`max-w-full px-[7.4vh]  font-['Cinzel'] capitalize ${getImgLength > 0 ?
                                                         `text-[3.5vh]` :
                                                         `text-[3.5vh]`}`}
-                                                    style={{ color: getDisplayData?.template?.text_color ?? `#111827` }}
+                                                    style={{ color: `#FFCA43` }}
                                                 >
 
                                                     <div className={` capitalize font-['${getDisplayData?.event_font}']`}>
