@@ -1,6 +1,7 @@
 const GetHourMinute = ({ date }) => {
 
-    const d = new Date(date);
+    const d = new Date(date)
+    d.setHours(d.getHours() + (d.getTimezoneOffset() / 60))
     var getHours = d.getHours()
     var getMinutes = d.getMinutes()
 
@@ -9,10 +10,10 @@ const GetHourMinute = ({ date }) => {
         ampm = "PM"
     }
     if (getHours > 12) {
-        console.log(getHours)
+        // console.log(getHours)
         getHours = getHours - 12
     }
-    return getHours + ":" + (getMinutes < 10 && "0") + getMinutes + " " + ampm
+    return getHours + ":" + (getMinutes < 10 ? "0" : "") + getMinutes + " " + ampm
 }
 
 export default GetHourMinute

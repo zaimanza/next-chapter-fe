@@ -349,14 +349,8 @@ const SilkTemplate = ({
                                                     style={{ whiteSpace: "pre-wrap" }}
                                                 >
                                                     {GetHourMinute({ date: getDisplayData?.data[index]?.body?.start_time })}
-                                                </div>
-                                                {getDisplayData?.data[index]?.body?.start_time}
-                                                <br />
-                                                <div
-                                                    className={`max-w-full px-[7.4vh]  font-['Cinzel'] capitalize line-clamp-1`}
-                                                    style={{ whiteSpace: "pre-wrap" }}
-                                                >
-                                                    {getDisplayData?.data[index]?.body?.end_time}
+                                                    {" - "}
+                                                    {GetHourMinute({ date: getDisplayData?.data[index]?.body?.end_time })}
                                                 </div>
                                                 <br />
                                                 <div
