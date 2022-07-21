@@ -299,59 +299,78 @@ const SilkTemplate = ({
                                             className='relative min-h-[100vh]'>
                                             <div className="  h-[100vh] flex flex-col text-center justify-center items-center">
                                                 <div className={`max-w-full px-[7.4vh]  font-['Cinzel'] capitalize line-clamp-1`}>{getDisplayData?.data[0]?.body?.wedding_title}</div>
-                                                <br />
-                                                <div className={`max-w-full px-[7.4vh]  font-['Cinzel'] capitalize ${getImgLength > 0 ?
-                                                    `text-[3.5vh]` :
-                                                    `text-[3.5vh]`}`}
-                                                >
+                                                {(getDisplayData?.data[index]?.body?.father_name || getDisplayData?.data[index]?.body?.mother_name) && <>
+                                                    <br />
+                                                    <div
+                                                        className={`max-w-full px-[7.4vh]  font-['Cinzel'] capitalize ${getImgLength > 0 ?
+                                                            `text-[3.5vh]` :
+                                                            `text-[3.5vh]`}`}
+                                                        style={{ color: getDisplayData?.template?.text_color ?? `#111827` }}
+                                                    >
 
-                                                    <div className={` capitalize font-['${getDisplayData?.event_font}']`}>
-                                                        <div className='line-clamp-2'>{getDisplayData?.data[index]?.body?.father_name}</div>
-                                                        <div className=''>{" &"}</div>
-                                                        <div className='line-clamp-2'>{getDisplayData?.data[index]?.body?.mother_name}</div>
+                                                        <div className={` capitalize font-['${getDisplayData?.event_font}']`}>
+                                                            {getDisplayData?.data[index]?.body?.father_name &&
+                                                                <div className='line-clamp-2'>{getDisplayData?.data[index]?.body?.father_name}</div>}
+                                                            {(getDisplayData?.data[index]?.body?.father_name && getDisplayData?.data[index]?.body?.mother_name) &&
+                                                                <div className=''>{"&"}</div>}
+                                                            {getDisplayData?.data[index]?.body?.mother_name &&
+                                                                <div className='line-clamp-2'>{getDisplayData?.data[index]?.body?.mother_name}</div>}
+                                                        </div>
                                                     </div>
-                                                </div>
+                                                </>}
                                                 <br />
                                                 <div
-                                                    className={`max-w-full px-[7.4vh]  font-['Cinzel'] capitalize line-clamp-1`}
+                                                    className={`max-w-full px-[7.4vh]  font-['Ibarra_Real_Nova'] capitalize line-clamp-5`}
                                                     style={{ whiteSpace: "pre-wrap" }}
                                                 >
                                                     {getDisplayData?.data[index]?.body?.introduction_message}
                                                 </div>
                                                 <br />
-                                                <div className={`max-w-full px-[7.4vh]  font-['Cinzel'] capitalize ${getImgLength > 0 ?
-                                                    `text-[3.5vh]` :
-                                                    `text-[3.5vh]`}`}
+                                                <div
+                                                    className={`max-w-full px-[7.4vh]  font-['Cinzel'] capitalize ${getImgLength > 0 ?
+                                                        `text-[3.5vh]` :
+                                                        `text-[3.5vh]`}`}
+                                                    style={{ color: getDisplayData?.template?.text_color ?? `#111827` }}
                                                 >
 
                                                     <div className={` capitalize font-['${getDisplayData?.event_font}']`}>
-                                                        <div className='line-clamp-2'>{getDisplayData?.data[index]?.body?.your_full_name}</div>
-                                                        <div className=''>{" &"}</div>
-                                                        <div className='line-clamp-2'>{getDisplayData?.data[index]?.body?.your_partner_full_name}</div>
+                                                        <div className='line-clamp-2'>{getDisplayData?.data[index]?.body?.your_full_name ?? getDisplayData?.data[index]?.header?.title_name}</div>
+                                                        <div className=''>{"&"}</div>
+                                                        <div className='line-clamp-2'>{getDisplayData?.data[index]?.body?.your_partner_full_name ?? getDisplayData?.data[index]?.header?.title_partner_name}</div>
                                                     </div>
                                                 </div>
-                                                <br />
-                                                <div
-                                                    className={`max-w-full px-[7.4vh]  font-['Cinzel'] capitalize line-clamp-1`}
-                                                    style={{ whiteSpace: "pre-wrap" }}
-                                                >
-                                                    {getDisplayData?.data[0]?.body?.wedding_date}
-                                                </div>
-                                                <br />
-                                                <div
-                                                    className={`font-semibold max-w-full px-[7.4vh]  font-['Ibarra_Real_Nova'] capitalize line-clamp-1`}
-                                                    style={{ whiteSpace: "pre-wrap" }}
-                                                >
-                                                    Time
-                                                </div>
-                                                <div
-                                                    className={`max-w-full px-[7.4vh]  font-['Cinzel'] capitalize line-clamp-1`}
-                                                    style={{ whiteSpace: "pre-wrap" }}
-                                                >
-                                                    {GetHourMinute({ date: getDisplayData?.data[index]?.body?.start_time })}
-                                                    {" - "}
-                                                    {GetHourMinute({ date: getDisplayData?.data[index]?.body?.end_time })}
-                                                </div>
+                                                {getDisplayData?.data[0]?.body?.wedding_date && <>
+                                                    <br />
+                                                    <div
+                                                        className={`font-semibold max-w-full px-[7.4vh]  font-['Ibarra_Real_Nova'] capitalize line-clamp-1`}
+                                                        style={{ whiteSpace: "pre-wrap" }}
+                                                    >
+                                                        Date
+                                                    </div>
+                                                    <div
+                                                        className={`max-w-full px-[7.4vh]  font-['Cinzel'] capitalize line-clamp-1`}
+                                                        style={{ whiteSpace: "pre-wrap" }}
+                                                    >
+                                                        {GetDateDMNY({
+                                                            date: getDisplayData?.data[0]?.body?.wedding_date
+                                                        })}
+                                                    </div>
+                                                    <br />
+                                                    <div
+                                                        className={`font-semibold max-w-full px-[7.4vh]  font-['Ibarra_Real_Nova'] capitalize line-clamp-1`}
+                                                        style={{ whiteSpace: "pre-wrap" }}
+                                                    >
+                                                        Time
+                                                    </div>
+                                                    <div
+                                                        className={`max-w-full px-[7.4vh]  font-['Cinzel'] capitalize line-clamp-1`}
+                                                        style={{ whiteSpace: "pre-wrap" }}
+                                                    >
+                                                        {GetHourMinute({ date: getDisplayData?.data[index]?.body?.start_time })}
+                                                        {" - "}
+                                                        {GetHourMinute({ date: getDisplayData?.data[index]?.body?.end_time })}
+                                                    </div>
+                                                </>}
                                                 <br />
                                                 <div
                                                     className={`font-semibold max-w-full px-[7.4vh]  font-['Ibarra_Real_Nova'] capitalize line-clamp-1`}
