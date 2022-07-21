@@ -1,6 +1,7 @@
 import React from 'react'
 import GetDateDMNY from '../../utils/GetDateDMNY.util'
 import GetDayName from '../../utils/GetDayName.util'
+import GetHourMinute from '../../utils/GetHourMinute.util'
 import IntroductionHeader from '../wedding_card_header/IntroductionHeader.component'
 import WelcomeHeader from '../wedding_card_header/WelcomeHeader.component'
 
@@ -296,20 +297,93 @@ const SilkTemplate = ({
                                             ref={addRightSideRef}
                                             id={`display_data_${index + 1}`}
                                             className='relative min-h-[100vh]'>
-                                            <div className="  h-[100vh] flex items-center justify-center">
-                                                <div>
-                                                    <div>{getDisplayData?.data[0]?.body?.wedding_title}</div>
-                                                    <div>{getDisplayData?.data[index]?.body?.father_name}</div>
-                                                    <div>{getDisplayData?.data[index]?.body?.mother_name}</div>
-                                                    <div style={{ whiteSpace: "pre-wrap" }}>{getDisplayData?.data[index]?.body?.introduction_message}</div>
-                                                    <div>{getDisplayData?.data[index]?.body?.your_full_name}</div>
-                                                    <div>{getDisplayData?.data[index]?.body?.your_partner_full_name}</div>
-                                                    <div>{getDisplayData?.data[0]?.body?.wedding_date}</div>
-                                                    <div>{getDisplayData?.data[index]?.body?.start_time}</div>
-                                                    <div>{getDisplayData?.data[index]?.body?.end_time}</div>
-                                                    <div>{getDisplayData?.data[0]?.body?.wedding_location}</div>
-                                                    <div>{getDisplayData?.data[index]?.body?.dress_code}</div>
+                                            <div className="  h-[100vh] flex flex-col text-center justify-center items-center">
+                                                <div className={`max-w-full px-[7.4vh]  font-['Cinzel'] capitalize line-clamp-1`}>{getDisplayData?.data[0]?.body?.wedding_title}</div>
+                                                <br />
+                                                <div className={`max-w-full px-[7.4vh]  font-['Cinzel'] capitalize ${getImgLength > 0 ?
+                                                    `text-[3.5vh]` :
+                                                    `text-[3.5vh]`}`}
+                                                >
 
+                                                    <div className={` capitalize font-['${getDisplayData?.event_font}']`}>
+                                                        <div className='line-clamp-2'>{getDisplayData?.data[index]?.body?.father_name}</div>
+                                                        <div className=''>{" &"}</div>
+                                                        <div className='line-clamp-2'>{getDisplayData?.data[index]?.body?.mother_name}</div>
+                                                    </div>
+                                                </div>
+                                                <br />
+                                                <div
+                                                    className={`max-w-full px-[7.4vh]  font-['Cinzel'] capitalize line-clamp-1`}
+                                                    style={{ whiteSpace: "pre-wrap" }}
+                                                >
+                                                    {getDisplayData?.data[index]?.body?.introduction_message}
+                                                </div>
+                                                <br />
+                                                <div className={`max-w-full px-[7.4vh]  font-['Cinzel'] capitalize ${getImgLength > 0 ?
+                                                    `text-[3.5vh]` :
+                                                    `text-[3.5vh]`}`}
+                                                >
+
+                                                    <div className={` capitalize font-['${getDisplayData?.event_font}']`}>
+                                                        <div className='line-clamp-2'>{getDisplayData?.data[index]?.body?.your_full_name}</div>
+                                                        <div className=''>{" &"}</div>
+                                                        <div className='line-clamp-2'>{getDisplayData?.data[index]?.body?.your_partner_full_name}</div>
+                                                    </div>
+                                                </div>
+                                                <br />
+                                                <div
+                                                    className={`max-w-full px-[7.4vh]  font-['Cinzel'] capitalize line-clamp-1`}
+                                                    style={{ whiteSpace: "pre-wrap" }}
+                                                >
+                                                    {getDisplayData?.data[0]?.body?.wedding_date}
+                                                </div>
+                                                <br />
+                                                <div
+                                                    className={`font-semibold max-w-full px-[7.4vh]  font-['Ibarra_Real_Nova'] capitalize line-clamp-1`}
+                                                    style={{ whiteSpace: "pre-wrap" }}
+                                                >
+                                                    Time
+                                                </div>
+                                                <div
+                                                    className={`max-w-full px-[7.4vh]  font-['Cinzel'] capitalize line-clamp-1`}
+                                                    style={{ whiteSpace: "pre-wrap" }}
+                                                >
+                                                    {GetHourMinute({ date: getDisplayData?.data[index]?.body?.start_time })}
+                                                </div>
+                                                {getDisplayData?.data[index]?.body?.start_time}
+                                                <br />
+                                                <div
+                                                    className={`max-w-full px-[7.4vh]  font-['Cinzel'] capitalize line-clamp-1`}
+                                                    style={{ whiteSpace: "pre-wrap" }}
+                                                >
+                                                    {getDisplayData?.data[index]?.body?.end_time}
+                                                </div>
+                                                <br />
+                                                <div
+                                                    className={`font-semibold max-w-full px-[7.4vh]  font-['Ibarra_Real_Nova'] capitalize line-clamp-1`}
+                                                    style={{ whiteSpace: "pre-wrap" }}
+                                                >
+                                                    Location
+                                                </div>
+                                                <div
+                                                    className={`max-w-full px-[7.4vh]  font-['Cinzel'] capitalize line-clamp-1`}
+                                                    style={{ whiteSpace: "pre-wrap" }}
+                                                >
+                                                    {getDisplayData?.data[0]?.body?.wedding_location}
+                                                </div>
+
+                                                <br />
+                                                <div
+                                                    className={`font-semibold max-w-full px-[7.4vh]  font-['Ibarra_Real_Nova'] capitalize line-clamp-1`}
+                                                    style={{ whiteSpace: "pre-wrap" }}
+                                                >
+                                                    Dress Code
+                                                </div>
+                                                <div
+                                                    className={`max-w-full px-[7.4vh]  font-['Ibarra_Real_Nova'] capitalize line-clamp-1`}
+                                                    style={{ whiteSpace: "pre-wrap" }}
+                                                >
+                                                    {getDisplayData?.data[index]?.body?.dress_code}
                                                 </div>
                                             </div>
                                         </div>
