@@ -8,6 +8,8 @@ import CircularLoadingPage from '../error/circular_loading.page';
 import WeddingCardNotFound from '../error/WeddingCardNotFound.page';
 import SilkTemplate from '../../components/wedding_card_template/Silk.template';
 import WelcomeHeader from '../../components/wedding_card_header/WelcomeHeader.component';
+import CapitalizeString from '../../utils/CapitalizeString.util';
+import TabTitle from '../../utils/TabTitle.util';
 
 gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
 
@@ -46,6 +48,17 @@ const WeddingCardPage = () => {
     const [getTimerHours, setTimerHours] = useState('00')
     const [getTimerMinutes, setTimerMinutes] = useState('00')
     const [getTimerSeconds, setTimerSeconds] = useState('00')
+
+    useEffect(() => {
+        if (getParamTemplate !== 'true') {
+            var splited_id = nc_wedding_id.split("_26")
+            var title_name = splited_id[0]
+            const with_space = title_name.replaceAll('_', ' ');
+            const replace_and = with_space.replaceAll('and', '&');
+            TabTitle({ newTitle: CapitalizeString(replace_and) })
+        }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [getParamTemplate]);
 
 
     const startTimerCountdown = () => {

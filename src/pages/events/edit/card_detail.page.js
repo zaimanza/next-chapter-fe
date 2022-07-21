@@ -1,6 +1,8 @@
 import React, { useEffect, useRef } from 'react'
 import { useSelector } from 'react-redux'
 import { useNavigate, useParams } from 'react-router-dom'
+import CapitalizeString from '../../../utils/CapitalizeString.util'
+import TabTitle from '../../../utils/TabTitle.util'
 
 const CardDetailPage = () => {
     const navigate = useNavigate()
@@ -8,6 +10,15 @@ const CardDetailPage = () => {
     const { nc_wedding_id } = useParams()
 
     const peopleProvider = useSelector((state) => state.people.value)
+
+    useEffect(() => {
+        var splited_id = nc_wedding_id.split("_26")
+        var title_name = splited_id[0]
+        const with_space = title_name.replaceAll('_', ' ');
+        const replace_and = with_space.replaceAll('and', '&');
+        TabTitle({ newTitle: CapitalizeString(replace_and) + ' - Card Details' })
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
 
     useEffect(() => {
         if (run_uno.current === false) {

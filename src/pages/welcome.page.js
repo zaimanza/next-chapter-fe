@@ -1,8 +1,10 @@
 import { HiDownload } from 'react-icons/hi';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import TabTitle from '../utils/TabTitle.util';
 
 const WelcomePage = () => {
+  TabTitle({ newTitle: 'nextChapter - Home' })
   const navigate = useNavigate();
 
   const peopleProvider = useSelector((state) => state.people.value)
