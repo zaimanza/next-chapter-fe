@@ -20,6 +20,10 @@ const SilkTemplate = ({
     getNoImageCover,
     setNoImageCover,
     getIsFadeAnimOn,
+    getTimerDays,
+    getTimerHours,
+    getTimerMinutes,
+    getTimerSeconds,
 }) => {
     const LeftHUD = (currentValue) => {
         switch (currentValue?.item_title) {
@@ -35,6 +39,11 @@ const SilkTemplate = ({
                     start_time={currentValue?.body?.start_time}
                     event_font={getDisplayData?.event_font}
                     index_0_body={getDisplayData?.data[0]?.body}
+                    getParamTemplate={getParamTemplate}
+                    getTimerDays={getTimerDays}
+                    getTimerHours={getTimerHours}
+                    getTimerMinutes={getTimerMinutes}
+                    getTimerSeconds={getTimerSeconds}
 
                 />)
 

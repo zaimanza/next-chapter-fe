@@ -10,7 +10,6 @@ const GetHourMinute = ({ date }) => {
         ampm = "PM"
     }
     if (getHours > 12) {
-        // console.log(getHours)
         getHours = getHours - 12
     }
     return getHours + ":" + (getMinutes < 10 ? "0" : "") + getMinutes + " " + ampm
