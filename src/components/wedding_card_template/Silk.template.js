@@ -375,7 +375,7 @@ const SilkTemplate = ({
                                                     Location
                                                 </div>
                                                 <div
-                                                    className={`max-w-full px-[7.4vh]  font-['Cinzel'] capitalize line-clamp-1`}
+                                                    className={`max-w-full px-[7.4vh]  font-['Cinzel'] capitalize line-clamp-5`}
                                                     style={{ whiteSpace: "pre-wrap" }}
                                                 >
                                                     {getDisplayData?.data[0]?.body?.wedding_location}
