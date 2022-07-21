@@ -8,8 +8,11 @@ import useEventModule from '../../modules/useEvent.module';
 import { peopleLogoutReducer } from '../../providers/people.provider';
 import StaticToast from '../../components/toasts/StaticToast.component';
 import CircularLoadingPage from '../error/circular_loading.page';
+import { WebsiteName } from '../../utils/WebsiteName.util';
+import TabTitle from '../../utils/TabTitle.util';
 
 const EventsPage = () => {
+    TabTitle({ newTitle: WebsiteName + ' - Events' })
     const navigate = useNavigate()
     const _useEventModule = useEventModule()
     const dispatch = useDispatch()

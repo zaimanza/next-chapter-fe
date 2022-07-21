@@ -8,6 +8,8 @@ import { useState } from 'react';
 import { peopleLogoutReducer } from '../../../providers/people.provider';
 import useEventModule from '../../../modules/useEvent.module';
 import CircularLoadingPage from '../../error/circular_loading.page';
+import TabTitle from '../../../utils/TabTitle.util';
+import CapitalizeString from '../../../utils/CapitalizeString.util';
 
 const EditDashboardPage = () => {
     const navigate = useNavigate()
@@ -22,6 +24,15 @@ const EditDashboardPage = () => {
     const [getIsHamburgerOpen, setIsHamburgerOpen] = useState(false)
     const [getIsLoadingPageOpen, setIsLoadingPageOpen] = useState(true)
     const [getBufferLoad, setBufferLoad] = useState(false)
+
+    useEffect(() => {
+        var splited_id = nc_wedding_id.split("_26")
+        var title_name = splited_id[0]
+        const with_space = title_name.replaceAll('_', ' ');
+        const replace_and = with_space.replaceAll('and', '&');
+        TabTitle({ newTitle: CapitalizeString(replace_and) + ' - Edit' })
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
 
     useEffect(() => {
         if (run_uno.current === false) {

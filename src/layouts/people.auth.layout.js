@@ -8,6 +8,8 @@ import ResetPasswordPage from '../pages/auth/reset_password.page'
 import SendVerifyEmailPage from '../pages/auth/send_verify_email.page'
 import SendVerifyPasswordPage from '../pages/auth/send_verify_password.page'
 import { useRef } from 'react'
+import TabTitle from '../utils/TabTitle.util'
+import { WebsiteName } from '../utils/WebsiteName.util'
 
 const PeopleAuthLayout = () => {
     const navigate = useNavigate()
@@ -37,6 +39,32 @@ const PeopleAuthLayout = () => {
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
+
+    useEffect(() => {
+        switch (getAuthMode) {
+            case "register":
+                TabTitle({ newTitle: WebsiteName + ' - Register Account' })
+                break;
+            case "forgot-password":
+                TabTitle({ newTitle: WebsiteName + ' - Forgot Password' })
+                break;
+            case "reset-password":
+                TabTitle({ newTitle: WebsiteName + ' - Reset Password' })
+                break;
+            case "send-verify-email":
+                TabTitle({ newTitle: WebsiteName + ' - Verify Email' })
+                break;
+            case "send-verify-password":
+                TabTitle({ newTitle: WebsiteName + ' - Verify Password' })
+                break;
+            case "login":
+                TabTitle({ newTitle: WebsiteName + ' - Login' })
+                break;
+            default:
+                TabTitle({ newTitle: 'nextChapter' })
+        }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [getAuthMode])
 
     return (
         <div className='bg-pink-400 w-[100%] min-h-[100vh] flex items-center justify-center'>

@@ -3,8 +3,11 @@ import { useDispatch } from "react-redux"
 import { useNavigate, useParams } from 'react-router-dom'
 import useAuthModule from '../../modules/useAuth.module'
 import { peopleLoginReducer } from '../../providers/people.provider'
+import TabTitle from '../../utils/TabTitle.util'
+import { WebsiteName } from '../../utils/WebsiteName.util'
 
 const ConfirmVerifyPage = () => {
+    TabTitle({ newTitle: WebsiteName + ' - Verifying...' })
     const navigate = useNavigate();
     const { ticket } = useParams()
     const dispatch = useDispatch()

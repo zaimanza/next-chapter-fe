@@ -4,10 +4,13 @@ import { useNavigate } from "react-router-dom"
 import StaticToast from '../../components/toasts/StaticToast.component'
 import useEventModule from '../../modules/useEvent.module'
 import { peopleLogoutReducer } from '../../providers/people.provider'
+import TabTitle from '../../utils/TabTitle.util'
 import useRegex from '../../utils/useRegex'
 import useTimer from '../../utils/useTimer'
+import { WebsiteName } from '../../utils/WebsiteName.util'
 
 const CreateEventPage = () => {
+    TabTitle({ newTitle: WebsiteName + ' - Create Wedding' })
     const dispatch = useDispatch()
     const { timerCountdown, startTimer } = useTimer()
     const navigate = useNavigate()
