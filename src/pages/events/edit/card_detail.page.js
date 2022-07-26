@@ -130,7 +130,7 @@ const CardDetailPage = () => {
                 <div className=" flex flex-row py-[2.2vh] pt-[8vh]">
                     <div className="w-full  justify-center">
                         <div className="mx-auto w-fit text-[1.5vh] font-semibold">
-                            <div className="flex flex-col w-full mb-6 shadow rounded-lg bg-white">
+                            <div className="flex flex-col max-w-[60rem] mb-6 shadow rounded-lg bg-white">
                                 <div className="mb-0 p-6 pb-0">
                                     <div className="text-center flex justify-between items-center">
                                         <div className="text-xl font-bold mb-0 flex items-center justify-center">
@@ -288,9 +288,6 @@ const CardDetailPage = () => {
                                                         />
                                                     </div>
                                                     <div className='flex'>
-                                                        <span className={`text-black mr-auto text-sm font-semibold`}>
-                                                            Show on card
-                                                        </span>
                                                         <input
                                                             id="customCheckLogin"
                                                             type="checkbox"
@@ -301,6 +298,9 @@ const CardDetailPage = () => {
                                                             }}
                                                             className={`text-gray-700 selection:form-checkbox border-0 rounded w-[1.2rem] h-[1.2rem] ease-linear transition-all duration-150`}
                                                         />
+                                                        <span className={`text-black ml-2 text-sm font-semibold`}>
+                                                            Show on card
+                                                        </span>
                                                     </div>
 
 
