@@ -98,24 +98,128 @@ const ProfilePage = () => {
                 </div>
             }
             <div className="mx-[1.8vh] mb-20">
-                <div className="sm:hidden flex flex-row py-[2.2vh] pt-[8vh]">
+                <div className=" flex flex-row py-[2.2vh] pt-[8vh]">
                     <div className="w-full  justify-center">
                         <div className="mx-auto w-fit text-[1.5vh] font-semibold">
-                            Wedding Events
+                            <div className="flex flex-col w-full mb-6 shadow rounded-lg bg-white">
+                                <div className="mb-0 p-6 pb-0">
+                                    <div className="text-center flex justify-between items-center">
+                                        <div className="text-xl font-bold mb-0">Profile</div>
+                                        <button className="bg-blue-600 inline-block outline-none focus:outline-none align-middle transition-all duration-150 ease-in-out uppercase border border-solid font-bold last:mr-0 mr-2  text-white bg-lightBlue-500 border-lightBlue-500 active:bg-lightBlue-600 active:border-blue-600 text-xs px-3 py-2 shadow hover:shadow-md rounded-md">Save change</button>
+                                    </div>
+                                </div>
+                                <div className="flex-auto px-6 pb-6 pt-0">
+                                    <div>
+                                        <h6 className="mt-6 mb-2 font-bold">General</h6>
+                                        <hr className="mb-6 border-b-1 border-gray-200" />
+                                        <div className="flex flex-wrap -mx-4">
+                                            <div className="w-full px-4 lg:w-12/12">
+                                                <div className=" w-full mb-3">
+                                                    <label className="block uppercase text-gray-700 text-xs font-bold mb-2 ml-1" for="grid-password">Card url</label>
+                                                    <div className="mb-3 pt-0">
+                                                        <input
+                                                            placeholder="Card url"
+                                                            type="text"
+                                                            className="border-gray-300 px-3 py-2 text-sm  w-full placeholder-gray-200 text-gray-700  bg-white rounded-md outline-none focus:ring-lightBlue-500 focus:ring-1 focus:border-lightBlue-500 border border-solid transition duration-200 "
+                                                        />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div className="w-full px-4 lg:w-6/12">
+                                                <div className=" w-full mb-3">
+                                                    <label className="block uppercase text-gray-700 text-xs font-bold mb-2 ml-1" for="grid-password">Partner One</label>
+                                                    <div className="mb-2 pt-0">
+                                                        <input
+                                                            placeholder="First name"
+                                                            type="text"
+                                                            className="border-gray-300 px-3 py-2 text-sm  w-full placeholder-gray-200 text-gray-700  bg-white rounded-md outline-none focus:ring-lightBlue-500 focus:ring-1 focus:border-lightBlue-500 border border-solid transition duration-200 "
+                                                        />
+                                                    </div>
+                                                    <div className="mb-3 pt-0">
+                                                        <input
+                                                            placeholder="Full name"
+                                                            type="text"
+                                                            className="border-gray-300 px-3 py-2 text-sm  w-full placeholder-gray-200 text-gray-700  bg-white rounded-md outline-none focus:ring-lightBlue-500 focus:ring-1 focus:border-lightBlue-500 border border-solid transition duration-200 "
+                                                        />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div className="w-full px-4 lg:w-6/12">
+                                                <div className=" w-full mb-3">
+                                                    <label className="block uppercase text-gray-700 text-xs font-bold mb-2 ml-1" for="grid-password">Partner Two</label>
+                                                    <div className="mb-2 pt-0">
+                                                        <input
+                                                            placeholder="First name"
+                                                            type="text"
+                                                            className="border-gray-300 px-3 py-2 text-sm  w-full placeholder-gray-200 text-gray-700  bg-white rounded-md outline-none focus:ring-lightBlue-500 focus:ring-1 focus:border-lightBlue-500 border border-solid transition duration-200 "
+                                                        />
+                                                    </div>
+                                                    <div className="mb-3 pt-0">
+                                                        <input
+                                                            placeholder="Full name"
+                                                            type="text"
+                                                            className="border-gray-300 px-3 py-2 text-sm  w-full placeholder-gray-200 text-gray-700  bg-white rounded-md outline-none focus:ring-lightBlue-500 focus:ring-1 focus:border-lightBlue-500 border border-solid transition duration-200 "
+                                                        />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div className="w-full px-4 lg:w-12/12">
+                                                <div className=" w-full mb-3">
+                                                    <label className="block uppercase text-gray-700 text-xs font-bold mb-2 ml-1" for="grid-password">Card display name</label>
+                                                    <div className="mb-3 pt-0">
+                                                        <input
+                                                            placeholder="Card display name"
+                                                            type="text"
+                                                            disabled="true"
+                                                            className="border-gray-300 px-3 py-2 text-sm  w-full placeholder-gray-200 text-gray-700  bg-white rounded-md outline-none focus:ring-lightBlue-500 focus:ring-1 focus:border-lightBlue-500 border border-solid transition duration-200 "
+                                                        />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div className="w-full px-4 lg:w-6/12">
+                                                <div className=" w-full mb-3">
+                                                    <label className="block uppercase text-gray-700 text-xs font-bold mb-2 ml-1" for="grid-password">Parent one</label>
+                                                    <div className="mb-3 pt-0">
+                                                        <input
+                                                            placeholder="Parent one"
+                                                            type="text"
+                                                            className="border-gray-300 px-3 py-2 text-sm  w-full placeholder-gray-200 text-gray-700  bg-white rounded-md outline-none focus:ring-lightBlue-500 focus:ring-1 focus:border-lightBlue-500 border border-solid transition duration-200 "
+                                                        />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div className="w-full px-4 lg:w-6/12">
+                                                <div className=" w-full mb-3">
+                                                    <label className="block uppercase text-gray-700 text-xs font-bold mb-2 ml-1" for="grid-password">Parent two</label>
+                                                    <div className="mb-3 pt-0">
+                                                        <input
+                                                            placeholder="Parent two"
+                                                            type="text"
+                                                            className="border-gray-300 px-3 py-2 text-sm  w-full placeholder-gray-200 text-gray-700  bg-white rounded-md outline-none focus:ring-lightBlue-500 focus:ring-1 focus:border-lightBlue-500 border border-solid transition duration-200 "
+                                                        />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div className="w-full px-4 lg:w-12/12">
+                                                <div className=" w-full mb-3">
+                                                    <label className="block uppercase text-gray-700 text-xs font-bold mb-2 ml-1" for="grid-password">Card display parent name</label>
+                                                    <div className="mb-3 pt-0">
+                                                        <input
+                                                            placeholder="Card display parent name"
+                                                            type="text"
+                                                            disabled="true"
+                                                            className="border-gray-300 px-3 py-2 text-sm  w-full placeholder-gray-200 text-gray-700  bg-white rounded-md outline-none focus:ring-lightBlue-500 focus:ring-1 focus:border-lightBlue-500 border border-solid transition duration-200 "
+                                                        />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-
                     </div>
                 </div>
-
-                <div className="hidden sm:flex justify-between py-[2.2vh] pt-[8vh]">
-                    <div className="">
-                        <div className="mx-auto w-fit text-[1.5vh] font-semibold">
-                            Wedding Events
-                        </div>
-                    </div>
-
-                </div>
-
             </div>
         </div>
     );
