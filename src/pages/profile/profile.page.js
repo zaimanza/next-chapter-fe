@@ -205,7 +205,6 @@ const ProfilePage = () => {
                                                                                     setEmail(getEmail)
                                                                                     emailOriginalRef.current = getEmail
                                                                                     if (result) {
-                                                                                        console.log(result)
                                                                                         dispatch(
                                                                                             peopleLoginReducer(result)
                                                                                         )
@@ -233,24 +232,19 @@ const ProfilePage = () => {
                                                                             if (!emailRes) {
                                                                                 const result = await _useAuthModule.peopleSendVerifyChangeEmail()
                                                                                 if (result?.error || !result) {
-                                                                                    console.log("hi1")
                                                                                     if (result?.error) {
                                                                                         setEmailError(result?.error)
                                                                                     }
                                                                                     clickEmailTimer?.startTimer(GetIntegerRandom({ min: 40, max: 60 }), 1000)
                                                                                 } else {
-                                                                                    console.log("hi2")
                                                                                     setEmail(getEmail)
                                                                                     emailOriginalRef.current = getEmail
                                                                                     if (result) {
-                                                                                        console.log(result)
                                                                                         dispatch(
                                                                                             peopleLoginReducer(result)
                                                                                         )
                                                                                     }
                                                                                     setIsAcceptEmailChange(true)
-                                                                                    // clickEmailTimer?.endTimer()
-                                                                                    console.log("hi")
                                                                                     clickEmailTimer?.startTimer(GetIntegerRandom({ min: 40, max: 60 }), 1000)
                                                                                 }
                                                                             }

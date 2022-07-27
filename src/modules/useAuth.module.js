@@ -243,7 +243,6 @@ const useAuthModule = () => {
             })
 
         if (!result?.data) {
-            console.log(result)
             if (result?.error) {
                 return {
                     error: result?.error ?? "Website is currently offline."
@@ -280,7 +279,6 @@ const useAuthModule = () => {
             })
 
         if (!result?.data) {
-            console.log(result)
             if (result?.error) {
                 return {
                     error: result?.error ?? "Website is currently offline."
@@ -289,7 +287,6 @@ const useAuthModule = () => {
                 return
             }
         }
-        console.log(result)
         return result?.data
     }
 
