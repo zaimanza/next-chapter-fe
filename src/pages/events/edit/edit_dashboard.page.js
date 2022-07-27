@@ -84,7 +84,9 @@ const EditDashboardPage = () => {
             else if (event.target.id === "events_button") {
                 navigate("/events");
             }
-            else if (event.target.id === "profile_button") { }
+            else if (event.target.id === "profile_button") {
+                navigate("/profile");
+            }
             else if (event.target.id === "hamburget_icon") {
                 setIsHamburgerOpen(!getIsHamburgerOpen)
             }

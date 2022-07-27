@@ -4,10 +4,12 @@ function useTimer() {
 
     const [timerCountdown, setTimerCountdown] = useState(0)
     let counter = useRef().current
-
+    var interval
     const startTimer = async (duration, miliSecInterval) => {
+        clearInterval(interval)
         counter = duration
-        const interval = setInterval(() => {
+        setTimerCountdown(counter)
+        interval = await setInterval(() => {
             if (counter > 0) {
                 counter = counter - 1
                 setTimerCountdown(counter)
@@ -18,7 +20,12 @@ function useTimer() {
             }
         }, miliSecInterval)
     }
+    const endTimer = async () => {
+        clearInterval(interval)
+        setTimerCountdown(0)
+        counter = 0
+    }
 
-    return { timerCountdown, startTimer }
+    return { timerCountdown, startTimer, endTimer }
 }
 export default useTimer

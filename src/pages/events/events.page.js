@@ -87,7 +87,9 @@ const EventsPage = () => {
             if (event.target.id === "logout_button") {
                 handleLogoutButton()
             }
-            else if (event.target.id === "profile_button") { }
+            else if (event.target.id === "profile_button") {
+                navigate("/profile")
+            }
             else if (event.target.id === "hamburget_icon") {
                 setIsHamburgerOpen(!getIsHamburgerOpen)
             }

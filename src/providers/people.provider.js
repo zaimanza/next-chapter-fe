@@ -27,12 +27,17 @@ export const peopleSlice = createSlice({
             state.value = initValue
             localStorage.removeItem("peopleCredential")
         },
+        peopleSetEmailReducer: (state, action) => {
+            state.value.email = action.payload.email
+            localStorage.setItem('peopleCredential', JSON.stringify(state.value));
+        },
     },
 });
 
 export const {
     peopleLoginReducer,
-    peopleLogoutReducer
+    peopleLogoutReducer,
+    peopleSetEmailReducer
 } = peopleSlice.actions;
 
 export default peopleSlice.reducer;
