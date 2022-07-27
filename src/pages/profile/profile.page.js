@@ -1,12 +1,41 @@
 import React, { useEffect, useState } from 'react'
-import { useDispatch } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 import { useNavigate } from 'react-router-dom';
-import { peopleLogoutReducer } from '../../providers/people.provider';
+import { peopleLoginReducer, peopleLogoutReducer } from '../../providers/people.provider';
+import { MdOutlineDone, MdClose } from "react-icons/md";
+import { useRef } from 'react';
+import useRegex from '../../utils/useRegex';
+import useAuthModule from '../../modules/useAuth.module';
+import GetIntegerRandom from '../../utils/GetIntegerRandom';
+import useTimer from '../../utils/useTimer';
+import CircularLoadingPage from '../error/circular_loading.page';
 
 const ProfilePage = () => {
     const dispatch = useDispatch()
+    const [getIsLoadingPageOpen, setIsLoadingPageOpen] = useState(true)
+    const _useAuthModule = useAuthModule()
+    const clickEmailTimer = useTimer()
+    const { regexEmail } = useRegex()
     const navigate = useNavigate()
     const [getIsHamburgerOpen, setIsHamburgerOpen] = useState(false)
+    const [getEmail, setEmail] = useState("")
+    const [getIsAcceptEmailChange, setIsAcceptEmailChange] = useState(false)
+    const emailOriginalRef = useRef("")
+    const [getEmailError, setEmailError] = useState("")
+    const run_uno = useRef(false)
+    const peopleProvider = useSelector((state) => state.people.value)
+
+    useEffect(() => {
+        if (run_uno.current === false) {
+            run_uno.current = true
+            if (peopleProvider.access_token === "") {
+                navigate(`/auth`)
+            } else {
+                setIsLoadingPageOpen(false)
+            }
+        }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [])
 
     useEffect(() => {
         const handleClickOutside = (event) => {
@@ -31,6 +60,30 @@ const ProfilePage = () => {
         };
     });
 
+    useEffect(() => {
+        const initFunction = async () => {
+            var email_val = ""
+            const result = await _useAuthModule.peopleGetEmailAccess()
+            if (result?.isemailverify === false) {
+                setIsAcceptEmailChange(true)
+            }
+            if (result?.error || !result) {
+                if (result?.error) {
+                    setEmailError(result?.error)
+                }
+            } else {
+                email_val = result?.email
+            }
+            // eslint-disable-next-line no-unused-vars
+            const temp_arr = [
+                setEmail(email_val),
+                emailOriginalRef.current = email_val
+            ]
+        }
+        initFunction()
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [])
+
     const handleLogoutButton = async () => {
         dispatch(
             peopleLogoutReducer()
@@ -39,177 +92,182 @@ const ProfilePage = () => {
 
     }
 
-    return (
-        <div className=" text-[1.7vh]">
+    if (!getIsLoadingPageOpen) {
+        return (
+            <div className=" text-[1.7vh]">
 
-            {/* app_bar */}
-            <div
-                className="fixed  bg-white w-full mx-auto ">
-                <div className="relative flex items-center px-[1.7vh]">
-                    <div className="absolute inset-x-0 bottom-0 h-px bg-slate-900/5">
-                    </div>
-                    <div
-                        onClick={() => {
-                            navigate("/events");
-                        }}
-                        className="mr-auto flex-none text-slate-900 font-semibold"
-                    >
-                        <label href="/">
-                            nextChapter
-                        </label>
-                    </div>
-                    <div
-                        className="py-[2vh] relative text-[1.5vh] ">
+                {/* app_bar */}
+                <div
+                    className="fixed  bg-white w-full mx-auto ">
+                    <div className="relative flex items-center px-[1.7vh]">
+                        <div className="absolute inset-x-0 bottom-0 h-px bg-slate-900/5">
+                        </div>
+                        <div
+                            onClick={() => {
+                                navigate("/events");
+                            }}
+                            className="mr-auto flex-none text-slate-900 font-semibold"
+                        >
+                            <label href="/">
+                                nextChapter
+                            </label>
+                        </div>
+                        <div
+                            className="py-[2vh] relative text-[1.5vh] ">
 
-                        <button
-                            className="flex">
-                            <svg id="hamburget_icon" viewBox="0 0 24 24" className="h-[2.6vh] w-[2.6vh] stroke-slate-900">
-                                <path d="M3.75 12h16.5M3.75 6.75h16.5M3.75 17.25h16.5" fill="none" strokeWidth="1.5" strokeLinecap="round"></path>
-                            </svg>
-                        </button>
-                        {getIsHamburgerOpen &&
-                            <div className="hidden sm:block w-[17vh] bg-white rounded shadow-md  absolute mt-[4vh] top-0 right-0 min-w-full overflow-auto z-30 ">
-
-                                <div id="events_button" className="px-[1.7vh] py-[1.7vh] block  hover:bg-gray-100 no-underline hover:no-underline">Events</div>
-                                <div id="profile_button" className="px-[1.7vh] py-[1.7vh] block  hover:bg-gray-100 no-underline hover:no-underline">Profile</div>
-
-                                <hr className="border-t mx-[1.7vh] border-gray-400" />
-
-
-                                <div id="logout_button" className="px-[1.7vh] py-[1.7vh] block  hover:bg-gray-100 no-underline hover:no-underline">
-                                    Logout
-                                </div>
-
-                            </div>
-                        }
-                    </div>
-                </div>
-            </div>
-
-            {/* body */}
-            {getIsHamburgerOpen &&
-                <div className="bg-white w-full sm:hidden fixed h-full mt-[6vh]">
-                    <div id="events_button" className="px-[1.7vh] py-[1.7vh] block  hover:bg-gray-100 no-underline hover:no-underline">Events</div>
-                    <div id="profile_button" className="px-[1.7vh] py-[1.7vh] block  hover:bg-gray-100 no-underline hover:no-underline">Profile</div>
-                    <hr className="border-t mx-[1.7vh] border-gray-400" />
-                    <div id="logout_button" className="px-[1.7vh] py-[1.7vh] block  hover:bg-gray-100 no-underline hover:no-underline">
-                        Logout
-                    </div>
-                </div>
-            }
-            <div className="mx-[1.8vh] mb-20">
-                <div className=" flex flex-row py-[2.2vh] pt-[8vh]">
-                    <div className="w-full  justify-center">
-                        <div className="mx-auto w-fit text-[1.5vh] font-semibold">
-                            <div className="flex flex-col w-full mb-6 shadow rounded-lg bg-white">
-                                <div className="mb-0 p-6 pb-0">
-                                    <div className="text-center flex justify-between items-center">
-                                        <div className="text-xl font-bold mb-0">Profile</div>
-                                        <button className="bg-blue-600 inline-block outline-none focus:outline-none align-middle transition-all duration-150 ease-in-out uppercase border border-solid font-bold last:mr-0 mr-2  text-white bg-lightBlue-500 border-lightBlue-500 active:bg-lightBlue-600 active:border-blue-600 text-xs px-3 py-2 shadow hover:shadow-md rounded-md">Save change</button>
+                            <button
+                                className="flex">
+                                <svg id="hamburget_icon" viewBox="0 0 24 24" className="h-[2.6vh] w-[2.6vh] stroke-slate-900">
+                                    <path d="M3.75 12h16.5M3.75 6.75h16.5M3.75 17.25h16.5" fill="none" strokeWidth="1.5" strokeLinecap="round"></path>
+                                </svg>
+                            </button>
+                            {getIsHamburgerOpen &&
+                                <div className="hidden sm:block w-[17vh] bg-white rounded shadow-md  absolute mt-[4vh] top-0 right-0 min-w-full overflow-auto z-30 ">
+                                    <div id="events_button" className="px-[1.7vh] py-[1.7vh] block  hover:bg-gray-100 no-underline hover:no-underline">Events</div>
+                                    <div id="profile_button" className="px-[1.7vh] py-[1.7vh] block  hover:bg-gray-100 no-underline hover:no-underline">Profile</div>
+                                    <hr className="border-t mx-[1.7vh] border-gray-400" />
+                                    <div id="logout_button" className="px-[1.7vh] py-[1.7vh] block  hover:bg-gray-100 no-underline hover:no-underline">
+                                        Logout
                                     </div>
                                 </div>
-                                <div className="flex-auto px-6 pb-6 pt-0">
-                                    <div>
-                                        <h6 className="mt-6 mb-2 font-bold">General</h6>
-                                        <hr className="mb-6 border-b-1 border-gray-200" />
-                                        <div className="flex flex-wrap -mx-4">
-                                            <div className="w-full px-4 lg:w-12/12">
-                                                <div className=" w-full mb-3">
-                                                    <label className="block uppercase text-gray-700 text-xs font-bold mb-2 ml-1" for="grid-password">Card url</label>
-                                                    <div className="mb-3 pt-0">
-                                                        <input
-                                                            placeholder="Card url"
-                                                            type="text"
-                                                            className="border-gray-300 px-3 py-2 text-sm  w-full placeholder-gray-200 text-gray-700  bg-white rounded-md outline-none focus:ring-lightBlue-500 focus:ring-1 focus:border-lightBlue-500 border border-solid transition duration-200 "
-                                                        />
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div className="w-full px-4 lg:w-6/12">
-                                                <div className=" w-full mb-3">
-                                                    <label className="block uppercase text-gray-700 text-xs font-bold mb-2 ml-1" for="grid-password">Partner One</label>
-                                                    <div className="mb-2 pt-0">
-                                                        <input
-                                                            placeholder="First name"
-                                                            type="text"
-                                                            className="border-gray-300 px-3 py-2 text-sm  w-full placeholder-gray-200 text-gray-700  bg-white rounded-md outline-none focus:ring-lightBlue-500 focus:ring-1 focus:border-lightBlue-500 border border-solid transition duration-200 "
-                                                        />
-                                                    </div>
-                                                    <div className="mb-3 pt-0">
-                                                        <input
-                                                            placeholder="Full name"
-                                                            type="text"
-                                                            className="border-gray-300 px-3 py-2 text-sm  w-full placeholder-gray-200 text-gray-700  bg-white rounded-md outline-none focus:ring-lightBlue-500 focus:ring-1 focus:border-lightBlue-500 border border-solid transition duration-200 "
-                                                        />
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div className="w-full px-4 lg:w-6/12">
-                                                <div className=" w-full mb-3">
-                                                    <label className="block uppercase text-gray-700 text-xs font-bold mb-2 ml-1" for="grid-password">Partner Two</label>
-                                                    <div className="mb-2 pt-0">
-                                                        <input
-                                                            placeholder="First name"
-                                                            type="text"
-                                                            className="border-gray-300 px-3 py-2 text-sm  w-full placeholder-gray-200 text-gray-700  bg-white rounded-md outline-none focus:ring-lightBlue-500 focus:ring-1 focus:border-lightBlue-500 border border-solid transition duration-200 "
-                                                        />
-                                                    </div>
-                                                    <div className="mb-3 pt-0">
-                                                        <input
-                                                            placeholder="Full name"
-                                                            type="text"
-                                                            className="border-gray-300 px-3 py-2 text-sm  w-full placeholder-gray-200 text-gray-700  bg-white rounded-md outline-none focus:ring-lightBlue-500 focus:ring-1 focus:border-lightBlue-500 border border-solid transition duration-200 "
-                                                        />
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div className="w-full px-4 lg:w-12/12">
-                                                <div className=" w-full mb-3">
-                                                    <label className="block uppercase text-gray-700 text-xs font-bold mb-2 ml-1" for="grid-password">Card display name</label>
-                                                    <div className="mb-3 pt-0">
-                                                        <input
-                                                            placeholder="Card display name"
-                                                            type="text"
-                                                            disabled="true"
-                                                            className="border-gray-300 px-3 py-2 text-sm  w-full placeholder-gray-200 text-gray-700  bg-white rounded-md outline-none focus:ring-lightBlue-500 focus:ring-1 focus:border-lightBlue-500 border border-solid transition duration-200 "
-                                                        />
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div className="w-full px-4 lg:w-6/12">
-                                                <div className=" w-full mb-3">
-                                                    <label className="block uppercase text-gray-700 text-xs font-bold mb-2 ml-1" for="grid-password">Parent one</label>
-                                                    <div className="mb-3 pt-0">
-                                                        <input
-                                                            placeholder="Parent one"
-                                                            type="text"
-                                                            className="border-gray-300 px-3 py-2 text-sm  w-full placeholder-gray-200 text-gray-700  bg-white rounded-md outline-none focus:ring-lightBlue-500 focus:ring-1 focus:border-lightBlue-500 border border-solid transition duration-200 "
-                                                        />
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div className="w-full px-4 lg:w-6/12">
-                                                <div className=" w-full mb-3">
-                                                    <label className="block uppercase text-gray-700 text-xs font-bold mb-2 ml-1" for="grid-password">Parent two</label>
-                                                    <div className="mb-3 pt-0">
-                                                        <input
-                                                            placeholder="Parent two"
-                                                            type="text"
-                                                            className="border-gray-300 px-3 py-2 text-sm  w-full placeholder-gray-200 text-gray-700  bg-white rounded-md outline-none focus:ring-lightBlue-500 focus:ring-1 focus:border-lightBlue-500 border border-solid transition duration-200 "
-                                                        />
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div className="w-full px-4 lg:w-12/12">
-                                                <div className=" w-full mb-3">
-                                                    <label className="block uppercase text-gray-700 text-xs font-bold mb-2 ml-1" for="grid-password">Card display parent name</label>
-                                                    <div className="mb-3 pt-0">
-                                                        <input
-                                                            placeholder="Card display parent name"
-                                                            type="text"
-                                                            disabled="true"
-                                                            className="border-gray-300 px-3 py-2 text-sm  w-full placeholder-gray-200 text-gray-700  bg-white rounded-md outline-none focus:ring-lightBlue-500 focus:ring-1 focus:border-lightBlue-500 border border-solid transition duration-200 "
-                                                        />
+                            }
+                        </div>
+                    </div>
+                </div>
+                {/* body */}
+                {getIsHamburgerOpen &&
+                    <div className="bg-white w-full sm:hidden fixed h-full mt-[6vh]">
+                        <div id="events_button" className="px-[1.7vh] py-[1.7vh] block  hover:bg-gray-100 no-underline hover:no-underline">Events</div>
+                        <div id="profile_button" className="px-[1.7vh] py-[1.7vh] block  hover:bg-gray-100 no-underline hover:no-underline">Profile</div>
+                        <hr className="border-t mx-[1.7vh] border-gray-400" />
+                        <div id="logout_button" className="px-[1.7vh] py-[1.7vh] block  hover:bg-gray-100 no-underline hover:no-underline">
+                            Logout
+                        </div>
+                    </div>
+                }
+                <div className="mx-[1.8vh] mb-20">
+                    <div className=" flex flex-row py-[2.2vh] pt-[8vh]">
+                        <div className="w-full  justify-center">
+                            <div className="mx-auto text-[1.5vh] font-semibold">
+                                <div className="flex flex-col max-w-[60rem] mx-auto mb-6 shadow rounded-lg bg-white">
+                                    <div className="mb-0 p-6 pb-0">
+                                        <div className="text-center flex justify-between items-center">
+                                            <div className="text-xl font-bold mb-0">Profile</div>
+                                        </div>
+                                    </div>
+                                    <div className="flex-auto px-6 pb-6 pt-0">
+                                        <div>
+                                            <div className="mt-6 mb-2 font-bold"></div>
+                                            <hr className="mb-6 border-b-1 border-gray-200" />
+                                            <div className="flex flex-wrap -mx-4">
+                                                <div className="w-full px-4 lg:w-12/12">
+                                                    <div className=" w-full mb-3">
+                                                        <label className="block uppercase text-gray-700 text-xs font-bold mb-2 ml-1" htmlFor="grid-password">Email</label>
+                                                        <div className=" pt-0 flex ">
+                                                            <input
+                                                                placeholder="Email"
+                                                                type="text"
+                                                                disabled={clickEmailTimer?.timerCountdown === 0 ? false : true}
+                                                                onChange={(event) => {
+                                                                    setEmailError("")
+                                                                    const onChangeValue = event.target.value
+                                                                    setIsAcceptEmailChange(false)
+                                                                    setEmail(onChangeValue)
+                                                                }}
+                                                                value={getEmail ?? ""}
+                                                                className={`${clickEmailTimer?.timerCountdown === 0 ? `text-gray-700` : `text-gray-400`} h-[2.4rem] border-gray-300 px-3 py-2 text-sm  w-full placeholder-gray-200  bg-white rounded-md outline-none focus:ring-lightBlue-500 focus:ring-1 focus:border-lightBlue-500 border border-solid transition duration-200 `}
+                                                            />
+                                                            {
+                                                                emailOriginalRef.current !== getEmail && <>
+                                                                    <div
+                                                                        className="cursor-pointer h-[2.4rem] m-auto bg-red-600 w-fit inline-block outline-none focus:outline-none align-middle transition-all duration-150 ease-in-out uppercase border border-solid font-bold last:mr-0 ml-2  text-white bg-lightBlue-500 border-lightBlue-500 active:bg-lightBlue-600 active:border-blue-600 text-xs px-3 py-2 shadow hover:shadow-md rounded-md"
+                                                                        onClick={() => {
+                                                                            setEmail(emailOriginalRef.current)
+                                                                        }}
+                                                                    >
+                                                                        <MdClose className=" h-[1.2rem] w-[1.2rem]" />
+                                                                    </div>
+                                                                    <div
+                                                                        className="cursor-pointer h-[2.4rem] m-auto bg-blue-600 w-fit inline-block outline-none focus:outline-none align-middle transition-all duration-150 ease-in-out uppercase border border-solid font-bold last:mr-0 ml-2  text-white bg-lightBlue-500 border-lightBlue-500 active:bg-lightBlue-600 active:border-blue-600 text-xs px-3 py-2 shadow hover:shadow-md rounded-md"
+                                                                        onClick={async () => {
+                                                                            //regex email
+                                                                            const emailRes = regexEmail(getEmail)
+                                                                            if (emailRes) setEmailError(emailRes)
+                                                                            if (!emailRes) {
+                                                                                const result = await _useAuthModule.peopleChangeEmail({
+                                                                                    email: getEmail
+                                                                                })
+                                                                                if (result?.error || !result) {
+                                                                                    if (result?.error) {
+                                                                                        setEmailError(result?.error)
+                                                                                    }
+                                                                                } else {
+                                                                                    setEmail(getEmail)
+                                                                                    emailOriginalRef.current = getEmail
+                                                                                    if (result) {
+                                                                                        console.log(result)
+                                                                                        dispatch(
+                                                                                            peopleLoginReducer(result)
+                                                                                        )
+                                                                                    }
+                                                                                    // clickEmailTimer?.endTimer()
+                                                                                    await clickEmailTimer?.startTimer(await GetIntegerRandom({ min: 40, max: 60 }), 1000)
+                                                                                    setIsAcceptEmailChange(true)
+                                                                                }
+                                                                            }
+                                                                        }}
+                                                                    >
+                                                                        <MdOutlineDone className=" h-[1.2rem] w-[1.2rem]" />
+                                                                    </div>
+                                                                </>
+                                                            }
+                                                            {
+                                                                getIsAcceptEmailChange && <>
+                                                                    {clickEmailTimer?.timerCountdown === 0 ? <div
+                                                                        className="cursor-pointer h-[2.4rem] m-auto bg-orange-600 w-fit inline-block outline-none focus:outline-none align-middle transition-all duration-150 ease-in-out border border-solid font-bold last:mr-0 ml-2  text-white bg-lightBlue-500 border-lightBlue-500 active:bg-lightBlue-600 active:border-blue-600 text-xs px-3 py-2 shadow hover:shadow-md rounded-md"
+                                                                        onClick={async () => {
+                                                                            //regex email
+                                                                            const emailRes = regexEmail(getEmail)
+                                                                            if (emailRes) setEmailError(emailRes)
+
+                                                                            if (!emailRes) {
+                                                                                const result = await _useAuthModule.peopleSendVerifyChangeEmail()
+                                                                                if (result?.error || !result) {
+                                                                                    console.log("hi1")
+                                                                                    if (result?.error) {
+                                                                                        setEmailError(result?.error)
+                                                                                    }
+                                                                                    clickEmailTimer?.startTimer(GetIntegerRandom({ min: 40, max: 60 }), 1000)
+                                                                                } else {
+                                                                                    console.log("hi2")
+                                                                                    setEmail(getEmail)
+                                                                                    emailOriginalRef.current = getEmail
+                                                                                    if (result) {
+                                                                                        console.log(result)
+                                                                                        dispatch(
+                                                                                            peopleLoginReducer(result)
+                                                                                        )
+                                                                                    }
+                                                                                    setIsAcceptEmailChange(true)
+                                                                                    // clickEmailTimer?.endTimer()
+                                                                                    console.log("hi")
+                                                                                    clickEmailTimer?.startTimer(GetIntegerRandom({ min: 40, max: 60 }), 1000)
+                                                                                }
+                                                                            }
+                                                                        }}
+                                                                    >
+                                                                        Verify
+                                                                    </div> : <div
+                                                                        className="flex items-center justify-center h-[2.4rem] m-auto bg-gray-400 w-full max-w-[8rem] outline-none focus:outline-none align-middle transition-all duration-150 ease-in-out border border-solid font-bold last:mr-0 ml-2  text-white bg-lightBlue-500 border-lightBlue-500 active:bg-lightBlue-600 text-xs px-3 py-2 shadow hover:shadow-md rounded-md"
+
+                                                                    >
+                                                                        {`Resend (${clickEmailTimer?.timerCountdown}sec)`}
+                                                                    </div>
+                                                                    }
+                                                                </>
+                                                            }
+                                                        </div>
+                                                        {getEmailError && (<p className="text-sm text-red-400">{getEmailError}</p>)}
                                                     </div>
                                                 </div>
                                             </div>
@@ -221,8 +279,10 @@ const ProfilePage = () => {
                     </div>
                 </div>
             </div>
-        </div>
-    );
+        );
+    } else {
+        return <></>
+    }
 }
 
 export default ProfilePage

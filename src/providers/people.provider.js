@@ -27,12 +27,22 @@ export const peopleSlice = createSlice({
             state.value = initValue
             localStorage.removeItem("peopleCredential")
         },
+        peopleSetEmailReducer: (state, action) => {
+            console.log("LALU_REDUCER")
+            // console.log(action.payload)
+            const temp_value = state.value.email
+            console.log(temp_value)
+            state.value.email = action.payload.email
+            console.log(state.value.email)
+            localStorage.setItem('peopleCredential', JSON.stringify(state.value));
+        },
     },
 });
 
 export const {
     peopleLoginReducer,
-    peopleLogoutReducer
+    peopleLogoutReducer,
+    peopleSetEmailReducer
 } = peopleSlice.actions;
 
 export default peopleSlice.reducer;
