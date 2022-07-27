@@ -69,12 +69,12 @@ const CardDetailPage = () => {
     }
 
     return (
-        <div className=" text-[1.7vh]">
+        <div className=" ">
 
             {/* app_bar */}
             <div
                 className="fixed  bg-white w-full mx-auto ">
-                <div className="relative flex items-center px-[1.7vh]">
+                <div className="relative flex items-center px-4">
                     <div className="absolute inset-x-0 bottom-0 h-px bg-slate-900/5">
                     </div>
                     <div
@@ -88,24 +88,24 @@ const CardDetailPage = () => {
                         </label>
                     </div>
                     <div
-                        className="py-[2vh] relative text-[1.5vh] ">
+                        className="py-5 relative text-sm">
 
                         <button
                             className="flex">
-                            <svg id="hamburget_icon" viewBox="0 0 24 24" className="h-[2.6vh] w-[2.6vh] stroke-slate-900">
+                            <svg id="hamburget_icon" viewBox="0 0 24 24" className="h-6 w-6 stroke-slate-900">
                                 <path d="M3.75 12h16.5M3.75 6.75h16.5M3.75 17.25h16.5" fill="none" strokeWidth="1.5" strokeLinecap="round"></path>
                             </svg>
                         </button>
                         {getIsHamburgerOpen &&
-                            <div className="hidden sm:block w-[17vh] bg-white rounded shadow-md  absolute mt-[4vh] top-0 right-0 min-w-full overflow-auto z-30 ">
+                            <div className="hidden sm:block w-[10rem] bg-white rounded shadow-md  absolute mt-[2.5rem] top-0 right-0 min-w-full overflow-auto z-30 ">
 
-                                <div id="events_button" className="px-[1.7vh] py-[1.7vh] block  hover:bg-gray-100 no-underline hover:no-underline">Events</div>
-                                <div id="profile_button" className="px-[1.7vh] py-[1.7vh] block  hover:bg-gray-100 no-underline hover:no-underline">Profile</div>
+                                <div id="events_button" className="px-4 py-4 block  hover:bg-gray-100 no-underline hover:no-underline">Events</div>
+                                <div id="profile_button" className="px-4 py-4 block  hover:bg-gray-100 no-underline hover:no-underline">Profile</div>
 
-                                <hr className="border-t mx-[1.7vh] border-gray-400" />
+                                <hr className="border-t mx-4 border-gray-400" />
 
 
-                                <div id="logout_button" className="px-[1.7vh] py-[1.7vh] block  hover:bg-gray-100 no-underline hover:no-underline">
+                                <div id="logout_button" className="px-4 py-4 block  hover:bg-gray-100 no-underline hover:no-underline">
                                     Logout
                                 </div>
 
@@ -117,19 +117,19 @@ const CardDetailPage = () => {
 
             {/* body */}
             {getIsHamburgerOpen &&
-                <div className="bg-white w-full sm:hidden fixed h-full mt-[6vh]">
-                    <div id="events_button" className="px-[1.7vh] py-[1.7vh] block  hover:bg-gray-100 no-underline hover:no-underline">Events</div>
-                    <div id="profile_button" className="px-[1.7vh] py-[1.7vh] block  hover:bg-gray-100 no-underline hover:no-underline">Profile</div>
-                    <hr className="border-t mx-[1.7vh] border-gray-400" />
-                    <div id="logout_button" className="px-[1.7vh] py-[1.7vh] block  hover:bg-gray-100 no-underline hover:no-underline">
+                <div className="bg-white w-full sm:hidden fixed h-full mt-[3.6rem]">
+                    <div id="events_button" className="px-4 py-4 block  hover:bg-gray-100 no-underline hover:no-underline">Events</div>
+                    <div id="profile_button" className="px-4 py-4 block  hover:bg-gray-100 no-underline hover:no-underline">Profile</div>
+                    <hr className="border-t mx-4 border-gray-400" />
+                    <div id="logout_button" className="px-4 py-4 block  hover:bg-gray-100 no-underline hover:no-underline">
                         Logout
                     </div>
                 </div>
             }
-            <div className="mx-[1.8vh] mb-20">
-                <div className=" flex flex-row py-[2.2vh] pt-[8vh]">
+            <div className="mx-[1.1rem] mb-20">
+                <div className=" flex flex-row pt-[4.7rem]">
                     <div className="w-full  justify-center">
-                        <div className="mx-auto text-[1.5vh] font-semibold">
+                        <div className="mx-auto text-sm font-semibold">
                             <div className="flex flex-col max-w-[60rem] mx-auto mb-6 shadow rounded-lg bg-white">
                                 <div className="mb-0 p-6 pb-0">
                                     <div className="text-center flex justify-between items-center">
@@ -137,7 +137,7 @@ const CardDetailPage = () => {
                                             <IoIosArrowBack className='hover:cursor-pointer' onClick={() => {
                                                 navigate(-1)
                                             }} />
-                                            <div className="ml-[1vh]">Card detail</div>
+                                            <div className="ml-2">Card detail</div>
                                         </div>
                                         <button className="bg-blue-600 inline-block outline-none focus:outline-none align-middle transition-all duration-150 ease-in-out uppercase border border-solid font-bold last:mr-0 mr-2  text-white bg-lightBlue-500 border-lightBlue-500 active:bg-lightBlue-600 active:border-blue-600 text-xs px-3 py-2 shadow hover:shadow-md rounded-md">Save change</button>
                                     </div>
