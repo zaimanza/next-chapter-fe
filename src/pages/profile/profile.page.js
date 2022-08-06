@@ -94,7 +94,7 @@ const ProfilePage = () => {
 
     if (!getIsLoadingPageOpen) {
         return (
-            <div className=" ">
+            <div className="bg-white sm:bg-[#F1F2F3] min-h-screen">
 
                 {/* app_bar */}
                 <div
@@ -145,14 +145,14 @@ const ProfilePage = () => {
                         </div>
                     </div>
                 }
-                <div className="mx-[1.1rem] mb-20">
-                    <div className=" flex flex-row pt-[4.7rem]">
+                <div className="sm:mx-[1.1rem] sm:pb-20 pt-[4rem] sm:pt-[4.7rem] ">
+                    <div className=" flex flex-row ">
                         <div className="w-full  justify-center">
                             <div className="mx-auto text-sm font-semibold">
-                                <div className="flex flex-col max-w-[60rem] mx-auto mb-6 shadow rounded-lg bg-white">
+                                <div className="flex flex-col max-w-[60rem] mx-auto sm:shadow sm:rounded-lg bg-white ">
                                     <div className="mb-0 p-6 pb-0">
                                         <div className="text-center flex justify-between items-center">
-                                            <div className="text-xl font-bold mb-0 text-[#DE206A]">Profile</div>
+                                            <div className="text-xl font-bold mb-0">Profile</div>
                                         </div>
                                     </div>
                                     <div className="flex-auto px-6 pb-6 pt-0">

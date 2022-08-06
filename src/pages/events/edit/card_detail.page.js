@@ -69,7 +69,7 @@ const CardDetailPage = () => {
     }
 
     return (
-        <div className=" ">
+        <div className=" bg-white sm:bg-[#F1F2F3] min-h-screen">
 
             {/* app_bar */}
             <div
@@ -126,18 +126,18 @@ const CardDetailPage = () => {
                     </div>
                 </div>
             }
-            <div className="mx-[1.1rem] mb-20">
-                <div className=" flex flex-row pt-[4.7rem]">
+            <div className="sm:mx-[1.1rem] sm:pb-20 pt-[4rem] sm:pt-[4.7rem] ">
+                <div className=" flex flex-row ">
                     <div className="w-full  justify-center">
                         <div className="mx-auto text-sm font-semibold">
-                            <div className="flex flex-col max-w-[60rem] mx-auto mb-6 shadow rounded-lg bg-white">
+                            <div className="flex flex-col max-w-[60rem] mx-auto sm:shadow sm:rounded-lg bg-white">
                                 <div className="mb-0 p-6 pb-0">
                                     <div className="text-center flex justify-between items-center">
                                         <div className="text-xl font-bold mb-0 flex items-center justify-center">
                                             <IoIosArrowBack className='hover:cursor-pointer ' onClick={() => {
                                                 navigate(-1)
                                             }} />
-                                            <div className="ml-2 text-[#DE206A]">Card detail</div>
+                                            <div className="ml-2">Card detail</div>
                                         </div>
                                         <button className="bg-[#DE206A] inline-block outline-none focus:outline-none align-middle transition-all duration-150 ease-in-out uppercase border border-solid font-bold last:mr-0 mr-2  text-white bg-lightBlue-500 border-lightBlue-500 active:bg-lightBlue-600 active:border-blue-600 text-xs px-3 py-2 shadow hover:shadow-md rounded-md">Save change</button>
                                     </div>
