@@ -219,14 +219,14 @@ const EventsPage = () => {
                         />
                     }
                     {getCardList.length !== 0 &&
-                        <div className="grid grid-flow-row grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-10">
+                        <div className=" grid grid-flow-row grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-10">
                             {getCardList.map((oneEvent, index) => {
                                 return (
                                     <div
                                         key={index}
                                         onClick={() => {
                                             navigate(`/${oneEvent?.nc_wedding_id}/edit`)
-                                        }} className="shadow-lg rounded-lg h-min">
+                                        }} className="shadow-lg rounded-lg h-min cursor-pointer">
                                         <div>
                                             {oneEvent?.cover_img && getNoImage[index] === undefined ? <img
                                                 alt={oneEvent?.your_first_name + " & " + oneEvent?.your_partner_first_name}
@@ -239,7 +239,7 @@ const EventsPage = () => {
                                                 src={oneEvent?.cover_img}
                                                 className="truncate object-cover w-full h-[18vh] rounded-tl-lg rounded-tr-lg" /> :
                                                 <div
-                                                    className="cursor-default h-[18vh] bg-[#DE206A] text-white flex items-center justify-center text-[1.5vh] font-bold uppercase rounded-tl-lg rounded-tr-lg outline-none w-full ease-linear transition-all duration-150"
+                                                    className=" h-[18vh] bg-[#DE206A] text-white flex items-center justify-center text-[1.5vh] font-bold uppercase rounded-tl-lg rounded-tr-lg outline-none w-full ease-linear transition-all duration-150"
                                                     type="submit"
                                                 // onClick={handleSubmit}
                                                 >

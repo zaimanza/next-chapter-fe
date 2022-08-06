@@ -198,7 +198,7 @@ export default function RegisterPage({ setAuthMode }) {
                             <div className="w-full">
                                 <div onClick={() => {
                                     setAuthMode("login")
-                                }} className="mx-auto w-fit hover:underline hover:text-blue-600 text-white">
+                                }} className="mx-auto w-fit hover:underline hover:text-blue-600">
                                     <small>Already have an account</small>
                                 </div>
                             </div>

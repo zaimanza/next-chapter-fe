@@ -108,7 +108,7 @@ const ProfilePage = () => {
                             }}
                             className="mr-auto flex-none text-slate-900 font-semibold"
                         >
-                            <label href="/">
+                            <label href="/" className="text-[#DE206A]">
                                 nextChapter
                             </label>
                         </div>
@@ -152,7 +152,7 @@ const ProfilePage = () => {
                                 <div className="flex flex-col max-w-[60rem] mx-auto mb-6 shadow rounded-lg bg-white">
                                     <div className="mb-0 p-6 pb-0">
                                         <div className="text-center flex justify-between items-center">
-                                            <div className="text-xl font-bold mb-0">Profile</div>
+                                            <div className="text-xl font-bold mb-0 text-[#DE206A]">Profile</div>
                                         </div>
                                     </div>
                                     <div className="flex-auto px-6 pb-6 pt-0">

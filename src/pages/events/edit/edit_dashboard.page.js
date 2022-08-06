@@ -299,11 +299,11 @@ const EditDashboardPage = () => {
                                                             navigate(`/${nc_wedding_id}/${category_item?.url}`)
                                                         }}
 
-                                                        className="overflow-hidden cursor-default h-[15vh] w-[15vh] hover:border text-gray-900 text-[1.5vh] uppercase rounded-lg outline-none ease-linear transition-all duration-150"
+                                                        className="hover:text-[#DE206A] overflow-hidden cursor-default h-[15vh] w-[15vh] hover:border text-gray-900 text-[1.5vh] uppercase rounded-lg outline-none ease-linear transition-all duration-150"
                                                     // onClick={handleSubmit}
                                                     >
                                                         {category_item?.icon}
-                                                        <label className='capitalize'>{category_item?.name}</label>
+                                                        <label className='capitalize '>{category_item?.name}</label>
                                                     </button>
                                                 </div>
                                             )}

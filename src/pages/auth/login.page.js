@@ -91,7 +91,7 @@ export default function LoginPage({ setAuthMode }) {
                         <div className="relative flex flex-col min-w-0 break-words w-full shadow-lg rounded-lg border-0 bg-white">
                             <div className="rounded-t mb-0 px-[1.5rem] py-[1.5rem]">
                                 <div className="text-center mb-[1rem] font-bold ">
-                                    Log into your <label className="text-xl">nextChapter</label>
+                                    Log into your <label className="text-xl text-[#DE206A]">nextChapter</label>
                                 </div>
                                 <div className="text-center mb-[1rem] font-normal">
                                     <small>Continue your journey.</small>
