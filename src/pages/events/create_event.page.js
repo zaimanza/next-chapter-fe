@@ -203,7 +203,7 @@ const CreateEventPage = () => {
                                                 "ring ring-red-500 placeholder-red-300 text-red-600" :
                                                 "focus:ring placeholder-gray-300 text-gray-600"
                                                 } focus:outline-none border-0 px-[0.8rem] py-[0.8rem] ${getIsWeddingDateCheck ?
-                                                    "text-gray-400" :
+                                                    "text-gray-400 bg-gray-100/50" :
                                                     "text-black"
                                                 } bg-white rounded text-sm shadow w-full ease-linear transition-all duration-150`}
                                             placeholder="Select date"
@@ -229,7 +229,7 @@ const CreateEventPage = () => {
                                                 }}
                                                 className={`${getIsWeddingDateError ? "text-red-600 " : "text-gray-700"} selection:form-checkbox border-0 rounded w-[1.2rem] h-[1.2rem] ease-linear transition-all duration-150`}
                                             />
-                                            <span className={`${getIsWeddingDateError ? "text-red-600" : "text-white"} ml-[0.4rem] text-sm font-semibold`}>
+                                            <span className={`${getIsWeddingDateError ? "text-red-600" : "text-black"} ml-[0.4rem] text-sm font-semibold`}>
                                                 Haven't pick a wedding date
                                             </span>
                                         </label>
