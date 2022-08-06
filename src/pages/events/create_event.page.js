@@ -133,7 +133,7 @@ const CreateEventPage = () => {
                                     </div>
                                 </>
                                 : <form onSubmit={handleSubmit}>
-                                    <div className="text-center mb-[1rem] font-bold ">
+                                    <div className="text-center mb-[1rem] font-bold text-lg">
                                         Start decorating your <label className='text-[#DE206A]'>wedding card</label>
                                     </div>
                                     <div className="text-center mb-[1rem] font-normal">
