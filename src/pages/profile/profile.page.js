@@ -275,7 +275,7 @@ const ProfilePage = () => {
             </div>
         );
     } else {
-        return <></>
+        return CircularLoadingPage()
     }
 }
 
