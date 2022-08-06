@@ -83,7 +83,7 @@ const CardDetailPage = () => {
                         }}
                         className="mr-auto flex-none text-slate-900 font-semibold"
                     >
-                        <label href="/">
+                        <label href="/" className='text-[#DE206A]'>
                             nextChapter
                         </label>
                     </div>

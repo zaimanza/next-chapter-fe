@@ -110,7 +110,7 @@ const CreateEventPage = () => {
     }
 
     return (
-        <div className="bg-pink-400 w-full h-full flex items-center justify-center min-h-[100vh]">
+        <div className="bg-[#DE206A] w-full h-full flex items-center justify-center min-h-[100vh]">
             <div
                 className="my-auto top-0 w-full h-full bg-no-repeat bg-full"
 

@@ -51,7 +51,7 @@ const ConfirmVerifyPage = () => {
     }, [])
 
     return (
-        <div className='bg-pink-400 w-full h-full'>
+        <div className='bg-[#DE206A] w-full h-full'>
         </div>
     )
 }

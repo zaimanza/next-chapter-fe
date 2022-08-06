@@ -80,7 +80,7 @@ export default function RegisterPage({ setAuthMode }) {
                         <div className="relative flex flex-col min-w-0 break-words w-full shadow-lg rounded-lg border-0 bg-white">
                             <div className="rounded-t mb-0 px-[1.5rem] py-[1.5rem]">
                                 <div className="text-center mb-[1rem] font-bold">
-                                    Begin your  <label className="text-xl">nextChapter</label>
+                                    Begin your  <label className="text-xl text-[#DE206A]">nextChapter</label>
                                 </div>
                                 <div className="text-center mb-[1rem] font-normal">
                                     <small>Create your account</small>
@@ -198,7 +198,7 @@ export default function RegisterPage({ setAuthMode }) {
                             <div className="w-full">
                                 <div onClick={() => {
                                     setAuthMode("login")
-                                }} className="mx-auto w-fit hover:underline hover:text-blue-600">
+                                }} className="mx-auto w-fit hover:underline hover:text-blue-600 text-white">
                                     <small>Already have an account</small>
                                 </div>
                             </div>

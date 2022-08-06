@@ -215,7 +215,7 @@ const EditDashboardPage = () => {
 
     if (!getIsLoadingPageOpen) {
         return (
-            <div className='h-full text-[1.7vh] bg-pink-400 overflow-hidden'>
+            <div className='h-full text-[1.7vh] bg-[#DE206A] overflow-hidden'>
                 <div className='bottom-0 right-0 fixed mr-[1.7vh] mb-[1.7vh]'>
                     <button
                         className="bg-gray-900 text-center text-white active:bg-gray-600 text-[1.5vh] font-bold uppercase px-[2.5vh] py-[1.2vh] rounded shadow hover:shadow-lg outline-none focus:outline-none w-full ease-linear transition-all duration-150"
@@ -236,7 +236,7 @@ const EditDashboardPage = () => {
                                     }}
                                     className="mr-auto flex-none text-slate-900 font-semibold"
                                 >
-                                    <label href="/">
+                                    <label href="/" className='text-[#DE206A]'>
                                         nextChapter
                                     </label>
                                 </div>
