@@ -117,7 +117,7 @@ const CreateEventPage = () => {
             >
                 <div className="container mx-auto h-full">
                     <div className="flex content-center items-center justify-center h-full">
-                        <div className="w-full max-w-[35rem] px-4">
+                        <div className="w-full max-w-[35rem] px-4 ">
                             {getIsLoadingBackend ?
                                 <>
                                     <div className="text-center mb-[1rem] font-bold ">
@@ -137,7 +137,7 @@ const CreateEventPage = () => {
                                         Start decorating your <label className='text-[#DE206A]'>wedding card</label>
                                     </div>
                                     <div className="text-center mb-[1rem] font-normal">
-                                        <small>Let's add some details.</small>
+                                        Let's add some details.
                                     </div>
                                     {timerCountdown === 0 ? null : <StaticToast
                                         config={getToastConfig ?? {
@@ -147,7 +147,7 @@ const CreateEventPage = () => {
                                     />}
                                     <div className="relative w-full mb-[1rem]">
                                         <label
-                                            className="block uppercase text-sm font-bold mb-[0.6rem]"
+                                            className="block text-sm font-medium mb-[0.6rem]"
                                             htmlFor="grid-password"
                                         >
                                             Your First Name
@@ -168,7 +168,7 @@ const CreateEventPage = () => {
                                     </div>
                                     <div className="relative w-full mb-[1rem]">
                                         <label
-                                            className="block uppercase text-sm font-bold mb-[0.6rem]"
+                                            className="block text-sm font-medium mb-[0.6rem]"
                                             htmlFor="grid-password"
                                         >
                                             Your Partner's First Name
@@ -189,7 +189,7 @@ const CreateEventPage = () => {
                                     </div>
                                     <div className="relative w-full mb-[1rem]">
                                         <label
-                                            className="block uppercase text-sm font-bold mb-[0.6rem]"
+                                            className="block text-sm font-medium mb-[0.6rem]"
                                             htmlFor="grid-password"
                                         >
                                             Wedding Date
@@ -229,14 +229,14 @@ const CreateEventPage = () => {
                                                 }}
                                                 className={`${getIsWeddingDateError ? "text-red-600 " : "text-gray-700"} selection:form-checkbox border-0 rounded w-[1.2rem] h-[1.2rem] ease-linear transition-all duration-150`}
                                             />
-                                            <span className={`${getIsWeddingDateError ? "text-red-600" : "text-black"} ml-[0.4rem] text-sm font-semibold`}>
+                                            <span className={`${getIsWeddingDateError ? "text-red-600" : "text-black"} ml-[0.4rem] text-sm`}>
                                                 Haven't pick a wedding date
                                             </span>
                                         </label>
                                     </div>
                                     <div className="relative w-full mb-[1rem]">
                                         <label
-                                            className="block uppercase text-sm font-bold mb-[0.6rem]"
+                                            className="block text-sm font-medium mb-[0.6rem]"
                                             htmlFor="grid-password"
                                         >
                                             Location
