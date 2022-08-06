@@ -79,11 +79,11 @@ export default function RegisterPage({ setAuthMode }) {
                     <div className="w-full max-w-[35rem] px-4">
                         <div className="relative flex flex-col min-w-0 break-words w-full shadow-lg rounded-lg border-0 bg-white">
                             <div className="rounded-t mb-0 px-[1.5rem] py-[1.5rem]">
-                                <div className="text-center mb-[1rem] font-bold">
+                                <div className="text-center mb-[1rem] font-bold text-lg">
                                     Begin your  <label className="text-xl text-[#DE206A]">nextChapter</label>
                                 </div>
-                                <div className="text-center mb-[1rem] font-normal">
-                                    <small>Create your account</small>
+                                <div className="text-center mb-[1rem] text-sm font-normal">
+                                    Create your account
                                 </div>
                                 {timerCountdown === 0 ? null : <StaticToast
                                     config={getToastConfig ?? {
@@ -93,7 +93,7 @@ export default function RegisterPage({ setAuthMode }) {
                                 />}
                                 <div className="relative w-full mb-[1rem]">
                                     <label
-                                        className="block uppercase text-sm font-bold mb-[0.6rem]"
+                                        className="block text-sm font-medium mb-[0.6rem]"
                                         htmlFor="grid-password"
                                     >
                                         Email
@@ -120,7 +120,7 @@ export default function RegisterPage({ setAuthMode }) {
 
                                 <div className="relative w-full mb-[1rem]">
                                     <label
-                                        className="block uppercase text-sm font-bold mb-[0.6rem]"
+                                        className="block text-sm font-medium mb-[0.6rem]"
                                         htmlFor="grid-password"
                                     >
                                         Password
@@ -157,7 +157,7 @@ export default function RegisterPage({ setAuthMode }) {
                                             }}
                                             className={`${getTermsPolicyError ? "text-red-600 " : "text-gray-700"} selection:form-checkbox border-0 rounded w-[1.2rem] h-[1.2rem] ease-linear transition-all duration-150`}
                                         />
-                                        <span className={`${getTermsPolicyError ? "text-red-600" : "text-gray-600"} ml-[0.4rem] text-sm font-semibold`}>
+                                        <span className={`${getTermsPolicyError ? "text-red-600" : "text-gray-600"} ml-[0.4rem] text-sm`}>
                                             I agree with the{" "}
                                             <a
                                                 href="https://www.google.com/"
@@ -198,8 +198,8 @@ export default function RegisterPage({ setAuthMode }) {
                             <div className="w-full">
                                 <div onClick={() => {
                                     setAuthMode("login")
-                                }} className="mx-auto w-fit hover:underline hover:text-blue-600">
-                                    <small>Already have an account</small>
+                                }} className="mx-auto w-fit hover:underline text-sm hover:text-blue-600">
+                                    Already have an account
                                 </div>
                             </div>
                         </div>

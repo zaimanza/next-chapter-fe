@@ -70,11 +70,11 @@ export default function ForgotPasswordPage({ setAuthMode }) {
                     <div className="w-full max-w-[35rem] px-4">
                         <div className="relative flex flex-col min-w-0 break-words w-full shadow-lg rounded-lg border-0 bg-white">
                             <div className="rounded-t mb-0 px-[1.5rem] py-[1.5rem]">
-                                <div className="text-center mb-[1rem] font-bold">
+                                <div className="text-center mb-[1rem] font-bold text-lg">
                                     Forgot your password?
                                 </div>
-                                <div className="text-center mb-[1rem] font-normal">
-                                    <small>Enter the email address associated with your account, and we'll email you a link to reset your password.</small>
+                                <div className="text-center mb-[1rem] font-normal text-sm">
+                                    Enter the email address associated with your account, and we'll email you a link to reset your password.
                                 </div>
                                 {timerCountdown === 0 ? null : <StaticToast
                                     config={getToastConfig ?? {
@@ -84,7 +84,7 @@ export default function ForgotPasswordPage({ setAuthMode }) {
                                 />}
                                 <div className="relative w-full mb-[1rem]">
                                     <label
-                                        className="block uppercase text-sm font-bold mb-[0.6rem]"
+                                        className="block text-sm font-medium mb-[0.6rem]"
                                         htmlFor="grid-password"
                                     >
                                         Email
@@ -126,8 +126,8 @@ export default function ForgotPasswordPage({ setAuthMode }) {
                                 <div onClick={() => {
                                     setAuthMode("login")
                                     navigate("/auth")
-                                }} className="mx-auto w-fit hover:underline hover:text-blue-600">
-                                    <small>Back to login</small>
+                                }} className="mx-auto w-fit hover:underline text-sm hover:text-blue-600">
+                                    Back to login
                                 </div>
 
                             </div>
