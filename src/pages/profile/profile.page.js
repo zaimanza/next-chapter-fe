@@ -31,7 +31,6 @@ const ProfilePage = () => {
             if (peopleProvider.access_token === "") {
                 navigate(`/auth`)
             } else {
-                setIsLoadingPageOpen(false)
             }
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -79,6 +78,7 @@ const ProfilePage = () => {
                 setEmail(email_val),
                 emailOriginalRef.current = email_val
             ]
+            setIsLoadingPageOpen(false)
         }
         initFunction()
         // eslint-disable-next-line react-hooks/exhaustive-deps
