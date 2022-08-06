@@ -83,7 +83,7 @@ const CardDetailPage = () => {
                         }}
                         className="mr-auto flex-none text-slate-900 font-semibold"
                     >
-                        <label href="/">
+                        <label href="/" className='text-[#DE206A]'>
                             nextChapter
                         </label>
                     </div>
@@ -134,12 +134,12 @@ const CardDetailPage = () => {
                                 <div className="mb-0 p-6 pb-0">
                                     <div className="text-center flex justify-between items-center">
                                         <div className="text-xl font-bold mb-0 flex items-center justify-center">
-                                            <IoIosArrowBack className='hover:cursor-pointer' onClick={() => {
+                                            <IoIosArrowBack className='hover:cursor-pointer ' onClick={() => {
                                                 navigate(-1)
                                             }} />
-                                            <div className="ml-2">Card detail</div>
+                                            <div className="ml-2 text-[#DE206A]">Card detail</div>
                                         </div>
-                                        <button className="bg-blue-600 inline-block outline-none focus:outline-none align-middle transition-all duration-150 ease-in-out uppercase border border-solid font-bold last:mr-0 mr-2  text-white bg-lightBlue-500 border-lightBlue-500 active:bg-lightBlue-600 active:border-blue-600 text-xs px-3 py-2 shadow hover:shadow-md rounded-md">Save change</button>
+                                        <button className="bg-[#DE206A] inline-block outline-none focus:outline-none align-middle transition-all duration-150 ease-in-out uppercase border border-solid font-bold last:mr-0 mr-2  text-white bg-lightBlue-500 border-lightBlue-500 active:bg-lightBlue-600 active:border-blue-600 text-xs px-3 py-2 shadow hover:shadow-md rounded-md">Save change</button>
                                     </div>
                                 </div>
                                 <div className="flex-auto px-6 pb-6 pt-0">

@@ -125,7 +125,7 @@ const EventsPage = () => {
                 <div className='sm:hidden bottom-0 right-0 fixed mr-[1.7vh] mb-[1.7vh]'>
                     <div className="text-center">
                         <button
-                            className="bg-pink-400 text-white active:bg-gray-600 text-[1.5vh] font-bold uppercase px-[1.2vh] py-[1.2vh] rounded shadow hover:shadow-lg outline-none focus:outline-none w-full ease-linear transition-all duration-150"
+                            className="bg-[#DE206A] text-white active:bg-gray-600 text-[1.5vh] font-bold uppercase px-[1.2vh] py-[1.2vh] rounded shadow hover:shadow-lg outline-none focus:outline-none w-full ease-linear transition-all duration-150"
 
                             onClick={handleCreateEvent}
                         >
@@ -145,7 +145,7 @@ const EventsPage = () => {
                             }}
                             className="mr-auto flex-none text-slate-900 font-semibold"
                         >
-                            <label href="/">
+                            <label href="/" className='text-[#DE206A]'>
                                 nextChapter
                             </label>
                         </div>
@@ -204,7 +204,7 @@ const EventsPage = () => {
                                 Wedding Events
                             </div>
                         </div>
-                        <div onClick={handleCreateEvent} className="my-auto flex flex-row text-[1.5vh] hover:text-pink-400">
+                        <div onClick={handleCreateEvent} className="my-auto flex flex-row text-[1.5vh] hover:text-[#DE206A]">
                             Create
 
                             <IoAdd className='ml-[1vh] m-auto h-[2vh] w-[2vh]' />
@@ -219,14 +219,14 @@ const EventsPage = () => {
                         />
                     }
                     {getCardList.length !== 0 &&
-                        <div className="grid grid-flow-row grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-10">
+                        <div className=" grid grid-flow-row grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-10">
                             {getCardList.map((oneEvent, index) => {
                                 return (
                                     <div
                                         key={index}
                                         onClick={() => {
                                             navigate(`/${oneEvent?.nc_wedding_id}/edit`)
-                                        }} className="shadow-lg rounded-lg h-min">
+                                        }} className="shadow-lg rounded-lg h-min cursor-pointer">
                                         <div>
                                             {oneEvent?.cover_img && getNoImage[index] === undefined ? <img
                                                 alt={oneEvent?.your_first_name + " & " + oneEvent?.your_partner_first_name}
@@ -239,7 +239,7 @@ const EventsPage = () => {
                                                 src={oneEvent?.cover_img}
                                                 className="truncate object-cover w-full h-[18vh] rounded-tl-lg rounded-tr-lg" /> :
                                                 <div
-                                                    className="cursor-default h-[18vh] bg-pink-400 text-white flex items-center justify-center text-[1.5vh] font-bold uppercase rounded-tl-lg rounded-tr-lg outline-none w-full ease-linear transition-all duration-150"
+                                                    className=" h-[18vh] bg-[#DE206A] text-white flex items-center justify-center text-[1.5vh] font-bold uppercase rounded-tl-lg rounded-tr-lg outline-none w-full ease-linear transition-all duration-150"
                                                     type="submit"
                                                 // onClick={handleSubmit}
                                                 >

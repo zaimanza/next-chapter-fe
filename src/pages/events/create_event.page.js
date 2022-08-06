@@ -110,7 +110,7 @@ const CreateEventPage = () => {
     }
 
     return (
-        <div className="bg-pink-400 w-full h-full flex items-center justify-center min-h-[100vh]">
+        <div className="bg-[#DE206A] text-white w-full h-full flex items-center justify-center min-h-[100vh]">
             <div
                 className="my-auto top-0 w-full h-full bg-no-repeat bg-full"
 
@@ -229,7 +229,7 @@ const CreateEventPage = () => {
                                                 }}
                                                 className={`${getIsWeddingDateError ? "text-red-600 " : "text-gray-700"} selection:form-checkbox border-0 rounded w-[1.2rem] h-[1.2rem] ease-linear transition-all duration-150`}
                                             />
-                                            <span className={`${getIsWeddingDateError ? "text-red-600" : "text-black"} ml-[0.4rem] text-sm font-semibold`}>
+                                            <span className={`${getIsWeddingDateError ? "text-red-600" : "text-white"} ml-[0.4rem] text-sm font-semibold`}>
                                                 Haven't pick a wedding date
                                             </span>
                                         </label>

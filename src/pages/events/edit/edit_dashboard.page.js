@@ -215,7 +215,7 @@ const EditDashboardPage = () => {
 
     if (!getIsLoadingPageOpen) {
         return (
-            <div className='h-full text-[1.7vh] bg-pink-400 overflow-hidden'>
+            <div className='h-full text-[1.7vh] bg-[#DE206A] overflow-hidden'>
                 <div className='bottom-0 right-0 fixed mr-[1.7vh] mb-[1.7vh]'>
                     <button
                         className="bg-gray-900 text-center text-white active:bg-gray-600 text-[1.5vh] font-bold uppercase px-[2.5vh] py-[1.2vh] rounded shadow hover:shadow-lg outline-none focus:outline-none w-full ease-linear transition-all duration-150"
@@ -236,7 +236,7 @@ const EditDashboardPage = () => {
                                     }}
                                     className="mr-auto flex-none text-slate-900 font-semibold"
                                 >
-                                    <label href="/">
+                                    <label href="/" className='text-[#DE206A]'>
                                         nextChapter
                                     </label>
                                 </div>
@@ -299,11 +299,11 @@ const EditDashboardPage = () => {
                                                             navigate(`/${nc_wedding_id}/${category_item?.url}`)
                                                         }}
 
-                                                        className="overflow-hidden cursor-default h-[15vh] w-[15vh] hover:border text-gray-900 text-[1.5vh] uppercase rounded-lg outline-none ease-linear transition-all duration-150"
+                                                        className="hover:text-[#DE206A] overflow-hidden cursor-default h-[15vh] w-[15vh] hover:border text-gray-900 text-[1.5vh] uppercase rounded-lg outline-none ease-linear transition-all duration-150"
                                                     // onClick={handleSubmit}
                                                     >
                                                         {category_item?.icon}
-                                                        <label className='capitalize'>{category_item?.name}</label>
+                                                        <label className='capitalize '>{category_item?.name}</label>
                                                     </button>
                                                 </div>
                                             )}

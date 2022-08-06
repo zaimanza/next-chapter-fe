@@ -67,7 +67,7 @@ const PeopleAuthLayout = () => {
     }, [getAuthMode])
 
     return (
-        <div className='bg-pink-400 w-[100%] min-h-[100vh] flex items-center justify-center'>
+        <div className='bg-[#F1F2F3] w-[100%] min-h-[100vh] flex items-center justify-center'>
             {(getAuthMode === "login") && <LoginPage setAuthMode={setAuthMode} />}
             {(getAuthMode === "register") && <RegisterPage setAuthMode={setAuthMode} />}
             {(getAuthMode === "forgot-password") && <ForgotPasswordPage setAuthMode={setAuthMode} />}

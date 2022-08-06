@@ -229,7 +229,7 @@ const SilkTemplate = ({
                                                         }}
                                                         src={getDisplayData?.template?.cover_img_url ? getDisplayData?.template?.cover_img_url : ``}
                                                     /> : <div
-                                                        className={`bg-pink-400 w-full  ${getParamTemplate === 'true' ?
+                                                        className={`bg-[#DE206A] w-full  ${getParamTemplate === 'true' ?
                                                             `h-[100vh]` :
                                                             `h-[100vh] min-h-[50rem] sm:h-[100vh] sm:min-h-[100vh]`}`}
                                                     >     </div>
