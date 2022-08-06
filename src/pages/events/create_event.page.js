@@ -110,7 +110,7 @@ const CreateEventPage = () => {
     }
 
     return (
-        <div className="bg-[#DE206A] text-white w-full h-full flex items-center justify-center min-h-[100vh]">
+        <div className="bg-white w-full h-full flex items-center justify-center min-h-[100vh]">
             <div
                 className="my-auto top-0 w-full h-full bg-no-repeat bg-full"
 
@@ -134,7 +134,7 @@ const CreateEventPage = () => {
                                 </>
                                 : <form onSubmit={handleSubmit}>
                                     <div className="text-center mb-[1rem] font-bold ">
-                                        Start decorating your wedding card
+                                        Start decorating your <label className='text-[#DE206A]'>wedding card</label>
                                     </div>
                                     <div className="text-center mb-[1rem] font-normal">
                                         <small>Let's add some details.</small>
