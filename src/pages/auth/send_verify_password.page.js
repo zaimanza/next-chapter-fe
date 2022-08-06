@@ -49,7 +49,7 @@ export default function SendVerifyPasswordPage({ setAuthMode, getDecodedTicket }
                     <div className="w-full max-w-[35rem] px-4">
                         <div className="relative flex flex-col min-w-0 break-words w-full shadow-lg rounded-lg border-0 bg-white">
                             <div className="rounded-t mb-0 px-[1.5rem] py-[1.5rem]">
-                                <div className="text-center mb-[1rem] font-bold ">
+                                <div className="text-center mb-[1rem] font-bold text-lg">
                                     Reset your password
                                 </div>
                                 {showToastTimer?.timerCountdown === 0 ? null : <StaticToast
@@ -58,8 +58,8 @@ export default function SendVerifyPasswordPage({ setAuthMode, getDecodedTicket }
                                         mode: "error"
                                     }}
                                 />}
-                                <div className="text-center mb-[1rem] font-normal">
-                                    <small>We&apos;ve sent a password verification link to <p className="font-bold text-black mt-2">{authProvider.email}</p></small>
+                                <div className="text-center mb-[1rem] font-normal text-sm">
+                                    We&apos;ve sent a password verification link to <p className="font-bold text-black mt-2">{authProvider.email}</p>
                                 </div>
 
                                 <div className="mb-[2rem]">
@@ -80,8 +80,8 @@ export default function SendVerifyPasswordPage({ setAuthMode, getDecodedTicket }
                                 <div onClick={() => {
                                     setAuthMode("login")
                                     navigate("/auth")
-                                }} className="mx-auto w-fit hover:underline hover:text-blue-600">
-                                    <small>Back to login</small>
+                                }} className="mx-auto w-fit hover:underline text-sm hover:text-blue-600">
+                                    Back to login
                                 </div>
 
                             </div>

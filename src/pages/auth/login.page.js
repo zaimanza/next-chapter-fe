@@ -90,11 +90,11 @@ export default function LoginPage({ setAuthMode }) {
                     <div className="w-full max-w-[35rem] px-4">
                         <div className="relative flex flex-col min-w-0 break-words w-full shadow-lg rounded-lg border-0 bg-white">
                             <div className="rounded-t mb-0 px-[1.5rem] py-[1.5rem]">
-                                <div className="text-center mb-[1rem] font-bold ">
+                                <div className="text-center mb-[1rem] font-bold text-lg">
                                     Log into your <label className="text-xl text-[#DE206A]">nextChapter</label>
                                 </div>
                                 <div className="text-center mb-[1rem] font-normal">
-                                    <small>Continue your journey.</small>
+                                    Continue your journey.
                                 </div>
                                 {timerCountdown === 0 ? null : <StaticToast
                                     config={getToastConfig ?? {
@@ -104,7 +104,7 @@ export default function LoginPage({ setAuthMode }) {
                                 />}
                                 <div className="relative w-full mb-[1rem]">
                                     <label
-                                        className="block uppercase text-[1rem] font-bold mb-[0.5rem]"
+                                        className="block text-sm font-medium mb-[0.5rem]"
                                         htmlFor="grid-password"
                                     >
                                         Email
@@ -131,7 +131,7 @@ export default function LoginPage({ setAuthMode }) {
 
                                 <div className="relative w-full mb-[1rem]">
                                     <label
-                                        className="block uppercase text-sm font-bold mb-[0.6rem]"
+                                        className="block text-sm font-medium mb-[0.6rem]"
                                         htmlFor="grid-password"
                                     >
                                         Password
@@ -172,15 +172,15 @@ export default function LoginPage({ setAuthMode }) {
                             <div className="w-1/2">
                                 <div onClick={() => {
                                     setAuthMode("forgot-password")
-                                }} className="mr-auto w-fit hover:underline hover:text-blue-600">
-                                    <small>Forgot password?</small>
+                                }} className="mr-auto w-fit hover:underline text-sm hover:text-blue-600">
+                                    Forgot password?
                                 </div>
                             </div>
                             <div className="w-1/2 text-right">
                                 <div onClick={() => {
                                     setAuthMode("register")
-                                }} className="ml-auto w-fit hover:underline hover:text-blue-600">
-                                    <small>Create new account</small>
+                                }} className="ml-auto w-fit hover:underline text-sm hover:text-blue-600">
+                                    Create new account
                                 </div>
                             </div>
                         </div>

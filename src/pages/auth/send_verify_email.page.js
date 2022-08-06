@@ -60,8 +60,8 @@ export default function SendVerifyEmailPage({ setAuthMode }) {
                                         }}
                                     />
                                 }
-                                <div className="text-center mb-[1rem] font-normal">
-                                    <small>We&apos;ve sent an email verification link to <p className="font-bold text-black mt-2">{authProvider.email}</p></small>
+                                <div className="text-center mb-[1rem] font-normal text-sm">
+                                    We&apos;ve sent an email verification link to <p className="font-bold text-black mt-2">{authProvider.email}</p>
                                 </div>
 
                                 <div className="mb-[2rem]">
@@ -82,8 +82,8 @@ export default function SendVerifyEmailPage({ setAuthMode }) {
                                 <div onClick={() => {
                                     setAuthMode("login")
                                     navigate("/auth")
-                                }} className="mx-auto w-fit hover:underline hover:text-blue-600">
-                                    <small>Back to login</small>
+                                }} className="mx-auto w-fit hover:underline text-sm hover:text-blue-600">
+                                    Back to login
                                 </div>
                             </div>
                         </div>
