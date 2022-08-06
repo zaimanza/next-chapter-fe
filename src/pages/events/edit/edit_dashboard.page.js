@@ -278,7 +278,6 @@ const EditDashboardPage = () => {
                                 </div>
                             </div>
                         }
-
                         <br />
                         {
                             config_edit_menu.map((one_config, index) =>
@@ -309,7 +308,10 @@ const EditDashboardPage = () => {
                                             )}
                                     </div>
                                 </div>
-                            )}
+                            )
+                        }
+                        <br />
+                        <br />
                     </div>
                     <div className="duration-300 w-full hidden sm:block flex-grow overflow-hidden text-white ">
                         <div className="flex w-full justify-center">
