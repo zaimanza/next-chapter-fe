@@ -117,47 +117,22 @@ const EditDashboardPage = () => {
                 {
                     "url": "card_detail",
                     "name": "Card Detail",
-                    "icon": <AiFillEdit className="mx-auto w-[3.5vh] h-[3.5vh]" />
+                    "icon": <AiFillEdit className="mx-auto w-[2rem] h-[2rem]" />
                 },
                 {
                     "url": "card_detail",
                     "name": "Card Detail",
-                    "icon": <AiFillEdit className="mx-auto w-[3.5vh] h-[3.5vh]" />
+                    "icon": <AiFillEdit className="mx-auto w-[2rem] h-[2rem]" />
                 },
                 {
                     "url": "card_detail",
                     "name": "Card Detail",
-                    "icon": <AiFillEdit className="mx-auto w-[3.5vh] h-[3.5vh]" />
+                    "icon": <AiFillEdit className="mx-auto w-[2rem] h-[2rem]" />
                 },
                 {
                     "url": "card_detail",
                     "name": "Card Detail",
-                    "icon": <AiFillEdit className="mx-auto w-[3.5vh] h-[3.5vh]" />
-                },
-            ]
-        },
-        {
-            "category_name": "Card Settings",
-            "category_items": [
-                {
-                    "url": "card_detail",
-                    "name": "Card Detail",
-                    "icon": <AiFillEdit className="mx-auto w-[3.5vh] h-[3.5vh]" />
-                },
-                {
-                    "url": "card_detail",
-                    "name": "Card Detail",
-                    "icon": <AiFillEdit className="mx-auto w-[3.5vh] h-[3.5vh]" />
-                },
-                {
-                    "url": "card_detail",
-                    "name": "Card Detail",
-                    "icon": <AiFillEdit className="mx-auto w-[3.5vh] h-[3.5vh]" />
-                },
-                {
-                    "url": "card_detail",
-                    "name": "Card Detail",
-                    "icon": <AiFillEdit className="mx-auto w-[3.5vh] h-[3.5vh]" />
+                    "icon": <AiFillEdit className="mx-auto w-[2rem] h-[2rem]" />
                 },
             ]
         },
@@ -167,22 +142,22 @@ const EditDashboardPage = () => {
                 {
                     "url": "card_detail",
                     "name": "Card Detail",
-                    "icon": <AiFillEdit className="mx-auto w-[3.5vh] h-[3.5vh]" />
+                    "icon": <AiFillEdit className="mx-auto w-[2rem] h-[2rem]" />
                 },
                 {
                     "url": "card_detail",
                     "name": "Card Detail",
-                    "icon": <AiFillEdit className="mx-auto w-[3.5vh] h-[3.5vh]" />
+                    "icon": <AiFillEdit className="mx-auto w-[2rem] h-[2rem]" />
                 },
                 {
                     "url": "card_detail",
                     "name": "Card Detail",
-                    "icon": <AiFillEdit className="mx-auto w-[3.5vh] h-[3.5vh]" />
+                    "icon": <AiFillEdit className="mx-auto w-[2rem] h-[2rem]" />
                 },
                 {
                     "url": "card_detail",
                     "name": "Card Detail",
-                    "icon": <AiFillEdit className="mx-auto w-[3.5vh] h-[3.5vh]" />
+                    "icon": <AiFillEdit className="mx-auto w-[2rem] h-[2rem]" />
                 },
             ]
         },
@@ -192,22 +167,47 @@ const EditDashboardPage = () => {
                 {
                     "url": "card_detail",
                     "name": "Card Detail",
-                    "icon": <AiFillEdit className="mx-auto w-[3.5vh] h-[3.5vh]" />
+                    "icon": <AiFillEdit className="mx-auto w-[2rem] h-[2rem]" />
                 },
                 {
                     "url": "card_detail",
                     "name": "Card Detail",
-                    "icon": <AiFillEdit className="mx-auto w-[3.5vh] h-[3.5vh]" />
+                    "icon": <AiFillEdit className="mx-auto w-[2rem] h-[2rem]" />
                 },
                 {
                     "url": "card_detail",
                     "name": "Card Detail",
-                    "icon": <AiFillEdit className="mx-auto w-[3.5vh] h-[3.5vh]" />
+                    "icon": <AiFillEdit className="mx-auto w-[2rem] h-[2rem]" />
                 },
                 {
                     "url": "card_detail",
                     "name": "Card Detail",
-                    "icon": <AiFillEdit className="mx-auto w-[3.5vh] h-[3.5vh]" />
+                    "icon": <AiFillEdit className="mx-auto w-[2rem] h-[2rem]" />
+                },
+            ]
+        },
+        {
+            "category_name": "Card Settings",
+            "category_items": [
+                {
+                    "url": "card_detail",
+                    "name": "Card Detail",
+                    "icon": <AiFillEdit className="mx-auto w-[2rem] h-[2rem]" />
+                },
+                {
+                    "url": "card_detail",
+                    "name": "Card Detail",
+                    "icon": <AiFillEdit className="mx-auto w-[2rem] h-[2rem]" />
+                },
+                {
+                    "url": "card_detail",
+                    "name": "Card Detail",
+                    "icon": <AiFillEdit className="mx-auto w-[2rem] h-[2rem]" />
+                },
+                {
+                    "url": "card_detail",
+                    "name": "Card Detail",
+                    "icon": <AiFillEdit className="mx-auto w-[2rem] h-[2rem]" />
                 },
             ]
         },
@@ -215,21 +215,21 @@ const EditDashboardPage = () => {
 
     if (!getIsLoadingPageOpen) {
         return (
-            <div className='h-full text-[1.7vh] bg-[#DE206A] overflow-hidden'>
-                <div className='bottom-0 right-0 fixed mr-[1.7vh] mb-[1.7vh]'>
+            <div className='h-full bg-[#DE206A] overflow-hidden'>
+                <div className='bottom-0 right-0 fixed mr-4 mb-4'>
                     <button
-                        className="bg-gray-900 text-center text-white active:bg-gray-600 text-[1.5vh] font-bold uppercase px-[2.5vh] py-[1.2vh] rounded shadow hover:shadow-lg outline-none focus:outline-none w-full ease-linear transition-all duration-150"
+                        className="bg-gray-900 text-center text-white active:bg-gray-600 text-sm font-bold uppercase px-[0.8rem] py-[0.7rem] rounded shadow hover:shadow-lg outline-none focus:outline-none w-full ease-linear transition-all duration-150"
                     // onClick={handleSubmit}
                     >
                         Launch Event
                     </button>
                 </div>
-                <div className="flex h-[100vh]">
+                <div className="flex min-h-[100vh]">
                     <div className="bg-white shadow-sm max-w-[700px] w-full sm:min-w-[500px] h-[100vh] overflow-auto">
                         {/* app_bar */}
                         <div
                             className="  sticky top-0 bg-white w-full mx-auto">
-                            <div className="shadow flex items-center px-[1.7vh]">
+                            <div className="shadow flex items-center px-4 h-[3rem]">
                                 <div
                                     onClick={() => {
                                         navigate("/events");
@@ -241,24 +241,24 @@ const EditDashboardPage = () => {
                                     </label>
                                 </div>
                                 <div
-                                    className="py-[2vh] relative text-[1.5vh] ">
+                                    className="py-auto relative text-sm ">
 
                                     <button
                                         className="flex">
-                                        <svg id="hamburget_icon" viewBox="0 0 24 24" className="h-[2.6vh] w-[2.6vh] stroke-slate-900">
+                                        <svg id="hamburget_icon" viewBox="0 0 24 24" className="h-6 w-6 stroke-slate-900">
                                             <path d="M3.75 12h16.5M3.75 6.75h16.5M3.75 17.25h16.5" fill="none" strokeWidth="1.5" strokeLinecap="round"></path>
                                         </svg>
                                     </button>
                                     {getIsHamburgerOpen &&
-                                        <div className="hidden sm:block w-[17vh] bg-white rounded shadow-md  absolute mt-[4vh] top-0 right-0 min-w-full overflow-auto z-30 ">
+                                        <div className="hidden sm:block w-[10rem] bg-white rounded shadow-md  absolute mt-[2.5rem] top-0 right-0 min-w-full overflow-auto z-30 ">
 
-                                            <div id="events_button" className="px-[1.7vh] py-[1.7vh] block  hover:bg-gray-100 no-underline hover:no-underline">Events</div>
-                                            <div id="profile_button" className="px-[1.7vh] py-[1.7vh] block  hover:bg-gray-100 no-underline hover:no-underline">Profile</div>
+                                            <div id="events_button" className="px-4 py-4 block  hover:bg-gray-100 no-underline hover:no-underline">Events</div>
+                                            <div id="profile_button" className="px-4 py-4 block  hover:bg-gray-100 no-underline hover:no-underline">Profile</div>
 
-                                            <hr className="border-t mx-[1.7vh] border-gray-400" />
+                                            <hr className="border-t mx-4 border-gray-400" />
 
 
-                                            <div id="logout_button" className="px-[1.7vh] py-[1.7vh] block  hover:bg-gray-100 no-underline hover:no-underline">
+                                            <div id="logout_button" className="px-4 py-4 block  hover:bg-gray-100 no-underline hover:no-underline">
                                                 Logout
                                             </div>
 
@@ -269,25 +269,25 @@ const EditDashboardPage = () => {
                         </div>
                         {/* body */}
                         {getIsHamburgerOpen &&
-                            <div className="bg-white w-full sm:hidden fixed h-full mt-[vh]">
-                                <div id="events_button" className="px-[1.7vh] py-[1.7vh] block  hover:bg-gray-100 no-underline hover:no-underline">Events</div>
-                                <div id="profile_button" className="px-[1.7vh] py-[1.7vh] block  hover:bg-gray-100 no-underline hover:no-underline">Profile</div>
-                                <hr className="border-t mx-[1.7vh] border-gray-400" />
-                                <div id="logout_button" className="px-[1.7vh] py-[1.7vh] block  hover:bg-gray-100 no-underline hover:no-underline">
+                            <div className="bg-white w-full sm:hidden fixed h-full ">
+                                <div id="events_button" className="px-4 py-4 block  hover:bg-gray-100 no-underline hover:no-underline">Events</div>
+                                <div id="profile_button" className="px-4 py-4 block  hover:bg-gray-100 no-underline hover:no-underline">Profile</div>
+                                <hr className="border-t mx-4 border-gray-400" />
+                                <div id="logout_button" className="px-4 py-4 block  hover:bg-gray-100 no-underline hover:no-underline">
                                     Logout
                                 </div>
                             </div>
                         }
-                        <br />
+                        <div className="pt-[1rem]" />
                         {
                             config_edit_menu.map((one_config, index) =>
                                 <div
                                     key={index}
-                                    className="mx-[0.8vh] mb-[2vh] sm:pt-0">
-                                    <div className='p-[1vh] font-semibold'>
+                                    className="mx-[1rem] mb-[1rem] sm:pt-0">
+                                    <div className=' font-semibold mb-[1rem]'>
                                         {one_config?.category_name}
                                     </div>
-                                    <div className="p-[1vh] grid grid-flow-row grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 xl:grid-cols-4">
+                                    <div className=" grid grid-flow-row grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 xl:grid-cols-4">
                                         {
                                             one_config?.category_items?.map((category_item, index) =>
                                                 <div
@@ -298,7 +298,7 @@ const EditDashboardPage = () => {
                                                             navigate(`/${nc_wedding_id}/${category_item?.url}`)
                                                         }}
 
-                                                        className="hover:text-[#DE206A] overflow-hidden cursor-default h-[15vh] w-[15vh] hover:border text-gray-900 text-[1.5vh] uppercase rounded-lg outline-none ease-linear transition-all duration-150"
+                                                        className="hover:text-[#DE206A] overflow-hidden cursor-default h-[8.9rem] w-[8.9rem] hover:border text-gray-900 text-sm uppercase rounded-lg outline-none ease-linear transition-all duration-150"
                                                     // onClick={handleSubmit}
                                                     >
                                                         {category_item?.icon}
@@ -323,7 +323,7 @@ const EditDashboardPage = () => {
                                     setBufferLoad(false)
                                     clearTimeout(timeout)
                                 }, 500)
-                            }} className=''><FiMonitor className={`${getScreenSize === 0 ? "text-gray-900" : ""} m-[1.7vh] w-[3vh] h-[3vh]`} /></div>
+                            }} className=''><FiMonitor className={`${getScreenSize === 0 ? "text-gray-900" : ""} m-4 w-[3vh] h-[3vh]`} /></div>
                             <div className='w-2 h-2'></div>
                             <div onClick={() => {
                                 setScreenSize(1)
@@ -333,7 +333,7 @@ const EditDashboardPage = () => {
                                     setBufferLoad(false)
                                     clearTimeout(timeout)
                                 }, 500)
-                            }} className=''><BsPhone className={`${getScreenSize === 1 ? "text-gray-900" : ""} m-[1.7vh] w-[3vh] h-[3vh]`} /></div>
+                            }} className=''><BsPhone className={`${getScreenSize === 1 ? "text-gray-900" : ""} m-4 w-[3vh] h-[3vh]`} /></div>
                         </div>
                         <div className={`${getScreenSize === 0 ? "ease-in-out w-full m-auto" :
                             ""} ${getScreenSize === 1 ? "ease-in-out max-w-[30rem] m-auto" :
