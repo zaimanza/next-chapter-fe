@@ -129,7 +129,7 @@ const CardDetailPage = () => {
             <div className="sm:mx-[1.1rem] sm:pb-20 pt-[4rem] sm:pt-[4.7rem] ">
                 <div className=" flex flex-row ">
                     <div className="w-full  justify-center">
-                        <div className="mx-auto text-sm font-semibold">
+                        <div className="mx-auto text-sm">
                             <div className="flex flex-col max-w-[60rem] mx-auto sm:shadow sm:rounded-lg bg-white">
                                 <div className="mb-0 p-6 pb-0">
                                     <div className="text-center flex justify-between items-center">
@@ -144,12 +144,12 @@ const CardDetailPage = () => {
                                 </div>
                                 <div className="flex-auto px-6 pb-6 pt-0">
                                     <div>
-                                        <h6 className="mt-6 mb-2 font-bold">Personal details</h6>
+                                        <h6 className="mt-6 mb-2 text-base font-semibold">Personal details</h6>
                                         <hr className="mb-6 border-b-1 border-gray-200" />
                                         <div className="flex flex-wrap -mx-4">
                                             <div className="w-full px-4 lg:w-12/12">
                                                 <div className=" w-full mb-3">
-                                                    <label className="block uppercase text-gray-700 text-xs font-bold mb-2 ml-1" for="grid-password">Card url</label>
+                                                    <label className="block text-gray-700 text-sm font-semibold mb-2 ml-1" for="grid-password">Card url</label>
                                                     <div className="mb-3 pt-0">
                                                         <input
                                                             placeholder="Card url"
@@ -161,7 +161,7 @@ const CardDetailPage = () => {
                                             </div>
                                             <div className="w-full px-4 lg:w-6/12">
                                                 <div className=" w-full mb-3">
-                                                    <label className="block uppercase text-gray-700 text-xs font-bold mb-2 ml-1" for="grid-password">Partner One</label>
+                                                    <label className="block text-gray-700 text-sm font-semibold mb-2 ml-1" for="grid-password">Partner One</label>
                                                     <div className="mb-2 pt-0">
                                                         <input
                                                             placeholder="First name"
@@ -180,7 +180,7 @@ const CardDetailPage = () => {
                                             </div>
                                             <div className="w-full px-4 lg:w-6/12">
                                                 <div className=" w-full mb-3">
-                                                    <label className="block uppercase text-gray-700 text-xs font-bold mb-2 ml-1" for="grid-password">Partner Two</label>
+                                                    <label className="block text-gray-700 text-sm font-semibold mb-2 ml-1" for="grid-password">Partner Two</label>
                                                     <div className="mb-2 pt-0">
                                                         <input
                                                             placeholder="First name"
@@ -199,7 +199,7 @@ const CardDetailPage = () => {
                                             </div>
                                             <div className="w-full px-4 lg:w-12/12">
                                                 <div className=" w-full mb-3">
-                                                    <label className="block uppercase text-gray-700 text-xs font-bold mb-2 ml-1" for="grid-password">Card display name</label>
+                                                    <label className="block text-gray-700 text-sm font-semibold mb-2 ml-1" for="grid-password">Card display name</label>
                                                     <div className="mb-3 pt-0">
                                                         <input
                                                             placeholder="Card display name"
@@ -212,7 +212,7 @@ const CardDetailPage = () => {
                                             </div>
                                             <div className="w-full px-4 lg:w-6/12">
                                                 <div className=" w-full mb-3">
-                                                    <label className="block uppercase text-gray-700 text-xs font-bold mb-2 ml-1" for="grid-password">Parent one</label>
+                                                    <label className="block text-gray-700 text-sm font-semibold mb-2 ml-1" for="grid-password">Parent one</label>
                                                     <div className="mb-3 pt-0">
                                                         <input
                                                             placeholder="Parent one"
@@ -224,7 +224,7 @@ const CardDetailPage = () => {
                                             </div>
                                             <div className="w-full px-4 lg:w-6/12">
                                                 <div className=" w-full mb-3">
-                                                    <label className="block uppercase text-gray-700 text-xs font-bold mb-2 ml-1" for="grid-password">Parent two</label>
+                                                    <label className="block text-gray-700 text-sm font-semibold mb-2 ml-1" for="grid-password">Parent two</label>
                                                     <div className="mb-3 pt-0">
                                                         <input
                                                             placeholder="Parent two"
@@ -236,7 +236,7 @@ const CardDetailPage = () => {
                                             </div>
                                             <div className="w-full px-4 lg:w-12/12">
                                                 <div className=" w-full mb-3">
-                                                    <label className="block uppercase text-gray-700 text-xs font-bold mb-2 ml-1" for="grid-password">Card display parent name</label>
+                                                    <label className="block text-gray-700 text-sm font-semibold mb-2 ml-1" for="grid-password">Card display parent name</label>
                                                     <div className="mb-3 pt-0">
                                                         <input
                                                             placeholder="Card display parent name"
@@ -250,12 +250,12 @@ const CardDetailPage = () => {
                                         </div>
                                     </div>
                                     <div>
-                                        <h6 className="mt-6 mb-2 font-bold">Event details</h6>
+                                        <h6 className="mt-6 mb-2 text-base font-semibold">Event details</h6>
                                         <hr className="mb-6 border-b-1 border-gray-200" />
                                         <div className="flex flex-wrap -mx-4">
                                             <div className="w-full px-4 lg:w-12/12">
                                                 <div className=" w-full mb-3">
-                                                    <label className="block uppercase text-gray-700 text-xs font-bold mb-2 ml-1" for="grid-password">Event title</label>
+                                                    <label className="block text-gray-700 text-sm font-semibold mb-2 ml-1" for="grid-password">Event title</label>
                                                     <div className="mb-3 pt-0">
                                                         <input
                                                             placeholder="Event title"
@@ -267,7 +267,7 @@ const CardDetailPage = () => {
                                             </div>
                                             <div className="w-full px-4 lg:w-12/12">
                                                 <div className=" w-full mb-3">
-                                                    <label className="block uppercase text-gray-700 text-xs font-bold mb-2 ml-1" for="grid-password">Location</label>
+                                                    <label className="block text-gray-700 text-sm font-semibold mb-2 ml-1" for="grid-password">Location</label>
                                                     <div className="mb-3 pt-0">
                                                         <input
                                                             placeholder="Location"
@@ -279,7 +279,7 @@ const CardDetailPage = () => {
                                             </div>
                                             <div className="w-full px-4 lg:w-4/12">
                                                 <div className=" w-full mb-3">
-                                                    <label className="block uppercase text-gray-700 text-xs font-bold mb-2 ml-1" for="grid-password">Date</label>
+                                                    <label className="block text-gray-700 text-sm font-semibold mb-2 ml-1" for="grid-password">Date</label>
                                                     <div className="mb-3 pt-0">
                                                         <input
                                                             placeholder="Date"
@@ -298,7 +298,7 @@ const CardDetailPage = () => {
                                                             }}
                                                             className={`text-gray-700 selection:form-checkbox border-0 rounded w-[1.2rem] h-[1.2rem] ease-linear transition-all duration-150`}
                                                         />
-                                                        <span className={`text-black ml-2 text-sm font-semibold`}>
+                                                        <span className={`text-black ml-2 text-sm`}>
                                                             Show on card
                                                         </span>
                                                     </div>
@@ -308,7 +308,7 @@ const CardDetailPage = () => {
                                             </div>
                                             <div className="w-full px-4 lg:w-4/12">
                                                 <div className=" w-full mb-3">
-                                                    <label className="block uppercase text-gray-700 text-xs font-bold mb-2 ml-1" for="grid-password">Dress code</label>
+                                                    <label className="block text-gray-700 text-sm font-semibold mb-2 ml-1" for="grid-password">Dress code</label>
                                                     <div className="mb-3 pt-0">
                                                         <input
                                                             placeholder="Dress code"
@@ -320,7 +320,7 @@ const CardDetailPage = () => {
                                             </div>
                                             <div className="w-full px-4 lg:w-12/12">
                                                 <div className=" w-full mb-3">
-                                                    <label className="block uppercase text-gray-700 text-xs font-bold mb-2 ml-1" for="grid-password">Greetings message</label>
+                                                    <label className="block text-gray-700 text-sm font-semibold mb-2 ml-1" for="grid-password">Greetings message</label>
                                                     <div className="mb-3 pt-0">
                                                         <textarea
                                                             placeholder="Greetings message"
@@ -339,7 +339,7 @@ const CardDetailPage = () => {
                                             </div>
                                             <div className="w-full px-4 lg:w-12/12">
                                                 <div className=" w-full mb-3">
-                                                    <label className="block uppercase text-gray-700 text-xs font-bold mb-2 ml-1" for="grid-password">Introduction message</label>
+                                                    <label className="block text-gray-700 text-sm font-semibold mb-2 ml-1" for="grid-password">Introduction message</label>
                                                     <div className="mb-3 pt-0">
                                                         <textarea
                                                             placeholder="Introduction message"
@@ -358,7 +358,7 @@ const CardDetailPage = () => {
                                             </div>
                                             <div className="w-full px-4 lg:w-6/12">
                                                 <div className=" w-full mb-3">
-                                                    <label className="block uppercase text-gray-700 text-xs font-bold mb-2 ml-1" for="grid-password">Start time</label>
+                                                    <label className="block text-gray-700 text-sm font-semibold mb-2 ml-1" for="grid-password">Start time</label>
                                                     <div className="mb-3 pt-0">
                                                         <input
                                                             placeholder="Start time"
@@ -370,7 +370,7 @@ const CardDetailPage = () => {
                                             </div>
                                             <div className="w-full px-4 lg:w-6/12">
                                                 <div className=" w-full mb-3">
-                                                    <label className="block uppercase text-gray-700 text-xs font-bold mb-2 ml-1" for="grid-password">End time</label>
+                                                    <label className="block text-gray-700 text-sm font-semibold mb-2 ml-1" for="grid-password">End time</label>
                                                     <div className="mb-3 pt-0">
                                                         <input
                                                             placeholder="End time"

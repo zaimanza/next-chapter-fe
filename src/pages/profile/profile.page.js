@@ -148,7 +148,7 @@ const ProfilePage = () => {
                 <div className="sm:mx-[1.1rem] sm:pb-20 pt-[4rem] sm:pt-[4.7rem] ">
                     <div className=" flex flex-row ">
                         <div className="w-full  justify-center">
-                            <div className="mx-auto text-sm font-semibold">
+                            <div className="mx-auto text-sm">
                                 <div className="flex flex-col max-w-[60rem] mx-auto sm:shadow sm:rounded-lg bg-white ">
                                     <div className="mb-0 p-6 pb-0">
                                         <div className="text-center flex justify-between items-center">
@@ -157,12 +157,12 @@ const ProfilePage = () => {
                                     </div>
                                     <div className="flex-auto px-6 pb-6 pt-0">
                                         <div>
-                                            <div className="mt-6 mb-2 font-bold"></div>
+                                            <div className="mt-6 mb-2 "></div>
                                             <hr className="mb-6 border-b-1 border-gray-200" />
                                             <div className="flex flex-wrap -mx-4">
                                                 <div className="w-full px-4 lg:w-12/12">
                                                     <div className=" w-full mb-3">
-                                                        <label className="block uppercase text-gray-700 text-xs font-bold mb-2 ml-1" htmlFor="grid-password">Email</label>
+                                                        <label className="block text-gray-700 text-sm font-semibold mb-2 ml-1" htmlFor="grid-password">Email</label>
                                                         <div className=" pt-0 flex ">
                                                             <input
                                                                 placeholder="Email"
@@ -180,7 +180,7 @@ const ProfilePage = () => {
                                                             {
                                                                 emailOriginalRef.current !== getEmail && <>
                                                                     <div
-                                                                        className="cursor-pointer h-[2.4rem] m-auto bg-red-600 w-fit inline-block outline-none focus:outline-none align-middle transition-all duration-150 ease-in-out uppercase border border-solid font-bold last:mr-0 ml-2  text-white bg-lightBlue-500 border-lightBlue-500 active:bg-lightBlue-600 active:border-blue-600 text-xs px-3 py-2 shadow hover:shadow-md rounded-md"
+                                                                        className="cursor-pointer h-[2.4rem] m-auto bg-red-600 w-fit inline-block outline-none focus:outline-none align-middle transition-all duration-150 ease-in-out border border-solid last:mr-0 ml-2  text-white bg-lightBlue-500 border-lightBlue-500 active:bg-lightBlue-600 active:border-blue-600 px-3 py-2 shadow hover:shadow-md rounded-md"
                                                                         onClick={() => {
                                                                             setEmail(emailOriginalRef.current)
                                                                         }}
@@ -188,7 +188,7 @@ const ProfilePage = () => {
                                                                         <MdClose className=" h-[1.2rem] w-[1.2rem]" />
                                                                     </div>
                                                                     <div
-                                                                        className="cursor-pointer h-[2.4rem] m-auto bg-blue-600 w-fit inline-block outline-none focus:outline-none align-middle transition-all duration-150 ease-in-out uppercase border border-solid font-bold last:mr-0 ml-2  text-white bg-lightBlue-500 border-lightBlue-500 active:bg-lightBlue-600 active:border-blue-600 text-xs px-3 py-2 shadow hover:shadow-md rounded-md"
+                                                                        className="cursor-pointer h-[2.4rem] m-auto bg-blue-600 w-fit inline-block outline-none focus:outline-none align-middle transition-all duration-150 ease-in-out border border-solid last:mr-0 ml-2  text-white bg-lightBlue-500 border-lightBlue-500 active:bg-lightBlue-600 active:border-blue-600 px-3 py-2 shadow hover:shadow-md rounded-md"
                                                                         onClick={async () => {
                                                                             //regex email
                                                                             const emailRes = regexEmail(getEmail)
@@ -223,7 +223,7 @@ const ProfilePage = () => {
                                                             {
                                                                 getIsAcceptEmailChange && <>
                                                                     {clickEmailTimer?.timerCountdown === 0 ? <div
-                                                                        className="cursor-pointer h-[2.4rem] m-auto bg-orange-600 w-fit inline-block outline-none focus:outline-none align-middle transition-all duration-150 ease-in-out border border-solid font-bold last:mr-0 ml-2  text-white bg-lightBlue-500 border-lightBlue-500 active:bg-lightBlue-600 active:border-blue-600 text-xs px-3 py-2 shadow hover:shadow-md rounded-md"
+                                                                        className="cursor-pointer h-[2.4rem] m-auto bg-orange-600 w-fit inline-block outline-none focus:outline-none align-middle transition-all duration-150 ease-in-out border border-solid last:mr-0 ml-2  text-white bg-lightBlue-500 border-lightBlue-500 active:bg-lightBlue-600 active:border-blue-600 text-sm px-3 py-2 shadow hover:shadow-md rounded-md"
                                                                         onClick={async () => {
                                                                             //regex email
                                                                             const emailRes = regexEmail(getEmail)
@@ -252,7 +252,7 @@ const ProfilePage = () => {
                                                                     >
                                                                         Verify
                                                                     </div> : <div
-                                                                        className="flex items-center justify-center h-[2.4rem] m-auto bg-gray-400 w-full max-w-[8rem] outline-none focus:outline-none align-middle transition-all duration-150 ease-in-out border border-solid font-bold last:mr-0 ml-2  text-white bg-lightBlue-500 border-lightBlue-500 active:bg-lightBlue-600 text-xs px-3 py-2 shadow hover:shadow-md rounded-md"
+                                                                        className="flex items-center justify-center h-[2.4rem] m-auto bg-gray-400 w-full max-w-[8rem] outline-none focus:outline-none align-middle transition-all duration-150 ease-in-out border border-solid last:mr-0 ml-2  text-white bg-lightBlue-500 border-lightBlue-500 active:bg-lightBlue-600 text-sm px-3 py-2 shadow hover:shadow-md rounded-md"
 
                                                                     >
                                                                         {`Resend (${clickEmailTimer?.timerCountdown}sec)`}
