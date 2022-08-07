@@ -74,7 +74,7 @@ const CardDetailPage = () => {
             {/* app_bar */}
             <div
                 className="fixed  bg-white w-full mx-auto ">
-                <div className="relative flex items-center px-4">
+                <div className="relative flex items-center px-4 h-[3rem]">
                     <div className="absolute inset-x-0 bottom-0 h-px bg-slate-900/5">
                     </div>
                     <div
@@ -88,7 +88,7 @@ const CardDetailPage = () => {
                         </label>
                     </div>
                     <div
-                        className="py-5 relative text-sm">
+                        className="py-auto relative text-sm">
 
                         <button
                             className="flex">
@@ -117,7 +117,7 @@ const CardDetailPage = () => {
 
             {/* body */}
             {getIsHamburgerOpen &&
-                <div className="bg-white w-full sm:hidden fixed h-full mt-[3.6rem]">
+                <div className="bg-white w-full sm:hidden fixed h-full mt-[2.9rem]">
                     <div id="events_button" className="px-4 py-4 block  hover:bg-gray-100 no-underline hover:no-underline">Events</div>
                     <div id="profile_button" className="px-4 py-4 block  hover:bg-gray-100 no-underline hover:no-underline">Profile</div>
                     <hr className="border-t mx-4 border-gray-400" />
@@ -126,12 +126,12 @@ const CardDetailPage = () => {
                     </div>
                 </div>
             }
-            <div className="sm:mx-[1.1rem] sm:pb-20 pt-[4rem] sm:pt-[4.7rem] ">
+            <div className="sm:mx-[1rem] sm:pb-20 pt-[3rem] sm:pt-[4rem]">
                 <div className=" flex flex-row ">
                     <div className="w-full  justify-center">
                         <div className="mx-auto text-sm">
                             <div className="flex flex-col max-w-[60rem] mx-auto sm:shadow sm:rounded-lg bg-white">
-                                <div className="mb-0 p-6 pb-0">
+                                <div className="mb-0 p-[1rem] pb-0">
                                     <div className="text-center flex justify-between items-center">
                                         <div className="text-xl font-bold mb-0 flex items-center justify-center">
                                             <IoIosArrowBack className='hover:cursor-pointer ' onClick={() => {

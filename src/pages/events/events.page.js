@@ -120,23 +120,23 @@ const EventsPage = () => {
     const [getNoImage, setNoImage] = useState([])
     if (!getIsLoadingPageOpen) {
         return (
-            <div className=" text-[1.7vh]">
+            <div className="">
                 {/* floating_action_button */}
-                <div className='sm:hidden bottom-0 right-0 fixed mr-[1.7vh] mb-[1.7vh]'>
+                <div className='sm:hidden bottom-0 right-0 fixed mr-4 mb-4'>
                     <div className="text-center">
                         <button
-                            className="bg-[#DE206A] text-white active:bg-gray-600 text-[1.5vh] font-bold uppercase px-[1.2vh] py-[1.2vh] rounded shadow hover:shadow-lg outline-none focus:outline-none w-full ease-linear transition-all duration-150"
+                            className="bg-[#DE206A] text-white active:bg-gray-600 font-bold uppercase px-[0.7rem] py-[0.7rem] rounded shadow hover:shadow-lg outline-none focus:outline-none w-full ease-linear transition-all duration-150"
 
                             onClick={handleCreateEvent}
                         >
-                            <IoAdd className='m-auto h-[2vh] w-[2vh]' />
+                            <IoAdd className='m-auto h-5 w-5' />
                         </button>
                     </div>
                 </div>
                 {/* app_bar */}
                 <div
                     className="fixed  bg-white w-full mx-auto ">
-                    <div className="relative flex items-center px-[1.7vh]">
+                    <div className="relative flex items-center px-4 h-[3rem]">
                         <div className="absolute inset-x-0 bottom-0 h-px bg-slate-900/5">
                         </div>
                         <div
@@ -150,24 +150,24 @@ const EventsPage = () => {
                             </label>
                         </div>
                         <div
-                            className="py-[2vh] relative text-[1.5vh] ">
+                            className="py-auto relative text-sm">
 
                             <button
                                 className="flex">
-                                <svg id="hamburget_icon" viewBox="0 0 24 24" className="h-[2.6vh] w-[2.6vh] stroke-slate-900">
+                                <svg id="hamburget_icon" viewBox="0 0 24 24" className="h-6 w-6 stroke-slate-900">
                                     <path d="M3.75 12h16.5M3.75 6.75h16.5M3.75 17.25h16.5" fill="none" strokeWidth="1.5" strokeLinecap="round"></path>
                                 </svg>
                             </button>
                             {getIsHamburgerOpen &&
-                                <div className="hidden sm:block w-[17vh] bg-white rounded shadow-md  absolute mt-[4vh] top-0 right-0 min-w-full overflow-auto z-30 ">
+                                <div className="hidden sm:block w-[10rem] bg-white rounded shadow-md  absolute mt-[2.5rem] top-0 right-0 min-w-full overflow-auto z-30 ">
 
-                                    <div id="events_button" className="px-[1.7vh] py-[1.7vh] block  hover:bg-gray-100 no-underline hover:no-underline">Events</div>
-                                    <div id="profile_button" className="px-[1.7vh] py-[1.7vh] block  hover:bg-gray-100 no-underline hover:no-underline">Profile</div>
+                                    <div id="events_button" className="px-4 py-4 block  hover:bg-gray-100 no-underline hover:no-underline">Events</div>
+                                    <div id="profile_button" className="px-4 py-4 block  hover:bg-gray-100 no-underline hover:no-underline">Profile</div>
 
-                                    <hr className="border-t mx-[1.7vh] border-gray-400" />
+                                    <hr className="border-t mx-4 border-gray-400" />
 
 
-                                    <div id="logout_button" className="px-[1.7vh] py-[1.7vh] block  hover:bg-gray-100 no-underline hover:no-underline">
+                                    <div id="logout_button" className="px-4 py-4 block  hover:bg-gray-100 no-underline hover:no-underline">
                                         Logout
                                     </div>
 
@@ -179,35 +179,35 @@ const EventsPage = () => {
 
                 {/* body */}
                 {getIsHamburgerOpen &&
-                    <div className="bg-white w-full sm:hidden fixed h-full mt-[6vh]">
-                        <div id="events_button" className="px-[1.7vh] py-[1.7vh] block  hover:bg-gray-100 no-underline hover:no-underline">Events</div>
-                        <div id="profile_button" className="px-[1.7vh] py-[1.7vh] block  hover:bg-gray-100 no-underline hover:no-underline">Profile</div>
-                        <hr className="border-t mx-[1.7vh] border-gray-400" />
-                        <div id="logout_button" className="px-[1.7vh] py-[1.7vh] block  hover:bg-gray-100 no-underline hover:no-underline">
+                    <div className="bg-white w-full sm:hidden fixed h-full mt-[2.9rem]">
+                        <div id="events_button" className="px-4 py-4 block  hover:bg-gray-100 no-underline hover:no-underline">Events</div>
+                        <div id="profile_button" className="px-4 py-4 block  hover:bg-gray-100 no-underline hover:no-underline">Profile</div>
+                        <hr className="border-t mx-4 border-gray-400" />
+                        <div id="logout_button" className="px-4 py-4 block  hover:bg-gray-100 no-underline hover:no-underline">
                             Logout
                         </div>
                     </div>
                 }
-                <div className="mx-[1.8vh] mb-20">
-                    <div className="sm:hidden flex flex-row py-[2.2vh] pt-[8vh]">
+                <div className="mx-[1rem] mb-20">
+                    <div className="sm:hidden flex flex-row py-5 pt-[4rem]">
                         <div className="w-full  justify-center">
-                            <div className="mx-auto w-fit text-[1.5vh] font-semibold">
+                            <div className="mx-auto w-fit text-base font-semibold">
                                 Wedding Events
                             </div>
 
                         </div>
                     </div>
 
-                    <div className="hidden sm:flex justify-between py-[2.2vh] pt-[8vh]">
+                    <div className="hidden sm:flex justify-between py-5 pt-[4rem]">
                         <div className="">
-                            <div className="mx-auto w-fit text-[1.5vh] font-semibold">
+                            <div className="mx-auto w-fit text-base font-semibold">
                                 Wedding Events
                             </div>
                         </div>
-                        <div onClick={handleCreateEvent} className="my-auto flex flex-row text-[1.5vh] hover:text-[#DE206A]">
+                        <div onClick={handleCreateEvent} className="my-auto flex flex-row text-sm hover:text-[#DE206A]">
                             Create
 
-                            <IoAdd className='ml-[1vh] m-auto h-[2vh] w-[2vh]' />
+                            <IoAdd className='ml-[0.5rem] m-auto h-5 w-5' />
                         </div>
                     </div>
                     {getToastConfig && getCardList.length === 0 &&
@@ -237,9 +237,9 @@ const EventsPage = () => {
                                                     setNoImage(temp_getNoImage)
                                                 }}
                                                 src={oneEvent?.cover_img}
-                                                className="truncate object-cover w-full h-[18vh] rounded-tl-lg rounded-tr-lg" /> :
+                                                className="truncate object-cover w-full h-[10.6rem] rounded-tl-lg rounded-tr-lg" /> :
                                                 <div
-                                                    className=" h-[18vh] bg-[#DE206A] text-white flex items-center justify-center text-[1.5vh] font-bold uppercase rounded-tl-lg rounded-tr-lg outline-none w-full ease-linear transition-all duration-150"
+                                                    className=" h-[10.6rem] bg-[#DE206A] text-white flex items-center justify-center text-base font-bold uppercase rounded-tl-lg rounded-tr-lg outline-none w-full ease-linear transition-all duration-150"
                                                     type="submit"
                                                 // onClick={handleSubmit}
                                                 >
@@ -247,13 +247,13 @@ const EventsPage = () => {
                                                 </div>
                                             }
                                         </div>
-                                        <div className=" px-[1.4vh] pt-[0.5vh] pb-[1vh]">
-                                            <div className="truncate capitalize font-semibold text-[1.5vh]">{oneEvent?.your_first_name + " & " + oneEvent?.your_partner_first_name}</div>
-                                            {oneEvent?.wedding_date && <div className="truncate capitalize text-[1.5vh]">{oneEvent?.wedding_date}</div>}
-                                            {oneEvent?.wedding_location && <div className="truncate capitalize text-[1.5vh]">{oneEvent?.wedding_location}</div>}
+                                        <div className=" px-[1rem] pt-[0.8rem] pb-[1rem]">
+                                            <div className="truncate capitalize font-semibold text-base">{oneEvent?.your_first_name + " & " + oneEvent?.your_partner_first_name}</div>
+                                            {oneEvent?.wedding_date && <div className="truncate capitalize text-sm">{oneEvent?.wedding_date}</div>}
+                                            {oneEvent?.wedding_location && <div className="truncate capitalize text-sm">{oneEvent?.wedding_location}</div>}
                                             {oneEvent?.owner_uid === peopleProvider?.uid &&
-                                                <div className="mt-[0.5vh] flex">
-                                                    <div className="border rounded-lg px-[0.8vh] py-[0.3vh] text-gray-400  text-[1.5vh]">
+                                                <div className="mt-[0.5rem] flex">
+                                                    <div className="border rounded-lg px-[0.5rem] py-[0.3rem] text-gray-400  text-sm">
                                                         Yours
                                                     </div>
                                                 </div>
