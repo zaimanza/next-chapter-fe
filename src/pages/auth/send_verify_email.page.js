@@ -73,7 +73,7 @@ export default function SendVerifyEmailPage({ setAuthMode }) {
                                     disabled={clickEmailTimer?.timerCountdown === 0 ? false : true}
                                     onClick={handleSubmit}
                                 >
-                                    {clickEmailTimer?.timerCountdown === 0 ? "Send Reset Link" : `Resend link in (${clickEmailTimer?.timerCountdown}sec)`}
+                                    {clickEmailTimer?.timerCountdown === 0 ? "Resend Link" : `Resend link in (${clickEmailTimer?.timerCountdown}sec)`}
                                 </button>
                             </div>
                         </div>
