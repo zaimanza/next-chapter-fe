@@ -323,7 +323,7 @@ const EditDashboardPage = () => {
                                     setBufferLoad(false)
                                     clearTimeout(timeout)
                                 }, 500)
-                            }} className=''><FiMonitor className={`${getScreenSize === 0 ? "text-gray-900" : ""} m-4 w-[3vh] h-[3vh]`} /></div>
+                            }} className=''><FiMonitor className={`${getScreenSize === 0 ? "text-gray-900" : ""} m-4 w-6 h-6`} /></div>
                             <div className='w-2 h-2'></div>
                             <div onClick={() => {
                                 setScreenSize(1)
@@ -333,7 +333,7 @@ const EditDashboardPage = () => {
                                     setBufferLoad(false)
                                     clearTimeout(timeout)
                                 }, 500)
-                            }} className=''><BsPhone className={`${getScreenSize === 1 ? "text-gray-900" : ""} m-4 w-[3vh] h-[3vh]`} /></div>
+                            }} className=''><BsPhone className={`${getScreenSize === 1 ? "text-gray-900" : ""} m-4 w-6 h-6`} /></div>
                         </div>
                         <div className={`${getScreenSize === 0 ? "ease-in-out w-full m-auto" :
                             ""} ${getScreenSize === 1 ? "ease-in-out max-w-[30rem] m-auto" :
