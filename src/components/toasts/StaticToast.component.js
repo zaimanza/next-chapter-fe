@@ -33,11 +33,11 @@ const StaticToast = ({ config }) => {
     }
 
     return (
-        <div className={`${bgColor.current} flex items-center w-full p-[1.8vh] mb-[1.8vh]  rounded-lg shadow`} role="alert">
-            <div className={`inline-flex items-center justify-center flex-shrink-0 w-[3.3vh] h-[3.3vh] ${bgToastIcon.current} rounded-lg ${textToastIcon.current}`}>
+        <div className={`${bgColor.current} flex items-center w-full p-[0.9rem] mb-[0.9rem]  rounded-lg shadow`} role="alert">
+            <div className={`inline-flex items-center justify-center flex-shrink-0 w-[1.5rem] h-[1.5rem] ${bgToastIcon.current} rounded-lg ${textToastIcon.current}`}>
                 {toastIcon.current}
             </div>
-            <div className="ml-[1vh] text-sm font-normal">{config.message}</div>
+            <div className="ml-[0.5rem] text-sm font-normal">{config.message}</div>
 
         </div>
     )

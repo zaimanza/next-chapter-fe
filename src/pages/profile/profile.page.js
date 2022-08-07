@@ -145,12 +145,12 @@ const ProfilePage = () => {
                         </div>
                     </div>
                 }
-                <div className="sm:mx-[1rem] sm:pb-20 pt-[4rem]">
+                <div className="sm:mx-[1rem] sm:pb-20 pt-[3rem] sm:pt-[4rem]">
                     <div className=" flex flex-row ">
                         <div className="w-full  justify-center">
                             <div className="mx-auto text-sm">
                                 <div className="flex flex-col max-w-[60rem] mx-auto sm:shadow sm:rounded-lg bg-white ">
-                                    <div className="mb-0 p-6 pb-0">
+                                    <div className="mb-0 p-[1rem] pb-0">
                                         <div className="text-center flex justify-between items-center">
                                             <div className="text-xl font-bold mb-0">Profile</div>
                                         </div>
