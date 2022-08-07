@@ -215,7 +215,7 @@ const EditDashboardPage = () => {
 
     if (!getIsLoadingPageOpen) {
         return (
-            <div className='h-full bg-[#DE206A] overflow-hidden'>
+            <div className='h-full bg-[#e5989b] overflow-hidden'>
                 <div className='bottom-0 right-0 fixed mr-4 mb-4'>
                     <button
                         className="bg-gray-900 text-center text-white active:bg-gray-600 text-sm font-bold uppercase px-[0.8rem] py-[0.7rem] rounded shadow hover:shadow-lg outline-none focus:outline-none w-full ease-linear transition-all duration-150"
