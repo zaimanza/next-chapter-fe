@@ -507,6 +507,16 @@ const CardDetailPage = () => {
                                                                     "resize": "none",
                                                                     "whiteSpace": "pre-wrap"
                                                                 }}
+                                                                value={getChangeData?.wedding_welcome_greetings ?? ""}
+                                                                onChange={(event) => {
+                                                                    const onChangeValue = event.target.value
+
+                                                                    setChangeData({
+                                                                        ...getChangeData,
+                                                                        wedding_welcome_greetings: onChangeValue,
+                                                                    })
+
+                                                                }}
                                                                 className="border-gray-300 px-3 py-2 text-sm  w-full placeholder-gray-200 text-gray-700  bg-white rounded-md outline-none focus:ring-lightBlue-500 focus:ring-1 focus:border-lightBlue-500 border border-solid transition duration-200 "
                                                             >
 
