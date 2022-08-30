@@ -557,10 +557,23 @@ const CardDetailPage = () => {
                                                     <div className=" w-full mb-3">
                                                         <label className="block text-gray-700 text-sm font-semibold mb-2 ml-1" htmlFor="grid-password">Start time</label>
                                                         <div className="mb-3 pt-0">
+
                                                             <input
-                                                                placeholder="Start time"
-                                                                type="text"
+                                                                type="time"
                                                                 className="border-gray-300 px-3 py-2 text-sm  w-full placeholder-gray-200 text-gray-700  bg-white rounded-md outline-none focus:ring-lightBlue-500 focus:ring-1 focus:border-lightBlue-500 border border-solid transition duration-200 "
+                                                                onChange={(event) => {
+                                                                    const onChangeValue = event.target.value
+                                                                    var start_time = new Date();
+                                                                    const split_data = onChangeValue.split(":")
+                                                                    start_time.setHours(split_data[0])
+                                                                    start_time.setMinutes(split_data[1])
+                                                                    var start_time_ISO = start_time.toISOString();
+                                                                    setChangeData({
+                                                                        ...getChangeData,
+                                                                        start_time: start_time_ISO,
+                                                                    })
+
+                                                                }}
                                                             />
                                                         </div>
                                                     </div>
@@ -570,9 +583,21 @@ const CardDetailPage = () => {
                                                         <label className="block text-gray-700 text-sm font-semibold mb-2 ml-1" htmlFor="grid-password">End time</label>
                                                         <div className="mb-3 pt-0">
                                                             <input
-                                                                placeholder="End time"
-                                                                type="text"
+                                                                type="time"
                                                                 className="border-gray-300 px-3 py-2 text-sm  w-full placeholder-gray-200 text-gray-700  bg-white rounded-md outline-none focus:ring-lightBlue-500 focus:ring-1 focus:border-lightBlue-500 border border-solid transition duration-200 "
+                                                                onChange={(event) => {
+                                                                    const onChangeValue = event.target.value
+                                                                    var end_time = new Date();
+                                                                    const split_data = onChangeValue.split(":")
+                                                                    end_time.setHours(split_data[0])
+                                                                    end_time.setMinutes(split_data[1])
+                                                                    var end_time_ISO = end_time.toISOString();
+                                                                    setChangeData({
+                                                                        ...getChangeData,
+                                                                        end_time: end_time_ISO,
+                                                                    })
+
+                                                                }}
                                                             />
                                                         </div>
                                                     </div>
