@@ -156,11 +156,47 @@ const useEventModule = () => {
         return result?.data
     }
 
+    const GETEventCardDetail = async ({
+        nc_wedding_id
+    }) => {
+
+        const result = await axios?.get(
+            nc_be_url + `/event/event_card_detail/${nc_wedding_id}`,
+            {
+                headers: {
+                    "grXgmgKx3WU42b79": peopleProvider?.access_token
+                },
+                // timeout: 100000,
+                // plenty more options can be added, refer source link above
+            })
+            .catch(function (error) {
+                if (error?.message) {
+                    return {
+                        error: error?.message ?? "Website is currently offline."
+                    }
+                }
+            })
+
+        if (!result?.data) {
+            if (result?.error) {
+                return {
+                    error: result?.error ?? {
+                        message: "Website is currently offline."
+                    }
+                }
+            } else {
+                return
+            }
+        }
+        return result?.data
+    }
+
     return {
         createEvent,
         findAllGeneralByOwner,
         findWeddingCard,
-        isWeddingCardExists
+        isWeddingCardExists,
+        GETEventCardDetail
     }
 }
 
