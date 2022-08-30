@@ -29,6 +29,8 @@ const CardDetailPage = () => {
             run_uno.current = true
             if (peopleProvider.access_token === "") {
                 navigate(`/${nc_wedding_id}`)
+            } else {
+
             }
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -58,7 +60,8 @@ const CardDetailPage = () => {
             // Unbind the event listener on clean up
             document.removeEventListener('mousedown', handleClickOutside);
         };
-    });
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
 
     const handleLogoutButton = async () => {
         dispatch(
